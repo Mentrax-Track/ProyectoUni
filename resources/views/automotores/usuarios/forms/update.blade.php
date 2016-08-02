@@ -65,7 +65,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     {!! Form::label('tipo', 'Tipo de usuario') !!}
-                    {!! Form::select('tipo', config('completo.completos'), null, ['class' => 'form-control']) !!}
+                    {!! Form::select('tipo', config('update.updates'), null, ['class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="col-md-2">

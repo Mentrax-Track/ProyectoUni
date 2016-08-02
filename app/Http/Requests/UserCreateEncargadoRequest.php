@@ -29,10 +29,10 @@ class UserCreateEncargadoRequest extends Request
             'celular'  => 'regex:/^[0-9]+$/i|between:8,12|unique:users,celular',
             'facultad' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
             'carrera'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'materia'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'sigla'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'password' => 'required|max:12',
-            'tipo'     => 'required',
+            'materia'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
+            'sigla'    => 'required|min:5|max:15',
+            'password' => 'required|max:20',
+            'tipo'     => 'required|in:encargado',
         ];
     }
     public function messages()
@@ -44,7 +44,6 @@ class UserCreateEncargadoRequest extends Request
                 'facultad.regex'     => 'En el campo facultad solo se aceptan letras',
                 'carrera.regex'      => 'En el campo carrera aceptan letras',
                 'materia.regex'      => 'En el campo materia solo se aceptan letras',
-                'sigla.regex'        => 'En el campo sigla solo se aceptan letras',
         ];
     }
 }

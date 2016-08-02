@@ -53,7 +53,7 @@
                                 </ul>
                             </li>
                         <li>
-                            <a href="#"><i class='glyphicon glyphicon-calendar'></i> Reservas<span class="fa arrow"></span></a>
+                            <a href="#"><i class='glyphicon glyphicon-list-alt'></i> Reservas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/reservas/create') !!}"><i class='glyphicon glyphicon-pencil'></i> Agregar</a>
@@ -80,35 +80,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-user"></i> Encargado<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/encargado/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::to('/encargado') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class='glyphicon glyphicon-duplicate'></i> Informes</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-user"></i> Chofer<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/chofer/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::to('/chofer') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::to('/informes/create') !!}"><i class='glyphicon glyphicon-duplicate'></i> Informes</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-user"></i> Vehiculo<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-bed"></i> Vehiculo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/vehiculo/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
@@ -119,7 +91,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-user"></i> Destino<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-road"></i> Destino<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/destino/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>

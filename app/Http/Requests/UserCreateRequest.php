@@ -30,7 +30,7 @@ class UserCreateRequest extends Request
             'celular'  => 'required|regex:/^[0-9]+$/i|between:8,12|unique:users,celular',
             'password' => 'required|max:20',
             'tipo'     => 'required',
-            'email'    => 'unique:users,email|max:30',
+            'email'    => 'unique:users,email|max:50',
 
         ];
     }
@@ -40,7 +40,7 @@ class UserCreateRequest extends Request
                 'nombres.regex'      => 'En el nombre solo se aceptan letras',
                 'apellidos.regex'    => 'En el apellido solo se aceptan letras',
                 'celular.regex'      => 'En el campo celular solo se aceptan números',
-                'cedula.regex'       => 'En el campo cedula solo se aceptan números',
+                'cedula.regex'       => 'En el campo cédula solo se aceptan números',
         ];
     }
 }

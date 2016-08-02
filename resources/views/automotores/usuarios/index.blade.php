@@ -7,6 +7,12 @@
 <div class="panel panel-default">
     <div class="panel-heading text-center"><h4>Lista de Usuarios</h4></div>
     <div class="panel-body">
+    <form class="form-inline">
+        <div class="form-group">
+            <label>Busqueda</label> 
+            @include('automotores.usuarios.forms.busqueda')
+        </div>
+    </form><br>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
                  <tr class="info">
@@ -43,6 +49,6 @@
         </div>
     </div>
 </div>
-{!! $users->render() !!}
+{!! $users->appends(Request::only(['name','tipo']))->render() !!}
 
 @stop

@@ -17,7 +17,7 @@ class EncargadoController extends Controller
     }
     public function find(Route $route)
     {
-        $this->user = User::find($route->getParameter('usuario'));
+        $this->user = User::find($route->getParameter('encar'));
     }
     /**
      * Display a listing of the resource.
@@ -50,8 +50,8 @@ class EncargadoController extends Controller
     public function store(UserCreateEncargadoRequest $request)
     {
         User::create($request->all());
-        Session::flash('mensaje','Usuario Creado correctamente');
-        return Redirect::to('/users');
+        Session::flash('message','Usuario encargado creado correctamente...');
+        return redirect('users');
     }
 
     /**
@@ -73,7 +73,8 @@ class EncargadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('automotores.usuarios.edit',['user'=>$user]);
     }
 
     /**
@@ -85,7 +86,11 @@ class EncargadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        Session::flash('message','Usuario encargado editado correctamente...');
+        return redirect('users');
     }
 
     /**
@@ -96,6 +101,8 @@ class EncargadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        Session::flash('message','Usuario encargado eliminado correctamente...');
+        return redirect('users');
     }
 }

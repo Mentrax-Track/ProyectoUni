@@ -53,4 +53,24 @@ class User extends Model implements AuthenticatableContract,
             $this->attributes['password'] = \Hash::make($valor);
         }
     }
+
+    public function scopeName($query, $name)
+    {
+        //El trim es para eliminar los espacios
+        if(trim($name) != "")
+        {
+            //para q busque el nombre y el apellido es DB::raw con la function CONCAT mysql
+            // El \ es para q tome el alias en la seccion de alias
+            $query->where(\DB::raw("CONCAT(nombres, ' ',apellidos)"), "LIKE","%$name%");    
+        }
+    }
+    public function scopeTipo($query, $tipo)
+    {
+        $tipos = config('completo.completos');
+
+        if($tipo != "" && isset($tipos[$tipo]))
+        {
+            $query->where('tipo', $tipo);
+        }
+    }
 }

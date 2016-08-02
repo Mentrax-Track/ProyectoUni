@@ -10,17 +10,29 @@ use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
-
+use Illuminate\Routing\Route;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
+    }
+    public function find(Route $route)
+    {
+        $this->user = User::find($route->getParameter('users'));
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate();
+        /*Para que solo muestre los elementos eliminados
+           $users = User::onlyTrashed()->paginate(3); */    
+        $users = User::orderBy('id','DESC')->paginate();
+
+        $users = User::name($request->get('name'))->tipo($request->get('tipo'))->orderBy('id','DESC')->paginate(10);
 
         return view('automotores.usuarios.index', compact('users'));
     }
@@ -44,8 +56,8 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         User::create($request->all());
-        Session::flash('mensaje','Usuario Creado correctamente');
-        return Redirect()->route('users.automotores.usuarios.create');
+        Session::flash('message','Usuario creado correctamente...');
+        return redirect('users');
     }
 
     /**
@@ -67,8 +79,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('automotores.usuarios.edit',['user'=>$user]);
+        return view('automotores.usuarios.edit',['user'=>$this->user]);
     }
 
     /**
@@ -80,9 +91,8 @@ class UsersController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = User::find($id);
-        $user->fill($request->all());
-        $user->save();
+        $this->user->fill($request->all());
+        $this->user->save();
         Session::flash('message','Usuario editado correctamente...');
         return redirect('users');
     }
@@ -95,7 +105,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        $this->user->delete();
         Session::flash('message','Usuario eliminado correctamente...');
         return redirect('users');
     }
