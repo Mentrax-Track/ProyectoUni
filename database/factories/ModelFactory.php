@@ -28,3 +28,25 @@ $factory->define(Infraestructura\User::class, function (Faker\Generator $faker) 
         'active'=> $faker->boolean
     ];
 });
+
+
+$factory->define(Infraestructura\Vehiculo::class, function (Faker\Generator $faker) {
+    return [
+        'codigo'     => $faker->secondaryAddress,
+        'tipo'       => $faker->randomElement(['Camión','Camioneta','Civilian','Jeep','Omnibus','Taxi','Vagoneta']),
+        'placa'      => $faker->userName,
+        'color'      => $faker->colorName,
+        'kilometraje'=> $faker->numberBetween($min = 100, $max = 10000),
+        'pasageros'  => $faker->numberBetween($min = 5, $max = 36),
+        'path'       => $faker->bothify('Hello ##??') ,
+        'estado'     => $faker->randomElement(['Optimo','Mantenimiento','Desuso']),
+        
+    ];
+});
+
+$factory->define(Infraestructura\UserVehi::class, function (Faker\Generator $faker) {
+    return [
+        'user_id' => $faker->randomDigitNotNull(\DB::table('users')->min('id'), \DB::table('users')->max('id')),
+        'vehi_id' => $faker->randomDigitNotNull(\DB::table('vehiculos')->min('id'), \DB::table('vehiculos')->max('id')),       
+    ];
+});

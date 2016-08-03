@@ -73,4 +73,9 @@ class User extends Model implements AuthenticatableContract,
             $query->where('tipo', $tipo);
         }
     }
+
+    public function UserVehi()
+    {
+        return $this->belongsTo('Infraestructura\UserVehi');
+    }
 }
