@@ -18,8 +18,8 @@
     <div class="col-md-2"></div>
     <div class="col-md-4">
         <div class="form-group">
-            {!! Form::label('Numero de asientos:') !!}
-            {!! Form::number('numero',null,['class'=>'form-control', 'placeholder'=>'Ingrese el numero de asientos disponibles']) !!}
+            {!! Form::label('Numero de pasageros:') !!}
+            {!! Form::number('pasageros',null,['class'=>'form-control', 'placeholder'=>'Ingrese el numero de asientos disponibles']) !!}
         </div>
     </div>
     <div class="col-md-4">

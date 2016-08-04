@@ -6,7 +6,7 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4>Nuevo Vehiculo</h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Nuevo Vehiculo</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'vehiculos.store','method'=>'POST','files' => true ]) !!}
         

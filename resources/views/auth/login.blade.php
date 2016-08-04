@@ -3,9 +3,11 @@
 @section('content')
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+
 			<div class="panel panel-default">
-				<div class="panel-heading">Iniciar Sesión</div>
+				<div class="panel-heading text-center"><a href=""><p class="www">Iniciar Sesión</p></a></div>
 				<div class="panel-body">
 					@include('alertas.request')
 
@@ -39,7 +41,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-									Ingresar
+									<p class="www">Ingresar</p>
 								</button>
 
 								<a href="/password/email">¿Olvidaste tu contraseña?</a>
@@ -49,6 +51,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-3"></div>
 	</div>
 </div>
 @endsection

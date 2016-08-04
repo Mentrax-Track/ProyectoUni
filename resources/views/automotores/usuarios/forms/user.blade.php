@@ -32,7 +32,7 @@ function mostrar(id) {
 
 <div id="usuario" class="element" style="display: none;">
  
-    <center><h2>Formulario Interno</h2></center>
+    <center><h2><p class="www">Formulario Interno</p></h2></center>
     {!! Form::open(['route'=>'users.store','method'=>'POST']) !!}
     <div class="panel panel-default">
     <div class="panel-body">
@@ -104,7 +104,7 @@ function mostrar(id) {
 
 <div id="encargado" class="element" style="display: none;">
 
-    <center><h2>Formulario para el Encargado de Viaje</h2></center>
+    <center><h2><p class="www">Formulario para el Encargado de Viaje</p></h2></center>
     {!! Form::open(['route'=>'encar.store','method'=>'POST']) !!}
     <div class="panel panel-default">
     <div class="panel-body">

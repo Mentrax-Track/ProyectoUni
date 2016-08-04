@@ -8,7 +8,7 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4>Actualización de datos del Vehiculo</h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Actualización de datos del Vehiculo</p></h4></div>
     <div class="panel-body"> 
 
             {!! Form::model($vehi,['route'=>['vehiculos.update',$vehi->id],'method'=>'PUT','files'=>true]) !!}

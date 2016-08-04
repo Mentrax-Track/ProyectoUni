@@ -5,6 +5,8 @@ namespace Infraestructura\Http\Controllers;
 use Illuminate\Http\Request;
 use Infraestructura\Vehiculo;
 use Infraestructura\Http\Requests;
+use Infraestructura\Http\Requests\VehiculoCreateRequest;
+use Infraestructura\Http\Requests\VehiculoUpdateRequest;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -47,7 +49,7 @@ class VehiculosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehiculoCreateRequest $request)
     {
         Vehiculo::create($request->all());
         Session::flash('message','Vehiculo creado correctamente...');
@@ -83,7 +85,7 @@ class VehiculosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VehiculoUpdateRequest $request, $id)
     {
         $this->vehi->fill($request->all());
         $this->vehi->save();

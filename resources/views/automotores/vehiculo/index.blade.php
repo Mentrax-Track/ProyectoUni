@@ -1,13 +1,13 @@
 @extends('automotores.admin')
 
 @section('subtitulo','Vehiculos')
-
+    
 @section('content')
 @include('alertas.success')
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4>Vehiculos</h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Vehiculos</p></h4></div>
     <div class="panel-body"> 
 
     <form class="form-inline">
@@ -20,22 +20,22 @@
 
     <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed "><br>
-            <tr class="info">
-                <th>#</th>
-                <th>Código</th>
-                <th>Tipo</th>
-                <th>Placa</th>
-                <th>Color</th>
-                <th>Kilometraje</th>
-                <th>Pasageros</th>
-                <th>Estado</th>
-                <th>Imagen</th>
-                <th>Operación</th>
+            <tr class="info text-center">
+                <th class="text-center">#</th>
+                <th class="text-center">Código</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-center">Placa</th>
+                <th class="text-center">Color</th>
+                <th class="text-center">Kilometraje</th>
+                <th class="text-center">Pasageros</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">Imagen</th>
+                <th class="text-center">Operación</th>
             </tr> 
                 
         @foreach($vehiculos as $vehi)
             <tbody>
-                <td class="info">{{ $vehi->id }}</td>
+                <td class="info"><center>{{ $vehi->id }}</center></td>
                 <td>{{ $vehi->codigo }}</td>
                 <td>{{ $vehi->tipo }}</td>
                 <td>{{ $vehi->placa }}</td>
@@ -46,8 +46,8 @@
                 <td>
                     <img src="vehi/{{$vehi->path}}" alt="" style="width:90px; display:block;margin:0 auto 0 auto;" />
                 </td>
-                <td class="btns" >
-                   {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-primary'])!!}
+                <td class="btns" ><center>
+                   {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-primary'])!!}</center>
                 </td>
             </tbody>
         @endforeach

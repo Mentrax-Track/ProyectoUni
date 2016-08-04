@@ -65,6 +65,7 @@ Route::group(['middleware' => 'auth'], function(){
     'uses' => 'AutomotoresController@index',
     'as'   => 'auto'
     ]);
+    Route::post('Inicio-Automotores','AutomotoresController@index');
 
     Route::resource('users','UsersController');
     Route::resource('encar','EncargadoController');

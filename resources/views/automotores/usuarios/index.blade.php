@@ -5,7 +5,7 @@
 @include('alertas.success')
 <br>
 <div class="panel panel-default">
-    <div class="panel-heading text-center"><h4>Lista de Usuarios</h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Lista de Usuarios</p></h4></div>
     <div class="panel-body">
     <form class="form-inline">
         <div class="form-group">
@@ -16,15 +16,15 @@
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
                  <tr class="info">
-                    <th>#</th>
-                    <th>Nombres</th>
-                    <th>Cedula</th>
-                    <th>Celular</th>
-                    <th>Email</th>
-                    <th>Tipo</th>
-                    <th>Institución</th>
-                    <th>Activo</th>
-                    <th>Operación</th>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Nombres</th>
+                    <th class="text-center">Cedula</th>
+                    <th class="text-center">Celular</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center">Institución</th>
+                    <th class="text-center">Activo</th>
+                    <th class="text-center">Operación</th>
                 </tr>
                 @foreach($users as $user)
                     <tbody>
@@ -36,7 +36,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->tipo }}</td>
                             <td>{{ $user->full_institucion }}</td>
-                            <td>{{ $user->active }}</td>
+                            <td class="text-center">{{ $user->active }}</td>
                             <td class="btns"><center>
                                 {!!link_to_route('users.edit', $title = 'Editar', $parameters = $user, $attributes = ['class'=>'btn btn-primary'])!!}
                                     </center>

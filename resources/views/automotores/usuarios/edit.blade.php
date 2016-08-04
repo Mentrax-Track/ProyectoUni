@@ -7,7 +7,7 @@
 <br>
 <div class="panel panel-default">
 
-    <div class="panel-heading text-center"><h4>Editar Usuario</h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Editar Usuario</p></h4></div>
     <div class="panel-body">
      {!! Form::model($user,['route'=>['users.update',$user->id],'method'=>'PUT']) !!}
                 @include('automotores.usuarios.forms.update')

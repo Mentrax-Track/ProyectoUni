@@ -23,11 +23,11 @@
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header ">
-              <a class="navbar-brand" href="#">DEPARTAMENTO  DE  INFRAESTRUCTURA</a>
+              <a class="navbar-brand" href="#"><p class="www">DEPARTAMENTO  DE  INFRAESTRUCTURA</p></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">U.A.T.F</a></li>
+                <li><a href="#"><p class="www">U.A.T.F</p></a></li>
               </ul>
             </div>
           </div>
