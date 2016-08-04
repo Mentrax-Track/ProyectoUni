@@ -3,11 +3,9 @@
 namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 class Vehiculo extends Model
 {
-    use SoftDeletes;
 
     protected $table = 'vehiculos';
     
@@ -33,25 +31,19 @@ class Vehiculo extends Model
         return $this->hasMany('automotores\Viaje');
     }
     //mutador para modificar elementos antes de ser guardados
-    /*public function setPathAttribute($path){
+    public function setPathAttribute($path){
         if(! empty($path)){
             $name = Carbon::now()->second.$path->getClientOriginalName();
             $this->attributes['path'] = $name;
             \Storage::disk('local')->put($name, \File::get($path));
         }
     } 
-    public static function Vehiculos(){
-        return DB::table('vehiculos')
-            ->join('genres','genres.id','=','movies.genre_id')
-            ->select('movies.*', 'genres.genre')
-            ->get();
-    }
     public static function filtroBusqueda($tip, $esta)
     {
         return Vehiculo::tip($tip)
             ->esta($esta)
             ->orderBy('id','ASC')
-            ->paginate(5);
+            ->paginate(15);
     }
     //scope es una funcion de laravfel
     public function scopeTip($query, $tip)
@@ -75,5 +67,5 @@ class Vehiculo extends Model
         {
             $query->where('estado',$esta);
         }
-    }*/
+    }
 }

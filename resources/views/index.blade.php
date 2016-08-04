@@ -22,7 +22,7 @@
     <div class="container">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header ">
               <a class="navbar-brand" href="#">DEPARTAMENTO  DE  INFRAESTRUCTURA</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">

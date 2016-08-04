@@ -1,0 +1,17 @@
+
+/************
+FORMULARIOS Jorge Peralta
+************/
+table th {
+  text-align: center;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+table .btns{
+    text-align: center;
+    vertical-align: middle;
+
+}
+.sinpadding [class*="col-"] {
+    padding: 0;
+}

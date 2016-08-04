@@ -83,10 +83,10 @@
                             <a href="#"><i class="glyphicon glyphicon-bed"></i> Vehiculo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/vehiculo/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
+                                    <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::to('/vehiculo') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
+                                    <a href="{!! URL::to('/vehiculos') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
                                 </li>
                             </ul>
                         </li>

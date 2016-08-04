@@ -3,20 +3,32 @@
 namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Infraestructura\Vehiculo;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
-
+use Session;
+use Redirect;
+use Illuminate\Routing\Route;
 class VehiculosController extends Controller
 {
+    public function __construct()
+    {
+        $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
+    }
+    public function find(Route $route)
+    {
+        $this->vehi = Vehiculo::find($route->getParameter('vehiculos'));
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $vehiculos = Vehiculo::filtroBusqueda($request->get('tip'), $request->get('esta'));
+
+        return view('automotores.vehiculo.index', compact('vehiculos'));
     }
 
     /**
@@ -26,7 +38,7 @@ class VehiculosController extends Controller
      */
     public function create()
     {
-        //
+        return view('automotores.vehiculo.create');
     }
 
     /**
@@ -37,7 +49,9 @@ class VehiculosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Vehiculo::create($request->all());
+        Session::flash('message','Vehiculo creado correctamente...');
+        return redirect('vehiculos');
     }
 
     /**
@@ -59,7 +73,7 @@ class VehiculosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('automotores.vehiculo.edit',['vehi'=>$this->vehi]);
     }
 
     /**
@@ -71,7 +85,10 @@ class VehiculosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->vehi->fill($request->all());
+        $this->vehi->save();
+        Session::flash('message','Vehiculo editado correctamente...');
+        return redirect('vehiculos');
     }
 
     /**
@@ -82,6 +99,8 @@ class VehiculosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->vehi->delete();
+        Session::flash('message','Vehiculo eliminado correctamente...');
+        return redirect('vehiculos');
     }
 }
