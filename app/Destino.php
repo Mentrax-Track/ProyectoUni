@@ -8,19 +8,28 @@ class Destino extends Model
 {
     protected $table = 'destinos';
     
-    protected $fillable = ['departamento','inicio','final','ruta','kilometraje','tiempo','destino_completo'];
+    protected $fillable = ['dep_inicio','origen','ruta','dep_final','destino','kilometraje','tiempo'];
 
     public function viaje()
     {
         return $this->belongsTo('automotores\Viaje');
     }
     //scope es una funcion de laravel
-    public function scopeDesti($query, $desti)
+    public function scopeRuta($query, $ruta)
     {
         //La funcion trim para eliminar los espacion
-        if(trim($desti) != "")
+        if(trim($ruta) != "")
         {
-            $query->where(\DB::raw("CONCAT(departamento,' ',inicio,' ',final)"), "LIKE", "%$desti%");
+            $query->where(\DB::raw("CONCAT(origen,' ',destino)"), "LIKE", "%$ruta%");
+        }
+    }
+    public function scopeDep($query, $dep)
+    {
+        $deps = config('dep.deps');
+
+        if($dep != "" && isset($deps[$dep]))
+        {
+            $query->where(\DB::raw("CONCAT(dep_inicio,' ',dep_final)"), "LIKE", "%$dep%");
         }
     }
 }

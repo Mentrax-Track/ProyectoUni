@@ -5,19 +5,19 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Nombre:') !!}
+                    <center>{!! Form::label('Nombre:') !!}</center>
                     {!! Form::text('nombres',null,['class'=>'form-control', 'placeholder'=>'Ingrese el nombre del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Apellido:') !!}
+                    <center>{!! Form::label('Apellido:') !!}</center>
                     {!! Form::text('apellidos',null,['class'=>'form-control', 'placeholder'=>'Ingrese el apellido del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Password:') !!}
+                    <center>{!! Form::label('Password:') !!}</center>
                     {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingrese su password/clave']) !!}
                 </div>
             </div>

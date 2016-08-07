@@ -40,19 +40,19 @@ function mostrar(id) {
         <div class="row ">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Nombre:') !!}
+                    <center>{!! Form::label('Nombre:') !!}</center>
                     {!! Form::text('nombres',null,['class'=>'form-control', 'placeholder'=>'Ingrese el nombre del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Apellido:') !!}
+                    <center>{!! Form::label('Apellido:') !!}</center>
                     {!! Form::text('apellidos',null,['class'=>'form-control', 'placeholder'=>'Ingrese el apellido del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('E-mail:(Opcional)') !!}
+                    <center>{!! Form::label('E-mail:(Opcional)') !!}</center>
                     {!! Form::email('email',null,['class'=>'form-control', 'placeholder'=>'Ingrese el email del usuario']) !!}
                 </div>
             </div>
@@ -60,19 +60,19 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Cedula:') !!}
+                    <center>{!! Form::label('Cedula:') !!}</center>
                     {!! Form::number('cedula',null,['class'=>'form-control', 'placeholder'=>'Ingrese el CI del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Celular:') !!}
+                    <center>{!! Form::label('Celular:') !!}</center>
                     {!! Form::number('celular',null,['class'=>'form-control', 'placeholder'=>'Ingrese el celular del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('tipo', 'Tipo de usuario') !!}
+                    <center>{!! Form::label('tipo', 'Tipo de usuario') !!}</center>
                     {!! Form::select('tipo', config('tipo.tipos'), null, ['class' => 'form-control']) !!}
                 </div>
             </div>
@@ -81,7 +81,7 @@ function mostrar(id) {
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Password:') !!}
+                    <center>{!! Form::label('Password:') !!}</center>
                     {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingrese su password/clave']) !!}
                 </div>
             </div>
@@ -112,19 +112,19 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Nombre:') !!}
+                    <center>{!! Form::label('Nombre:') !!}</center>
                     {!! Form::text('nombres',null,['class'=>'form-control', 'placeholder'=>'Ingrese el nombre del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Apellido:') !!}
+                    <center>{!! Form::label('Apellido:') !!}</center>
                     {!! Form::text('apellidos',null,['class'=>'form-control', 'placeholder'=>'Ingrese el apellido del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Celular:') !!}
+                    <center>{!! Form::label('Celular:') !!}</center>
                     {!! Form::number('celular',null,['class'=>'form-control', 'placeholder'=>'Ingrese el celular del usuario']) !!}
                 </div>
             </div>
@@ -132,19 +132,19 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Facultad:') !!}
+                    <center>{!! Form::label('Facultad:') !!}</center>
                     {!! Form::text('facultad',null,['class'=>'form-control', 'placeholder'=>'Ingrese el CI del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Carrera:') !!}
+                    <center>{!! Form::label('Carrera:') !!}</center>
                     {!! Form::text('carrera',null,['class'=>'form-control', 'placeholder'=>'Ingrese el celular del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    {!! Form::label('Materia:') !!}
+                    <center>{!! Form::label('Materia:') !!}</center>
                     {!! Form::text('materia',null,['class'=>'form-control', 'placeholder'=>'Ingrese el celular del usuario']) !!}
                 </div>
             </div>
@@ -153,19 +153,19 @@ function mostrar(id) {
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <div class="form-group">
-                    {!! Form::label('Sigla:') !!}
+                    <center>{!! Form::label('Sigla:') !!}</center>
                     {!! Form::text('sigla',null,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla del usuario']) !!}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    {!! Form::label('tipo', 'Tipo de usuario') !!}
+                    <center>{!! Form::label('tipo', 'Tipo de usuario') !!}</center>
                     {!! Form::select('tipo', config('doce.doces'), null, ['class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    {!! Form::label('Password:') !!}
+                    <center>{!! Form::label('Password:') !!}</center>
                     {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingrese su password/clave']) !!}
                 </div>
             </div>

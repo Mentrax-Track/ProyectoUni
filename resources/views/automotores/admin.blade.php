@@ -94,10 +94,10 @@
                             <a href="#"><i class="glyphicon glyphicon-road"></i> Destino<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/destino/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
+                                    <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::to('/destino') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
+                                    <a href="{!! URL::to('/destinos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
                                 </li>
                             </ul>
                         </li>

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserVehiTableSeeder::class);
 
+        $this->call(DestinoTableSeeder::class);
+
         Model::reguard();
     }
 }

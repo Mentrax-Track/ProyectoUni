@@ -3,20 +3,34 @@
 namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Infraestructura\Destino;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
+use Infraestructura\Http\Requests\DestinoCreateRequest;
+use Session;
+use Redirect;
+use Illuminate\Routing\Route;
 
-class DestinosController extends Controller
+class DestinoController extends Controller
 {
+    public function __construct()
+    {
+        $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
+    }
+    public function find(Route $route)
+    {
+        $this->des = Destino::find($route->getParameter('destinos'));
+    
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $destinos = Destino::ruta($request->get('ruta'))->dep($request->get('dep'))->paginate(5);
+        return view('automotores.destino.index', compact('destinos'));
     }
 
     /**
@@ -26,7 +40,7 @@ class DestinosController extends Controller
      */
     public function create()
     {
-        //
+        return view('automotores.destino.create');
     }
 
     /**
@@ -35,9 +49,11 @@ class DestinosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DestinoCreateRequest $request)
     {
-        //
+        Destino::create($request->all());
+        Session::flash('message','Destino insertado correctamente...');
+        return redirect('destinos');
     }
 
     /**
@@ -59,7 +75,7 @@ class DestinosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('automotores.destino.edit',['des'=>$this->des]);
     }
 
     /**
@@ -69,9 +85,12 @@ class DestinosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DestinoCreateRequest $request, $id)
     {
-        //
+        $this->des->fill($request->all());
+        $this->des->save();
+        Session::flash('message','Destino Editado correctamente...');
+        return redirect('destinos');
     }
 
     /**
@@ -82,6 +101,8 @@ class DestinosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->des->delete();
+        Session::flash('message','Destino Eliminado correctamente...');
+        return redirect('destinos');
     }
 }
