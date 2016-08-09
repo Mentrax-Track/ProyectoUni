@@ -16,8 +16,6 @@ class Vehiculo extends Model
         return $this->belongsTo('Infraestructura\UserVehi');
     }
 
-    protected $dates = ['deleted_at'];
-
     public function choferVehiculos()
     {
         return $this->hasMany('automotores\ChoferVehiculo');
@@ -37,13 +35,13 @@ class Vehiculo extends Model
             $this->attributes['path'] = $name;
             \Storage::disk('local')->put($name, \File::get($path));
         }
-    } */
+    }*/ 
     public static function filtroBusqueda($tip, $esta)
     {
         return Vehiculo::tip($tip)
             ->esta($esta)
-            ->orderBy('id','ASC')
-            ->paginate(15);
+            ->orderBy('id','DES')
+            ->paginate(10);
     }
     //scope es una funcion de laravfel
     public function scopeTip($query, $tip)

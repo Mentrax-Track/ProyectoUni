@@ -29,7 +29,7 @@ class DestinoController extends Controller
      */
     public function index(Request $request)
     {
-        $destinos = Destino::ruta($request->get('ruta'))->dep($request->get('dep'))->paginate(5);
+        $destinos = Destino::ruta($request->get('ruta'))->dep($request->get('dep'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.destino.index', compact('destinos'));
     }
 

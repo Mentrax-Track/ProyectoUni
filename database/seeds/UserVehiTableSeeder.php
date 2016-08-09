@@ -11,7 +11,6 @@ class UserVehiTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('uservehis')->truncate();
 
         factory(Infraestructura\UserVehi::class)->create([
             'user_id'     => '1',

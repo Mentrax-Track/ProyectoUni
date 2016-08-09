@@ -46,8 +46,11 @@ $factory->define(Infraestructura\Vehiculo::class, function (Faker\Generator $fak
 
 $factory->define(Infraestructura\UserVehi::class, function (Faker\Generator $faker) {
     return [
-        'user_id' => $faker->randomDigitNotNull(\DB::table('users')->min('id'), \DB::table('users')->max('id')),
-        'vehi_id' => $faker->randomDigitNotNull(\DB::table('vehiculos')->min('id'), \DB::table('vehiculos')->max('id')),       
+        //'user_id' => $faker->randomDigitNotNull(\DB::table('users')->min('id'), \DB::table('users')->max('id')),
+        //'vehi_id' => $faker->randomDigitNotNull(\DB::table('vehiculos')->min('id'), \DB::table('vehiculos')->max('id')),       
+        'user_id' => $faker->numberBetween($min = 1, $max = 50),
+        'vehi_id' => $faker->numberBetween($min = 1, $max = 40),
+
     ];
 });
 
@@ -60,5 +63,17 @@ $factory->define(Infraestructura\Destino::class, function (Faker\Generator $fake
         'ruta'       => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'kilometraje'=> $faker->randomFloat($nbMaxDecimals = NULL, $min = 10, $max = 1000),
         'tiempo'     => $faker->time($format = 'H:i:s', $max = 'now')
+    ];
+});
+
+$factory->define(Infraestructura\Reserva::class, function (Faker\Generator $faker) {
+    return [
+        'entidad'       => $faker->randomElement(['FUL','DSA','Carreras','Administrativos','Otros']),
+        'titulo'        => $faker->state, 
+        'numero'        => $faker->numberBetween($min = 5, $max = 50),
+        'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
+        'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
+        'dias'          => $faker->numberBetween($min = 2, $max = 10),
+        'user_id'       => $faker->numberBetween($min = 1, $max = 40),
     ];
 });

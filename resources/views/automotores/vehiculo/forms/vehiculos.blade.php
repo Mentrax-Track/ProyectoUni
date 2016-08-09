@@ -58,7 +58,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <center>{!!Form::label('Imagen del Vehiculo: ')!!}</center>
-                {!!Form::file('path',['class'=>'btn btn-info btn-block' ])!!}
+                {!!Form::file('path',['class'=>'btn btn-info btn-block'])!!}
             </div>
         </div>
         <div class="col-md-4"></div>

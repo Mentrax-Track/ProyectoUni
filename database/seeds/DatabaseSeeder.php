@@ -15,15 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('users')->truncate();
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0'); //mysql
+
         $this->call(UserTableSeeder::class);
 
         $this->call(VehiculoTableSeeder::class);
-
         $this->call(UserVehiTableSeeder::class);
 
         $this->call(DestinoTableSeeder::class);
+        $this->call(ReservasTableSeeder::class);
 
         Model::reguard();
     }

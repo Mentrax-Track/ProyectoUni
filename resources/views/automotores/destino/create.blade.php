@@ -1,6 +1,9 @@
 @extends('automotores.admin')
 
 @section('subtitulo','Incertar Destino')
+@section('css')
+     {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
+@stop
 @section('content')
 @include('alertas.request')
 <br>
@@ -21,3 +24,16 @@
 </div>
 
 @stop
+@section('javascript')
+{!! Html::script('js/moment.min.js') !!}
+{!! Html::script('js/bootstrap-datetimepicker.min.js') !!}
+{!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
+ <script type="text/javascript">
+    $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'LT',
+                    pickDate: false
+                });
+            });
+</script>
+@endsection

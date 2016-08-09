@@ -11,6 +11,8 @@
     {!!Html::style('css/metisMenu.min.css')!!}
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
+    @yield('css')
+    
 </head>
 
 <body class="letra">
@@ -40,7 +42,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpg') !!}"><br><a>U.A.T.F.</a></p>
+                        <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
                             <li>
                                 <a href="#"><i class="fa fa-users fa-fw"></i> Usuario<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -68,7 +70,7 @@
                             <a href="#"><i class='glyphicon glyphicon-calendar'></i> Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/calendario') !!}"><i class='glyphicon glyphicon-list-alt'></i> Calendario</a>
+                                    <a href="{{ route('calendario') }}"><i class='glyphicon glyphicon-list-alt'></i> Calendario</a>
                                 </li>
                                 <li>
                                     <a href="{!! URL::to('/viajes/create') !!}"><i class='glyphicon glyphicon-edit'></i> Agregar</a>
@@ -119,7 +121,7 @@
     {!!Html::script('js/bootstrap.min.js')!!}
     {!!Html::script('js/metisMenu.min.js')!!}
     {!!Html::script('js/sb-admin-2.js')!!}
-
+    @yield('javascript')
 </body>
 
 </html>

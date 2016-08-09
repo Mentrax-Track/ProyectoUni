@@ -11,7 +11,6 @@ class VehiculoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehiculos')->truncate();
 
         factory(Infraestructura\Vehiculo::class)->create([
             'codigo'     => 'C-123',

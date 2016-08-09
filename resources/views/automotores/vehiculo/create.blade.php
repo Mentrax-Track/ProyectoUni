@@ -8,7 +8,7 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Vehiculo</p></h4></div>
     <div class="panel-body">      
-       {!! Form::open(['route'=>'vehiculos.store','method'=>'POST','files' => true ]) !!}
+       {!! Form::open(['route'=>'vehiculos.store','method'=>'POST','files' => true]) !!}
         
             @include('automotores.vehiculo.forms.vehiculos')
                 <div class="col-md-4"></div>

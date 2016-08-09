@@ -11,8 +11,6 @@ class DestinoTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('destinos')->truncate();
-
         factory(Infraestructura\Destino::class, 40)->create();
     }
 }
