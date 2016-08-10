@@ -73,12 +73,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('vehiculos','VehiculosController');
     Route::resource('destinos','DestinoController');
 
-    Route::get('calendario-de-viajes', [
-        'uses'=>'CalendarioController@calendario',
-        'as'  =>'calendario'
-        ]);
-    Route::post('calendario-de-viajes','CalendarioController@calendario');
+    
+    Route::get('calendario','CalendarioController@calendario');
+    Route::get('events','CalendarioController@index');
 
     Route::resource('reservas','ReservasController');
+    Route::resource('viajes','ViajesController');
 
 });

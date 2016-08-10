@@ -28,10 +28,6 @@ class ReservasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function autocomplet()
-    {
-        return view('automotores.reservas.create');
-    }
     public function index()
     {
         $reserva = Reserva::orderBy('id','DESC')->paginate(10);
@@ -45,8 +41,11 @@ class ReservasController extends Controller
      */
     public function create()
     {
-        //$user = \DB::table('users')->where('tipo', 'encargado');
-        $user = User::lists('nombres','id');
+    
+        $user = User::where('tipo', 'encargado')
+            ->get(['id', 'nombres', 'apellidos'])->lists('full_name','id');
+        //dd($user);
+
         return view('automotores.reservas.create',compact('user'));
     }
 
@@ -81,7 +80,7 @@ class ReservasController extends Controller
             'dias'          => $days,
             'user_id'       => $request['encargado'],
             ]);
-
+        dump($request['encargado']);
         Session::flash('message','Reserva creada correctamente');
         return Redirect::to('/reservas');
     }

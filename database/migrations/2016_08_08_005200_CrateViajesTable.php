@@ -21,7 +21,24 @@ class CrateViajesTable extends Migration
             $table->date('fecha_inicial');
             $table->date('fecha_final');
             $table->integer('user_id');
+            $table->integer('vehiculo_id');
+            $table->integer('destino_id');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table->foreign('vehiculo_id')
+                ->references('id')->on('vehiculos')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table->foreign('destino_id')
+                ->references('id')->on('destinos')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 

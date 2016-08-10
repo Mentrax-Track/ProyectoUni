@@ -70,7 +70,7 @@
                             <a href="#"><i class='glyphicon glyphicon-calendar'></i> Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('calendario') }}"><i class='glyphicon glyphicon-list-alt'></i> Calendario</a>
+                                    <a href="{!! URL::to('/calendario') !!}"><i class='glyphicon glyphicon-list-alt'></i> Calendario</a>
                                 </li>
                                 <li>
                                     <a href="{!! URL::to('/viajes/create') !!}"><i class='glyphicon glyphicon-edit'></i> Agregar</a>

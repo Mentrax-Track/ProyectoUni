@@ -30,7 +30,7 @@ class UsersController extends Controller
     {
         /*Para que solo muestre los elementos eliminados
            $users = User::onlyTrashed()->paginate(3); */    
-        $users = User::orderBy('id','DESC')->paginate();
+        //$users = User::orderBy('id','DESC')->paginate();
 
         $users = User::name($request->get('name'))->tipo($request->get('tipo'))->orderBy('id','DESC')->paginate(10);
 

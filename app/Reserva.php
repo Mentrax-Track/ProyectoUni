@@ -28,5 +28,4 @@ class Reserva extends Model
             $query->where('entidad', "LIKE","%$enti%");    
         }
     }
-
 }
