@@ -11,13 +11,11 @@
        {!! Form::open(['route'=>'vehiculos.store','method'=>'POST','files' => true]) !!}
         
             @include('automotores.vehiculo.forms.vehiculos')
-                <div class="col-md-4"></div>
-                <div class="col-md-4">    
+
+                <div class="col-md-3">    
                 <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
                 </div>
-                <div class="col-md-4"></div>
         {!! Form::close() !!}
     </div>
 </div>
-
 @stop

@@ -14,18 +14,18 @@ class CrateViajesTable extends Migration
     {
         Schema::create('viajes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo',100);
-            $table->string('objetivo',150);
+            $table->string('entidad');
+            $table->string('objetivo');
             $table->integer('dias');
             $table->integer('numero');
             $table->date('fecha_inicial');
             $table->date('fecha_final');
             $table->integer('user_id');
             $table->integer('vehiculo_id');
-            $table->integer('destino_id');
+            $table->string('destino_completo');
             $table->timestamps();
 
-            $table->foreign('user_id')
+           /* $table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
@@ -38,7 +38,7 @@ class CrateViajesTable extends Migration
             $table->foreign('destino_id')
                 ->references('id')->on('destinos')
                 ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
+                ->onDelete('CASCADE');*/
         });
     }
 

@@ -66,4 +66,8 @@ class Vehiculo extends Model
             $query->where('estado',$esta);
         }
     }
+    public function getFullvehiculoAttribute()
+    {
+        return $this->tipo.' '.$this->placa;
+    }
 }

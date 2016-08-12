@@ -32,4 +32,8 @@ class Destino extends Model
             $query->where(\DB::raw("CONCAT(dep_inicio,' ',dep_final)"), "LIKE", "%$dep%");
         }
     }
+    public function getFulldestinoAttribute()
+    {
+        return $this->origen.' '.'->'.' '.$this->destino;
+    }
 }

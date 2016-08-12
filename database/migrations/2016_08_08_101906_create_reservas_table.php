@@ -15,17 +15,17 @@ class CreateReservasTable extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('entidad');
-            $table->string('titulo');
+            $table->string('objetivo');
             $table->integer('numero');
             $table->date('fecha_inicial');
             $table->date('fecha_final');
             $table->integer('dias');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id');
 
-            $table->foreign('user_id')
+            /*$table->foreign('user_id')
                 ->references('id')->on('users')
                 ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
+                ->onDelete('CASCADE');*/
             $table->timestamps();
         });
     }

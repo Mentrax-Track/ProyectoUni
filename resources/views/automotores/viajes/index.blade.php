@@ -14,9 +14,9 @@
     <table class="table table-bordered table-hover table-condensed"><br>
             <tr class="info">
                 <th>#</th>
-                <th>Tipo</th>
+                <th>Entidad</th>
                 <th>Objetivo</th>
-                <th>Chofer</th>
+                <th>Dias</th>
                 <th>Pasajeros</th>
                 <th>Inicio</th>
                 <th>Final</th>
@@ -28,15 +28,13 @@
             @foreach($viaje as $via)
                 <tbody>
                     <td class="info text-center">{{ $via->id }}</td>
-                    <td>{{ $via->tipo }}</td>
+                    <td>{{ $via->entidad }}</td>
                     <td>{{ $via->objetivo }}</td>
-                    <td>{{ $via->nombres }}</td>
+                    <td>{{ $via->dias }}</td>
                     <td>{{ $via->numero }}</td>
                     <td>{{ $via->fecha_inicial }}</td>
                     <td>{{ $via->fecha_final }}</td>
-                    <td>{{ $via->dias }}</td>
-                    <td>{{ $via->tipo }}</td>
-                    <td class="btns">
+                    <td>{{ $via->dias }}</td>                    <td class="btns">
                         {!!link_to_route('viajes.edit', $title = 'Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-primary'])!!}
                     </td>
                 </tbody>

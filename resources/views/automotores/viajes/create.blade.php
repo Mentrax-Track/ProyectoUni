@@ -4,6 +4,7 @@
 @section('css')
      {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
      {!! Html::style('css/jquery.easy-autocomplete.css') !!}
+     {!! Html::style('css/select2.css') !!}
 @stop
 @section('content')
 @include('alertas.request')
@@ -31,6 +32,7 @@
 {!! Html::script('js/bootstrap-datetimepicker.min.js') !!}
 {!! Html::script('js/jquery.easy-autocomplete.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
+{!! Html::script('js/select2.js') !!}
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker();
@@ -44,6 +46,9 @@
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
+</script>
+<script type="text/javascript">
+    $('select').select2();    
 </script>
 @endsection
 

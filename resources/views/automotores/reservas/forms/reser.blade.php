@@ -21,8 +21,8 @@
   </div>
   <div class="col-md-4">
     <div class="form-group">
-            {!! Form::label('Título:') !!}
-            {!! Form::text('titulo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el título del viaje']) !!}
+            {!! Form::label('Objetivo y/o Título:') !!}
+            {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el título del viaje']) !!}
     </div>
   </div>
   <div class="col-md-4">

@@ -8,7 +8,7 @@ class Reserva extends Model
 {
     protected $table = 'reservas';
     
-    protected $fillable = ['entidad','titulo','numero','fecha_inicial','fecha_final','dias','user_id'];
+    protected $fillable = ['entidad','objetivo','numero','fecha_inicial','fecha_final','dias','user_id'];
 
     public function user()
     {
@@ -18,7 +18,7 @@ class Reserva extends Model
 
     public function enviar()
     {
-        return $this->hasOne('Infraestructura\User','id','user');
+        return $this->hasOne('Infraestructura\User','id','user_id');
     }
 
     public function scopeEnti($query, $enti)

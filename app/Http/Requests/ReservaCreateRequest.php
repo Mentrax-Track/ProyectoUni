@@ -26,7 +26,7 @@ class ReservaCreateRequest extends Request
         return [
             'encargado' => 'required',
             'entidad'   => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'titulo'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'objetivo'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
             'numero'    => 'required|numeric',
             'fecha_inicial'=> 'required',
             'fecha_final'  => 'required',
@@ -36,7 +36,7 @@ class ReservaCreateRequest extends Request
     {
         return [
                 'entidad.regex' => 'En la entidad solo se aceptan letras',
-                'titulo.regex'  => 'En el titulo solo se aceptan letras',
+                'objetivo.regex'  => 'En el Objetivo solo se aceptan letras',
         ];
     }
 }

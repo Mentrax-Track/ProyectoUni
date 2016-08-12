@@ -56,6 +56,7 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         User::create($request->all());
+        
         Session::flash('message','Usuario creado correctamente...');
         return redirect('users');
     }

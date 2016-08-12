@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DestinoTableSeeder::class);
         $this->call(ReservasTableSeeder::class);
 
+        $this->call(ViajeTableSeeder::class);
+        
         Model::reguard();
     }
 }

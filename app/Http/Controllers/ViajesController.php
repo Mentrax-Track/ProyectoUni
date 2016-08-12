@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Infraestructura\Viaje;
 use Infraestructura\Vehiculo;
 use Infraestructura\User;
+use Infraestructura\Destino;
 
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
@@ -22,8 +23,10 @@ class ViajesController extends Controller
     public function find(Route $route)
     {
         $this->vehiculo= Vehiculo::find($route->getParameter('vehiculo'));
-        $this->chofer   = User::find($route->getParameter('chofer'));
-        $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo'));
+        $this->chofer      = User::find($route->getParameter('chofer'));
+        $this->encargado   = User::find($route->getParameter('encargado'));
+        $this->destino     = Destino::find($route->getParameter('destino'));
+        $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo','encargado','destino'));
     }
     /**
      * Display a listing of the resource.
@@ -43,9 +46,24 @@ class ViajesController extends Controller
      */
     public function create()
     {
-        $chofer = User::lists('nombres','id');
-        $vehiculo= Vehiculo::lists('tipo','id');
-        return view('automotores.viajes.create',compact('chofer','vehiculo'));
+
+        $encargado = User::where('tipo', 'encargado')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $chofer    = User::where('tipo', 'chofer')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $vehiculo  = Vehiculo::where('estado', 'Optimo')
+                    ->orderBy('tipo','ASC')
+                    ->get(['id', 'tipo', 'placa'])
+                    ->lists('full_vehiculo','id');
+        $destino   = Destino::orderBy('origen','ASC')
+                    ->get(['id', 'origen', 'destino'])
+                    ->lists('full_destino','id');
+
+        return view('automotores.viajes.create',compact('chofer','encargado','vehiculo','destino'));
     }
 
     /**

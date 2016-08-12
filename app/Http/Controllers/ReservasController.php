@@ -28,9 +28,9 @@ class ReservasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reserva = Reserva::orderBy('id','DESC')->paginate(10);
+        $reserva = Reserva::enti($request->get('enti'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.reservas.index',compact('reserva'));
     }
 
@@ -66,21 +66,21 @@ class ReservasController extends Controller
         }
         $diferencia = abs(strtotime($request['fecha_final']) - strtotime($request['fecha_inicial']));
 
-        $years = floor($diferencia / (365*60*60*24));
+        $years  = floor($diferencia / (365*60*60*24));
         $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
-        $days = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+        $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
 
         Reserva::create([
             'entidad'       => $request['entidad'],
-            'titulo'        => $request['titulo'],
+            'objetivo'      => $request['objetivo'],
             'numero'        => $request['numero'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
             'dias'          => $days,
             'user_id'       => $request['encargado'],
             ]);
-        dump($request['encargado']);
+      //  dump($request['encargado']);
         Session::flash('message','Reserva creada correctamente');
         return Redirect::to('/reservas');
     }

@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
             'carrera' => 'null',
             'materia' => 'null',
             'sigla' => 'null',
-            'email'=> 'jorge@gmail.com',
+            'email'=> 'peralta.jorge.uatf@gmail.com',
             'tipo' => 'administrador',
             'password'=> 'admin1',
             'active'=> true

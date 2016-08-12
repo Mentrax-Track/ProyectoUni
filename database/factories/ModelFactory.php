@@ -69,7 +69,7 @@ $factory->define(Infraestructura\Destino::class, function (Faker\Generator $fake
 $factory->define(Infraestructura\Reserva::class, function (Faker\Generator $faker) {
     return [
         'entidad'       => $faker->randomElement(['FUL','DSA','Carreras','Administrativos','Otros']),
-        'titulo'        => $faker->state, 
+        'objetivo'      => $faker->realText($maxNbChars = 200, $indexSize = 2),
         'numero'        => $faker->numberBetween($min = 5, $max = 50),
         'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
         'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
@@ -77,3 +77,19 @@ $factory->define(Infraestructura\Reserva::class, function (Faker\Generator $fake
         'user_id'       => $faker->numberBetween($min = 1, $max = 40),
     ];
 });
+  /**/
+$factory->define(Infraestructura\Viaje::class, function (Faker\Generator $faker) {
+    return [
+
+        'entidad'       => $faker->randomElement(['FUL','DSA','Carreras','Administrativos','Otros']),
+        'objetivo'      => $faker->realText($maxNbChars = 200, $indexSize = 2),
+        'dias'          => $faker->numberBetween($min = 1, $max = 10), 
+        'numero'        => $faker->numberBetween($min = 5, $max = 50),
+        'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
+        'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
+        'user_id'       => $faker->numberBetween($min = 1, $max = 50),
+        'vehiculo_id'   => $faker->numberBetween($min = 1, $max = 20),
+        'destino_completo'=> $faker->realText($maxNbChars = 50, $indexSize = 2),
+    ];
+});
+

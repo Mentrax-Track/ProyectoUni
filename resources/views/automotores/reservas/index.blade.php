@@ -10,13 +10,20 @@
     <div class="panel-heading text-center"><h4><p class="www">Reservas</p></h4></div>
     <div class="panel-body"> 
 
+    <form class="form-inline">
+        <div class="form-group pull-rigth">
+            <label>Busqueda por Entidad</label> 
+            @include('automotores.reservas.forms.busqueda')
+        </div>
+    </form>
+
     <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed "><br>
             <tr class="info text-center">
                 <th class="text-center">#</th>
                 <th class="text-center">Entidad</th>
                 <th class="text-center">Encargado</th>
-                <th class="text-center">Titulo</th>
+                <th class="text-center">Objetivo</th>
                 <th class="text-center">Pasajeros</th>
                 <th class="text-center">Inicio</th>
                 <th class="text-center">Final</th>
@@ -27,8 +34,8 @@
             <tbody>
                     <td class="info text-center">{{ $reser->id }}</td>
                     <td>{{ $reser->entidad }}</td>
-                    <td>{{ $reser->entidad}}</td>
-                    <td>{{ $reser->titulo }}</td>
+                    <td>{{ $reser->enviar->full_name}}</td>
+                    <td>{{ $reser->objetivo }}</td>
                     <td>{{ $reser->numero }}</td>
                     <td>{{ $reser->fecha_inicial }}</td>
                     <td>{{ $reser->fecha_final }}</td>
