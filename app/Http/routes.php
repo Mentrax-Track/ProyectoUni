@@ -1,5 +1,5 @@
 <?php
-
+use Infraestructura\Destino;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -79,5 +79,71 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::resource('reservas','ReservasController');
     Route::resource('viajes','ViajesController');
+///////////////////////////////////////////////////////////////////////////////////////
+    /////////////////// Estas rutas son para el plugins select2 en viajes ////////////
+    Route::get('chofer', function (Illuminate\Http\Request  $request) {
+        $term = $request->term ?: '';
+        $choferes = Infraestructura\User::where('tipo', 'chofer', $term.'%')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $valid_choferes = [];                                               
+        foreach ($choferes as $id => $chof) {
+            $valid_choferes[] = ['id' => $id, 'text' => $chof];
+        }
+        return \Response::json($valid_choferes);
+    });
+    /*El plugin Select2 espera la data para llenar el campo con el siguiente formato:
+       
+        [{'id': 00, 'text' => 'chof-name' }]
+        
+      Es por este motivo que se crea un nuevo array llamado $valid_choferes en el bloque anterior.
+    */
+    Route::get('vehiculo', function (Illuminate\Http\Request  $request) {
+        $term = $request->term ?: '';
+        $vehiculos = Infraestructura\Vehiculo::where('estado', 'Optimo', $term.'%')
+                    ->orderBy('tipo','ASC')
+                    ->get(['id', 'tipo', 'placa'])
+                    ->lists('full_vehiculo','id');
+        $valid_vehiculos = [];                                               
+        foreach ($vehiculos as $id => $vehi) {
+            $valid_vehiculos[] = ['id' => $id, 'text' => $vehi];
+        }
+        return \Response::json($valid_vehiculos);
+    });
 
+    Route::get('encargado', function (Illuminate\Http\Request  $request) {
+        $term = $request->term ?: '';
+        $encargados = Infraestructura\User::where('tipo', 'encargado', $term.'%')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $valid_encargados = [];                                               
+        foreach ($encargados as $id => $encar) {
+            $valid_encargados[] = ['id' => $id, 'text' => $encar];
+        }
+        return \Response::json($valid_encargados);
+    });
+
+    /*Rutas para obtener los kilometrajes*/
+    /*Route::get('distancia/{id}', function ($id) {
+        $kilo_id = Destino::where('id',$id)
+                    ->select('id as value','kilometraje as text')
+                    ->get()
+                    ->toArray();
+            array_unshift($kilo_id, ['value' => '', 'text' => 'Select value']);
+
+        return $kilo_id;
+        
+    });*/
+    Route::get('/distancia', function () {
+
+        $cat_id = Input::get('cat_id');
+
+
+        $kilo = Destino::where('id','=',$cat_id)
+                    ->get(['id','kilometraje']);
+            
+        return Response::json($kilo);
+    });
 });

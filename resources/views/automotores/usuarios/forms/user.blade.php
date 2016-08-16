@@ -33,7 +33,7 @@ function mostrar(id) {
 <div id="usuario" class="element" style="display: none;">
  
     <center><h2><p class="www">Formulario Interno</p></h2></center>
-    {!! Form::open(['route'=>'users.store','method'=>'POST']) !!}
+    {!! Form::open(['route'=>'users.store','method'=>'POST','data-toggle'=>'validator']) !!}
     <div class="panel panel-default">
     <div class="panel-body">
     <div class="jumbotron ">
@@ -41,7 +41,8 @@ function mostrar(id) {
             <div class="col-md-4">
                 <div class="form-group">
                     <center>{!! Form::label('Nombre:') !!}</center>
-                    {!! Form::text('nombres',null,['class'=>'form-control', 'placeholder'=>'Ingrese el nombre del usuario']) !!}
+                    {!! Form::text('nombres',null,['class'=>'form-control', 'placeholder'=>'Ingrese el nombre del usuario','data-error'=>'Este campo es obligatorio...','required']) !!}
+                     <div class="help-block with-errors"></div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -105,7 +106,7 @@ function mostrar(id) {
 <div id="encargado" class="element" style="display: none;">
 
     <center><h2><p class="www">Formulario para el Encargado de Viaje</p></h2></center>
-    {!! Form::open(['route'=>'encar.store','method'=>'POST']) !!}
+    {!! Form::open(['route'=>'encar.store','method'=>'POST','data-toggle'=>'validator']) !!}
     <div class="panel panel-default">
     <div class="panel-body">
     <div class="jumbotron">

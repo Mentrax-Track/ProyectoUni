@@ -20,7 +20,7 @@ class Viaje extends Model
     }
     public function destino()
     {
-        return $this->belongsTo('automotores\Destino');
+        return $this->belongsTo('Infraestructura\Destino');
     }
     public function vehiculoViaje()
     {

@@ -3,52 +3,25 @@
 <center><p class="www">Seleccione las Rutas</p></center>
 <!--Destino-->
 <div class="row text-center">
-  <div class="col-md-3"></div>
   <div class="col-md-6">
     <div class="form-group">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <li class="list-group-item">
-                <div class="btn-group" role="group">
-                    <center>{!! Form::label('Destino: ') !!}</center>
-                    {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino']) !!}
+                <div class="form-group contenedor-de-destinos">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'destino_id']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <text class="form-control input-sm" name="kilome" id="kilome">
+                            <option value=""></option>
+                        </text>
+                    </div>
                 </div>
-                <div class="btn-group" role="group">
-                    <center>{!! Form::label('Kilometraje: ') !!}</center>
-                    {!! Form::text('k1',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
-                </div>
+                <a href="#" class="btn btn-sm btn-info btn-add-more-destino">Añadir mas Destinos</a>
             </li>
-            <li class="list-group-item">
-                <div class="btn-group" role="group">
-                    {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino']) !!}
-                </div>
-                <div class="btn-group" role="group">
-                    {!! Form::text('k2',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="btn-group" role="group">
-                    {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino']) !!}
-                </div>
-                <div class="btn-group" role="group">
-                    {!! Form::text('k3',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="btn-group" role="group">
-                    {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino']) !!}
-                </div>
-                <div class="btn-group" role="group">
-                    {!! Form::text('k4',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="btn-group" role="group">
-                    {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino']) !!}
-                </div>
-                <div class="btn-group" role="group">
-                    {!! Form::text('k5',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
-                </div>
-            </li>
+
             <li class="list-group-item">
                 <div class="btn-group" role="group">
                     {!! Form::label('Adicional:') !!}
@@ -68,28 +41,40 @@
         </div>
     </div>
   </div>
-  <div class="col-md-3"></div>
+  
+  <div class="col-md-6">
+        <li class=" list-group-item"> 
+           <div class="form-group">
+                {!! Form::label('Chofer: ') !!}
+                 <select name="chofer[]" class="form-control" multiple="multiple" id="chofer"></select>
+                <!--{!! Form::select('chofer_id',$chofer,null,['class'=>'form-control','placeholder'=>'Seleccione un Chofer']) !!}-->
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                {!! Form::label('Vehiculo: ') !!}
+                <select name="vehiculo[]" class="form-control" multiple="multiple" id="vehiculo"></select>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="form-group">
+                {!! Form::label('Encargado de Viaje: ') !!}
+                <select name="encargado[]" class="form-control" multiple="multiple" id="encargado"></select>
+            </div>
+        </li>
+  </div>
 </div>
 <!--Hasta aqui destino-->
 <center><h4><p class="www">Inserte los datos del Viaje</p></h4></center>
 <div class="row list-group-item text-center">
     <div class="col-md-4">
-        <div class="form-group">
-            {!! Form::label('Encargado de Viaje: ') !!}
-            {!! Form::select('encargado_id',$encargado,null,['class'=>'form-control','placeholder'=>'Seleccione un Encargado']) !!}
-        </div>
+        
     </div>
     <div class="col-md-4">
-        <div class="form-group">
-            {!! Form::label('Chofer: ') !!}
-            {!! Form::select('chofer_id',$chofer,null,['class'=>'form-control','placeholder'=>'Seleccione un Chofer']) !!}
-        </div>
+        
     </div>
     <div class="col-md-4">
-        <div class="form-group">
-            {!! Form::label('Vehiculo: ') !!}
-            {!! Form::select('vehiculo_id',$vehiculo,null,['class'=>'form-control','placeholder'=>'Seleccione un Vehiculo']) !!}
-        </div>
+        
     </div>
 </div>
 <div class="row list-group-item text-center">

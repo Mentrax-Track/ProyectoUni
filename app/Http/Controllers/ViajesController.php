@@ -63,6 +63,7 @@ class ViajesController extends Controller
                     ->get(['id', 'origen', 'destino'])
                     ->lists('full_destino','id');
 
+
         return view('automotores.viajes.create',compact('chofer','encargado','vehiculo','destino'));
     }
 

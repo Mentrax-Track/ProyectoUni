@@ -89,7 +89,7 @@ $factory->define(Infraestructura\Viaje::class, function (Faker\Generator $faker)
         'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
         'user_id'       => $faker->numberBetween($min = 1, $max = 50),
         'vehiculo_id'   => $faker->numberBetween($min = 1, $max = 20),
-        'destino_completo'=> $faker->realText($maxNbChars = 50, $indexSize = 2),
+        'destino_id'    => $faker->numberBetween($min = 1, $max = 40),
     ];
 });
 

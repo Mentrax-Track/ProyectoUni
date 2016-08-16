@@ -12,7 +12,7 @@ class Destino extends Model
 
     public function viaje()
     {
-        return $this->belongsTo('automotores\Viaje');
+        return $this->belongsTo('Infraestructura\Viaje');
     }
     //scope es una funcion de laravel
     public function scopeRuta($query, $ruta)

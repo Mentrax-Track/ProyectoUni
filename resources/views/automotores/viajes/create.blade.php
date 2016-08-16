@@ -14,7 +14,7 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Viaje</p></h4></div>
     <div class="panel-body">      
-       {!! Form::open(['route'=>'viajes.store','method'=>'POST']) !!}
+       {!! Form::open(['route'=>'viajes.store','method'=>'GET']) !!}
         
             @include('automotores.viajes.forms.via')
                 <div class="col-md-4"></div>
@@ -48,7 +48,130 @@
     });
 </script>
 <script type="text/javascript">
-    $('select').select2();    
+    $(document).ready(function()
+    {
+        $('#destino_id').on('change',function(e){
+
+            var cat_id = e.target.value;
+
+            //ajax
+            $.get('/distancia?cat_id=' + cat_id, function (data){
+                $('#kilome').empty();
+                $.each(data,function(index, subcatObj){
+
+                    $('#kilome').append('<option value="'+ subcatObj.id+'">'+subcatObj.kilometraje+'</option>');
+                });
+            });
+        });
+
+    });    
+</script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var template = '<li class="list-group-item contenedor-de-destinos">'+
+                        '<div class="form-group ">'+  
+                        '<div class="btn-group" role="group">'+
+                        '<label for="">Destino</label>'+
+                        '{!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'destino_id']) !!}'+'</div>'+
+                        '<div class="btn-group" role="group">'+
+                        '<label for="">Kilometraje</label>'+
+                        '<text class="form-control input-sm" name="kilome" id="kilome">'+
+                            '<option value=""></option>'+
+                        '</text>'+'</div>'+'<div class="btn-group" role="group">'+
+                        '<br>'+
+                        '<a href="#" class="btn btn-xs btn-danger btn-remove">Eliminar</a>'+'</div>'+
+                 
+                '</div>'+'</li>'
+                        
+
+        $('.btn-add-more-destino').on('click',function(e){
+            e.preventDefault();
+            $(this).before(template);
+        });
+
+        $(document).on('click','.btn-remove',function(e){
+
+           e.preventDefault();
+            $(this).parents('.contenedor-de-destinos').remove();
+        });
+
+    });    
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#chofer').select2({
+            // Activamos la opcion "Chofer" del plugin
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("chofer") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#vehiculo').select2({
+            // Activamos la opcion "Vehiculo" del plugin
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("vehiculo") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#encargado').select2({
+            // Activamos la opcion "Encargado" del plugin
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("encargado") }}',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
+    });
 </script>
 @endsection
 

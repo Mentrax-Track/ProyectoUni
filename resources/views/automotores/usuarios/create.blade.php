@@ -15,3 +15,6 @@
 </div>
 
 @stop
+@section('javascript')
+{!!Html::script('js/validator.js')!!}
+@stop
