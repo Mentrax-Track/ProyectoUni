@@ -124,26 +124,29 @@ Route::group(['middleware' => 'auth'], function(){
         }
         return \Response::json($valid_encargados);
     });
-
+////////////////   Hast aaqui los plugins ///////////////////////////////
+///////   Se podia solo crear una pero se realizo con dos ///////////////
     /*Rutas para obtener los kilometrajes*/
-    /*Route::get('distancia/{id}', function ($id) {
-        $kilo_id = Destino::where('id',$id)
-                    ->select('id as value','kilometraje as text')
-                    ->get()
-                    ->toArray();
-            array_unshift($kilo_id, ['value' => '', 'text' => 'Select value']);
-
-        return $kilo_id;
-        
-    });*/
     Route::get('/distancia', function () {
 
-        $cat_id = Input::get('cat_id');
+        $cant_id = Input::get('cant_id');
 
 
-        $kilo = Destino::where('id','=',$cat_id)
+        $kilo = Destino::where('id','=',$cant_id)
                     ->get(['id','kilometraje']);
             
         return Response::json($kilo);
     });
+
+    Route::get('/kilometraje', function () {
+
+        $dest_id = Input::get('dest_id');
+
+
+        $kilo = Destino::where('id','=',$dest_id)
+                    ->get(['id','kilometraje']);
+            
+        return Response::json($kilo);
+    });
+///////// Hasta aqui las rutas para los kilometrajes de viajes///////////////
 });

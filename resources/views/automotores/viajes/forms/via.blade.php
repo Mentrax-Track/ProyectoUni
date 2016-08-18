@@ -6,7 +6,8 @@
   <div class="col-md-6">
     <div class="form-group">
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
-            <li class="list-group-item">
+            
+            <!--<li class="list-group-item">
                 <div class="form-group contenedor-de-destinos">   
                     <div class="btn-group" role="group">
                         <center>{!! Form::label('Destino: ') !!}</center>
@@ -17,9 +18,78 @@
                         <text class="form-control input-sm" name="kilome" id="kilome">
                             <option value=""></option>
                         </text>
-                    </div>
+                    </div>      
                 </div>
                 <a href="#" class="btn btn-sm btn-info btn-add-more-destino">Añadir mas Destinos</a>
+            </li>-->
+            
+            <li class="list-group-item">
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'destino_id']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <option type="text" disabled id="kilome" onkeyup="sumar().innerHTML;" class="form-control input-sm">
+                        </option>
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'dest1']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <option type="text"  disabled id="k1" onkeyup="sumar().innerHTML;" class="form-control input-sm">
+                        </option>
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'dest2']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <option type="text"  disabled id="k2" onkeyup="sumar().innerHTML;" class="form-control input-sm">
+                        </option>
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'dest3']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <option type="text"  disabled id="k3" onkeyup="sumar().innerHTML;" class="form-control input-sm">
+                        </option>
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'dest4']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                        <option type="text"  disabled id="k4" onkeyup="sumar().innerHTML;" class="form-control input-sm">
+                        </option>
+                    </div>
+                </div>
+                <div class="form-group">   
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Destino: ') !!}</center>
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','placeholder'=>'Seleccione un Destino','id'=>'dest5']) !!}
+                    </div>
+                    <div class="btn-group" role="group">
+                        <center>{!! Form::label('Kilometraje: ') !!}</center>
+                       <input type="text" id="k5" onkeyup="sumar().innerHTML;" class="form-control input-sm"></input>
+
+                    </div>
+                </div>
             </li>
 
             <li class="list-group-item">
@@ -27,7 +97,13 @@
                     {!! Form::label('Adicional:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                    {!! Form::text('k6',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
+                     
+                     <input type="text" id="adicional" onkeyup="sumar();" class="form-control" placeholder="Ejemplo: 12.6"> 
+                    <!-- <input type="text" id="ks1" onkeyup="sumar();">
+                     <input type="text" id="ks2" onkeyup="sumar();">
+                     <input type="text" id="ks3" onkeyup="sumar();">
+                     <input type="text" id="ks4" onkeyup="sumar();">-->
+
                 </div>
             </li>
             <li class="list-group-item">
@@ -35,7 +111,7 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                    {!! Form::text('total',null,['class'=>'form-control', 'placeholder'=>'Kilometraje']) !!}
+                     <input type="text" id="total" disabled value="0" class="form-control" onClick=" check(); ">
                 </div>
             </li>
         </div>
@@ -47,7 +123,6 @@
            <div class="form-group">
                 {!! Form::label('Chofer: ') !!}
                  <select name="chofer[]" class="form-control" multiple="multiple" id="chofer"></select>
-                <!--{!! Form::select('chofer_id',$chofer,null,['class'=>'form-control','placeholder'=>'Seleccione un Chofer']) !!}-->
             </div>
         </li>
         <li class="list-group-item">
@@ -67,17 +142,6 @@
 <!--Hasta aqui destino-->
 <center><h4><p class="www">Inserte los datos del Viaje</p></h4></center>
 <div class="row list-group-item text-center">
-    <div class="col-md-4">
-        
-    </div>
-    <div class="col-md-4">
-        
-    </div>
-    <div class="col-md-4">
-        
-    </div>
-</div>
-<div class="row list-group-item text-center">
   <div class="col-md-4">
     <div class="form-group">
             {!! Form::label('Entidad:') !!}
@@ -86,7 +150,13 @@
   </div>
   <div class="col-md-4">
     <div class="form-group">
-            {!! Form::label('Objetivo/Tipo:') !!}
+            {!! Form::label('Tipo:') !!}
+            {!! Form::text('tipo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el número de pasajeros']) !!}
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+            {!! Form::label('Objetivo:') !!}
             {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el número de pasajeros']) !!}
     </div>
   </div>

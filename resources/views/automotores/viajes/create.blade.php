@@ -33,6 +33,7 @@
 {!! Html::script('js/jquery.easy-autocomplete.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/kilometrajeViajes.js') !!}
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker();
@@ -48,24 +49,9 @@
     });
 </script>
 <script type="text/javascript">
-    $(document).ready(function()
-    {
-        $('#destino_id').on('change',function(e){
-
-            var cat_id = e.target.value;
-
-            //ajax
-            $.get('/distancia?cat_id=' + cat_id, function (data){
-                $('#kilome').empty();
-                $.each(data,function(index, subcatObj){
-
-                    $('#kilome').append('<option value="'+ subcatObj.id+'">'+subcatObj.kilometraje+'</option>');
-                });
-            });
-        });
-
-    });    
+    $('select').select2();    
 </script>
+<!--//Para aumentar dinamicamente con jquery los destino y kilometrajes
 <script type="text/javascript">
     $(document).ready(function()
     {
@@ -98,6 +84,7 @@
 
     });    
 </script>
+-->
 <script type="text/javascript">
     $(document).ready(function () {
         // inicializamos el plugin

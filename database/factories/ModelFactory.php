@@ -61,7 +61,7 @@ $factory->define(Infraestructura\Destino::class, function (Faker\Generator $fake
         'dep_final'  => $faker->randomElement(['Potosí','Oruro','La_paz','Pando','Cochabamba','Sucre','Tarija','Santa_cruz','Beni']),
         'destino'    => $faker->state,
         'ruta'       => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'kilometraje'=> $faker->randomFloat($nbMaxDecimals = NULL, $min = 10, $max = 1000),
+        'kilometraje'=> $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
         'tiempo'     => $faker->time($format = 'H:i:s', $max = 'now')
     ];
 });
