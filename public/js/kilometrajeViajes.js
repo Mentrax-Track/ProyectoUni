@@ -8,8 +8,8 @@ $(document).ready(function()
             $.get('/distancia?cant_id=' + cant_id, function (data){
                 $('#kilome').empty();
                 $.each(data,function(index, subcatObj){
-
-                    $('#kilome').append('<option value="'+ subcatObj.id+'">'+subcatObj.kilometraje+'</option>');
+                    $("#kilome").val(subcatObj.kilometraje);
+                    //$('#kilome').append('<option value="'+ subcatObj.id+'">'+subcatObj.kilometraje+'</option>');
                 });
             });
         });
@@ -23,8 +23,8 @@ $(document).ready(function()
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k1').empty();
                 $.each(data,function(index, desti){
-
-                    $('#k1').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
+                    $("#k1").val(desti.kilometraje);
+                    //$('#k1').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
                 });
             });
         });
@@ -38,8 +38,8 @@ $(document).ready(function()
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k2').empty();
                 $.each(data,function(index, desti){
-
-                    $('#k2').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
+                    $("#k2").val(desti.kilometraje);
+                    //$('#k2').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
                 });
             });
         });
@@ -53,8 +53,8 @@ $(document).ready(function()
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k3').empty();
                 $.each(data,function(index, desti){
-
-                    $('#k3').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
+                    $("#k3").val(desti.kilometraje);
+                    //$('#k3').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
                 });
             });
         });
@@ -68,8 +68,8 @@ $(document).ready(function()
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k4').empty();
                 $.each(data,function(index, desti){
-
-                    $('#k4').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
+                    $("#k4").val(desti.kilometraje);
+                    //$('#k4').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
                 });
             });
         });
@@ -80,20 +80,18 @@ $(document).ready(function()
             var dest_id = e.target.value;
 
             //ajax
-            $.get('/kilometraje?dest_id=' + dest_id, function (data){
+            $.get('/kilometraje?dest_id=' + dest_id, function (data)
+            {
+                console.log(data);
                 $('#k5').empty();
                 $.each(data,function(index, desti){
-
-                    $('#k5').append('<option value="'+ desti.id+'">'+desti.kilometraje+'</option>');
+                    $("#k5").val(desti.kilometraje);
+                    //$('#k5').append('<input value="'+ desti.id+'">'+desti.kilometraje+'</option>');
                 });
             });
         });
 
 });
-function check() {
-          document.getElementById('total').value='new value here'
-     }
-
 /**
      * Funcion que se ejecuta cada vez que se añade una letra en un cuadro de texto
      * Suma los valores de los cuadros de texto

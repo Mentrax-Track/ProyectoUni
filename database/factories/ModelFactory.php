@@ -13,7 +13,7 @@
 
 $factory->define(Infraestructura\User::class, function (Faker\Generator $faker) {
     return [
-        'nombres' => $faker->name,
+        'nombres'  => $faker->name,
         'apellidos'=> $faker->lastName,
         'cedula'   => $faker->randomNumber($nbDigits = 8),
         'celular'  => $faker->randomNumber($nbDigits = 8),
@@ -44,15 +44,48 @@ $factory->define(Infraestructura\Vehiculo::class, function (Faker\Generator $fak
     ];
 });
 
-$factory->define(Infraestructura\UserVehi::class, function (Faker\Generator $faker) {
+
+$factory->define(Infraestructura\Viaje::class, function (Faker\Generator $faker) {
     return [
-        //'user_id' => $faker->randomDigitNotNull(\DB::table('users')->min('id'), \DB::table('users')->max('id')),
-        //'vehi_id' => $faker->randomDigitNotNull(\DB::table('vehiculos')->min('id'), \DB::table('vehiculos')->max('id')),       
-        'user_id' => $faker->numberBetween($min = 1, $max = 50),
-        'vehi_id' => $faker->numberBetween($min = 1, $max = 40),
+
+
+        'entidad'       => $faker->randomElement(['Ingeniería de Sistemas','Ingenieria del Medio Ambiente','Ingeniería Geológica'
+                            ,'Ing de Procesos de Mat Primas Min','Ingeniería Minera','Ingeniería Electrica'
+                            ,'Ingeniería Electrónica','Ingeniería Mecánica','Ingeniería Mecatrónica','Ingeniería Automotriz'
+                            ,'Federación Universitaria Local']),
+        'tipo'          => $faker->randomElement(['Viaje de Práctica','Viaje de Inspección',
+                            'Viaje Académico','Viaje de Cultura']),
+        'objetivo'      => $faker->realText($maxNbChars = 200, $indexSize = 2),
+        'dias'          => $faker->numberBetween($min = 1, $max = 10), 
+        'pasajeros'     => $faker->numberBetween($min = 5, $max = 50),
+        'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
+        'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
+    ];
+});
+
+$factory->define(Infraestructura\Ruta::class, function (Faker\Generator $faker) {
+    return [
+
+        'destino_id' => $faker->state,
+        'kilome'     => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'dest1'      => $faker->state,
+        'k1'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'dest2'      => $faker->state,
+        'k2'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'dest3'      => $faker->state,
+        'k3'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'dest4'      => $faker->state,
+        'k4'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'dest5'      => $faker->state,
+        'k5'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'adicional'  => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'total'      => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+        'viaje_id'   => $faker->numberBetween($min = 1, $max = 80),
 
     ];
 });
+
+
 
 $factory->define(Infraestructura\Destino::class, function (Faker\Generator $faker) {
     return [
@@ -68,28 +101,17 @@ $factory->define(Infraestructura\Destino::class, function (Faker\Generator $fake
 
 $factory->define(Infraestructura\Reserva::class, function (Faker\Generator $faker) {
     return [
-        'entidad'       => $faker->randomElement(['FUL','DSA','Carreras','Administrativos','Otros']),
+        'entidad'       => $faker->randomElement(['Ingeniería de Sistemas','Ingenieria del Medio Ambiente','Ingeniería Geológica'
+                            ,'Ing de Procesos de Mat Primas Min','Ingeniería Minera','Ingeniería Electrica'
+                            ,'Ingeniería Electrónica','Ingeniería Mecánica','Ingeniería Mecatrónica','Ingeniería Automotriz'
+                            ,'Federación Universitaria Local']),
         'objetivo'      => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'numero'        => $faker->numberBetween($min = 5, $max = 50),
+        'pasajeros'        => $faker->numberBetween($min = 5, $max = 50),
         'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
         'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
         'dias'          => $faker->numberBetween($min = 2, $max = 10),
-        'user_id'       => $faker->numberBetween($min = 1, $max = 40),
-    ];
-});
-  /**/
-$factory->define(Infraestructura\Viaje::class, function (Faker\Generator $faker) {
-    return [
-
-        'entidad'       => $faker->randomElement(['FUL','DSA','Carreras','Administrativos','Otros']),
-        'objetivo'      => $faker->realText($maxNbChars = 200, $indexSize = 2),
-        'dias'          => $faker->numberBetween($min = 1, $max = 10), 
-        'numero'        => $faker->numberBetween($min = 5, $max = 50),
-        'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
-        'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
         'user_id'       => $faker->numberBetween($min = 1, $max = 50),
-        'vehiculo_id'   => $faker->numberBetween($min = 1, $max = 20),
-        'destino_id'    => $faker->numberBetween($min = 1, $max = 40),
     ];
 });
+
 

@@ -23,7 +23,6 @@
                     <th class="text-center">Email</th>
                     <th class="text-center">Tipo</th>
                     <th class="text-center">Institución</th>
-                    <th class="text-center">Activo</th>
                     <th class="text-center">Operación</th>
                 </tr>
                 @foreach($users as $user)
@@ -36,7 +35,6 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->tipo }}</td>
                             <td>{{ $user->full_institucion }}</td>
-                            <td class="text-center">{{ $user->active }}</td>
                             <td class="btns"><center>
                                 {!!link_to_route('users.edit', $title = 'Editar', $parameters = $user, $attributes = ['class'=>'btn btn-primary'])!!}
                                     </center>

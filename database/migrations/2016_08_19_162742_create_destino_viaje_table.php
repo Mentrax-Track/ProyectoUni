@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserVehiTable extends Migration
+class CreateDestinoViajeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,22 +12,20 @@ class CreateUserVehiTable extends Migration
      */
     public function up()
     {
-        Schema::create('uservehis', function (Blueprint $table) {
+        Schema::create('destino_viaje', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('vehi_id')->unsigned();
+            $table->integer('destino_id')->unsigned();
+            $table->integer('viaje_id')->unsigned();
             
-            $table->foreign('user_id')
-                ->references('id')->on('users')
+            $table->foreign('destino_id')
+                ->references('id')->on('destinos')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
-            $table->foreign('vehi_id')
-                ->references('id')->on('vehiculos')
+            $table->foreign('viaje_id')
+                ->references('id')->on('viajes')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-
-            $table->timestamps();
         });
     }
 
@@ -38,6 +36,6 @@ class CreateUserVehiTable extends Migration
      */
     public function down()
     {
-        Schema::drop('uservehis');
+        Schema::drop('destino_viaje');
     }
 }

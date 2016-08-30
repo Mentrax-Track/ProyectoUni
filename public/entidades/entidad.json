@@ -1,0 +1,80 @@
+{
+	"Facultad de Artes": [
+		{"character": "Artes Musicales", "realName": "Potosí"},
+		{"character": "Artes Plásticas", "realName": "Potosí"}
+	],
+	"Facultad de Ciencias Agrícolas y Pecuarias": [
+		{"character": "Ingeniería Agroindustrial", "realName": "Potosí"},
+		{"character": "Ingeniería Agronómica", "realName": "Potosí"},
+		{"character": "Ingeniería Agropecuaria-Villazón", "realName": "Villazón"},
+		{"character": "Ingeniería en Desarrollo Rural", "realName": "Potosí"},
+		{"character": "Med Veterinaria y Zootécnia-Tupiza", "realName": "Tupiza"}
+	],
+	"Facultad de Ciencias de la Salud": [
+		{"character": "Enfermería", "realName": "Potosí"},
+		{"character": "Enfermería-Villazón", "realName": "Villazón"}
+	],
+	"Facultad de Ciencias Económicas Financieras y Administrativas": 
+	[
+		{"character": "Administración de Empresas", "realName": "Potosí"},
+		{"character": "Contabilidad y Finanzas", "realName": "Potosí"},
+		{"character": "Contaduria Publica", "realName": "Potosí"},
+		{"character": "Contaduria Publica-Tupiza", "realName": "Tupiza"},
+		{"character": "Economía", "realName": "Potosí"},
+		{"character": "Economía-Uncia", "realName": "Uncia"},
+		{"character": "Economía-Uyuni", "realName": "Uyuni"}
+	],
+	"Facultad de Ciencias Puras": 
+	[
+		{"character": "Estadística", "realName": "Potosí"},
+		{"character": "Física", "realName": "Potosí"},
+		{"character": "Ingeniería Informática", "realName": "Potosí"},
+		{"character": "Matemática", "realName": "Potosí"},
+		{"character": "Química", "realName": "Potosí"}
+	],
+	"Facultad de Ciencias Sociales y Humanísticas": 
+	[
+		{"character": "Linguística e Idiomas", "realName": "Potosí"},
+		{"character": "Linguística e Idiomas-Uyuni", "realName": "Uyuni"},
+		{"character": "Trabajo Social", "realName": "Potosí"},
+		{"character": "Trabajo Social-Uncia", "realName": "Uncia"},
+		{"character": "Turismo", "realName": "Potosí"},
+		{"character": "Turismo-Uyuni", "realName": "Uyuni"}
+	],
+	"Facultad de Ingeniería":
+	[
+		{"character": "Construcciones Civiles", "realName": "Potosí"},
+		{"character": "Geodecia y Topografía", "realName": "Potosí"},
+		{"character": "Ingeniería Civil", "realName": "Potosí"},
+		{"character": "Ingeniería de Sistemas", "realName": "Potosí"}
+	],
+	"Facultad de Ingeniería Geológica": 
+	[
+		{"character": "Ingenieria del Medio Ambiente", "realName": "Potosí"},
+		{"character": "Ingeniería Geológica", "realName": "Potosí"}
+	],
+	"Facultad de Ingeniería Minera": 
+	[
+		{"character": "Ing de Procesos de Mat Primas Min", "realName": "Potosí"},
+		{"character": "Ingeniería Minera", "realName": "Potosí"}
+	],
+	"Facultad de Medicina": 
+	[
+		{"character": "Medicina", "realName": "Potosí"}
+	],
+	"Facultad Tegnológica": 
+	[
+		{"character": "Ingeniería Electrica", "realName": "Potosí"},
+		{"character": "Ingeniería Electrónica", "realName": "Potosí"},
+		{"character": "Ingeniería Mecánica", "realName": "Potosí"},
+		{"character": "Ingeniería Mecatrónica", "realName": "Potosí"},
+		{"character": "Ingeniería Automotriz", "realName": "Potosí"}
+	],
+	"Otros": 
+	[
+		{"character": "Federación Universitaria Local", "realName": "Potosí"},
+		{"character": "Federación Universitaria Docente", "realName": "Potosí"},
+		{"character": "Sindicato Trabajadores Universitarios", "realName": "Potosí"},
+		{"character": "Institucionales", "realName": "Potosí"}
+	]
+}

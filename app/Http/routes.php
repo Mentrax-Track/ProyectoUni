@@ -67,8 +67,10 @@ Route::group(['middleware' => 'auth'], function(){
     ]);
     Route::post('Inicio-Automotores','AutomotoresController@index');
 
+///// Rutas para intrudcir un usuario normal o encargado /////////// 
     Route::resource('users','UsersController');
     Route::resource('encar','EncargadoController');
+
 
     Route::resource('vehiculos','VehiculosController');
     Route::resource('destinos','DestinoController');

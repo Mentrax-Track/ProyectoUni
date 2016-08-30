@@ -3,7 +3,8 @@
 @section('subtitulo','Incertar Reserva')
 @section('css')
      {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
-     {!! Html::style('css/jquery.easy-autocomplete.css') !!}
+     {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
+     {!! Html::style('css/easy-autocomplete.min.css') !!}
      {!! Html::style('css/select2.css') !!}
 @stop
 @section('content')
@@ -14,7 +15,7 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Nueva Reserva</p></h4></div>
     <div class="panel-body">      
-       {!! Form::open(['route'=>'reservas.store','method'=>'POST']) !!}
+       {!! Form::open(['route'=>'reservas.store','method'=>'POST','data-toggle'=>'validator']) !!}
         
             @include('automotores.reservas.forms.reser')
                 <div class="col-md-4"></div>
@@ -30,9 +31,11 @@
 @section('javascript')
 {!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.min.js') !!}
-{!! Html::script('js/jquery.easy-autocomplete.js') !!}
+{!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/entidades.js') !!}
+{!! Html::script('js/validator.js') !!}
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker();
@@ -50,6 +53,7 @@
 <script type="text/javascript">
     $('select').select2();    
 </script>
+
 @endsection
 
 

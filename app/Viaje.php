@@ -3,30 +3,58 @@
 namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
+use Infraestructura\User;
+use Infraestructura\Vehiculo;
+use Infraestructura\Destino;
+use Infraestructura\Vehiculo_Viaje;
 
 class Viaje extends Model
 {
     protected $table = 'viajes';
     
-    protected $fillable = ['tipo','objetivo','dias','numero','fecha_inicial','fecha_final','user_id','vehiculo_id','destino_completo'];
+    protected $fillable = 
+    [
+        'chofer','vehiculo','encargado',
+        'entidad','tipo','objetivo','pasajeros',
+        'dias','fecha_inicial','fecha_final'
+    ];
 
-    public function encargado()
+    public function users()
     {
-        return $this->belongsTo('automotores\Encargado');
+        return $this->belongsToMany('Infraestructura\User', 'user_viaje');
     }
-    public function chofer()
+    //a la table user_viaje un viaje puede haber muchos user_viaje
+    public function user_viajes()
     {
-        return $this->belongsTo('automotores\Chofer');
+        return $this->hasMany('Infraestructura\User_Viaje');   
     }
-    public function destino()
+
+    public function vehiculos()
     {
-        return $this->belongsTo('Infraestructura\Destino');
+        return $this->belongsToMany('Infraestructura\Vehiculo', 'vehiculo_viaje');
     }
-    public function vehiculoViaje()
+    //a la table user_viaje un viaje puede haber muchos vehiculo_viaje
+    public function vehiculo_viajes()
     {
-        return $this->belongsTo('automotores\VehiculoViaje');
+        return $this->hasMany('Infraestructura\Vehiculo_Viaje');   
+    }
+
+    public function destinos()
+    {
+        return $this->belongsToMany('Infraestructura\Destino', 'destino_viaje');
     }
     
+    //Un viaje puede realizar muchas rutas 
+    public function rutas()
+    {
+        return $this->hasMany('Infraestructura\Ruta');   
+    }
+//////// aqui problem /////////////////////
+    public function enviarcho()
+    {
+        return $this->hasOne('Infraestructura\User','id','id');
+    }
+
     public function scopeVia($query, $via)
     {
         if(trim($via) != "")
@@ -35,7 +63,7 @@ class Viaje extends Model
         }
     }
 
-    public function enviar()
+    /*public function enviar()
     {
         return $this->hasOne('automotores\Encargado','id','encargado_id');
     }
@@ -65,5 +93,5 @@ class Viaje extends Model
         {
             $query->where(\DB::raw("CONCAT(chofer_id,' ',destino_id)"), "LIKE","%$chof%");
         }
-    }
+    }*/
 }

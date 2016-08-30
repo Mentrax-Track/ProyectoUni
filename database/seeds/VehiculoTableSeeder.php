@@ -23,6 +23,6 @@ class VehiculoTableSeeder extends Seeder
             'estado'     => 'Optimo',
 
             ]);
-        factory(Infraestructura\Vehiculo::class, 40)->create();
+        factory(Infraestructura\Vehiculo::class, 39)->create();
     }
 }

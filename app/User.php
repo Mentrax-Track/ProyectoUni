@@ -10,6 +10,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+use Infraestructura\Vehiculo;
+use Infraestructura\Viaje;
+use Infraestructura\Reserva;
+use Infraestructura\User_Viaje;
+
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -29,6 +34,28 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $fillable = ['nombres','apellidos','cedula','celular','facultad','carrera','materia','sigla' ,'tipo','email', 'password'];
+
+    //Un usuario puede tener muchos vehiculos
+    public function vehiculos()
+    {
+         return $this->belongsToMany('Infraestructura\Vehiculo', 'vehiculo_user');
+    }
+    public function viajes()
+    {
+         return $this->belongsToMany('Infraestructura\Viaje', 'user_viaje');
+    }
+    //a la table user_viaje un usuario puede haber muchos user_viaje
+    public function user_viajes()
+    {
+        return $this->hasMany('Infraestructura\User_Viaje');   
+    }
+
+    //Un usuario puede realizar muchas reservas 
+    public function reservas()
+    {
+        return $this->hasMany('Infraestructura\Reserva');   
+    }
+
 
     /**
      * The attributes excluded from the model's JSON form.

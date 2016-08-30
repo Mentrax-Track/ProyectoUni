@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservasTable extends Migration
+class CreateViajesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,15 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservas', function (Blueprint $table) {
+        Schema::create('viajes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('entidad');
+            $table->string('tipo');
             $table->string('objetivo');
-            $table->integer('numero');
+            $table->integer('dias');
+            $table->integer('pasajeros');
             $table->date('fecha_inicial');
             $table->date('fecha_final');
-            $table->integer('dias');
-            $table->integer('user_id');
-
-            /*$table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');*/
             $table->timestamps();
         });
     }
@@ -37,6 +32,6 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('reservas');
+        Schema::drop('viajes');
     }
 }

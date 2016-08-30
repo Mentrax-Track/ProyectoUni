@@ -3,6 +3,7 @@
 namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
+use Infraestructura\Viaje;
 
 class Destino extends Model
 {
@@ -10,10 +11,14 @@ class Destino extends Model
     
     protected $fillable = ['dep_inicio','origen','ruta','dep_final','destino','kilometraje','tiempo'];
 
-    public function viaje()
+    public function viajes()
+    {
+        return $this->belongsToMany('Infraestructura\Viaje', 'destino_viaje');
+    }
+    /*public function viaje()
     {
         return $this->belongsTo('Infraestructura\Viaje');
-    }
+    }*/
     //scope es una funcion de laravel
     public function scopeRuta($query, $ruta)
     {

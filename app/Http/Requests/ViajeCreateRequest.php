@@ -4,7 +4,7 @@ namespace Infraestructura\Http\Requests;
 
 use Infraestructura\Http\Requests\Request;
 
-class ReservaCreateRequest extends Request
+class ViajeCreateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +21,22 @@ class ReservaCreateRequest extends Request
      *
      * @return array
      */
-    public function rules()
+   public function rules()
     {
         return [
+            'destino_id'=> 'required',
+            'kilome'    => 'required|numeric',
+            'k1'        => 'numeric',
+            'k2'        => 'numeric',
+            'k3'        => 'numeric',
+            'k4'        => 'numeric',
+            'k5'        => 'numeric',
+            'adicional' => 'numeric',
+            'total'     => 'numeric',
+            'chofer'    => 'required',
             'encargado' => 'required',
-            'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:40|in:Artes Musicales,Artes Plásticas
+            'vehiculo'  => 'required',
+            'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:50|in:Artes Musicales,Artes Plásticas
                             ,Ingeniería Agroindustrial,Ingeniería Agronómica,Ingeniería Agropecuaria-Villazón
                             ,Ingeniería en Desarrollo Rural,Med. Veterinaria y Zootécnia-Tupiza,Enfermería
                             ,Enfermería-Villazón,Administración de Empresas,Contabilidad y Finanzas
@@ -36,12 +47,11 @@ class ReservaCreateRequest extends Request
                             ,Ingeniería de Sistemas,Ingenieria del Medio Ambiente,Ingeniería Geológica
                             ,Ing de Procesos de Mat Primas Min,Ingeniería Minera,Ingeniería Electrica
                             ,Ingeniería Electrónica,Ingeniería Mecánica,Ingeniería Mecatrónica,Ingeniería Automotriz
-                            ,Federación Universitaria Local,Federación Universitaria Docente
+                            ,Federación Universitaria Docente,Federación Universitaria Local
                             ,Sindicato Trabajadores Universitarios,Institucionales',
 
-
-
-            'objetivo'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'objetivo'     => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'tipo'         => 'required|in:Viaje de Práctica,Viaje de Inspección,Viaje Académico,Viaje de Cultura',
             'pasajeros'    => 'required|numeric',
             'fecha_inicial'=> 'required',
             'fecha_final'  => 'required',
@@ -50,7 +60,7 @@ class ReservaCreateRequest extends Request
     public function messages()
     {
         return [
-                'entidad.regex' => 'En la entidad solo se aceptan letras',
+                'entidad.regex'   => 'En la entidad solo se aceptan letras',
                 'objetivo.regex'  => 'En el Objetivo solo se aceptan letras',
         ];
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ReservasTableSeeder extends Seeder
+class ReservaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ReservasTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Infraestructura\Reserva::class, 100)->create();
+         factory(Infraestructura\Reserva::class, 100)->create();
     }
 }

@@ -3,7 +3,8 @@
 @section('subtitulo','Incertar Viaje')
 @section('css')
      {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
-     {!! Html::style('css/jquery.easy-autocomplete.css') !!}
+     {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
+     {!! Html::style('css/easy-autocomplete.min.css') !!}
      {!! Html::style('css/select2.css') !!}
 @stop
 @section('content')
@@ -14,7 +15,7 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Viaje</p></h4></div>
     <div class="panel-body">      
-       {!! Form::open(['route'=>'viajes.store','method'=>'GET']) !!}
+       {!! Form::open(['route'=>'viajes.store','method'=>'POST']) !!}
         
             @include('automotores.viajes.forms.via')
                 <div class="col-md-4"></div>
@@ -22,6 +23,7 @@
                 <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
                 </div>
                 <div class="col-md-4"></div>
+
         {!! Form::close() !!}
     </div>
 </div>
@@ -30,9 +32,10 @@
 @section('javascript')
 {!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.min.js') !!}
-{!! Html::script('js/jquery.easy-autocomplete.js') !!}
+{!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/entidades.js') !!}
 {!! Html::script('js/kilometrajeViajes.js') !!}
  <script type="text/javascript">
     $(function () {
@@ -90,7 +93,7 @@
         // inicializamos el plugin
         $('#chofer').select2({
             // Activamos la opcion "Chofer" del plugin
-            tags: true,
+            tags: false,
             tokenSeparators: [','],
             ajax: {
                 dataType: 'json',
@@ -115,7 +118,7 @@
         // inicializamos el plugin
         $('#vehiculo').select2({
             // Activamos la opcion "Vehiculo" del plugin
-            tags: true,
+            tags: false,
             tokenSeparators: [','],
             ajax: {
                 dataType: 'json',
@@ -140,7 +143,7 @@
         // inicializamos el plugin
         $('#encargado').select2({
             // Activamos la opcion "Encargado" del plugin
-            tags: true,
+            tags: false,
             tokenSeparators: [','],
             ajax: {
                 dataType: 'json',

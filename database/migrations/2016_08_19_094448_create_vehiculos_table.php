@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDestinosTable extends Migration
+class CreateVehiculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,16 @@ class CreateDestinosTable extends Migration
      */
     public function up()
     {
-        Schema::create('destinos', function (Blueprint $table) {
+        Schema::create('vehiculos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('dep_inicio');
-            $table->string('origen');
-            $table->string('destino');
-            $table->string('dep_final');
-            $table->text('ruta');
+            $table->string('codigo');
+            $table->string('tipo');
+            $table->string('placa');
+            $table->string('color');
             $table->float('kilometraje');
-            $table->time('tiempo');
+            $table->string('pasageros');
+            $table->string('path');
+            $table->enum('estado',['Optimo','Mantenimiento','Desuso']);
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateDestinosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('destinos');
+        Schema::drop('vehiculos');
     }
 }

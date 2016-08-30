@@ -36,10 +36,10 @@
                     <td>{{ $reser->entidad }}</td>
                     <td>{{ $reser->enviar->full_name}}</td>
                     <td>{{ $reser->objetivo }}</td>
-                    <td>{{ $reser->numero }}</td>
-                    <td>{{ $reser->fecha_inicial }}</td>
-                    <td>{{ $reser->fecha_final }}</td>
-                    <td>{{ $reser->dias }}</td>
+                    <td class="text-center">{{ $reser->pasajeros }}</td>
+                    <td class="text-center">{{ $reser->fecha_inicial }}</td>
+                    <td class="text-center">{{ $reser->fecha_final }}</td>
+                    <td class="text-center">{{ $reser->dias }}</td>
                     <td class="btns">
                         {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary'])!!}
                         

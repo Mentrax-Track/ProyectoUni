@@ -4,6 +4,8 @@ namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Infraestructura\User;
+use Infraestructura\Viaje;
 class Vehiculo extends Model
 {
 
@@ -11,23 +13,21 @@ class Vehiculo extends Model
     
     protected $fillable = ['codigo','tipo','placa','color','kilometraje','pasageros','path','estado'];
 
-    public function UserVehi()
+    //Un vehiculo puede pertenecer a muchos usuarios
+    public function users()
     {
-        return $this->belongsTo('Infraestructura\UserVehi');
+        return $this->belongsToMany('Infraestructura\User', 'vehiculo_user');
     }
-
-    public function choferVehiculos()
-    {
-        return $this->hasMany('automotores\ChoferVehiculo');
-    } 
-    public function vehiculoViajes()
-    {
-        return $this->hasMany('automotores\VehiculoViaje');
-    }  
     public function viajes()
     {
-        return $this->hasMany('automotores\Viaje');
+        return $this->belongsToMany('Infraestructura\Viaje', 'vehiculo_viaje');
     }
+    //a la table vehiculo_viaje un vehiculo puede haber muchos vehiculo_viaje
+    public function vehiculo_viajes()
+    {
+        return $this->hasMany('Infraestructura\Vehiculo_Viaje');   
+    }
+   
     //mutador para modificar elementos antes de ser guardados
     /*public function setPathAttribute($path){
         if(! empty($path)){

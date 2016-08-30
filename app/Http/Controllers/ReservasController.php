@@ -74,7 +74,7 @@ class ReservasController extends Controller
         Reserva::create([
             'entidad'       => $request['entidad'],
             'objetivo'      => $request['objetivo'],
-            'numero'        => $request['numero'],
+            'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
             'dias'          => $days,
