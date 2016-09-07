@@ -14,13 +14,13 @@ class DestinoViajeTableSeeder extends Seeder
     {
         factory(Infraestructura\Destino::class, 100)->create();
 
-        for($i=1 ; $i<=100; $i++)
+        /*for($i=1 ; $i<=100; $i++)
         {
             $user = Viaje::find($i);
             for($j=1 ; $j<=5 ; $j++)
             {
                 $user->destinos()->attach(rand(1,100));
             }        
-        }
+        }*/
     }
 }

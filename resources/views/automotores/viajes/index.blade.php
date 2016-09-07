@@ -21,12 +21,9 @@
                 <th class="text-center">Pasajeros</th>
                 <th class="text-center">Inicio</th>
                 <th class="text-center">Final</th>
-                <th class="text-center">choferes</th>
-                <th class="text-center">Encargados</th>
-                <th class="text-center">Vehiculos</th>
                 <th class="text-center">Operacion</th>
             </tr>
-                
+        
             @foreach($viaje as $via)
                 <tbody>
                     <td class="info text-center">{{ $via->id }}</td>
@@ -37,14 +34,12 @@
                     <td class="text-center">{{ $via->pasajeros }}</td>
                     <td class="text-center">{{ $via->fecha_inicial }}</td>
                     <td class="text-center">{{ $via->fecha_final }}</td>
-                    <td class="text-center">{{ $via->chofer}}</td>
-                    <td class="text-center">{{ $via->encargado }}</td>
-                    <td class="text-center">{{ $via->vehiculo }}</td>
                     <td class="btns text-center">
                         {!!link_to_route('viajes.edit', $title = 'Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-primary'])!!}
+                        <a class="btn btn-primary " href="{{ route('rutas.show',['id' => $via->id] )}}" >Detalle</a>
                     </td>
                 </tbody>
-            @endforeach
+            @endforeach   
         </table>
         <center><p>Existen {{ $viaje->total() }} registros en total</p></center>
         </div>

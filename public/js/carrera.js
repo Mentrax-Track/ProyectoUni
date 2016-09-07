@@ -7,7 +7,7 @@ $(document).ready(function(){
             categories: [
             {
                 listLocation: "U.A.T.F. Potosí",
-                maxNumberOfElements: 4,
+                maxNumberOfElements: 40,
                 header: "U.A.T.F. Potosí"
             }, 
             {

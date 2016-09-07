@@ -9,7 +9,7 @@ class Destino extends Model
 {
     protected $table = 'destinos';
     
-    protected $fillable = ['dep_inicio','origen','ruta','dep_final','destino','kilometraje','tiempo'];
+    protected $fillable = ['id','dep_inicio','origen','ruta','dep_final','destino','kilometraje','tiempo'];
 
     public function viajes()
     {

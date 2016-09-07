@@ -13,7 +13,7 @@ class VehiculoUserTableSeeder extends Seeder
     public function run()
     {
 
-        for($i=1 ; $i<=49; $i++)
+       /* for($i=1 ; $i<=49; $i++)
         {
             $user = User::find($i);
             for($j=1 ; $j<=5 ; $j++)
@@ -21,6 +21,6 @@ class VehiculoUserTableSeeder extends Seeder
                 $user->vehiculos()->attach(rand(1,39));
             }        
 
-        }
+        }*/
     }
 }

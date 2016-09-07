@@ -4,11 +4,11 @@
         {"character": "Artes Plásticas", "realName": "Potosí"},
         {"character": "Ingeniería Agroindustrial", "realName": "Potosí"},
         {"character": "Ingeniería Agronómica", "realName": "Potosí"},
-        {"character": "Ingeniería en Desarrollo Rural ", "realName": "Potosí"},
+        {"character": "Ingeniería en Desarrollo Rural", "realName": "Potosí"},
         {"character": "Enfermería", "realName": "Potosí"},
         {"character": "Administración de Empresas", "realName": "Potosí"},
         {"character": "Contabilidad y Finanzas", "realName": "Potosí"},
-        {"character": "Contaduria Publica", "realName": "Potosí"},
+        {"character": "Contaduría Pública", "realName": "Potosí"},
         {"character": "Economía", "realName": "Potosí"},
         {"character": "Estadística", "realName": "Potosí"},
         {"character": "Física", "realName": "Potosí"},
@@ -22,12 +22,12 @@
         {"character": "Geodecia y Topografía", "realName": "Potosí"},
         {"character": "Ingeniería Civil", "realName": "Potosí"},
         {"character": "Ingeniería de Sistemas", "realName": "Potosí"},
-        {"character": "Ingenieria del Medio Ambiente", "realName": "Potosí"},
+        {"character": "Ingeniería del Medio Ambiente", "realName": "Potosí"},
         {"character": "Ingeniería Geológica", "realName": "Potosí"},
-        {"character": "Ing. de Procesos de Mat. Primas Min. ", "realName": "Potosí"},
+        {"character": "Ing de Procesos de Mat Primas Min", "realName": "Potosí"},
         {"character": "Ingeniería Minera", "realName": "Potosí"},
         {"character": "Medicina", "realName": "Potosí"},
-        {"character": "Ingeniería Electrica", "realName": "Potosí"},
+        {"character": "Ingeniería Eléctrica", "realName": "Potosí"},
         {"character": "Ingeniería Electrónica", "realName": "Potosí"},
         {"character": "Ingeniería Mecánica", "realName": "Potosí"},
         {"character": "Ingeniería Mecatrónica", "realName": "Potosí"},
@@ -41,8 +41,8 @@
     ],
     "U.A.T.F. Tupiza": 
     [
-        {"character": "Contaduria Publica-Tupiza", "realName": "Tupiza"},
-        {"character": "Med. Veterinaria y Zootécnia-Tupiza", "realName": "Tupiza"}
+        {"character": "Contaduría Pública-Tupiza", "realName": "Tupiza"},
+        {"character": "Med Veterinaria y Zootécnia-Tupiza", "realName": "Tupiza"}
     ],
     "U.A.T.F. Uncia": 
     [

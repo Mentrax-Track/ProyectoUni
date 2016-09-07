@@ -44,6 +44,7 @@ Route::get('Salir', [
 
 
 
+
 // Registration routes...
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
@@ -132,23 +133,36 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/distancia', function () {
 
         $cant_id = Input::get('cant_id');
-
-
-        $kilo = Destino::where('id','=',$cant_id)
+        if((int)$cant_id==0)
+        {
+            $cant=0;    
+        }else{
+            $cant=1+(int)$cant_id;
+        }
+        $kilo = Destino::where('id',$cant)
                     ->get(['id','kilometraje']);
-            
+
         return Response::json($kilo);
     });
 
     Route::get('/kilometraje', function () {
 
         $dest_id = Input::get('dest_id');
-
-
-        $kilo = Destino::where('id','=',$dest_id)
+        if((int)$dest_id==0)
+        {
+            $cant=0;    
+        }else{
+            $cant=1+(int)$dest_id;
+        }
+        $kilo = Destino::where('id',$cant)
                     ->get(['id','kilometraje']);
             
         return Response::json($kilo);
     });
 ///////// Hasta aqui las rutas para los kilometrajes de viajes///////////////
 });
+/////////// rutas //////////
+Route::resource('rutas','RutasController');
+
+
+

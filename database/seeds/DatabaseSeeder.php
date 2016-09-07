@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
         $this->call(VehiculoUserTableSeeder::class);
 
         $this->call(UserViajeTableSeeder::class);
-
+ 
         $this->call(VehiculoViajeTableSeeder::class);
-
+ 
         $this->call(DestinoViajeTableSeeder::class);
-
+ 
         $this->call(ReservaTableSeeder::class);
 
         Model::reguard();

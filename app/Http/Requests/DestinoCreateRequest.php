@@ -24,8 +24,8 @@ class DestinoCreateRequest extends Request
     public function rules()
     {
         return [
-            'origen'     => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'destino'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'origen'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
+            'destino'    => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
             'ruta'       => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:100',
             'dep_inicio' => 'required|in:Potosí,Oruro,La_paz,Pando,Cochabamba,Sucre,Tarija,Santa_cruz,Beni',
             'dep_final'  => 'required|in:Potosí,Oruro,La_paz,Pando,Cochabamba,Sucre,Tarija,Santa_cruz,Beni',

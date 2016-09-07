@@ -14,17 +14,17 @@ class CreateRutasTable extends Migration
     {
         Schema::create('rutas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('destino_id');
+            $table->integer('destino_id');
             $table->string('kilome');
-            $table->string('dest1');
+            $table->integer('dest1');
             $table->string('k1');
-            $table->string('dest2');
+            $table->integer('dest2');
             $table->string('k2');
-            $table->string('dest3');
+            $table->integer('dest3');
             $table->string('k3');
-            $table->string('dest4');
+            $table->integer('dest4');
             $table->string('k4');
-            $table->string('dest5');
+            $table->integer('dest5');
             $table->string('k5');
             $table->string('adicional');
             $table->string('total');

@@ -10,6 +10,7 @@ use Infraestructura\Destino;
 use Infraestructura\User_Viaje;
 use Infraestructura\Vehiculo_Viaje;
 use Infraestructura\Ruta;
+use Infraestructura\Destino_Viaje;
 
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Requests\ViajeCreateRequest;
@@ -52,24 +53,25 @@ class ViajesController extends Controller
     public function create()
     {
 
-        $encargado = User::where('tipo', 'encargado')
+        $encargados = User::where('tipo', 'encargado')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $chofer    = User::where('tipo', 'chofer')
+        $choferes    = User::where('tipo', 'chofer')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculo  = Vehiculo::where('estado', 'Optimo')
+        $vehiculos  = Vehiculo::where('estado', 'Optimo')
                     ->orderBy('tipo','ASC')
                     ->get(['id', 'tipo', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
-        $destino   = Destino::orderBy('origen','ASC')
-                    ->get(['id', 'origen', 'destino'])
-                    ->lists('full_destino','id');
+
+        $destino   = Destino::orderBy('id','ASC')
+                    ->get(['id','origen', 'destino'])
+                    ->lists('full_destino');
 
 
-        return view('automotores.viajes.create',compact('chofer','encargado','vehiculo','destino'));
+        return view('automotores.viajes.create',compact('choferes','encargados','vehiculos','destino'));
     }
 
     /**
@@ -103,7 +105,6 @@ class ViajesController extends Controller
         $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
 
-       
         $viaje_id = \DB::table('viajes')->insertGetId([
             'entidad'       => $request['entidad'],
             'tipo'          => $request['tipo'],
@@ -145,6 +146,10 @@ class ViajesController extends Controller
         {
             $destino_id = $request['destino_id'];
             $kilome     = $request['kilome'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$destino_id,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $destino_id = "";
@@ -154,6 +159,10 @@ class ViajesController extends Controller
         {
             $dest1  = $request['dest1'];
             $k1     = $request['k1'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$dest1,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $dest1 = "";
@@ -163,6 +172,10 @@ class ViajesController extends Controller
         {
             $dest2 = $request['dest2'];
             $k2    = $request['k2'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$dest2,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $dest2 = "";
@@ -172,6 +185,10 @@ class ViajesController extends Controller
         {
             $dest3  = $request['dest3'];
             $k3     = $request['k3'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$dest3,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $dest3 = "";
@@ -181,6 +198,10 @@ class ViajesController extends Controller
         {
             $dest4 = $request['dest4'];
             $k4    = $request['k4'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$dest4,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $dest4 = "";
@@ -190,25 +211,51 @@ class ViajesController extends Controller
         {
             $dest5 = $request['dest5'];
             $k5    = $request['k5'];
+            Destino_Viaje::create([
+                'destino_id'=> 1+$dest5,
+                'viaje_id'  => $viaje_id
+                ]);
         }
         else{
             $dest5 = "";
             $k5    = "";
         }
+
+        $a = intval($destino_id);
+        $c = intval($dest1);
+        $d = intval($dest2);
+        $e = intval($dest3);
+        $f = intval($dest4);
+        $g = intval($dest5);
+        if(!empty($a))
+            $a++;
+        if(!empty($c))
+            $c++;
+        if(!empty($d))
+            $d++;
+        if(!empty($e))
+            $e++;
+        if(!empty($f))
+            $f++;
+        if(!empty($g))
+            $g++;
+
+       // $b = (float)$kilome;
+       // dd($b);
         if(!empty($request['adicional']))
         {
             Ruta::create([
-                'destino_id'=> $destino_id,
+                'destino_id'=> $a,
                 'kilome'    => $kilome,
-                'dest1'     => $dest1,
+                'dest1'     => $c,
                 'k1'        => $k1,
-                'dest2'     => $dest2,
+                'dest2'     => $d,
                 'k2'        => $k2,
-                'dest3'     => $dest3,
+                'dest3'     => $e,
                 'k3'        => $k3,
-                'dest4'     => $dest4,
+                'dest4'     => $f,
                 'k4'        => $k4,
-                'dest5'     => $dest5,
+                'dest5'     => $g,
                 'k5'        => $k5,
                 'adicional' => $request['adicional'],
                 'total'     => $request['total'],
@@ -250,72 +297,29 @@ class ViajesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {/*
-        $chofer = User_Viaje::where('viaje_id',$id)
-                    ->lists('user_id')
-                    ->toArray();
-        dd($chofer);
+    {
+        $encargados = User::where('tipo', 'encargado')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $choferes    = User::where('tipo', 'chofer')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $vehiculos  = Vehiculo::where('estado', 'Optimo')
+                    ->orderBy('tipo','ASC')
+                    ->get(['id', 'tipo', 'placa'])
+                    ->lists('full_vehiculo','id')->toArray();
 
-        $hola = \DB::table('users')
-        ->join('user_viaje', function ($join) 
-        {
-            $join->on('users.id', '=', 'user_viaje.user_id')
-                 ->where('users.tipo', '=', 'encargado');
-        })->distinct()->get(['nombres','tipo']);
+        $destino   = Destino::orderBy('id','ASC')
+                    ->get(['id','origen', 'destino'])
+                    ->lists('full_destino');
 
-        dd($hola);*/
-
-
-       /* $resultado = \DB::table('viajes')
-        ->join('user_viaje','viajes.id','=','user_viaje.viaje_id')
-        ->join('users','user_viaje.user_id','=','users.id')
-       
-        ->where('user_viaje.viaje_id',$id)
-        ->select('users.nombres','user_viaje.user_id','viajes.entidad')
-        ->get();
-        dd($resultado);*/
-
-        $chofer = \DB::table('users')
-        ->join('user_viaje','users.id','=','user_viaje.user_id')
-        ->join('viajes','user_viaje.viaje_id','=','viajes.id')
-        ->where('user_viaje.viaje_id',$id)
-        ->where('users.tipo','chofer')
-        ->select('users.nombres as n','users.apellidos as a','users.id as i')
-        ->lists('n','i');
-        //dd($chofer);
-
-        $encargado = \DB::table('users')
-        ->join('user_viaje','users.id','=','user_viaje.user_id')
-        ->join('viajes','user_viaje.viaje_id','=','viajes.id')
-        ->where('user_viaje.viaje_id',$id)
-        ->where('users.tipo','encargado')
-        ->select('users.nombres as n','users.apellidos as a','users.id as i')
-        ->lists('n','i');
-        //dd($encargado);
-        
-        $vehiculo  = \DB::table('vehiculos')
-        ->join('vehiculo_viaje','vehiculos.id','=','vehiculo_viaje.vehiculo_id')
-        ->join('viajes','vehiculo_viaje.viaje_id','=','viajes.id')
-        ->where('vehiculo_viaje.viaje_id',$id)
-        ->select('vehiculos.tipo as t','vehiculos.placa as p','vehiculos.id as i')
-        ->lists('p','i');
-        //dd($vehiculo);
-
-
-/////////////// problem ////////////////
-        $destino   =  \DB::table('rutas')
-        ->join('destinos','rutas.destino_id','=','destinos.id')
-        ->where('rutas.viaje_id',$id)
-        ->select('destinos.origen','destinos.id')
-        ->get();
-
-        dd($destino);
-
-        return view('automotores.viajes.edit',['via'=>$this->viaje], compact('chofer','encargado','vehiculo','destino'));
+        return view('automotores.viajes.edit',['via'=>$this->viaje],compact('choferes','encargados','vehiculos','destino'));
         
     }
 
-    /**
+    /**si es recuando nos perman
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -324,8 +328,6 @@ class ViajesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $chofer = User::lists('nombres','id');
-        $vehiculo= Vehiculo::lists('tipo','id');
         $this->viaje->fill($request->all());
         $this->viaje->save();
         Session::flash('message','El registro de viaje fue editado correctamente...');
@@ -340,8 +342,6 @@ class ViajesController extends Controller
      */
     public function destroy($id)
     {
-        $chofer = Chofer::lists('nombre','id');
-        $vehiculo= Vehiculo::lists('tipo','id');
         $this->viaje->delete();
         Session::flash('message','El registro de viaje fue eliminado correctamente...');
         return Redirect::to('/viajes');

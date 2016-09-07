@@ -16,7 +16,7 @@ class ReservaCreateRequest extends Request
         return true;
     }
 
-    /**
+    /**esta hidrolabaroa nos puede 
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -25,19 +25,51 @@ class ReservaCreateRequest extends Request
     {
         return [
             'encargado' => 'required',
-            'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:40|in:Artes Musicales,Artes Plásticas
-                            ,Ingeniería Agroindustrial,Ingeniería Agronómica,Ingeniería Agropecuaria-Villazón
-                            ,Ingeniería en Desarrollo Rural,Med. Veterinaria y Zootécnia-Tupiza,Enfermería
-                            ,Enfermería-Villazón,Administración de Empresas,Contabilidad y Finanzas
-                            ,Contaduria Publica,Contaduria Publica-Tupiza,Economía,Economía-Uncia,Economía-Uyuni
-                            ,Estadística,Física,Ingeniería Informática,Matemática,Química,Linguística e Idiomas
-                            ,Linguística e Idiomas-Uyuni,Trabajo Social,Trabajo Social-Uncia,Turismo
-                            ,Turismo-Uyuni,Construcciones Civiles,Geodecia y Topografía,Ingeniería Civil
-                            ,Ingeniería de Sistemas,Ingenieria del Medio Ambiente,Ingeniería Geológica
-                            ,Ing de Procesos de Mat Primas Min,Ingeniería Minera,Ingeniería Electrica
-                            ,Ingeniería Electrónica,Ingeniería Mecánica,Ingeniería Mecatrónica,Ingeniería Automotriz
-                            ,Federación Universitaria Local,Federación Universitaria Docente
-                            ,Sindicato Trabajadores Universitarios,Institucionales',
+            'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:50|in:Artes Musicales,
+                                Artes Plásticas,
+                                Ingeniería Agroindustrial,
+                                Ingeniería Agronómica,
+                                Ingeniería Agropecuaria-Villazón,
+                                Ingeniería en Desarrollo Rural,
+                                Med Veterinaria y Zootécnia-Tupiza,
+                                Enfermería,
+                                Enfermería-Villazón,
+                                Administración de Empresas,
+                                Contabilidad y Finanzas,
+                                Contaduría Pública,
+                                Contaduría Pública-Tupiza,
+                                Economía,
+                                Economía-Uncia,
+                                Economía-Uyuni,
+                                Estadística,
+                                Física,
+                                Ingeniería Informática,
+                                Matemática,
+                                Química,
+                                Linguística e Idiomas,
+                                Linguística e Idiomas-Uyuni,
+                                Trabajo Social,
+                                Trabajo Social-Uncia,
+                                Turismo,
+                                Turismo-Uyuni,
+                                Construcciones Civiles,
+                                Geodecia y Topografía,
+                                Ingeniería Civil,
+                                Ingeniería de Sistemas,
+                                Ingeniería del Medio Ambiente,
+                                Ingeniería Geológica,
+                                Ing de Procesos de Mat Primas Min,
+                                Ingeniería Minera,
+                                Medicina,
+                                Ingeniería Eléctrica,
+                                Ingeniería Electrónica,
+                                Ingeniería Mecánica,
+                                Ingeniería Mecatrónica,
+                                Ingeniería Automotriz,
+                                Federación Universitaria Local,
+                                Federación Universitaria Docente,
+                                Sindicato Trabajadores Universitarios,
+                                Institucionales',
 
 
 

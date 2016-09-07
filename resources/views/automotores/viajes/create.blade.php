@@ -15,7 +15,7 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Viaje</p></h4></div>
     <div class="panel-body">      
-       {!! Form::open(['route'=>'viajes.store','method'=>'POST']) !!}
+       {!! Form::open(['route'=>'viajes.store','method'=>'POST','data-toggle'=>'validator']) !!}
         
             @include('automotores.viajes.forms.via')
                 <div class="col-md-4"></div>
@@ -37,6 +37,7 @@
 {!! Html::script('js/select2.js') !!}
 {!! Html::script('js/entidades.js') !!}
 {!! Html::script('js/kilometrajeViajes.js') !!}
+{!!Html::script('js/validator.js')!!}
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker();

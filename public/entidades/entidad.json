@@ -18,8 +18,8 @@
 	[
 		{"character": "Administración de Empresas", "realName": "Potosí"},
 		{"character": "Contabilidad y Finanzas", "realName": "Potosí"},
-		{"character": "Contaduria Publica", "realName": "Potosí"},
-		{"character": "Contaduria Publica-Tupiza", "realName": "Tupiza"},
+		{"character": "Contaduría Pública", "realName": "Potosí"},
+		{"character": "Contaduría Pública-Tupiza", "realName": "Tupiza"},
 		{"character": "Economía", "realName": "Potosí"},
 		{"character": "Economía-Uncia", "realName": "Uncia"},
 		{"character": "Economía-Uyuni", "realName": "Uyuni"}
@@ -50,7 +50,7 @@
 	],
 	"Facultad de Ingeniería Geológica": 
 	[
-		{"character": "Ingenieria del Medio Ambiente", "realName": "Potosí"},
+		{"character": "Ingeniería del Medio Ambiente", "realName": "Potosí"},
 		{"character": "Ingeniería Geológica", "realName": "Potosí"}
 	],
 	"Facultad de Ingeniería Minera": 
@@ -64,7 +64,7 @@
 	],
 	"Facultad Tegnológica": 
 	[
-		{"character": "Ingeniería Electrica", "realName": "Potosí"},
+		{"character": "Ingeniería Eléctrica", "realName": "Potosí"},
 		{"character": "Ingeniería Electrónica", "realName": "Potosí"},
 		{"character": "Ingeniería Mecánica", "realName": "Potosí"},
 		{"character": "Ingeniería Mecatrónica", "realName": "Potosí"},

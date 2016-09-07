@@ -59,24 +59,24 @@ $factory->define(Infraestructura\Viaje::class, function (Faker\Generator $faker)
         'dias'          => $faker->numberBetween($min = 1, $max = 10), 
         'pasajeros'     => $faker->numberBetween($min = 5, $max = 50),
         'fecha_inicial' => $faker->dateTimeThisYear($max = 'now'),
-        'fecha_final'   => $faker->dateTimeThisYear($max = 'now'),
+        'fecha_final'   => $faker->dateTimeThisYear($max = 'now')
     ];
 });
 
 $factory->define(Infraestructura\Ruta::class, function (Faker\Generator $faker) {
     return [
 
-        'destino_id' => $faker->state,
+        'destino_id' => $faker->numberBetween($min = 1, $max = 100), 
         'kilome'     => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
-        'dest1'      => $faker->state,
+        'dest1'      => $faker->numberBetween($min = 1, $max = 100), 
         'k1'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
-        'dest2'      => $faker->state,
+        'dest2'      => $faker->numberBetween($min = 1, $max = 100), 
         'k2'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
-        'dest3'      => $faker->state,
+        'dest3'      => $faker->numberBetween($min = 1, $max = 100), 
         'k3'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
-        'dest4'      => $faker->state,
+        'dest4'      => $faker->numberBetween($min = 1, $max = 100), 
         'k4'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
-        'dest5'      => $faker->state,
+        'dest5'      => $faker->numberBetween($min = 1, $max = 100), 
         'k5'         => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
         'adicional'  => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
         'total'      => $faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),

@@ -14,7 +14,6 @@ class Viaje extends Model
     
     protected $fillable = 
     [
-        'chofer','vehiculo','encargado',
         'entidad','tipo','objetivo','pasajeros',
         'dias','fecha_inicial','fecha_final'
     ];
@@ -49,12 +48,6 @@ class Viaje extends Model
     {
         return $this->hasMany('Infraestructura\Ruta');   
     }
-//////// aqui problem /////////////////////
-    public function enviarcho()
-    {
-        return $this->hasOne('Infraestructura\User','id','id');
-    }
-
     public function scopeVia($query, $via)
     {
         if(trim($via) != "")

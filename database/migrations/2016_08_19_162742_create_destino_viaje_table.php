@@ -26,6 +26,7 @@ class CreateDestinoViajeTable extends Migration
                 ->references('id')->on('viajes')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+            $table->timestamps();
         });
     }
 

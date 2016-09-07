@@ -1,24 +1,20 @@
 $(document).ready(function()
 {
         $('#destino_id').on('change',function(e){
-
             var cant_id = e.target.value;
-
             //ajax
-            $.get('/distancia?cant_id=' + cant_id, function (data){
+            $.get('/distancia?cant_id=' + cant_id, function (data)
+            {
                 $('#kilome').empty();
                 $.each(data,function(index, subcatObj){
                     $("#kilome").val(subcatObj.kilometraje);
-                    //$('#kilome').append('<option value="'+ subcatObj.id+'">'+subcatObj.kilometraje+'</option>');
                 });
             });
         });
 
 
         $('#dest1').on('change',function(e){
-
             var dest_id = e.target.value;
-
             //ajax
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k1').empty();
