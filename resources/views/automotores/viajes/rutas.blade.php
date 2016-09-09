@@ -25,7 +25,7 @@
                     <!--<td class="text-center">{{ $encargado->i }}</td>-->
                     <td>{{ $encargado->n }}</td>
                     <td>{{ $encargado->a }}</td>
-                    <td>{{ $encargado->c }}</td>
+                    <td class="text-center">{{ $encargado->c }}</td>
                 </tbody>
                @endforeach
             </table>    
@@ -44,7 +44,7 @@
                     <!--<td class="text-center">{{ $chofer->i }}</td>-->
                     <td>{{ $chofer->n }}</td>
                     <td>{{ $chofer->a }}</td>
-                    <td>{{ $chofer->c }}</td>
+                    <td class="text-center">{{ $chofer->c }}</td>
                  </tbody>   
                 @endforeach
             </table>    
@@ -87,7 +87,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
                 @foreach ($desti1 as $destino)
@@ -97,7 +97,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
                 @foreach ($desti2 as $destino)
@@ -107,7 +107,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
                 @foreach ($desti3 as $destino)
@@ -117,7 +117,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
                 @foreach ($desti4 as $destino)
@@ -127,7 +127,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
                 @foreach ($desti5 as $destino)
@@ -137,7 +137,7 @@
                     <td>{{ $destino->o }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
-                    <td>{{ $destino->k }}</td>
+                    <td class="text-center">{{ $destino->k }}</td>
                  </tbody>   
                 @endforeach
             </table>    

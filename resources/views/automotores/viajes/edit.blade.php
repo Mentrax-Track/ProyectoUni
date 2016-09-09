@@ -16,7 +16,7 @@
     <div class="panel-body"> 
 
             {!! Form::model($via,['route'=>['viajes.update',$via->id],'method'=>'PUT']) !!}
-                @include('automotores.viajes.forms.via')
+                @include('automotores.viajes.forms.vias')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                 <center>

@@ -14,6 +14,7 @@ use Infraestructura\Destino_Viaje;
 
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Requests\ViajeCreateRequest;
+use Infraestructura\Http\Requests\ViajeUpdateRequest;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -326,7 +327,7 @@ class ViajesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ViajeUpdateRequest $request, $id)
     {
         $this->viaje->fill($request->all());
         $this->viaje->save();

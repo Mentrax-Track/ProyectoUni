@@ -18,28 +18,26 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-        <div class="form-group form-group-lg pa">
-            <center>{!! Form::label('Fecha de Inicio:') !!}</center>
-            <div class='input-group date input-group-sm' id='datetimepicker6'>              
-                {!! Form::text('fecha_inicial',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'La Fecha inicial es obligatorio...','required']) !!}
-                <center><div class="help-block with-errors"></div></center>
-                <span class="input-group-addon" id="sizing-addon3">
-                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                </span>
-                
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="form-group form-group-lg pa">
-            <center>{!! Form::label('Fecha Final:') !!}</center>
-            <div class='input-group date input-group-sm' id='datetimepicker7'>    
-                {!! Form::text('fecha_final',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha final','data-error'=>'La fecha final es obligatorio...','required']) !!}
+        <div class="form-group">
+            {!! Form::label('Fecha Inicial:') !!}
+            <div class='input-group date ' id='datetimepicker6'>
+                {!! Form::text('fecha_inicial',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group ">
+            {!! Form::label('Fecha Final:') !!}
+            <div class='input-group date ' id='datetimepicker7'>
+                {!! Form::text('fecha_final',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
             </div>
         </div>
      </div>

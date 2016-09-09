@@ -42,9 +42,9 @@
             {!! Form::label('Distancia (km):') !!}
             {!! Form::number('kilometraje',null,['step'=>'any','class'=>'form-control','placeholder'=>'Ejm. 12,5']) !!}
         </div>
-        <div class="form-group form-group-lg pa">
+        <div class="form-group">
                 {!! Form::label('Tiempo:') !!}
-            <div class='input-group date input-group-sm' id='datetimepicker3'>   
+            <div class='input-group date ' id='datetimepicker3'>   
                 {!! Form::text('tiempo',null,['class'=>'form-control', 'placeholder'=>'Tiempo aproximado']) !!}
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-time"></span>

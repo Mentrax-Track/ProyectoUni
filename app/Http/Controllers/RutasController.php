@@ -91,6 +91,7 @@ class RutasController extends Controller
         ->where('destinos.id',$destino_id)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.kilome as k')
+        ->distinct()
         ->get();
         //dd($destinos);
 
@@ -104,6 +105,7 @@ class RutasController extends Controller
         ->where('destinos.id',$dest1)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.k1 as k')
+        ->distinct()
         ->get();
         //dd($desti1);
 
@@ -117,6 +119,7 @@ class RutasController extends Controller
         ->where('destinos.id',$dest2)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.k2 as k')
+        ->distinct()
         ->get();
         //dd($desti2);
 
@@ -130,6 +133,7 @@ class RutasController extends Controller
         ->where('destinos.id',$dest3)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.k3 as k')
+        ->distinct()
         ->get();
         //dd($desti3);
 
@@ -143,6 +147,7 @@ class RutasController extends Controller
         ->where('destinos.id',$dest4)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.k4 as k')
+        ->distinct()
         ->get();
         //dd($desti4);
 
@@ -156,6 +161,7 @@ class RutasController extends Controller
         ->where('destinos.id',$dest5)
         ->where('viajes.id',$id)
         ->select('viajes.id as i','destinos.dep_inicio as ini','destinos.origen as o','destinos.destino as d','destinos.dep_final as fin','rutas.k5 as k')
+        ->distinct()
         ->get();  
         //dd($desti5);
         $adici = Ruta::where('viaje_id',$id)

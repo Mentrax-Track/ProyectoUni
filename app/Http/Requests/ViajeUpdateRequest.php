@@ -4,7 +4,7 @@ namespace Infraestructura\Http\Requests;
 
 use Infraestructura\Http\Requests\Request;
 
-class ViajeCreateRequest extends Request
+class ViajeUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,21 +21,9 @@ class ViajeCreateRequest extends Request
      *
      * @return array
      */
-   public function rules()
+    public function rules()
     {
         return [
-            'destino_id'=> 'required',
-            'kilome'    => 'required|numeric',
-            'k1'        => 'numeric',
-            'k2'        => 'numeric',
-            'k3'        => 'numeric',
-            'k4'        => 'numeric',
-            'k5'        => 'numeric',
-            'adicional' => 'required|numeric',
-            'total'     => 'required|numeric',
-            'chofer'    => 'required',
-            'encargado' => 'required',
-            'vehiculo'  => 'required',
             'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|min:5|max:50',
 
             'objetivo'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
