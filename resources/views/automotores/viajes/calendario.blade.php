@@ -1,57 +1,72 @@
 @extends('automotores.admin')
 @section('subtitulo','Calendario de Viajes')
 @section('css')
-
+    
     {!! Html::style('css/sb-admin-2.css')!!}
-    {!! Html::style('css/fullcalendar/fullcalendar.css') !!}
+    {!! Html::style('css/fullcalendar/jquery-ui.min.css')!!}
+    {!! Html::style('css/fullcalendar/fullcalendar.css')!!}
 
 @stop
 
 @section('javascript')
 
-    {!! Html::script('js/jquery.min.js') !!}
     {!! Html::script('js/moment.min.js') !!}
+    {!! Html::script('js/jquery.min.js') !!}
+    {!! Html::script('js/fullcalendar/jquery-ui.custom.min.js') !!}
     {!! Html::script('js/fullcalendar/fullcalendar.min.js') !!}
-    {!! Html::script('js/fullcalendar/fullcalendar-lang.js') !!}
     
     <script>
         $(document).ready(function() {
 
-            // page is now ready, initialize the calendar...
-           
+            // iniciamos el calendario           
             $('#calendar').fullCalendar({
+                //cuando haga click en un evento nos redirecciona y pinta de rojo
                 eventClick: function(calEvent, jsEvent, view) {
      
                      $(this).css('background', 'red');
                         
                 },
-                
+                //Cambia los colores del evento
                 eventAfterRender: function (event, element, view) {
                     var dataHoje = new Date();
                     if (event.start < dataHoje && event.end > dataHoje) {
-                        //event.color = "#FFB347"; //Em andamento
+                        //event.color = "#FFB347"; //En funcion
                         element.css('background-color', '#FFB347');
                     } else if (event.start < dataHoje && event.end < dataHoje) {
                         //event.color = "#77DD77"; //Concluído OK
                         element.css('background-color', '#77DD77');
                     } else if (event.start > dataHoje && event.end > dataHoje) {
-                        //event.color = "#AEC6CF"; //Não iniciado
-                        element.css('background-color', '#AEC6CF');
+                        //event.color = "#AEC6CF"; //No iniciado
+                        element.css('background-color', '#88BAF9');
                     }
                 },
-                  
-                    lang: 'es',
-                    editable: false,
-                    eventLimit: false,
-                    events:{
-                        //para obtener los resultados del controlador y mostrarlos en el calendario
-                        //basta con hacer referencia a la url que nos da dicho resultado, en el ejemplo
-                        //en la propiedad url de events ponemos el enlace
-                        //y listo eso es todo ya el plugin se encargara de acomodar los eventos
-                        //segun la fecha.
+                //Muestra las cabezeras del calendario
+                header: {
+                    left: 'prev,next today myCustomButton',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },  
+
+                theme: true,
+                editable: false,
+                eventLimit: false,
+                eventBorderColor: '#1A1A1A',
+                eventTextColor: '#000080',
+                events:{
+                    //para obtener los resultados del controlador y mostrarlos en el calendario
+                    //basta con hacer referencia a la url que nos da dicho resultado, en el ejemplo
+                    //en la propiedad url de events ponemos el enlace
+                    //y listo eso es todo ya el plugin se encargara de acomodar los ventos
+                     //segun la fecha.
                         url:'events'
                     },
-                    eventColor: '#577d86',
+                
+                
+                monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+                dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
+                buttonText:{prev:"<span class='fc-text-arrow'>&lsaquo;</span>",next:"<span class='fc-text-arrow'>&rsaquo;</span>",prevYear:"<span class='fc-text-arrow'>&laquo;</span>",nextYear:"<span class='fc-text-arrow'>&raquo;</span>",today:"hoy",month:"mes",week:"semana",day:"día"},
             })
 
         });
@@ -60,20 +75,22 @@
        body {
             margin: 40px 10px;
             padding: 0;
-            font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+            font-family: "Times New Roman",Helvetica,Arial,Verdana,sans-serif;
             font-size: 14px;
         }
 
         #calendar {
             max-width: 900px;
             margin: 0 auto;
+            font-family: "Times New Roman",Helvetica,Arial,Verdana,sans-serif;
+            
         }
-
+        
     </style>
     @section('content')
     <br>
     <div class="panel panel-default">
-        <div class="panel-heading text-center"><h2><p class="www">Calendario de Viajes</p></h2></div>
+        <div class="panel-heading text-center"><h3><p class="www">Calendario de Viajes</p></h3></div>
         <div class="panel-body"> 
                 <div class="list-group-item">
                     <div class="jumbotron">

@@ -288,7 +288,8 @@ class ViajesController extends Controller
      */
     public function show($id)
     {
-        //
+        $viaje = Viaje::where('id',$id)->orderBy('id', 'DESC')->paginate(12);
+        return view('automotores.viajes.index', compact('viaje'));
     }
 
     /**

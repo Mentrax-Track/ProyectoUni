@@ -34,16 +34,16 @@ class CalendarioController extends Controller
                 "title"=>$title[$i], //obligatoriamente "title", "start" y "url" son campos requeridos
                 "start"=>$star[$i],
                 "end"=>$end[$i], //por el plugin asi que asignamos a cada uno el valor correspondiente
-                "url"=>"/automotores/public/events/".$id[$i]
+                "url"=>"/viajes/".$id[$i]
                 //en el campo "url" concatenamos el el URL con el id del evento para luego
                 //en el evento onclick de JS hacer referencia a este y usar el método show
                 //para mostrar los datos completos de un evento
             );
         }
  
-        json_encode($data); //convertimos el array principal $data a un objeto Json
- 
-         return $data; //para luego retornarlo y estar listo para consumirlo
+        //json_encode($data); //convertimos el array principal $data a un objeto Json
+        
+        return response()->json($data); //para luego retornarlo y estar listo para consumirlo
     }
 
     
