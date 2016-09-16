@@ -12,7 +12,7 @@
 
     <form class="form-inline">
         <div class="form-group pull-rigth">
-            <label>Busqueda por Entidad</label> 
+            <label>Busqueda:</label> 
             @include('automotores.reservas.forms.busqueda')
         </div>
     </form>
@@ -40,9 +40,12 @@
                     <td class="text-center">{{ $reser->fecha_inicial }}</td>
                     <td class="text-center">{{ $reser->fecha_final }}</td>
                     <td class="text-center">{{ $reser->dias }}</td>
-                    <td class="btns">
-                        {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary'])!!}
-                        
+                    <td class="btns" style="vertical-align:middle;">
+                        <center>
+                            {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                            
+                            <a class="btn btn-info btn-sm glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >modificar</a>
+                        </center>
                     </td>
                     
                 </tbody>
@@ -53,6 +56,6 @@
     </div>
 </div>
 <!--con appends adjunto los parametros adicionales de busqueda -->
-{!! $reserva->render() !!}</div>
+{!! $reserva->appends(Request::only(['entidad']))->render() !!}</div>
        
 @stop

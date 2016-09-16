@@ -35,9 +35,10 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->tipo }}</td>
                             <td>{{ $user->full_institucion }}</td>
-                            <td class="btns"><center>
-                                {!!link_to_route('users.edit', $title = 'Editar', $parameters = $user, $attributes = ['class'=>'btn btn-primary'])!!}
-                                    </center>
+                            <td class="btns" style="vertical-align:middle;">
+                                <center>
+                                {!!link_to_route('users.edit', $title = 'Editar', $parameters = $user, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                                </center>
                             </td>
                         </tr>
                     </tbody>

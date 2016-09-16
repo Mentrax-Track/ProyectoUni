@@ -97,7 +97,9 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                {!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}        
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                </button>        
             </div>
             <div class="col-md-4"></div>   
         </div>
@@ -198,7 +200,9 @@ function mostrar(id) {
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    {!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}        
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                    </button>        
                 </div>
                 <div class="col-md-4"></div>   
             </div>

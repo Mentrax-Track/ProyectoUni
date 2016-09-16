@@ -14,8 +14,10 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                 <center>
-                {!! Form::submit('Actualizar',['class'=>'btn btn-primary btn-sm btn-block']) !!}
-                </center></div>
+                <button type="submit" class="btn btn-primary btn-sm btn-block">
+                    <span class="glyphicon glyphicon-ok">   Actualizar</span> 
+                </button>
+                </div>
                 <div class="col-md-4"></div><br>
     {!! Form::close() !!}
             <br>
@@ -23,8 +25,11 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                 <center>
-                {!! Form::submit('Eliminar',['class'=>'btn btn-danger btn-sm btn-block']) !!}
-                </center></div>
+                <button type="submit" class="btn btn-danger btn-sm btn-block">
+                    <span class="glyphicon glyphicon-trash">   Eliminar</span> 
+                </button>
+                </center>
+                </div>
                 <div class="col-md-4"></div><br>
     {!! Form::close() !!}
     </div>

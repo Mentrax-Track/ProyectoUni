@@ -23,11 +23,12 @@ class Reserva extends Model
         return $this->hasOne('Infraestructura\User','id','user_id');
     }
 
-    public function scopeEnti($query, $enti)
+    public function scopeEntidad($query, $entidad)
     {
-        if(trim($enti) != "")
+        //trim para eliminar los espacios
+        if(trim($entidad) != "")
         {
-            $query->where('entidad', "LIKE","%$enti%");    
+            $query->where('entidad', "LIKE","%$entidad%");    
         }
     }
 }

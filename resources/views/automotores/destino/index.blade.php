@@ -37,9 +37,10 @@
                             <td class="info">{{ $des->dep_final }}</td>
                             <td>{{ $des->kilometraje }}</td>
                             <td>{{ $des->tiempo }}</td>
-                            <td class="btns"><center>
-                                {!!link_to_route('destinos.edit', $title = 'Editar', $parameters = $des, $attributes = ['class'=>'btn btn-primary'])!!}
-                                    </center>
+                            <td class="btns" style="vertical-align:middle;">
+                                <center>
+                                    {!!link_to_route('destinos.edit', $title = 'Editar', $parameters = $des, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                                </center>
                             </td>
                         </tr>
                     </tbody>

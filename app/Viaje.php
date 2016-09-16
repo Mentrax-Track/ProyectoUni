@@ -71,20 +71,25 @@ class Viaje extends Model
     public function enviVehi()
     {
         return $this->hasOne('automotores\Vehiculo','id','vehiculo_id');
-    }
-
-    public function scopeEntid($query, $entid)
-    {
-        if (trim($entid) != "")
-        {
-            $query->where(\DB::raw("CONCAT(entidad,' ',tipo)"), "LIKE","%$entid%");    
-        }   
-    }
-    public function scopeChof($query, $chof)
-    {
-        if(trim($chof) != "" )
-        {
-            $query->where(\DB::raw("CONCAT(chofer_id,' ',destino_id)"), "LIKE","%$chof%");
-        }
     }*/
+
+    public function scopeEntidad($query, $entidad)
+    {
+        //El trim es para eliminar los espacios
+        if(trim($entidad) != "")
+        {
+            //para q busque el nombre y el apellido es DB::raw con la function CONCAT mysql
+            // El \ es para q tome el alias en la seccion de alias
+            $query->where('entidad', "LIKE","%$entidad%");    
+        }
+    }
+    public function scopeTipo($query, $tipo)
+    {
+        $tipos = config('viaTipo.viaTipos');
+
+        if($tipo != "" && isset($tipos[$tipo]))
+        {
+            $query->where('tipo', $tipo);
+        }
+    }
 }

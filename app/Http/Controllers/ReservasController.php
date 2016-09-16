@@ -30,7 +30,7 @@ class ReservasController extends Controller
      */
     public function index(Request $request)
     {
-        $reserva = Reserva::enti($request->get('enti'))->orderBy('id','DESC')->paginate(10);
+        $reserva = Reserva::entidad($request->get('entidad'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.reservas.index',compact('reserva'));
     }
 

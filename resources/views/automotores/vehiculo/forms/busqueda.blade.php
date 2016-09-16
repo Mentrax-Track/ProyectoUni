@@ -3,5 +3,7 @@
         {!! Form::select('tip', config('opciones.types'),null,['class'=>'form-control']) !!}
         {!! Form::select('esta', config('estados.estas'),null,['class'=>'form-control']) !!}
     </div>
-        {!! Form::submit('Buscar',['class'=>'btn btn-info']) !!}
+    <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search">Buscar</span>
+    </button>
 {!! Form::close() !!}

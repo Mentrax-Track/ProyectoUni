@@ -9,7 +9,12 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Viajes</p></h4></div>
     <div class="panel-body"> 
-
+        <form class="form-inline">
+            <div class="form-group">
+                <label>Busqueda</label> 
+                @include('automotores.viajes.forms.busqueda')
+            </div>
+        </form>
     <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed"><br>
             <tr class="info">
@@ -34,9 +39,11 @@
                     <td class="text-center">{{ $via->pasajeros }}</td>
                     <td class="text-center">{{ $via->fecha_inicial }}</td>
                     <td class="text-center">{{ $via->fecha_final }}</td>
-                    <td class="btns text-center">
-                        {!!link_to_route('viajes.edit', $title = 'Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-primary'])!!}
-                        <a class="btn btn-primary " href="{{ route('rutas.show',['id' => $via->id] )}}" >Detalle</a>
+                    <td class="btns" style="vertical-align:middle;">
+                    <center>
+                        {!!link_to_route('viajes.edit', $title = 'Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                        <a class="btn btn-primary btn-sm " href="{{ route('rutas.show',['id' => $via->id] )}}" >Detalle</a>
+                    </center>
                     </td>
                 </tbody>
             @endforeach   
@@ -46,6 +53,6 @@
     </div>
 </div>
 <!--con appends adjunto los parametros adicionales de busqueda -->
-{!! $viaje->render() !!}</div>
+{!! $viaje->appends(Request::only(['entidad','tipo']))->render() !!}</div>
        
 @stop

@@ -40,9 +40,9 @@ class ViajesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $viaje = Viaje::orderBy('id', 'DESC')->paginate(12);
+        $viaje = Viaje::entidad($request->get('entidad'))->tipo($request->get('tipo'))->orderBy('id', 'DESC')->paginate(12);
         return view('automotores.viajes.index', compact('viaje'));
     }
 

@@ -46,8 +46,10 @@
                 <td>
                     <img src="vehi/{{$vehi->path}}" alt="" style="width:90px; display:block;margin:0 auto 0 auto;" />
                 </td>
-                <td class="btns" ><center>
-                   {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-primary'])!!}</center>
+                <td class="btns" style="vertical-align:middle;">
+                    <center>
+                    {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                   </center>
                 </td>
             </tbody>
         @endforeach

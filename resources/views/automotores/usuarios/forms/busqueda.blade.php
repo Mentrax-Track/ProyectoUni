@@ -3,5 +3,12 @@
         {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre de usuario']) !!}
         {!! Form::select('tipo', config('completo.completos'),null,['class'=>'form-control']) !!}
     </div>
-        {!! Form::submit('Buscar',['class'=>'btn btn-info']) !!}
+    <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search">Buscar</span>
+    </button>
 {!! Form::close() !!}
+
+
+
+
+

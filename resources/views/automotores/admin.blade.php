@@ -104,6 +104,17 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-road"></i> Presupuesto de Viaje<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/presupuestos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </div>

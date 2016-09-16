@@ -22,7 +22,7 @@
     <div class="panel-body">      
        {!! Form::open(['route'=>'viajes.store','method'=>'POST','data-toggle'=>'validator']) !!}
         
-            @include('automotores.viajes.forms.via')
+            @include('automotores.reservi.forms.via')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
                 <center><button type="submit" class="btn btn-primary btn-block">
