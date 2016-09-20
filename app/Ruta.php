@@ -3,7 +3,8 @@
 namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Infraestructura\Viaje;
+use Infraestructura\Presupuesto;
 class Ruta extends Model
 {
     protected $table = 'rutas';
@@ -19,5 +20,10 @@ class Ruta extends Model
     public function viaje()
     {
         return $this->belongsTo('Infraestructura\Viaje');
+    }
+    //una ruta pertenece a un presupuesto
+    public function presupuesto()
+    {
+        return $this->belongsTo('Infraestructura\Presupuesto');
     }
 }

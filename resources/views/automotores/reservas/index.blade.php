@@ -41,11 +41,13 @@
                     <td class="text-center">{{ $reser->fecha_final }}</td>
                     <td class="text-center">{{ $reser->dias }}</td>
                     <td class="btns" style="vertical-align:middle;">
-                        <center>
-                            {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                        <div class="btn-group btn-group-sm">
+                            <center>
+                            {!!link_to_route('reservas.edit', $title = ' Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
                             
-                            <a class="btn btn-info btn-sm glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >modificar</a>
-                        </center>
+                            <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" > Concretar</a>
+                            </center>
+                        </div>
                     </td>
                     
                 </tbody>

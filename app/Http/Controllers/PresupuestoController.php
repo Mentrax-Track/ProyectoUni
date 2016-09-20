@@ -1,7 +1,6 @@
 <?php
 
 namespace Infraestructura\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Infraestructura\Viaje;
 use Infraestructura\Vehiculo;
@@ -34,7 +33,6 @@ class PresupuestoController extends Controller
         $this->destino     = Destino::find($route->getParameter('destino'));
         $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo','encargado','destino'));
     }
-    /*
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +40,7 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-        $presupuesto = Presupuesto::orderBy('id','ASC')->paginate(10);
-        return view('automotores.presupuesto.index',compact('presupuesto'));
+        //
     }
 
     /**
@@ -52,6 +49,28 @@ class PresupuestoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         $encargados = User::where('tipo', 'encargado')
                     ->orderBy('nombres','ASC')
@@ -65,38 +84,53 @@ class PresupuestoController extends Controller
                     ->orderBy('tipo','ASC')
                     ->get(['id', 'tipo', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
-                    
-        return view('automotores.presupuesto.create',compact('choferes','encargados','vehiculos'));
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $presupuesto = new Presupuesto;
-        $presupuesto->create($request->all());
-        Session::flash('mensaje','Presupuesto creado correctamente');
-        return redirect('/presupuestos');
-    }
+        $destino   = Destino::orderBy('id','ASC')
+                    ->get(['id','origen', 'destino'])
+                    ->lists('full_destino');
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $presupuesto = Presupuesto::find($id);
-        $date = date('Y-m-d');
-        $view =  \View::make('automotores.presupuesto.ver', compact( 'date', 'presupuesto'))->render();
-        $pdf  = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('carta', 'portrat');
-        return $pdf->stream('invoice');
+        $viaje = Viaje::find($id);
+
+        $ruta = Ruta::where('viaje_id',$id)->first();
+        //Destinos
+        $destino_i = Ruta::where('viaje_id',$id)
+                ->select('destino_id')->lists('destino_id')->toArray();
+        $destino_id = Destino::where('id',$destino_i)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+        //dd($destino_id);
+        $dest = Ruta::where('viaje_id',$id)
+                ->select('dest1')->lists('dest1')->toArray();
+        $dest1 = Destino::where('id',$dest)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest2a = Ruta::where('viaje_id',$id)
+                ->select('dest2')->lists('dest2')->toArray();
+        $dest2 = Destino::where('id',$dest2a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();        
+
+        $dest3a = Ruta::where('viaje_id',$id)
+                        ->select('dest3')->lists('dest3')->toArray();
+        $dest3 = Destino::where('id',$dest3a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest4a = Ruta::where('viaje_id',$id)
+                        ->select('dest4')->lists('dest4')->toArray();
+        $dest4 = Destino::where('id',$dest4a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest5a = Ruta::where('viaje_id',$id)
+                        ->select('dest5')->lists('dest5')->toArray();
+        $dest5 = Destino::where('id',$dest5a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+
+        return view('automotores.presupuesto.create',compact('dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
     }
 
     /**
@@ -107,8 +141,7 @@ class PresupuestoController extends Controller
      */
     public function edit($id)
     {
-        $presupuesto = Presupuesto::find($id);
-        return view('automotores.presupuesto.edit',['presupuesto'=>$presupuesto]);
+        //
     }
 
     /**
@@ -120,12 +153,7 @@ class PresupuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $presupuesto=Presupuesto::find($id);
-        $presupuesto->fill($request->all());
-        
-        $presupuesto->save();
-        Session::flash('mensaje','Presupuesto editado correctamente');
-        return redirect('presupuestos');
+        //
     }
 
     /**
@@ -136,8 +164,6 @@ class PresupuestoController extends Controller
      */
     public function destroy($id)
     {
-        Presupuesto::destroy($id);
-        Session::flash('mensaje','Presupuesto Eliminado correctamente');
-        return Redirect::to('/presupuestos');
+        //
     }
 }

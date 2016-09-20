@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Infraestructura\User;
 use Infraestructura\Vehiculo;
 use Infraestructura\Destino;
+use Infraestructura\Ruta;
+use Infraestructura\Presupuesto;
+
 use Infraestructura\Vehiculo_Viaje;
 
 class Viaje extends Model
@@ -47,6 +50,11 @@ class Viaje extends Model
     public function rutas()
     {
         return $this->hasMany('Infraestructura\Ruta');   
+    }
+    //Un viaje puede tener muchos presupuestos
+    public function presupuestos()
+    {
+        return $this->hasMany('Infraestructura\Presupuesto');
     }
     public function scopeVia($query, $via)
     {

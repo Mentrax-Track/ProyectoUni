@@ -164,9 +164,8 @@ Route::group(['middleware' => 'auth'], function(){
 /////////// rutas //////////
 Route::resource('rutas','RutasController');
 
-Route::resource('presupuestos','PresupuestoController');
-
 Route::resource('reserviaje','ReservaViajeController');
 
+Route::resource('presupuestos','PresupuestoController');
 
 

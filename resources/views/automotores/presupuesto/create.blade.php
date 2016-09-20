@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Incertar Viaje')
+@section('subtitulo','Presupuesto de Viaje')
 @section('css')
 
      {!! Html::style('css/bootstrap.min.css') !!}
@@ -11,6 +11,7 @@
      {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
      {!! Html::style('css/easy-autocomplete.min.css') !!}
      {!! Html::style('css/select2.css') !!}
+
 @stop
 @section('content')
 @include('alertas.request')
@@ -22,7 +23,7 @@
     <div class="panel-body"> 
         {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','files' => true ]) !!}
         
-            @include('automotores.presupuesto.form.pro')
+            @include('automotores.presupuesto.forms.presu')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
                     <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
@@ -83,80 +84,25 @@ $(function () {
             format: 'LT',
         });
     });
+
 function sumar()
 {
-    var valor1=verificar("valor1");
+
+    var total=verificar("total");
+    var division=verificar("division");
+    var combustible=verificar("combustible");
+
+    var pcantidad=verificar("pcantidad");
+    var punitario=verificar("punitario");
+    var ptotal=verificar("ptotal");
     
-    var valor2=verificar("valor2");
+    document.getElementById("total").value=parseFloat(total);
+    document.getElementById("division").value=parseFloat(division);
+    document.getElementById("combustible").value=parseFloat(total)/parseFloat(division);
 
-    var valor3=verificar("valor3");
-    var valor4=verificar("valor4");
-
-    var valor5=verificar("valor5");
-    var valor6=verificar("valor6");
-
-    var valor7=verificar("valor7");
-    var valor8=verificar("valor8");
-
-    var valor9=verificar("valor9");
-    var valor10=verificar("valor10");
-
-    var valor11=verificar("valor11");
-    var valor12=verificar("valor12");
-
-    /* --------------------------------*/
-    var valor13=verificar("valor13");
-    var valor14=verificar("valor14");
-    var valor15=verificar("valor15");
-    var valor16=verificar("valor16");
-    var valor17=verificar("valor17");
-    var valor18=verificar("valor18");
-
-    var valor19=verificar("valor19");
-    var valor20=verificar("valor20");
-
-    var valor21=verificar("valor21");
-    var valor22=verificar("valor22");
-
-    var valor23=verificar("valor23");
-    var valor24=verificar("valor24");
-    var valor25=verificar("valor25");
-
-    var re2=(parseFloat(valor1)*parseFloat(valor2))+(parseFloat(valor3)*parseFloat(valor4))+(parseFloat(valor5)*parseFloat(valor6))+(parseFloat(valor7)*parseFloat(valor8))+(parseFloat(valor9)*parseFloat(valor10))+(parseFloat(valor11)*parseFloat(valor12));
-    var total7=re2.toFixed(2);
-    var re3=(parseFloat(valor19)*parseFloat(valor20))+(parseFloat(valor21)*parseFloat(valor22))+(parseFloat(valor23)*parseFloat(valor24));
-    var total14=re3.toFixed(2);
-    var re4=(parseFloat(valor1)*(parseFloat(valor2))+(parseFloat(valor3)*parseFloat(valor4))+(parseFloat(valor5)*parseFloat(valor6))+(parseFloat(valor7)*parseFloat(valor8))+(parseFloat(valor9)*parseFloat(valor10))+(parseFloat(valor11)*parseFloat(valor12)))-((parseFloat(valor19)*parseFloat(valor20))+(parseFloat(valor21)*parseFloat(valor22))+(parseFloat(valor23)*parseFloat(valor24)));
-    var total15=re4.toFixed(2);
-
-    var des1=(parseFloat(valor1)*parseFloat(valor2));
-    var total1=des1.toFixed(2);
-    var des2=(parseFloat(valor3)*parseFloat(valor4));
-    var total2=des2.toFixed(2);
-    var des3=(parseFloat(valor5)*parseFloat(valor6));
-    var total3=des3.toFixed(2);
-    var des4=(parseFloat(valor7)*parseFloat(valor8));
-    var total4=des4.toFixed(2);
-    var des5=(parseFloat(valor9)*parseFloat(valor10));
-    var total5=des5.toFixed(2);
-    var des6=(parseFloat(valor11)*parseFloat(valor12));
-    var total6=des6.toFixed(2);
-
-    document.getElementById("total1").value=parseFloat(total1);
-    document.getElementById("total2").value=parseFloat(total2);
-    document.getElementById("total3").value=parseFloat(total3);
-    document.getElementById("total4").value=parseFloat(total4);
-    document.getElementById("total5").value=parseFloat(total5);
-    document.getElementById("total6").value=parseFloat(total6);
-    document.getElementById("total7").value=parseFloat(total7);
-    document.getElementById("total8").value=parseFloat(valor13)+parseFloat(valor14)+parseFloat(valor15)+parseFloat(valor16)+parseFloat(valor17)+parseFloat(valor18);
-    document.getElementById("total9").value=parseFloat(valor19)*parseFloat(valor20);
-    document.getElementById("total10").value=parseFloat(valor21)*parseFloat(valor22);
-    document.getElementById("total11").value=parseFloat(valor23)*parseFloat(valor24);
-        
-    document.getElementById("total14").value=parseFloat(total14);
-    document.getElementById("total15").value=parseFloat(total15);
-    document.getElementById("total16").value=parseFloat((parseFloat(valor13)+parseFloat(valor14)+parseFloat(valor15)+parseFloat(valor16)+parseFloat(valor17)+parseFloat(valor18))/parseFloat(valor25));
+    document.getElementById("pcantidad").value=parseFloat(pcantidad);
+    document.getElementById("punitario").value=parseFloat(punitario);
+    document.getElementById("ptotal").value=parseFloat(pcantidad)*parseFloat(punitario);
 }
 function verificar(id)
 {

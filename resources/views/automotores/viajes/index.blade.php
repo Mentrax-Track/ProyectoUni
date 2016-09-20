@@ -40,10 +40,15 @@
                     <td class="text-center">{{ $via->fecha_inicial }}</td>
                     <td class="text-center">{{ $via->fecha_final }}</td>
                     <td class="btns" style="vertical-align:middle;">
-                    <center>
-                        {!!link_to_route('viajes.edit', $title = 'Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
-                        <a class="btn btn-primary btn-sm " href="{{ route('rutas.show',['id' => $via->id] )}}" >Detalle</a>
-                    </center>
+                        <div class="btn-group btn-group-sm">
+                            <center>
+                            <a class="btn btn-primary  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
+
+                            {!!link_to_route('viajes.edit', $title = ' Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block glyphicon glyphicon-edit'])!!}
+                            
+                            {!!link_to_route('presupuestos.show', $title = 'Presupesto', $parameters = $via->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block glyphicon glyphicon-check'])!!}
+                            </center>
+                        </div>
                     </td>
                 </tbody>
             @endforeach   

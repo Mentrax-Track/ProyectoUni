@@ -68,16 +68,16 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class='glyphicon glyphicon-calendar'></i> Viajes<span class="fa arrow"></span></a>
+                            <a href="#"><i class='glyphicon glyphicon-globe'></i> Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/calendario') !!}"><i class='glyphicon glyphicon-list-alt'></i> Calendario</a>
+                                    <a href="{!! URL::to('/calendario') !!}"><i class='glyphicon glyphicon-calendar'></i> Calendario</a>
                                 </li>
                                 <li>
                                     <a href="{!! URL::to('/viajes/create') !!}"><i class='glyphicon glyphicon-edit'></i> Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="{!! URL::to('/viajes') !!}"><i class='glyphicon glyphicon-list'></i> Mostrar</a>
+                                    <a href="{!! URL::to('/viajes') !!}"><i class='glyphicon glyphicon-list-alt'></i> Listar</a>
                                 </li>
 
                             </ul>
@@ -107,9 +107,6 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-road"></i> Presupuesto de Viaje<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/presupuestos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
-                                </li>
                                 <li>
                                     <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
                                 </li>
