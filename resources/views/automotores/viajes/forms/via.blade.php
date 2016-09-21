@@ -14,7 +14,12 @@
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <center>{!! Form::label('Kilometraje: ') !!}</center>
-                        <input type="text" id="kilome" name="kilome" onkeyup="sumar();" class="form-control" data-error="Seleccione o inserte un valor" required>
+                        <div class="input-group date">
+                            {!! Form::text('kilome',null,['class'=>'form-control','id'=>'kilome','value'=>'0','data-error'=>'No se acepta valor vacio','required']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                 </div>
@@ -24,7 +29,12 @@
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text" id="k1" name="k1" onkeyup="sumar();" class="form-control" data-error="Seleccione o inserte un valor" required>
+                        <div class="input-group date">
+                            {!! Form::text('k1',null,['class'=>'form-control','id'=>'k1','value'=>'0','data-error'=>'No se acepta valor vacio','required']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                 </div>
@@ -33,7 +43,12 @@
                         {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text" id="k2" name="k2" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k2',null,['class'=>'form-control','id'=>'k2','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -41,7 +56,12 @@
                         {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text"  id="k3" name="k3" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k3',null,['class'=>'form-control','id'=>'k3','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -49,7 +69,12 @@
                         {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text"  id="k4" name="k4" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k4',null,['class'=>'form-control','id'=>'k4','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -57,7 +82,12 @@
                         {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                       <input type="text" id="k5"   name="k5" onkeyup="sumar();" class="form-control" >
+                       <div class="input-group date">
+                            {!! Form::text('k5',null,['class'=>'form-control','id'=>'k5','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -67,7 +97,12 @@
                     {!! Form::label('Adicional:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     <input type="text" id="adicional" name="adicional" onkeyup="sumar();" class="form-control" placeholder="Ejemplo: 10.1" data-error="Inserte un valor" required>
+                    <div class="input-group date">
+                            {!! Form::text('adicional',null,['class'=>'form-control','id'=>'adicional','data-error'=>'Inserte un valor','required','onkeyup'=>'sumar();']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-transfer"></span>
+                            </span>
+                    </div>
                      <center><div class="help-block with-errors"></div></center> 
                 </div>
             </li>
@@ -76,7 +111,7 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     <input type="text" id="total" name="total" value="0" class="form-control" data-error="Este campo debe estar lleno" required>
+                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','disabled','data-error'=>'Este campo debe estar lleno','required']) !!}
                      <center><div class="help-block with-errors"></div></center>
                 </div>
             </li>

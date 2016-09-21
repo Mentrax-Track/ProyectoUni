@@ -88,21 +88,53 @@ $(function () {
 function sumar()
 {
 
-    var total=verificar("total");
+    var total = verificar("total");
     var division=verificar("division");
-    var combustible=verificar("combustible");
 
-    var pcantidad=verificar("pcantidad");
-    var punitario=verificar("punitario");
-    var ptotal=verificar("ptotal");
-    
     document.getElementById("total").value=parseFloat(total);
-    document.getElementById("division").value=parseFloat(division);
-    document.getElementById("combustible").value=parseFloat(total)/parseFloat(division);
+    // .toFixed(2) Convierte un número en una cadena , manteniendo sólo dos decimales
+    document.getElementById("combustible").value=(parseFloat(total)/parseFloat(division)).toFixed(2);
+    //Funciones aritmeticas para Descripcion Presupuestaria
+    var cantidadC = verificar("cantidadC");
+    var precioC   = verificar("precioC");
+    document.getElementById("totalC").value=(parseFloat(cantidadC)*parseFloat(precioC)).toFixed(2);
 
-    document.getElementById("pcantidad").value=parseFloat(pcantidad);
-    document.getElementById("punitario").value=parseFloat(punitario);
-    document.getElementById("ptotal").value=parseFloat(pcantidad)*parseFloat(punitario);
+    var cantidadVC = verificar("cantidadVC");
+    var precioVC   = verificar("precioVC");
+    document.getElementById("totalVC").value=(parseFloat(cantidadVC)*parseFloat(precioVC)).toFixed(2);
+
+    var cantidadVP = verificar("cantidadVP");
+    var precioVP   = verificar("precioVP");
+    document.getElementById("totalVP").value=(parseFloat(cantidadVP)*parseFloat(precioVP)).toFixed(2);
+
+    var cantidadVF = verificar("cantidadVF");
+    var precioVF   = verificar("precioVF");
+    document.getElementById("totalVF").value=(parseFloat(cantidadVF)*parseFloat(precioVF)).toFixed(2);
+
+    var cantidadP = verificar("cantidadP");
+    var precioP   = verificar("precioP");
+    document.getElementById("totalP").value=(parseFloat(cantidadP)*parseFloat(precioP)).toFixed(2);
+
+    var cantidadM = verificar("cantidadM");
+    var precioM   = verificar("precioM");
+    document.getElementById("totalM").value=(parseFloat(cantidadM)*parseFloat(precioM)).toFixed(2);
+
+    var cantidadG = verificar("cantidadG");
+    var precioG   = verificar("precioG");
+    document.getElementById("totalG").value=(parseFloat(cantidadG)*parseFloat(precioG)).toFixed(2);
+
+    //Para el total en Bolivianos
+    var totalT  = verificar("totalT");
+    var totalC  = verificar("totalC");
+    var totalVC = verificar("totalVC");
+    var totalVP = verificar("totalVP");
+    var totalVF = verificar("totalVF");
+    var totalP  = verificar("totalP");
+    var totalM  = verificar("totalM");
+    var totalG  = verificar("totalG");
+    //document.getElementById("totalT").value=parseFloat(totalT);
+    document.getElementById("totalT").value=(parseFloat(totalC)+parseFloat(totalVC)+parseFloat(totalVP)+parseFloat(totalVF)+parseFloat(totalP)+parseFloat(totalM)+parseFloat(totalG)).toFixed(2);
+
 }
 function verificar(id)
 {

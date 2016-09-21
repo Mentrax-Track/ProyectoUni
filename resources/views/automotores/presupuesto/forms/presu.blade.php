@@ -9,7 +9,7 @@
       {!! Form::select('chofer',$choferes,null,['class'=>'form-control','id'=>'chofer','placeholder'=>'Seleccione un chofer']) !!}
     </div>
     <div class="col-md-4">
-      {!! Form::label('Responsable:') !!}
+      {!! Form::label('Encargado del Viaje:') !!}
       {!! Form::select('encargado',$encargados,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable']) !!}
     </div>
   </div><br>
@@ -124,7 +124,7 @@
               {!! Form::label('Km. Total:') !!}
           </div>
           <div class="btn-group" role="group">
-              {!! Form::text('total',$ruta->total,['class'=>'form-control','disabled','id'=>'total']) !!}
+              {!! Form::text('total1',$ruta->total,['class'=>'form-control','disabled','id'=>'total']) !!}
           </div>
       </li>
       <li class="list-group-item">
@@ -136,7 +136,7 @@
           </div>
           <div class="btn-group" role="group">
               <div class="col-md-8">
-                {!! Form::text('division',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
+                {!! Form::text('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
               </div>
           </div>
       </li>
@@ -152,8 +152,8 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                {!! Form::label('Encargado') !!} 
-                {!! Form::text('encargado',null,['class'=>'form-control']) !!}
+                {!! Form::label('Responsable del Formulario') !!} 
+                {!! Form::text('responsable',$responsable,['class'=>'form-control','disabled']) !!}
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -219,7 +219,7 @@
                 {!! Form::label('Combustible: ') !!}
             </div>
             <div class="btn-group" role="group">
-                {!! Form::text('combustible',null,['class'=>'form-control','disabled','id'=>'combustible']) !!}
+                {!! Form::text('combustible1',null,['class'=>'form-control','id'=>'combustible','disabled']) !!}
             </div>
             <div class="btn-group" role="group">
                 {!! Form::label('Litros ') !!}
@@ -230,20 +230,33 @@
             <h4><u>Combustible Gasolina/Diesel</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_c',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Conbustible(Litros)') !!}
+                   <div class="input-group date">    
+                      {!! Form::text('cantidad1',null,['class'=>'form-control','id'=>'cantidadC','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-oil"></span>
+                      </span>
+                   </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitari_c',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Costo (Litro)') !!}
+                  <div class="input-group date">
+                      {!! Form::text('precio1',null,['class'=>'form-control','id'=>'precioC','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                  </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
-                      {!! Form::text('total_c',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                    <div class="input-group date">
+                      {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0','disabled']) !!}
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-usd"></span>
+                      </span>
+                    </div>
               </div>
             </div>
           </div>
@@ -253,20 +266,33 @@
             <h4><u>Viaticos Ciudad</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_vc',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Nro. Dias') !!}
+                    <div class="input-group date">
+                      {!! Form::text('cantidad2',null,['class'=>'form-control','id'=>'cantidadVC','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-certificate"></span>
+                      </span>
+                    </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_vc',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Monto por Dia') !!}
+                    <div class="input-group date">
+                      {!! Form::text('precio2',null,['class'=>'form-control','id'=>'precioVC','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                    </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
-                    {!! Form::text('total_vc',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                      <div class="input-group date">
+                        {!! Form::text('total2VC',null,['class'=>'form-control','id'=>'totalVC',' value'=>'0','disabled']) !!}
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-usd"></span>
+                        </span>
+                      </div>
               </div>
             </div>
           </div>
@@ -276,20 +302,33 @@
             <h4><u>Viaticos Provincia</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_vp',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Nro. Dias') !!}
+                    <div class="input-group date">  
+                      {!! Form::text('cantidad3',null,['class'=>'form-control','id'=>'cantidadVP','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-certificate"></span>
+                      </span>
+                    </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_vp',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Monto por Dia') !!}
+                    <div class="input-group date">
+                      {!! Form::text('precio3',null,['class'=>'form-control','id'=>'precioVP','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                    </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
-                      {!! Form::text('total_vp',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                      <div class="input-group date">
+                        {!! Form::text('total3VP',null,['class'=>'form-control','id'=>'totalVP',' value'=>'0','disabled']) !!}
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-usd"></span>
+                        </span>
+                      </div>    
               </div>
             </div>
           </div>
@@ -299,20 +338,33 @@
             <h4><u>Viaticos Frontera</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_vf',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Nro. Dias') !!}
+                    <div class="input-group date">
+                      {!! Form::text('cantidad4',null,['class'=>'form-control','id'=>'cantidadVF','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-certificate"></span>
+                      </span>
+                    </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_vf',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Monto por Dia') !!}
+                    <div class="input-group date">
+                      {!! Form::text('precio4',null,['class'=>'form-control','id'=>'precioVF','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                    </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
-                      {!! Form::text('total_vf',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                      <div class="input-group date">
+                        {!! Form::text('total4VF',null,['class'=>'form-control','id'=>'totalVF',' value'=>'0','disabled']) !!}
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-usd"></span>
+                        </span>
+                      </div>
               </div>
             </div>
           </div>
@@ -322,20 +374,33 @@
             <h4><u>Peajes ida y vuelta</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_pe',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Número:') !!}
+                      <div class="input-group date">
+                        {!! Form::text('cantidad5',null,['class'=>'form-control','id'=>'cantidadP','onkeyup'=>'sumar();']) !!}
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-sort"></span>
+                        </span>
+                      </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_pe',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Monto por Peaje') !!}
+                    <div class="input-group date">
+                        {!! Form::text('precio5',null,['class'=>'form-control','id'=>'precioP','onkeyup'=>'sumar();']) !!}
+                        <span class="input-group-addon">Bs.</span>
+                    </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
-                      {!! Form::text('total_pe',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                    <div class="input-group date">
+                      {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0','disabled']) !!}
+                        <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-usd"></span>
+                        </span>
+                    </div>
               </div>
             </div>
           </div>
@@ -345,20 +410,33 @@
             <h4><u>Mantenimiento Vehicular</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_ma',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Número:') !!}
+                  <div class="input-group date">
+                      {!! Form::text('cantidad6',null,['class'=>'form-control','id'=>'cantidadM','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-scale"></span>
+                      </span>
+                  </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_ma',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Monto') !!}
+                  <div class="input-group date"> 
+                   {!! Form::text('precio6',null,['class'=>'form-control','id'=>'precioM','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                  </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
-                    {!! Form::label('Total') !!}
-                      {!! Form::text('total_ma',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                  {!! Form::label('Total') !!}
+                  <div class="input-group date">
+                      {!! Form::text('total6M',null,['class'=>'form-control','id'=>'totalM',' value'=>'0','disabled']) !!}
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-usd"></span>
+                      </span>
+                  </div>
               </div>
             </div>
           </div>
@@ -368,30 +446,49 @@
             <h4><u>Garaje Vehicular</u></h4>
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                {!! Form::label('Cantidad:') !!}
-                  {!! Form::text('cantidad_ga',null,['class'=>'form-control','id'=>'pcantidad','onkeyup'=>'sumar();']) !!}
+                {!! Form::label('Número:') !!}
+                  <div class="input-group date">  
+                    {!! Form::text('cantidad7',null,['class'=>'form-control','id'=>'cantidadG','onkeyup'=>'sumar();']) !!}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-home"></span>
+                    </span>
+                  </div>
               </div>             
             </div>           
             <div class="col-md-4">
               <div class="btn-group" role="group">
-                  {!! Form::label('Precio unitario') !!}
-                   {!! Form::text('punitario_ga',null,['class'=>'form-control','id'=>'punitario','onkeyup'=>'sumar();']) !!}
+                  {!! Form::label('Precio.') !!}
+                  <div class="input-group date">
+                      {!! Form::text('precio7',null,['class'=>'form-control','id'=>'precioG','onkeyup'=>'sumar();']) !!}
+                      <span class="input-group-addon">Bs.</span>
+                  </div>
               </div>
             </div>
             <div class="col-md-4">    
               <div class="btn-group" role="group">
-                    {!! Form::label('Total') !!}
-                    {!! Form::text('total_ga',null,['class'=>'form-control','id'=>'ptotal',' value'=>'0','disabled']) !!}
+                  {!! Form::label('Total') !!}
+                  <div class="input-group date">
+                    {!! Form::text('total7G',null,['class'=>'form-control','id'=>'totalG',' value'=>'0','disabled']) !!}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-usd"></span>
+                    </span>
+                  </div>
               </div>
             </div>
           </div>
         </li>
         <li class="list-group-item">
+          <div class="col-md-2"></div>
           <div class="btn-group" role="group">
               {!! Form::label('Total Bs.:') !!}
           </div>
           <div class="btn-group" role="group">
-               {!! Form::text('total_presu',null,['class'=>'form-control','disabled','id'=>'adicional','onkeyup'=>'sumar();']) !!}
+              <div class="input-group date col-md-9">
+                  {!! Form::text('total8T',null,['class'=>'form-control','id'=>'totalT',' value'=>'0','disabled']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"> Bs.</span>
+                  </span>
+              </div>
           </div>
         </li>
       </div>

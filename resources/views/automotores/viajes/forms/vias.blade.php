@@ -13,7 +13,12 @@
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <center>{!! Form::label('Kilometraje: ') !!}</center>
-                        <input type="text" id="kilome" name="kilome" onkeyup="sumar();" class="form-control" >
+                        <div class="input-group date">
+                            {!! Form::text('kilome',null,['class'=>'form-control','id'=>'kilome','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -21,7 +26,12 @@
                         {!! Form::select('dest1',$destino,null,['class'=>'form-control','id'=>'dest1']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text" id="k1" name="k1" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k1',null,['class'=>'form-control','id'=>'k1','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -29,7 +39,12 @@
                         {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text" id="k2" name="k2" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k2',null,['class'=>'form-control','id'=>'k2','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -37,7 +52,12 @@
                         {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text"  id="k3" name="k3" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k3',null,['class'=>'form-control','id'=>'k3','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -45,7 +65,12 @@
                         {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                        <input type="text"  id="k4" name="k4" onkeyup="sumar();" class="form-control">
+                        <div class="input-group date">
+                            {!! Form::text('k4',null,['class'=>'form-control','id'=>'k4','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">   
@@ -53,7 +78,12 @@
                         {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
-                       <input type="text" id="k5"   name="k5" onkeyup="sumar();" class="form-control" >
+                       <div class="input-group date">
+                            {!! Form::text('k5',null,['class'=>'form-control','id'=>'k5','value'=>'0']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-road"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -63,7 +93,12 @@
                     {!! Form::label('Adicional:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     <input type="text" id="adicional" name="adicional" onkeyup="sumar();" class="form-control" placeholder="Ejemplo: 10.1" >
+                     <div class="input-group date">
+                            {!! Form::text('adicional',null,['class'=>'form-control','id'=>'adicional','onkeyup'=>'sumar();']) !!}
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-transfer"></span>
+                            </span>
+                    </div>
                 </div>
             </li>
             <li class="list-group-item">
@@ -71,7 +106,7 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     <input type="text" id="total" name="total" value="0" class="form-control">
+                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','disabled']) !!}
                 </div>
             </li>
         </div>

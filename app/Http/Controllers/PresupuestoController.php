@@ -129,8 +129,9 @@ class PresupuestoController extends Controller
             ->get(['origen','destino'])
             ->lists('full_destino')->toArray();
 
+        $responsable = Auth::user()->full_name;
 
-        return view('automotores.presupuesto.create',compact('dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
+        return view('automotores.presupuesto.create',compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
     }
 
     /**
