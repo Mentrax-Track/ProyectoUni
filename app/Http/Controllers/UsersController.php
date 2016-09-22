@@ -11,6 +11,7 @@ use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
+use Auth;
 class UsersController extends Controller
 {
     public function __construct()
@@ -57,6 +58,8 @@ class UsersController extends Controller
     {
         User::create($request->all());
         
+        //$usuarioResponsable = Auth::user()->full_name;
+
         Session::flash('message','Usuario creado correctamente...');
         return redirect('users');
     }

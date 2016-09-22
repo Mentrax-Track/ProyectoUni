@@ -129,13 +129,10 @@
       </li>
       <li class="list-group-item">
           <div class="btn-group" role="group">
-              {!! Form::label('Dividir el kilometraje total ') !!}
-          </div></br>
-          <div class="btn-group" role="group">
               {!! Form::label('Gasolina/Diesel') !!}
           </div>
           <div class="btn-group" role="group">
-              <div class="col-md-8">
+              <div class="col-md-9">
                 {!! Form::text('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
               </div>
           </div>
@@ -191,14 +188,14 @@
         </div>
         <div class="row">   
             <div class="col-md-6">
-                {!! Form::label('Hr. Salida') !!}
+                {!! Form::label('Hora Salida') !!}
                 <div class='input-group date input-group-sm' id='datetimepicker3'>
                   {!! Form::text('hora_salida',null,['class'=>'form-control']) !!}
                   <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
             </div>
             <div class="col-md-6">   
-                  {!! Form::label('Hr. Llegada') !!}
+                  {!! Form::label('Hora Llegada') !!}
                   <div class='input-group date input-group-sm' id='datetimepicker4'>
                       {!! Form::text('hora_llegada',null,['class'=>'form-control']) !!}
                       <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
@@ -480,7 +477,7 @@
         <li class="list-group-item">
           <div class="col-md-2"></div>
           <div class="btn-group" role="group">
-              {!! Form::label('Total Bs.:') !!}
+              {!! Form::label('Total (A) Bs.:') !!}
           </div>
           <div class="btn-group" role="group">
               <div class="input-group date col-md-9">
@@ -495,8 +492,134 @@
   </div>
 </div>
 <!--Hasta aqui la descripcion presupuestaria...-->
+<div class="col-md-1"></div>
+<div class="col-md-10" >
+    <div class="panel panel-default">
+    <li class="list-group-item">
+        <center><h4><u>Transporte Público</u></h4></center>
+    </li>
+    <div class="panel-body text-center jumbotron">
+        <div class="row">
+          <div class="col-md-2">
+            {!! Form::label('Nro. Personas') !!}
+            {!! Form::text('p1',null,['class'=>'form-control','id'=>'p1','onkeyup'=>'sumar();']) !!}
+           </div>
+           <div class="col-md-6">
+             {!! Form::label('Ruta') !!}
+              <div class="input-group date">  
+                {!! Form::text('r1',null,['class'=>'form-control']) !!}
+                <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-road"></span>
+                </span>
+              </div>
+           </div>
+           <div class="col-md-2">
+            {!! Form::label('Precio Unit.') !!}
+              <div class="input-group date">
+                  {!! Form::text('c1',null,['class'=>'form-control','id'=>'c1','onkeyup'=>'sumar();']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+              </div>
+           </div>
+           <div class="col-md-2">
+                {!! Form::label('Total') !!}
+                <div class="input-group date">
+                  {!! Form::text('t1',null,['class'=>'form-control','id'=>'t1',' value'=>'0']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                {!! Form::label('Nro. Personas') !!}
+                {!! Form::text('p2',null,['class'=>'form-control','id'=>'p2','onkeyup'=>'sumar();']) !!}
+            </div>
+            <div class="col-md-6">
+               {!! Form::label('Ruta') !!}
+                <div class="input-group date">  
+                  {!! Form::text('r2',null,['class'=>'form-control']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-road"></span>
+                  </span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              {!! Form::label('P unit') !!}
+                <div class="input-group date">
+                  {!! Form::text('c2',null,['class'=>'form-control','id'=>'c2','onkeyup'=>'sumar();']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+              {!! Form::label('Total') !!}
+                <div class="input-group date">
+                  {!! Form::text('t2',null,['class'=>'form-control','id'=>'t2',' value'=>'0']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                {!! Form::label('Número') !!}
+                {!! Form::text('p3',null,['class'=>'form-control','id'=>'p3','onkeyup'=>'sumar();']) !!}
+            </div>
+            <div class="col-md-6">
+              <br><h4>El flete por el uso del Camión</h4>
+            </div>
+            <div class="col-md-2">
+              {!! Form::label('Precio/Camión') !!}
+                <div class="input-group date">  
+                  {!! Form::text('c3',null,['class'=>'form-control','id'=>'c3','onkeyup'=>'sumar();']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+              {!! Form::label('Total') !!}
+                <div class="input-group date">
+                  {!! Form::text('t3',null,['class'=>'form-control','id'=>'t3',' value'=>'0']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+              {!! Form::label('Total (B) Bs.') !!}
+                <div class="input-group date">
+                  {!! Form::text('tt',null,['class'=>'form-control','id'=>'t4',' value'=>'0']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"></span>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <h4><u>Diferencia entre el Presupuesto y Transporte Público</u></h4>
+        <center>{!! Form::label('Total (A) - Total (B)') !!}</center>
+        <div class="row">
+              {!! Form::label('Diferencia:') !!}
+          <div class="btn-group" role="group">
+              <div class="input-group date col-md-12">
+                  {!! Form::text('diferencia',null,['class'=>'form-control','id'=>'diferencia',' value'=>'0','disabled']) !!}
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-usd"> Bs.</span>
+                  </span>
+              </div>
+          </div>
+        </div>
 
-
-
+    </div> 
+  </div>
+</div>
 
 

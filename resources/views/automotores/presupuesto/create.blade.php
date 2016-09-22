@@ -135,6 +135,29 @@ function sumar()
     //document.getElementById("totalT").value=parseFloat(totalT);
     document.getElementById("totalT").value=(parseFloat(totalC)+parseFloat(totalVC)+parseFloat(totalVP)+parseFloat(totalVF)+parseFloat(totalP)+parseFloat(totalM)+parseFloat(totalG)).toFixed(2);
 
+    //Transporte publico
+    var p1 = verificar("p1");
+    var c1 = verificar("c1");
+    document.getElementById("t1").value=(parseFloat(p1)*parseFloat(c1)).toFixed(2);
+
+    var p2 = verificar("p2");
+    var c2 = verificar("c2");
+    document.getElementById("t2").value=(parseFloat(p2)*parseFloat(c2)).toFixed(2);
+
+    var p3 = verificar("p3");
+    var c3 = verificar("c3");
+    document.getElementById("t3").value=(parseFloat(p3)*parseFloat(c3)).toFixed(2);
+
+    var t1 = verificar("t1");
+    var t2 = verificar("t2");
+    var t3 = verificar("t3");
+    document.getElementById("t4").value=(parseFloat(t1)+parseFloat(t2)+parseFloat(t3)).toFixed(2);
+
+    //Diferencia
+    var totalT = verificar("totalT");
+    var t4     = verificar("t4");
+    document.getElementById("diferencia").value=(parseFloat(totalT)-parseFloat(t4)).toFixed(2);
+
 }
 function verificar(id)
 {
