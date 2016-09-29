@@ -12,30 +12,16 @@
       {!! Form::label('Encargado del Viaje:') !!}
       {!! Form::select('encargado',$encargados,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable']) !!}
     </div>
-  </div><br>
+  </div><hr>
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-3">
-      <div class="form-group">
-          {!! Form::label('Fecha de inicio del Viaje') !!}
-          <div class='input-group date' id='datetimepicker6'>
-              {!! Form::date('fecha_inicial',$viaje->fecha_inicial,['class'=>'form-control','disabled']) !!}
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-              </span>
-          </div>
-      </div> 
+    <div class="col-md-2">
+          {!! Form::label('Inicio del Viaje') !!}
+          {!! Form::date('fecha_inicial',$viaje->fecha_inicial,['class'=>'form-control','disabled']) !!}    
     </div>
-    <div class="col-md-3">
-      <div class="form-group">
-          {!! Form::label('Fecha final de viaje') !!}
-          <div class='input-group date' id='datetimepicker7'>
+    <div class="col-md-2">
+          {!! Form::label('Final del viaje') !!}
             {!! Form::date('fecha_final',$viaje->fecha_final,['class'=>'form-control','disabled']) !!}
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-          </div>
-      </div> 
     </div>
     <div class="col-md-1">
         {!! Form::label('Dias:') !!}
@@ -43,7 +29,7 @@
     </div>
     <div class="col-md-3">
       <div class="form-group">
-          {!! Form::label('Fecha de solicitud en S.A.') !!}
+          {!! Form::label('Solicitud en S.A.') !!}
           <div class='input-group date' id='datetimepicker8'>
             {!! Form::text('fecha_sa',null,['class'=>'form-control']) !!}
             <span class="input-group-addon">
@@ -51,6 +37,10 @@
             </span>
           </div>
       </div>  
+    </div>
+    <div class="col-md-1">
+        {!! Form::label('Viaje') !!}
+        {!! Form::text('viaje_id',$viaje->id,['class'=>'form-control']) !!}
     </div>
   </div>
 </div>
@@ -132,9 +122,9 @@
               {!! Form::label('Gasolina/Diesel') !!}
           </div>
           <div class="btn-group" role="group">
-              <div class="col-md-9">
-                {!! Form::text('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
-              </div>
+              
+                {!! Form::number('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
+              
           </div>
       </li>
     </div>
@@ -150,7 +140,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 {!! Form::label('Responsable del Formulario') !!} 
-                {!! Form::text('responsable',$responsable,['class'=>'form-control','disabled']) !!}
+                {!! Form::text('responsable',$responsable,['class'=>'form-control']) !!}
             </div>
             <div class="col-md-2"></div>
         </div>
@@ -167,11 +157,11 @@
         <div class="row">
             <div class="col-md-8">
                 {!! Form::label('Entidad:') !!}
-                {!! Form::text('carrera',$viaje->entidad,['class'=>'form-control','disabled']) !!}
+                {!! Form::text('entidad',$viaje->entidad,['class'=>'form-control']) !!}
             </div>
             <div class="col-md-4">
                 {!! Form::label('# Docentes') !!}
-                {!! Form::text('numero_d',null,['class'=>'form-control']) !!}
+                {!! Form::number('ndocentes',null,['class'=>'form-control']) !!}
             </div>
         </div>
         <div class="row">
@@ -190,14 +180,14 @@
             <div class="col-md-6">
                 {!! Form::label('Hora Salida') !!}
                 <div class='input-group date input-group-sm' id='datetimepicker3'>
-                  {!! Form::text('hora_salida',null,['class'=>'form-control']) !!}
+                  {!! Form::text('hsalida',null,['class'=>'form-control']) !!}
                   <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
             </div>
             <div class="col-md-6">   
                   {!! Form::label('Hora Llegada') !!}
                   <div class='input-group date input-group-sm' id='datetimepicker4'>
-                      {!! Form::text('hora_llegada',null,['class'=>'form-control']) !!}
+                      {!! Form::text('hllegada',null,['class'=>'form-control']) !!}
                       <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                   </div>  
            </div>
@@ -216,7 +206,7 @@
                 {!! Form::label('Combustible: ') !!}
             </div>
             <div class="btn-group" role="group">
-                {!! Form::text('combustible1',null,['class'=>'form-control','id'=>'combustible','disabled']) !!}
+                {!! Form::text('combustible1',null,['class'=>'form-control','id'=>'combustible']) !!}
             </div>
             <div class="btn-group" role="group">
                 {!! Form::label('Litros ') !!}
@@ -249,7 +239,7 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                     <div class="input-group date">
-                      {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0','disabled']) !!}
+                      {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0']) !!}
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-usd"></span>
                       </span>
@@ -285,7 +275,7 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                       <div class="input-group date">
-                        {!! Form::text('total2VC',null,['class'=>'form-control','id'=>'totalVC',' value'=>'0','disabled']) !!}
+                        {!! Form::text('total2VC',null,['class'=>'form-control','id'=>'totalVC',' value'=>'0']) !!}
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                         </span>
@@ -321,7 +311,7 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                       <div class="input-group date">
-                        {!! Form::text('total3VP',null,['class'=>'form-control','id'=>'totalVP',' value'=>'0','disabled']) !!}
+                        {!! Form::text('total3VP',null,['class'=>'form-control','id'=>'totalVP',' value'=>'0']) !!}
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                         </span>
@@ -357,7 +347,7 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                       <div class="input-group date">
-                        {!! Form::text('total4VF',null,['class'=>'form-control','id'=>'totalVF',' value'=>'0','disabled']) !!}
+                        {!! Form::text('total4VF',null,['class'=>'form-control','id'=>'totalVF',' value'=>'0']) !!}
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                         </span>
@@ -393,7 +383,7 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                     <div class="input-group date">
-                      {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0','disabled']) !!}
+                      {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0']) !!}
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                         </span>
@@ -429,7 +419,7 @@
               <div class="btn-group" role="group">
                   {!! Form::label('Total') !!}
                   <div class="input-group date">
-                      {!! Form::text('total6M',null,['class'=>'form-control','id'=>'totalM',' value'=>'0','disabled']) !!}
+                      {!! Form::text('total6M',null,['class'=>'form-control','id'=>'totalM',' value'=>'0']) !!}
                       <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                       </span>
@@ -465,7 +455,7 @@
               <div class="btn-group" role="group">
                   {!! Form::label('Total') !!}
                   <div class="input-group date">
-                    {!! Form::text('total7G',null,['class'=>'form-control','id'=>'totalG',' value'=>'0','disabled']) !!}
+                    {!! Form::text('total7G',null,['class'=>'form-control','id'=>'totalG',' value'=>'0']) !!}
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-usd"></span>
                     </span>
@@ -481,7 +471,7 @@
           </div>
           <div class="btn-group" role="group">
               <div class="input-group date col-md-9">
-                  {!! Form::text('total8T',null,['class'=>'form-control','id'=>'totalT',' value'=>'0','disabled']) !!}
+                  {!! Form::text('total8T',null,['class'=>'form-control','id'=>'totalT',' value'=>'0']) !!}
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-usd"> Bs.</span>
                   </span>
@@ -564,7 +554,7 @@
                   </span>
                 </div>
             </div>
-        </div>
+        </div><hr>
         <div class="row">
             <div class="col-md-2">
                 {!! Form::label('Número') !!}
@@ -591,7 +581,7 @@
                   </span>
                 </div>
             </div>
-        </div>
+        </div><hr>
         <div class="row">
             <div class="col-md-10"></div>
             <div class="col-md-2">
@@ -610,7 +600,7 @@
               {!! Form::label('Diferencia:') !!}
           <div class="btn-group" role="group">
               <div class="input-group date col-md-12">
-                  {!! Form::text('diferencia',null,['class'=>'form-control','id'=>'diferencia',' value'=>'0','disabled']) !!}
+                  {!! Form::text('diferencia',null,['class'=>'form-control','id'=>'diferencia',' value'=>'0']) !!}
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-usd"> Bs.</span>
                   </span>

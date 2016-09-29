@@ -40,7 +40,8 @@ class PresupuestoController extends Controller
      */
     public function index()
     {
-        //
+        $presupuesto = Presupuesto::orderBy('id','ASC')->paginate(10);
+        return view('automotores.presupuesto.index',compact('presupuesto'));
     }
 
     /**
@@ -61,7 +62,10 @@ class PresupuestoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        Presupuesto::create($request->all());
+        Session::flash('mensaje','Presupuesto creado correctamente');
+        return redirect('/presupuestos');
     }
 
     /**

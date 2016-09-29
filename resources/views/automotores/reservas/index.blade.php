@@ -43,9 +43,9 @@
                     <td class="btns" style="vertical-align:middle;">
                         <div class="btn-group btn-group-sm">
                             <center>
-                            {!!link_to_route('reservas.edit', $title = ' Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
+                            {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
                             
-                            <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" > Concretar</a>
+                            <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>
                             </center>
                         </div>
                     </td>

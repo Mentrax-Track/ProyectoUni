@@ -46,7 +46,7 @@
 <div class="row">
   <div class="col-md-4">
     <div class="form-group">
-            <center>{!! Form::label('Entidad:') !!}</center>
+            <center>{!! Form::label('Entidad/Carrera:') !!}</center>
             {!! Form::text('entidad',null,['class'=>'form-control', 'placeholder'=>'Ingrese una Entidad','data-error'=>'Ingrese una entidad reservante','required','id'=>'entidad']) !!}
             <center><div class="help-block with-errors"></div></center>
     </div>

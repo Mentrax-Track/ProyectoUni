@@ -111,7 +111,7 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','disabled','data-error'=>'Este campo debe estar lleno','required']) !!}
+                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
                      <center><div class="help-block with-errors"></div></center>
                 </div>
             </li>
@@ -124,7 +124,12 @@
         <li class=" list-group-item"> 
            <div class="form-group">
                 {!! Form::label('Chofer: ') !!}
-                {!! Form::select('chofer[]',$choferes,null,['class'=>'form-control','multiple'=>'multiple','id'=>'chofer','data-error'=>'Seleccione a los choferes ','required']) !!}
+                <div class="input-group date">
+                    {!! Form::select('chofer[]',$choferes,null,['class'=>'form-control','multiple'=>'multiple','id'=>'chofer','data-error'=>'Seleccione a los choferes ','required']) !!}
+                    <span class="input-group-addon">
+                       <i class="fa fa-users" aria-hidden="true"></i>
+                    </span>
+                </div>
                 <center><div class="help-block with-errors"></div></center>
             </div>
         </li>
@@ -132,7 +137,12 @@
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Encargado de Viaje: ') !!}
-                {!! Form::select('encargado[]',$encargados,null,['class'=>'form-control','multiple'=>'multiple','id'=>'encargado','data-error'=>'Seleccione a los encargados','required']) !!}
+                <div class="input-group date">
+                    {!! Form::select('encargado[]',$encargados,null,['class'=>'form-control','multiple'=>'multiple','id'=>'encargado','data-error'=>'Seleccione a los encargados','required']) !!}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </span>
+                </div>
                 <center><div class="help-block with-errors"></div></center>
             </div>
         </li>
@@ -140,7 +150,12 @@
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Vehiculo: ') !!}
-                {!! Form::select('vehiculo[]',$vehiculos,null,['class'=>'form-control','multiple'=>'multiple','id'=>'vehiculo','data-error'=>'Seleccione a los vehiculos','required']) !!}
+                <div class="input-group date">
+                    {!! Form::select('vehiculo[]',$vehiculos,null,['class'=>'form-control','multiple'=>'multiple','id'=>'vehiculo','data-error'=>'Seleccione a los vehiculos','required']) !!}
+                    <span class="input-group-addon">
+                        <i class="fa fa-bus" aria-hidden="true"></i>
+                    </span>
+                </div>
                 <center><div class="help-block with-errors"></div></center>
             </div>
         </li>
@@ -148,7 +163,12 @@
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Entidad/Carrera') !!}
-                {!! Form::text('entidad',null,['class'=>'form-control', 'placeholder'=>'Entidad responsable','id'=>'entidad','data-error'=>'Seleccione una Entidad','required']) !!}
+                <div class="input-group date">
+                    {!! Form::text('entidad',null,['class'=>'form-control', 'placeholder'=>'Entidad responsable','id'=>'entidad','data-error'=>'Seleccione una Entidad','required']) !!}
+                    <span class="input-group-addon">
+                        <i class="fa fa-university" aria-hidden="true"></i>
+                    </span>
+                </div>
                 <center><div class="help-block with-errors"></div></center>
             </div>
         </li>
@@ -157,25 +177,31 @@
 <!--Hasta aqui destino-->
 <center><h4><p class="www">Ingrese los datos del viaje</p></h4></center>
 <div class="row list-group-item text-center">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-group">
         {!! Form::label('Tipo:') !!}
         {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control','data-error'=>'Seleccione un tipo de viaje','required'])!!}
         <center><div class="help-block with-errors"></div></center>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <div class="form-group">
-        {!! Form::label('Objetivo:') !!}
-        {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el objetivo del viaje','data-error'=>'Inserte el objetivo del viaje','required']) !!}
-        <center><div class="help-block with-errors"></div></center>     
+        {!! Form::label('# Pasajeros:') !!}
+        {!! Form::number('pasajeros',null,['class'=>'form-control', 'placeholder'=>'número','data-error'=>'Inserte el número de pasajeros','required']) !!}
+        <center><div class="help-block with-errors"></div></center>
+
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-group">
-        {!! Form::label('Número de Pasajeros:') !!}
-        {!! Form::number('pasajeros',null,['class'=>'form-control', 'placeholder'=>'Cantidad de pasajeros','data-error'=>'Inserte el número de pasajeros','required']) !!}
-        <center><div class="help-block with-errors"></div></center>   
+        {!! Form::label('Objetivo:') !!}
+        <div class="input-group date">
+            {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el objetivo del viaje','data-error'=>'Inserte el objetivo del viaje','required']) !!}
+            <span class="input-group-addon">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            </span>
+        </div>
+        <center><div class="help-block with-errors"></div></center>        
     </div>
   </div>
 </div>

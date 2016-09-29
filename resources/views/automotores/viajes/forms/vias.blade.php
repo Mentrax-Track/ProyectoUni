@@ -106,7 +106,7 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','disabled']) !!}
+                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0']) !!}
                 </div>
             </li>
         </div>
@@ -118,28 +118,48 @@
         <li class=" list-group-item"> 
            <div class="form-group">
                 {!! Form::label('Chofer: ') !!}
-                {!! Form::select('chofer[]',$choferes,null,['class'=>'form-control','multiple'=>'multiple','id'=>'chofer']) !!}
+                <div class="input-group date">
+                    {!! Form::select('chofer[]',$choferes,null,['class'=>'form-control','multiple'=>'multiple','id'=>'chofer']) !!}
+                    <span class="input-group-addon">
+                       <i class="fa fa-users" aria-hidden="true"></i>
+                    </span>
+                </div>
             </div>
         </li>
         
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Encargado de Viaje: ') !!}
-                {!! Form::select('encargado[]',$encargados,null,['class'=>'form-control','multiple'=>'multiple','id'=>'encargado']) !!}
+                <div class="input-group date">
+                    {!! Form::select('encargado[]',$encargados,null,['class'=>'form-control','multiple'=>'multiple','id'=>'encargado']) !!}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </span>
+                </div>
             </div>
         </li>
         <center><h4><p class="www">Vehiculos designados</p></h4></center>
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Vehiculo: ') !!}
-                {!! Form::select('vehiculo[]',$vehiculos,null,['class'=>'form-control','multiple'=>'multiple','id'=>'vehiculo']) !!}
+                <div class="input-group date">
+                    {!! Form::select('vehiculo[]',$vehiculos,null,['class'=>'form-control','multiple'=>'multiple','id'=>'vehiculo']) !!}
+                    <span class="input-group-addon">
+                        <i class="fa fa-bus" aria-hidden="true"></i>
+                    </span>
+                </div>
             </div>
         </li>
         <center><h4><p class="www">Entidad</p></h4></center>
         <li class="list-group-item">
             <div class="form-group">
                 {!! Form::label('Entidad/Carrera') !!}
-                {!! Form::text('entidad',null,['class'=>'form-control', 'placeholder'=>'Entidad responsable','id'=>'entidad']) !!}
+                <div class="input-group date">
+                    {!! Form::text('entidad',null,['class'=>'form-control', 'placeholder'=>'Entidad responsable','id'=>'entidad']) !!}
+                    <span class="input-group-addon">
+                        <i class="fa fa-university" aria-hidden="true"></i>
+                    </span>
+                </div>
             </div>
         </li>
   </div>
@@ -147,24 +167,28 @@
 <!--Hasta aqui destino-->
 <center><h4><p class="www">Ingrese los datos del viaje</p></h4></center>
 <div class="row list-group-item text-center">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-group">
         {!! Form::label('Tipo:') !!}
         {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control'])!!}
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <div class="form-group">
-        {!! Form::label('Objetivo:') !!}
-        {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el objetivo del viaje']) !!}
-        
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="form-group">
-        {!! Form::label('Número de Pasajeros:') !!}
+        {!! Form::label('# Pasajeros:') !!}
         {!! Form::number('pasajeros',null,['class'=>'form-control', 'placeholder'=>'Cantidad de pasajeros']) !!}
    
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="form-group">
+        {!! Form::label('Objetivo:') !!}
+        <div class="input-group date">
+            {!! Form::text('objetivo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el objetivo del viaje']) !!}
+            <span class="input-group-addon">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            </span>
+        </div>
     </div>
   </div>
 </div>

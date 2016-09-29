@@ -42,10 +42,16 @@
                     <td class="btns" style="vertical-align:middle;">
                         <div class="btn-group btn-group-sm">
                             <center>
-                            <a class="btn btn-primary  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
+                            <a class="btn btn-primary  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" >  Detalle</a>
 
-                            {!!link_to_route('viajes.edit', $title = ' Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block glyphicon glyphicon-edit'])!!}
-                            
+                            <!--{!!link_to_route('viajes.edit', $title = ' Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block glyphicon glyphicon-edit'])!!}-->
+                                                           
+                            {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
+                                <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
+                                    <span class="glyphicon glyphicon-trash">   Eliminar</span> 
+                                </button>   
+                            {!! Form::close() !!}
+
                             {!!link_to_route('presupuestos.show', $title = 'Presupesto', $parameters = $via->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block glyphicon glyphicon-check'])!!}
                             </center>
                         </div>

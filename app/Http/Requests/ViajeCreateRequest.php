@@ -38,7 +38,7 @@ class ViajeCreateRequest extends Request
             'vehiculo'  => 'required',
             'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|min:5|max:50',
 
-            'objetivo'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
+            'objetivo'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:100',
             'tipo'         => 'required|in:Viaje de Práctica,Viaje de Inspección,Viaje Académico,Viaje de Cultura',
             'pasajeros'    => 'required|numeric',
             'fecha_inicial'=> 'required|date',

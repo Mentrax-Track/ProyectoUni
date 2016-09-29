@@ -27,6 +27,6 @@ class UserTableSeeder extends Seeder
             'active'=> true
 
             ]);
-        //factory(Infraestructura\User::class, 49)->create();
+        factory(Infraestructura\User::class, 49)->create();
     }
 }

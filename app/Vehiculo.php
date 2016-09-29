@@ -35,7 +35,7 @@ class Vehiculo extends Model
             $this->attributes['path'] = $name;
             \Storage::disk('local')->put($name, \File::get($path));
         }
-    }*/ 
+    }*/
     public static function filtroBusqueda($tip, $esta)
     {
         return Vehiculo::tip($tip)

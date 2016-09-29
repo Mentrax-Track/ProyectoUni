@@ -78,6 +78,7 @@ class User extends Model implements AuthenticatableContract,
         //Si este valor no esta vacio bamos a cambiar la conontraseña ***(*** bcrypt($valor) ***)
         if(!empty($valor)){
             $this->attributes['password'] = \Hash::make($valor);
+            //$this->attributes['password'] = $valor;
         }
     }
 

@@ -2,7 +2,6 @@
 
 @section('subtitulo','Incertar Destino')
 @section('css')
-     {!! Html::style('css/bootstrap.min.css') !!}
      {!! Html::style('css/datetimepicker/prettify-1.0.css') !!}
      {!! Html::style('css/datetimepicker/base.css') !!}
      {!! Html::style('css/datetimepicker/bootstrap-datetimepicker.css') !!}
@@ -32,11 +31,9 @@
 
 @stop
 @section('javascript')
-{!! Html::script('js/jquery.min.js') !!}
 {!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/datetimepicker/transition.js') !!}
 {!! Html::script('js/datetimepicker/collapse.js') !!}
-{!! Html::script('js/bootstrap.min.js') !!}
 
 {!! Html::script('js/datetimepicker/prettify-1.0.min.js') !!}
 {!! Html::script('js/datetimepicker/base.js') !!}

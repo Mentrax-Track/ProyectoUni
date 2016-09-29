@@ -33,7 +33,12 @@ class ViajesController extends Controller
         $this->chofer      = User::find($route->getParameter('chofer'));
         $this->encargado   = User::find($route->getParameter('encargado'));
         $this->destino     = Destino::find($route->getParameter('destino'));
-        $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo','encargado','destino'));
+
+        $this->ruta     = Ruta::find($route->getParameter('ruta'));
+        $this->user_viaje     = User_Viaje::find($route->getParameter('user_viaje'));
+        $this->destino_viaje  = Destino_Viaje::find($route->getParameter('destino_viaje'));
+
+        $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo','encargado','destino','ruta','user_viaje','destino_viaje'));
     }
     /**
      * Display a listing of the resource.
@@ -316,7 +321,24 @@ class ViajesController extends Controller
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino'])
                     ->lists('full_destino');
+        //dd($destino);
+        
+        /*//Destino numero 1 esto esta bien pero no....
+        $destino_i = Ruta::where('viaje_id',$id)
+                ->select('destino_id')->lists('destino_id')->toArray();
+        //dd($destino_i);
+        $destino_id = Destino::where('id',$destino_i)
+            ->get(['origen','destino'])
+            ->lists('full_destino');
+        //dd($destino_id);
+        $kilome = Ruta::where('viaje_id',$id)
+            ->get(['kilome'])
+            ->lists('kilome')->toArray();*/
 
+       /* $encar = User_Viaje::where('viaje_id',$id)
+            ->select('user_id')->lists('user_id')->toArray();
+
+        dd($encar);*/
         return view('automotores.viajes.edit',['via'=>$this->viaje],compact('choferes','encargados','vehiculos','destino'));
         
     }
@@ -330,8 +352,45 @@ class ViajesController extends Controller
      */
     public function update(ViajeUpdateRequest $request, $id)
     {
+        /*$viaje = Viaje::find($id);
+        $vehiculo = Vehiculo_Viaje::find($id);*/
+        /*$ruta = Ruta::find($id);
+        $destino = Destino::find($id);
+        
+        dd($ruta);*/    
+        
+        ////// Actualizando la tabla rutas///
+
+        $ruta = Ruta::find($id);
+
+        $ruta->destino_id = $request->destino_id;
+        $ruta->kilome = $request->kilome;
+        $ruta->dest1  = $request->dest1;
+        $ruta->k1     = $request->k1;
+        $ruta->dest2  = $request->dest2;
+        $ruta->k2     = $request->k2;
+        $ruta->dest3  = $request->dest3;
+        $ruta->k3     = $request->k3;
+        $ruta->dest4  = $request->dest4;
+        $ruta->k4     = $request->k4;
+        $ruta->dest5  = $request->dest5;
+        $ruta->k5     = $request->k5;
+        $ruta->adicional  = $request->adicional;
+        $ruta->total      = $request->total;
+        $ruta->viaje_id   = $id;
+        $ruta->save();
+        
+        //Actualizamos viajes....
         $this->viaje->fill($request->all());
         $this->viaje->save();
+
+
+        /*$this->ruta->fill($request->all());
+        $this->ruta->save();
+        $this->user_viaje->fill($request->all());
+        $this->user_viaje->save();
+        $this->destino_viaje->fill($request->all());
+        $this->destino_viaje->save();*/
         Session::flash('message','El registro de viaje fue editado correctamente...');
         return Redirect::to('/viajes');
     }
