@@ -25,7 +25,7 @@
             @include('automotores.reservi.forms.via')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
-                <center><button type="submit" class="btn btn-primary btn-block">
+                <center><button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
                     <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                 </button></center>
                 </div>

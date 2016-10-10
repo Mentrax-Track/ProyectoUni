@@ -62,6 +62,10 @@
 	[
 		{"character": "Medicina", "realName": "Potosí"}
 	],
+	"Facultad de Derecho": 
+	[
+		{"character": "Derecho", "realName": "Potosí"}
+	],
 	"Facultad Tegnológica": 
 	[
 		{"character": "Ingeniería Eléctrica", "realName": "Potosí"},

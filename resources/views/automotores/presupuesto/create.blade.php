@@ -20,12 +20,12 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Presupuesto de Viaje</p></h4></div>
     <div class="panel-body"> 
-        {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','files' => true ]) !!}
+        {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','files' => true,'data-toggle'=>'validator' ]) !!}
         
             @include('automotores.presupuesto.forms.presu')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
-                    <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
+                    <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block','onClick'=>'this.disabled="disabled"']) !!}</center>
                 </div>
                 <div class="col-md-4"></div>
         {!! Form::close() !!}
@@ -45,6 +45,7 @@
 
 {!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/validator.js')!!}
 <script type="text/javascript">
     $('select').select2();    
 </script>

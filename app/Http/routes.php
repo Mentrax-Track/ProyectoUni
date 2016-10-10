@@ -166,6 +166,8 @@ Route::resource('rutas','RutasController');
 
 Route::resource('reserviaje','ReservaViajeController');
 
+
+Route::get('presupuestos/{id}/pdf','PresupuestoController@getImprimir');
 Route::resource('presupuestos','PresupuestoController');
 
 

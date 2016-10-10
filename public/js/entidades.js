@@ -39,6 +39,11 @@ $(document).ready(function(){
                 listLocation: "Facultad de Ingeniería",
                 maxNumberOfElements: 5,
                 header: "Facultad de Ingeniería"
+            },
+            {
+                listLocation: "Facultad de Derecho",
+                maxNumberOfElements: 2,
+                header: "Facultad de Derecho"
             }, 
             {
                 listLocation: "Facultad de Ingeniería Geológica",

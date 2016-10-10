@@ -41,4 +41,8 @@ class Destino extends Model
     {
         return $this->origen.' '.'->'.' '.$this->destino;
     }
+    public function presupuestos()
+    {
+        return $this->hasMany('Infraestructura\Presupuesto');
+    }
 }

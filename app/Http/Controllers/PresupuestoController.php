@@ -27,11 +27,7 @@ class PresupuestoController extends Controller
     }
     public function find(Route $route)
     {
-        $this->vehiculo= Vehiculo::find($route->getParameter('vehiculo'));
-        $this->chofer      = User::find($route->getParameter('chofer'));
-        $this->encargado   = User::find($route->getParameter('encargado'));
-        $this->destino     = Destino::find($route->getParameter('destino'));
-        $this->viaje   = Viaje::find($route->getParameter('viajes','chofer','vehiculo','encargado','destino'));
+        $this->viaje   = Viaje::find($route->getParameter('viajes'));
     }
     /**
      * Display a listing of the resource.
@@ -64,7 +60,7 @@ class PresupuestoController extends Controller
     {
         //dd($request);
         Presupuesto::create($request->all());
-        Session::flash('mensaje','Presupuesto creado correctamente');
+        Session::flash('message','Presupuesto creado correctamente');
         return redirect('/presupuestos');
     }
 
@@ -146,7 +142,73 @@ class PresupuestoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $encargados = User::where('tipo', 'encargado')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $choferes    = User::where('tipo', 'chofer')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $vehiculos  = Vehiculo::where('estado', 'Optimo')
+                    ->orderBy('tipo','ASC')
+                    ->get(['id', 'tipo', 'placa'])
+                    ->lists('full_vehiculo','id')->toArray();
+
+        $destino   = Destino::orderBy('id','ASC')
+                    ->get(['id','origen', 'destino'])
+                    ->lists('full_destino');
+
+        $ide = Presupuesto::where('id',$id)
+                    ->get(['viaje_id'])->lists('viaje_id')->toArray();
+        $ids = $ide[0];
+        //dd($ids);
+        
+        $viaje = Viaje::find($ids);
+
+        $ruta = Ruta::where('viaje_id',$ids)->first();
+        //Destinos
+        $destino_i = Ruta::where('viaje_id',$ids)
+                ->select('destino_id')->lists('destino_id')->toArray();
+        $destino_id = Destino::where('id',$destino_i)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+        //dd($destino_id);
+        $dest = Ruta::where('viaje_id',$ids)
+                ->select('dest1')->lists('dest1')->toArray();
+        $dest1 = Destino::where('id',$dest)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest2a = Ruta::where('viaje_id',$ids)
+                ->select('dest2')->lists('dest2')->toArray();
+        $dest2 = Destino::where('id',$dest2a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();        
+
+        $dest3a = Ruta::where('viaje_id',$ids)
+                        ->select('dest3')->lists('dest3')->toArray();
+        $dest3 = Destino::where('id',$dest3a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest4a = Ruta::where('viaje_id',$ids)
+                        ->select('dest4')->lists('dest4')->toArray();
+        $dest4 = Destino::where('id',$dest4a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest5a = Ruta::where('viaje_id',$ids)
+                        ->select('dest5')->lists('dest5')->toArray();
+        $dest5 = Destino::where('id',$dest5a)
+            ->get(['origen','destino'])
+            ->lists('full_destino')->toArray();
+
+        $responsable = Auth::user()->full_name;
+
+        $presupuesto = Presupuesto::find($id);
+       // dd($presupuesto);
+        return view('automotores.presupuesto.edit',['presupuesto'=>$presupuesto],compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
     }
 
     /**
@@ -158,7 +220,12 @@ class PresupuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $presupuesto=Presupuesto::find($id);
+        $presupuesto->fill($request->all());
+        
+        $presupuesto->save();
+        Session::flash('message','Presupuesto editado correctamente');
+        return redirect('presupuestos');
     }
 
     /**
@@ -169,6 +236,69 @@ class PresupuestoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Presupuesto::destroy($id);
+        Session::flash('message','Presupuesto Eliminado correctamente');
+        return Redirect::to('/presupuestos');
+    }
+    public function getImprimir($id)
+    {
+        $ide = Presupuesto::where('id',$id)
+                    ->get(['viaje_id'])->lists('viaje_id')->toArray();
+        $ids = $ide[0];
+        //dd($ids);
+        
+        $viaje = Viaje::find($ids);
+
+        $ruta = Ruta::where('viaje_id',$ids)->first();
+    
+///////////Destinos////////////////////////////////////////
+        $destino_i = Ruta::where('viaje_id',$ids)
+                ->select('destino_id')->lists('destino_id')->toArray();
+        $destino_id = Destino::where('id',$destino_i)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();
+        //dd($destino_id);
+        $dest = Ruta::where('viaje_id',$ids)
+                ->select('dest1')->lists('dest1')->toArray();
+        $dest1 = Destino::where('id',$dest)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest2a = Ruta::where('viaje_id',$ids)
+                ->select('dest2')->lists('dest2')->toArray();
+        $dest2 = Destino::where('id',$dest2a)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();        
+
+        $dest3a = Ruta::where('viaje_id',$ids)
+                        ->select('dest3')->lists('dest3')->toArray();
+        $dest3 = Destino::where('id',$dest3a)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest4a = Ruta::where('viaje_id',$ids)
+                        ->select('dest4')->lists('dest4')->toArray();
+        $dest4 = Destino::where('id',$dest4a)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();
+
+        $dest5a = Ruta::where('viaje_id',$ids)
+                        ->select('dest5')->lists('dest5')->toArray();
+        $dest5 = Destino::where('id',$dest5a)
+            ->orderBy('id','ASC')
+            ->get(['id','origen', 'destino'])
+            ->lists('full_destino')->toArray();
+
+        $presupuesto = Presupuesto::find($id);
+        $date = date('Y-m-d');
+        $view =  \View::make('automotores.presupuesto.pdf', compact( 'date', 'presupuesto','destino_id','dest1','dest2','dest3','dest4','dest5','ruta','viaje'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta', 'portrat');
+        return $pdf->stream('presupuesto');
     }
 }

@@ -2,15 +2,18 @@
   <div class="row">
     <div class="col-md-4">
       {!! Form::label('Vehiculo:') !!}
-      {!! Form::select('vehiculo',$vehiculos,null,['class'=>'form-control','placeholder'=>'Seleccione un Vehiculo']) !!}
+      {!! Form::select('vehiculo',$vehiculos,null,['class'=>'form-control','placeholder'=>'Seleccione un Vehiculo','data-error'=>'Seleccione un Vehículo','required']) !!}
+      <center><div class="help-block with-errors"></div></center>
     </div>
     <div class="col-md-4">
       {!! Form::label('Chofer:') !!}
-      {!! Form::select('chofer',$choferes,null,['class'=>'form-control','id'=>'chofer','placeholder'=>'Seleccione un chofer']) !!}
+      {!! Form::select('chofer',$choferes,null,['class'=>'form-control','id'=>'chofer','placeholder'=>'Seleccione un chofer','data-error'=>'Seleccione a un Chofer','required']) !!}
+      <center><div class="help-block with-errors"></div></center>
     </div>
     <div class="col-md-4">
       {!! Form::label('Encargado del Viaje:') !!}
-      {!! Form::select('encargado',$encargados,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable']) !!}
+      {!! Form::select('encargado',$encargados,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable','data-error'=>'Seleccione a un Encargado','required']) !!}
+       <center><div class="help-block with-errors"></div></center>
     </div>
   </div><hr>
   <div class="row">
@@ -26,12 +29,14 @@
     <div class="col-md-1">
         {!! Form::label('Dias:') !!}
         {!! Form::text('dias',$viaje->dias,['class'=>'form-control','disabled']) !!}
+        <center><div class="help-block with-errors"></div></center>
     </div>
     <div class="col-md-3">
       <div class="form-group">
           {!! Form::label('Solicitud en S.A.') !!}
           <div class='input-group date' id='datetimepicker8'>
-            {!! Form::text('fecha_sa',null,['class'=>'form-control']) !!}
+            {!! Form::text('fecha_sa',null,['class'=>'form-control','data-error'=>'Seleccione una fecha','required']) !!}
+            <center><div class="help-block with-errors"></div></center>
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -40,7 +45,9 @@
     </div>
     <div class="col-md-1">
         {!! Form::label('Viaje') !!}
-        {!! Form::text('viaje_id',$viaje->id,['class'=>'form-control']) !!}
+        {!! Form::text('viaje_id',$viaje->id,['class'=>'form-control','data-error'=>'Seleccione a un Encargado','required']) !!}
+        <center><div class="help-block with-errors"></div></center>
+ 
     </div>
   </div>
 </div>

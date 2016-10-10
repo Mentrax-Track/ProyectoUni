@@ -5,6 +5,7 @@ namespace Infraestructura;
 use Illuminate\Database\Eloquent\Model;
 use Infraestructura\Viaje;
 use Infraestructura\Ruta;
+use Infraestructura\Destino;
 class Presupuesto extends Model
 {
     protected $table = 'presupuestos';
@@ -26,5 +27,12 @@ class Presupuesto extends Model
     {
         return $this->hasOne('Infraestructura\Ruta');
     }
-
+    public function enviCho()
+    {
+        return $this->hasOne('Infraestructura\User','id','chofer');
+    }
+    public function enviVehi()
+    {
+        return $this->hasOne('Infraestructura\Vehiculo','id','vehiculo');
+    }
 }

@@ -70,4 +70,8 @@ class Vehiculo extends Model
     {
         return $this->tipo.' '.$this->placa;
     }
+    public function presupuestos()
+    {
+        return $this->hasMany('Infraestructura\Presupuesto');
+    }
 }

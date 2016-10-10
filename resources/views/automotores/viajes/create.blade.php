@@ -24,7 +24,7 @@
             @include('automotores.viajes.forms.via')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
-                <center><button type="submit" class="btn btn-primary btn-block">
+                <center><button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
                     <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                 </button></center>
                 </div>
@@ -80,6 +80,7 @@
             // Activamos la opcion "Chofer" del plugin
             tags: false,
             tokenSeparators: [','],
+            placeholder: "Selecione al Chofer",
             ajax: {
                 dataType: 'json',
                 url: '{{ url("chofer") }}',
@@ -105,6 +106,7 @@
             // Activamos la opcion "Vehiculo" del plugin
             tags: false,
             tokenSeparators: [','],
+            placeholder: "Selecione el Vehiculo",
             ajax: {
                 dataType: 'json',
                 url: '{{ url("vehiculo") }}',
@@ -130,6 +132,7 @@
             // Activamos la opcion "Encargado" del plugin
             tags: false,
             tokenSeparators: [','],
+            placeholder: "Selecione al Encargado",
             ajax: {
                 dataType: 'json',
                 url: '{{ url("encargado") }}',

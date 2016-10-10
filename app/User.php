@@ -106,4 +106,8 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsTo('Infraestructura\UserVehi');
     }
+    public function presupuestos()
+    {
+        return $this->hasMany('Infraestructura\Presupuesto');
+    }
 }

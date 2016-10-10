@@ -1,6 +1,9 @@
 <script type="text/javascript">
 function mostrar(id) {
     
+    if (id == "cero") 
+    {
+    }
     if (id == "usuario") 
     {
         $("#usuario").show();
@@ -20,16 +23,17 @@ function mostrar(id) {
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="form-group">
-                {!! Form::label('tipo', 'Seleccione un Formulario') !!}
+                <center>{!! Form::label('tipo', 'Seleccione un Formulario') !!}</center>
                 <select id="status" name="status" onChange="mostrar(this.value);" class="form-control">
-                        <option value="usuario"> Formulario 1</option>
-                        <option value="encargado"> Formulario 2</option>
+                        <option value="cero"> Seleccione un Formulario</option>
+                        <option value="usuario"> Registro General</option>
+                        <option value="encargado"> Registro de Encargado</option>
                 </select>
             </div>
         </div>
         <div class="col-md-4"></div>
     </div>
-
+<div id="cero" class="element" style="display: none;"></div>
 <div id="usuario" class="element" style="display: none;">
  
     <center><h2><p class="www">Formulario Interno</p></h2></center>
@@ -97,7 +101,7 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <button type="submit" class="btn btn-primary btn-block">
+                <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
                     <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                 </button>        
             </div>
@@ -144,9 +148,9 @@ function mostrar(id) {
                 <div class="col-md-4">
                     <div class="form-group">
                         <center>{!! Form::label('Facultad:') !!}</center>
-                        
+                        <center>
                         {!! Form::text('facultad',null,['class'=>'form-control','data-error'=>'La Facultad es obligatorio...','required','id'=>'facultad','placeholder'=>'Seleccione una Facultad']) !!}
-                        
+                        </center>
                        <!-- <input id="facultad" class="form-control" placeholder="Seleccione una Facultad"/>-->
                          <center><div class="help-block with-errors"></div></center>
                          
@@ -155,8 +159,9 @@ function mostrar(id) {
                 <div class="col-md-4">
                     <div class="form-group">
                         <center>{!! Form::label('Carrera:') !!}</center>
+                        <center>
                         {!! Form::text('carrera',null,['class'=>'form-control','data-error'=>'La Carrera es obligatorio...','required','id'=>'carrera','placeholder'=>'Seleccione una Carrera']) !!}
-
+                        </center>
                       <!-- <input id="carrera" class="form-control" placeholder="Seleccione una Carrera"/>-->
                          <center><div class="help-block with-errors"></div></center>
                     </div>
@@ -200,7 +205,7 @@ function mostrar(id) {
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
                         <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                     </button>        
                 </div>
