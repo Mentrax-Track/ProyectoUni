@@ -25,7 +25,7 @@
             @include('automotores.presupuesto.forms.presu')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
-                    <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block','onClick'=>'this.disabled="disabled"']) !!}</center>
+                    <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
                 </div>
                 <div class="col-md-4"></div>
         {!! Form::close() !!}

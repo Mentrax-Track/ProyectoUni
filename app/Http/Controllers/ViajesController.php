@@ -118,7 +118,7 @@ class ViajesController extends Controller
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => $days
+            'dias'          => 1+$days
             ]);
 
         $chofer_id = $request['chofer'];
@@ -272,7 +272,7 @@ class ViajesController extends Controller
         else{
             dd("adicional vacio");    
         }
-        Session::flash('message','El viaje se registro correcctamente...');
+        Session::flash('message','El viaje se registro correctamente...');
         return Redirect::to('viajes');
 
         

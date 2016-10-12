@@ -11,8 +11,8 @@ a {
 
 body {
   position: relative;
-  width: 16cm;  
-  height: 29.7cm; 
+  width: 18cm;  
+  height: 10.7cm; 
   margin: 0 auto; 
   color: #001028;
   background: #FFFFFF; 
@@ -36,15 +36,17 @@ header {
 }
 
 h1 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
-  color: #5D6975;
-  font-size: 2.4em;
+  border-top: 2px solid  #5D6975;
+  border-bottom: 2px solid  #5D6975;
+  color: #1A1A1A;
+  font-size: 3.2em;
   line-height: 1.4em;
   font-weight: normal;
-  text-align: center;
+  text-align: right;
   margin: 0 0 20px 0;
   background: url(dimension.png);
+  float: left;
+  vertical-align: middle;
 }
 
 #project {
@@ -125,4 +127,16 @@ h3 {
   font: 130% sans-serif;
   color: #ff000000;
 
+}
+
+.km{
+  text-align:right;
+  font-size:60%;
+}
+.kn{
+  font-size:60%;
+}
+.preti{
+  text-align: center;
+  font-size:90%;
 }

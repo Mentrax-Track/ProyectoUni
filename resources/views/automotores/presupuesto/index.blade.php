@@ -33,8 +33,8 @@ use Infraestructura\User;
                         <td>{{ $pre->entidad}}</td>
                         <td> 
                             <center>
-                                {!!link_to_route('presupuestos.edit', $title = 'Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info'])!!}
-                                {!!link_to_action('PresupuestoController@getImprimir', $title = 'Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning'])!!} 
+                                {!!link_to_route('presupuestos.edit', $title = 'Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info btn-xs  glyphicon glyphicon-edit'])!!}
+                                {!!link_to_action('PresupuestoController@getImprimir', $title = 'Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon glyphicon-file'])!!} 
                             </center>
                         </td>
                     </tbody>

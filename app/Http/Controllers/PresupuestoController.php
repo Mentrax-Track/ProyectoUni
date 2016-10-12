@@ -13,6 +13,7 @@ use Infraestructura\Destino_Viaje;
 use Infraestructura\Presupuesto;
 
 use Infraestructura\Http\Requests;
+use Infraestructura\Http\Requests\PresupuestoCreateRequest;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
@@ -56,7 +57,7 @@ class PresupuestoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PresupuestoCreateRequest $request)
     {
         //dd($request);
         Presupuesto::create($request->all());
@@ -258,6 +259,7 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
+        $destino1 = implode(",",$destino_id);
         //dd($destino_id);
         $dest = Ruta::where('viaje_id',$ids)
                 ->select('dest1')->lists('dest1')->toArray();
@@ -265,6 +267,7 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
+        $destino2 = implode(",",$dest1);
 
         $dest2a = Ruta::where('viaje_id',$ids)
                 ->select('dest2')->lists('dest2')->toArray();
@@ -272,6 +275,7 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();        
+        $destino3 = implode(",",$dest2);
 
         $dest3a = Ruta::where('viaje_id',$ids)
                         ->select('dest3')->lists('dest3')->toArray();
@@ -279,6 +283,7 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
+        $destino4 = implode(",",$dest3);
 
         $dest4a = Ruta::where('viaje_id',$ids)
                         ->select('dest4')->lists('dest4')->toArray();
@@ -286,6 +291,7 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
+        $destino5 = implode(",",$dest4);
 
         $dest5a = Ruta::where('viaje_id',$ids)
                         ->select('dest5')->lists('dest5')->toArray();
@@ -293,10 +299,11 @@ class PresupuestoController extends Controller
             ->orderBy('id','ASC')
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
+        $destino6 = implode(",",$dest5);
 
         $presupuesto = Presupuesto::find($id);
-        $date = date('Y-m-d');
-        $view =  \View::make('automotores.presupuesto.pdf', compact( 'date', 'presupuesto','destino_id','dest1','dest2','dest3','dest4','dest5','ruta','viaje'))->render();
+        $date = date('d-m-Y');
+        $view =  \View::make('automotores.presupuesto.pdf', compact('date', 'presupuesto','destino1','destino2','destino3','destino4','destino5','destino6','ruta','viaje'))->render();
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta', 'portrat');
         return $pdf->stream('presupuesto');

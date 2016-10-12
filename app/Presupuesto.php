@@ -15,7 +15,7 @@ class Presupuesto extends Model
                             'precio4','total4VF','cantidad5','precio5','total5P','cantidad6','precio6',
                             'total6M','cantidad7','precio7','total7G','total8T','responsable',
                             'materia','sigla','ndocentes','hsalida','hllegada','p1','r1','c1','t1',
-                            'p2','r2','c2','t2','p3','c3','t3','tt','diferencia','idv'];
+                            'p2','r2','c2','t2','p3','c3','t3','tt','diferencia','nota','idv'];
     
     //Muchos presupuestos pueden ser de unn solo viaje
     public function viaje()
@@ -26,6 +26,10 @@ class Presupuesto extends Model
     public function ruta()
     {
         return $this->hasOne('Infraestructura\Ruta');
+    }
+    public function enviEncar()
+    {
+        return $this->hasOne('Infraestructura\User','id','encargado');
     }
     public function enviCho()
     {

@@ -72,7 +72,8 @@ class CreatePresupuestoTable extends Migration
             $table->string('c3');
             $table->string('t3');
             $table->string('tt');
-            $table->string('diferencia');            
+            $table->string('diferencia');
+            $table->string('nota');            
 
             $table->foreign('viaje_id')
                 ->references('id')->on('viajes')

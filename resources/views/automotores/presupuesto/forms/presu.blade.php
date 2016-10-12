@@ -45,7 +45,7 @@
     </div>
     <div class="col-md-1">
         {!! Form::label('Viaje') !!}
-        {!! Form::text('viaje_id',$viaje->id,['class'=>'form-control','data-error'=>'Seleccione a un Encargado','required']) !!}
+        {!! Form::text('viaje_id',$viaje->id,['class'=>'form-control','data-error'=>'Inserte un valor','required']) !!}
         <center><div class="help-block with-errors"></div></center>
  
     </div>
@@ -130,8 +130,8 @@
           </div>
           <div class="btn-group" role="group">
               
-                {!! Form::number('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();']) !!}
-              
+                {!! Form::number('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();','data-error'=>'Inserte un valor','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
           </div>
       </li>
     </div>
@@ -147,28 +147,33 @@
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 {!! Form::label('Responsable del Formulario') !!} 
-                {!! Form::text('responsable',$responsable,['class'=>'form-control']) !!}
+                {!! Form::text('responsable',$responsable,['class'=>'form-control','data-error'=>'Inserte un responsable','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
             </div>
             <div class="col-md-2"></div>
         </div>
         <div class="row">
             <div class="col-md-8">
                 {!! Form::label('Materia') !!}    
-                {!! Form::text('materia',null,['class'=>'form-control']) !!}
+                {!! Form::text('materia',null,['class'=>'form-control','data-error'=>'Inserte la materia','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
             </div>
             <div class="col-md-4">
                 {!! Form::label('Sigla') !!}    
-                {!! Form::text('sigla',null,['class'=>'form-control']) !!}
+                {!! Form::text('sigla',null,['class'=>'form-control','data-error'=>'Inserte la sigla','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
             </div>
         </div>
         <div class="row">
             <div class="col-md-8">
                 {!! Form::label('Entidad:') !!}
-                {!! Form::text('entidad',$viaje->entidad,['class'=>'form-control']) !!}
+                {!! Form::text('entidad',$viaje->entidad,['class'=>'form-control','data-error'=>'Inserte la Entidad','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
             </div>
             <div class="col-md-4">
                 {!! Form::label('# Docentes') !!}
-                {!! Form::number('ndocentes',null,['class'=>'form-control']) !!}
+                {!! Form::number('ndocentes',null,['class'=>'form-control','data-error'=>'Inserte la cantidad de Docentes','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
             </div>
         </div>
         <div class="row">
@@ -187,14 +192,16 @@
             <div class="col-md-6">
                 {!! Form::label('Hora Salida') !!}
                 <div class='input-group date input-group-sm' id='datetimepicker3'>
-                  {!! Form::text('hsalida',null,['class'=>'form-control']) !!}
+                  {!! Form::text('hsalida',null,['class'=>'form-control','data-error'=>'Seleccione una hora','required']) !!}
+                  <center><div class="help-block with-errors"></div></center>
                   <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
             </div>
             <div class="col-md-6">   
                   {!! Form::label('Hora Llegada') !!}
                   <div class='input-group date input-group-sm' id='datetimepicker4'>
-                      {!! Form::text('hllegada',null,['class'=>'form-control']) !!}
+                      {!! Form::text('hllegada',null,['class'=>'form-control','data-error'=>'Seleccione una hora','required']) !!}
+                      <center><div class="help-block with-errors"></div></center>
                       <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                   </div>  
            </div>
@@ -226,7 +233,8 @@
               <div class="btn-group" role="group">
                 {!! Form::label('Conbustible(Litros)') !!}
                    <div class="input-group date">    
-                      {!! Form::text('cantidad1',null,['class'=>'form-control','id'=>'cantidadC','onkeyup'=>'sumar();']) !!}
+                      {!! Form::text('cantidad1',null,['class'=>'form-control','id'=>'cantidadC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+                      <center><div class="help-block with-errors"></div></center>
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-oil"></span>
                       </span>
@@ -237,7 +245,8 @@
               <div class="btn-group" role="group">
                   {!! Form::label('Costo (Litro)') !!}
                   <div class="input-group date">
-                      {!! Form::text('precio1',null,['class'=>'form-control','id'=>'precioC','onkeyup'=>'sumar();']) !!}
+                      {!! Form::text('precio1',null,['class'=>'form-control','id'=>'precioC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+                      <center><div class="help-block with-errors"></div></center>
                       <span class="input-group-addon">Bs.</span>
                   </div>
               </div>
@@ -246,7 +255,8 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                     <div class="input-group date">
-                      {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0']) !!}
+                      {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
+                       <center><div class="help-block with-errors"></div></center>
                       <span class="input-group-addon">
                         <span class="glyphicon glyphicon-usd"></span>
                       </span>
@@ -370,7 +380,8 @@
               <div class="btn-group" role="group">
                 {!! Form::label('Número:') !!}
                       <div class="input-group date">
-                        {!! Form::text('cantidad5',null,['class'=>'form-control','id'=>'cantidadP','onkeyup'=>'sumar();']) !!}
+                        {!! Form::text('cantidad5',null,['class'=>'form-control','id'=>'cantidadP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+                        <center><div class="help-block with-errors"></div></center>
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-sort"></span>
                         </span>
@@ -381,7 +392,8 @@
               <div class="btn-group" role="group">
                   {!! Form::label('Monto por Peaje') !!}
                     <div class="input-group date">
-                        {!! Form::text('precio5',null,['class'=>'form-control','id'=>'precioP','onkeyup'=>'sumar();']) !!}
+                        {!! Form::text('precio5',null,['class'=>'form-control','id'=>'precioP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+                        <center><div class="help-block with-errors"></div></center>
                         <span class="input-group-addon">Bs.</span>
                     </div>
               </div>
@@ -390,7 +402,8 @@
               <div class="btn-group" role="group">
                     {!! Form::label('Total') !!}
                     <div class="input-group date">
-                      {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0']) !!}
+                      {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
+                        <center><div class="help-block with-errors"></div></center>
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-usd"></span>
                         </span>
@@ -489,8 +502,8 @@
   </div>
 </div>
 <!--Hasta aqui la descripcion presupuestaria...-->
-<div class="col-md-1"></div>
-<div class="col-md-10" >
+
+<div class="col-md-12" >
     <div class="panel panel-default">
     <li class="list-group-item">
         <center><h4><u>Transporte Público</u></h4></center>
@@ -499,12 +512,14 @@
         <div class="row">
           <div class="col-md-2">
             {!! Form::label('Nro. Personas') !!}
-            {!! Form::text('p1',null,['class'=>'form-control','id'=>'p1','onkeyup'=>'sumar();']) !!}
+            {!! Form::text('p1',null,['class'=>'form-control','id'=>'p1','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+              <center><div class="help-block with-errors"></div></center>
            </div>
            <div class="col-md-6">
              {!! Form::label('Ruta') !!}
               <div class="input-group date">  
-                {!! Form::text('r1',null,['class'=>'form-control']) !!}
+                {!! Form::text('r1',null,['class'=>'form-control','data-error'=>'Campo obligatorio','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                       <span class="glyphicon glyphicon-road"></span>
                 </span>
@@ -513,7 +528,8 @@
            <div class="col-md-2">
             {!! Form::label('Precio Unit.') !!}
               <div class="input-group date">
-                  {!! Form::text('c1',null,['class'=>'form-control','id'=>'c1','onkeyup'=>'sumar();']) !!}
+                  {!! Form::text('c1',null,['class'=>'form-control','id'=>'c1','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+                  <center><div class="help-block with-errors"></div></center>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-usd"></span>
                   </span>
@@ -522,7 +538,8 @@
            <div class="col-md-2">
                 {!! Form::label('Total') !!}
                 <div class="input-group date">
-                  {!! Form::text('t1',null,['class'=>'form-control','id'=>'t1',' value'=>'0']) !!}
+                  {!! Form::text('t1',null,['class'=>'form-control','id'=>'t1',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
+                  <center><div class="help-block with-errors"></div></center>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-usd"></span>
                   </span>
@@ -607,14 +624,20 @@
               {!! Form::label('Diferencia:') !!}
           <div class="btn-group" role="group">
               <div class="input-group date col-md-12">
-                  {!! Form::text('diferencia',null,['class'=>'form-control','id'=>'diferencia',' value'=>'0']) !!}
+                  {!! Form::text('diferencia',null,['class'=>'form-control','id'=>'diferencia',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
+                  <center><div class="help-block with-errors"></div></center>
                   <span class="input-group-addon">
                       <span class="glyphicon glyphicon-usd"> Bs.</span>
                   </span>
               </div>
           </div>
+        </div><br />
+        <div class="row">
+            <div class="col-md-12">
+               <u>{!! Form::label('Nota') !!}</u>
+                {!! Form::text('nota',null,['class'=>'form-control','placeholder'=>'Puede insertar una nota al presupuesto del viaje.']) !!}
+            </div>
         </div>
-
     </div> 
   </div>
 </div>
