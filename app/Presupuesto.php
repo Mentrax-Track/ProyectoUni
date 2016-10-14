@@ -39,4 +39,13 @@ class Presupuesto extends Model
     {
         return $this->hasOne('Infraestructura\Vehiculo','id','vehiculo');
     }
+    //scope es una funcion de laravel
+    public function scopeEntidad($query, $entidad)
+    {
+        //trim para eliminar los espacios
+        if(trim($entidad) != "")
+        {
+            $query->where('entidad', "LIKE","%$entidad%");    
+        }
+    }
 }

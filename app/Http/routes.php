@@ -1,5 +1,6 @@
 <?php
 use Infraestructura\Destino;
+use Infraestructura\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -133,13 +134,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/distancia', function () {
 
         $cant_id = Input::get('cant_id');
-        if((int)$cant_id==0)
-        {
-            $cant=0;    
-        }else{
-            $cant=1+(int)$cant_id;
-        }
-        $kilo = Destino::where('id',$cant)
+        $id = (int)$cant_id;
+        $kilo = Destino::where('id',$id)
                     ->get(['id','kilometraje']);
 
         return Response::json($kilo);
@@ -148,13 +144,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/kilometraje', function () {
 
         $dest_id = Input::get('dest_id');
-        if((int)$dest_id==0)
-        {
-            $cant=0;    
-        }else{
-            $cant=1+(int)$dest_id;
-        }
-        $kilo = Destino::where('id',$cant)
+        $id = (int)$dest_id;
+        $kilo = Destino::where('id',$id)
                     ->get(['id','kilometraje']);
             
         return Response::json($kilo);
@@ -170,4 +161,19 @@ Route::resource('reserviaje','ReservaViajeController');
 Route::get('presupuestos/{id}/pdf','PresupuestoController@getImprimir');
 Route::resource('presupuestos','PresupuestoController');
 
+Route::resource('salidas','SalidasController');
 
+Route::get('roles/{id}/limpiar','RolesController@getLimpiar');
+Route::resource('roles','RolesController');
+
+///////   Esto es para roles aqui recive lo que se envio ///////////////
+    /*Ruta para obtener el id del chofer*/
+    Route::get('/rol', function () {
+
+        $cho = Input::get('cho');
+        $cho = (int)$cho;
+        $chos = "ciudad";           
+        return Response::json($chos);
+
+    });
+///////// Hasta aqui los roles///////////////

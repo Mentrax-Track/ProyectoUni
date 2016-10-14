@@ -45,13 +45,13 @@
                     <ul class="nav" id="side-menu">
                         <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> Usuario<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="{!! URL::to('/users/create') !!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
                                     </li>
                                     <li>
-                                        <a href="{!! URL::to('/users') !!}"><i class='fa fa-list-ol fa-fw'></i> Usuarios</a>
+                                        <a href="{!! URL::to('/users') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
                                     </li>
                                 </ul>
                             </li>
@@ -83,7 +83,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-bed"></i> Vehiculo<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon fa fa-bus"></i> Vehiculos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
@@ -94,7 +94,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-road"></i> Destino<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-road"></i> Destinos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
@@ -105,14 +105,32 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-road"></i> Presupuesto de Viaje<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
+                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa fa-list-alt'></i> Listar</a>
                                 </li>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="#"><i class="glyphicon fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/salidas/create') !!}"><i class='fa fa-file-text-o'></i> Generar</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/salidas') !!}"><i class='fa fa-sort-numeric-asc'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/roles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>

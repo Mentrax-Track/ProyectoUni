@@ -74,7 +74,8 @@ class ViajesController extends Controller
 
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino'])
-                    ->lists('full_destino');
+                    ->lists('full_destino','id')
+                    ->toArray();
 
 
         return view('automotores.viajes.create',compact('choferes','encargados','vehiculos','destino'));

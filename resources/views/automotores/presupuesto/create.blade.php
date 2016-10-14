@@ -50,7 +50,7 @@
     $('select').select2();    
 </script>
 <script type="text/javascript">
-$(function () {
+ $(function () {
         $('#datetimepicker6').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: 'es'

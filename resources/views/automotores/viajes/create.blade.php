@@ -71,12 +71,16 @@
     });    
 </script>
 <script type="text/javascript">
-    $('select').select2();    
-</script>
-
-<script type="text/javascript">
     $(document).ready(function () {
         // inicializamos el plugin
+        $('select').select2({
+            placeholder: "Selecione un Destino",
+            allowClear: true
+        });
+        $('#tipo').select2({
+            placeholder: "Selecione un tipo de viaje",
+            allowClear: true
+        });
         $('#chofer').select2({
             // Activamos la opcion "Chofer" del plugin
             tags: false,

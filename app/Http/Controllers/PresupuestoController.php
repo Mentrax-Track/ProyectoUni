@@ -35,9 +35,9 @@ class PresupuestoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $presupuesto = Presupuesto::orderBy('id','ASC')->paginate(10);
+        $presupuesto = Presupuesto::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
         return view('automotores.presupuesto.index',compact('presupuesto'));
     }
 

@@ -16,6 +16,12 @@ use Infraestructura\User;
 <div class="panel panel-default">
     <div class="panel-heading text-center"><h4><p class="www">Presupuestos de Viajes</p></h4></div>
     <div class="panel-body"> 
+        <form class="form-inline">
+            <div class="form-group">
+                <label>Busqueda</label> 
+                @include('automotores.presupuesto.forms.busqueda')
+            </div>
+        </form><br>
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
                 <tr class="info">
@@ -25,28 +31,28 @@ use Infraestructura\User;
                     <th class="text-center">Entidad</th>
                     <th class="text-center">Operaciones</th>
                 </tr>
+                <?php $num = 1; ?>
                 @foreach($presupuesto as $pre)
                     <tbody>
-                        <td class="info text-center"><center>{{ $pre->id }}</center></td>
+                        <td class="info text-center"><center><?php echo $num; ?></center></td>
                         <td>{{ $pre->enviCho->full_name }}</td>                       
                         <td>{{ $pre->enviVehi->full_vehiculo }}</td>
                         <td>{{ $pre->entidad}}</td>
                         <td> 
                             <center>
-                                {!!link_to_route('presupuestos.edit', $title = 'Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info btn-xs  glyphicon glyphicon-edit'])!!}
-                                {!!link_to_action('PresupuestoController@getImprimir', $title = 'Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon glyphicon-file'])!!} 
+                                {!!link_to_route('presupuestos.edit', $title = ' Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info btn-xs  glyphicon fa fa-pencil-square-o'])!!}
+                                {!!link_to_action('PresupuestoController@getImprimir', $title = ' Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon fa fa-print'])!!} 
                             </center>
                         </td>
                     </tbody>
+                    <?php $num++; ?>
                 @endforeach
             </table>
+            <p class="text-center">Existen {{ $presupuesto->total() }} registros en total</p>
         </div>
     </div>
-<div class="row">
-    <div class="col-md-4">{!! $presupuesto->render() !!}</div>
-    <div class="col-md-4"><center><p>Existen {{ $presupuesto->total() }} registros en total</p></center>
-    </div>
-        <div class="col-md-4"></div>
 </div>
+{!! $presupuesto->appends(Request::only(['entidad']))->render() !!}
+
 @stop
 

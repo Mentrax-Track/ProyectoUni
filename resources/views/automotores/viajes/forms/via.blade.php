@@ -9,7 +9,7 @@
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
                         <center>{!! Form::label('Destino: ') !!}</center>
-                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','id'=>'destino_id','data-error'=>'Escoja un destino','required']) !!}
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','id'=>'destino_id','data-error'=>'Escoja un destino','required', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="col-md-4 btn-group" role="group">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest1',$destino,null,['class'=>'form-control','id'=>'dest1','data-error'=>'Escoja un destino','required']) !!}
+                        {!! Form::select('dest1',$destino,null,['class'=>'form-control','id'=>'dest1','data-error'=>'Escoja un destino','required', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="col-md-4 btn-group" role="group">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2']) !!}
+                        {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class=" col-md-8 btn-group" role="group">
-                        {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3']) !!}
+                        {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4']) !!}
+                        {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5']) !!}
+                        {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                        <div class="input-group date">
@@ -180,7 +180,7 @@
   <div class="col-md-5">
     <div class="form-group">
         {!! Form::label('Tipo:') !!}
-        {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control','data-error'=>'Seleccione un tipo de viaje','required'])!!}
+        {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control','id'=>'tipo','data-error'=>'Seleccione un tipo de viaje','required'])!!}
         <center><div class="help-block with-errors"></div></center>
     </div>
   </div>

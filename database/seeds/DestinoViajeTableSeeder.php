@@ -13,7 +13,7 @@ class DestinoViajeTableSeeder extends Seeder
     public function run()
     {
         
-        factory(Infraestructura\Destino::class)->create([
+        /*factory(Infraestructura\Destino::class)->create([
             'dep_inicio'  => 'vacio',
             'origen'      => 'Seleccione',
             'destino'     => 'Destino',
@@ -21,8 +21,8 @@ class DestinoViajeTableSeeder extends Seeder
             'ruta'        => 'vacio',
             'kilometraje' => '0',
             'tiempo'      => '0:00',
-            ]);
-        factory(Infraestructura\Destino::class, 99)->create();
+            ]);*/
+        factory(Infraestructura\Destino::class, 100)->create();
         /*for($i=1 ; $i<=100; $i++)
         {
             $user = Viaje::find($i);

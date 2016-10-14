@@ -29,7 +29,7 @@ $(document).ready(function()
         $('#dest2').on('change',function(e){
 
             var dest_id = e.target.value;
-
+            //alert(dest_id);
             //ajax
             $.get('/kilometraje?dest_id=' + dest_id, function (data){
                 $('#k2').empty();
