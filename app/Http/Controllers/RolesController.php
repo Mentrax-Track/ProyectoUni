@@ -5,11 +5,14 @@ namespace Infraestructura\Http\Controllers;
 use Illuminate\Http\Request;
 use Infraestructura\Rol;
 use Infraestructura\User;
+use Infraestructura\RolViaje;
 
 use Infraestructura\Http\Requests;
+use Infraestructura\Http\Requests\InsertRolViaje;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
+use Auth;
 use Illuminate\Routing\Route;
 
 class RolesController extends Controller
@@ -75,7 +78,13 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-
+        $rolViaje = \DB::table('roles')
+        ->join('rolviajes','roles.id','=','rolviajes.rol_id')
+        ->where('rolviajes.rol_id',$id)
+        ->select('rolviajes.tipoa','rolviajes.tipob','rolviajes.tipoc','rolviajes.fecha')
+        ->get();
+        //dd($rolViaje);
+        return view('automotores.roles.verviaje', compact('rolViaje'));
     }
 
     /**
@@ -96,7 +105,7 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InsertRolViaje $request, $id)
     {
         $rol = Rol::find($id);
         //$rol->tipo = $request->tipo;
@@ -117,7 +126,35 @@ class RolesController extends Controller
                     ->get(['tipoc'])
                     ->lists('tipoc')
                     ->toArray();
+
+        //Sacamos cuanto tiene catidad
+        $canti = Rol::where('id',$id)
+                ->get(['cantidad'])
+                ->lists('cantidad')
+                ->toArray();
+             
         //dd($tipoa);
+        //Comprobamos si esta lleno los tres tipos para q le de un mensaje de limpiar
+        foreach($tipoa as $key => $valua)
+        {
+            if(!empty($valua) || $valua != NULL || $valua != "")
+            {
+                foreach($tipob as $key => $valub)
+                {
+                    if(!empty($valub) || $valub != NULL || $valub != "")
+                    {
+                       foreach($tipoc as $key => $valuc)
+                        {
+                            if(!empty($valuc) || $valuc != NULL || $valuc != "")
+                            {
+                                Session::flash('mensaje-rol','Limpie los tres tipos de viajes...!!!');
+                                return Redirect::to('/roles');
+                            }
+                        }  
+                    }
+                }
+            }
+        }
         // Si es de $tipoa
         if($tip == "ciudad")
         {     
@@ -133,6 +170,13 @@ class RolesController extends Controller
                 //Registramos el tipo de viaje si esta vacio
                 else
                 {
+                    foreach ($canti as $key => $value) 
+                    {
+                        $cantidad = ((int)$value) + 1;
+                    }
+                    Rol::where('id',$id)
+                        ->update(['cantidad' => $cantidad]);
+
                     $rol->tipoa = $request->lugar;
                     $rol->fecha = $request->fecha;
                     $rol->save();
@@ -156,6 +200,13 @@ class RolesController extends Controller
                 //Registramos el tipo de viaje si esta vacio
                 else
                 {
+                    foreach ($canti as $key => $value) 
+                    {
+                        $cantidad = ((int)$value) + 1;
+                    }
+                    Rol::where('id',$id)
+                        ->update(['cantidad' => $cantidad]);
+
                     $rol->tipob = $request->lugar;
                     $rol->fecha = $request->fecha;
                     $rol->save();
@@ -179,6 +230,13 @@ class RolesController extends Controller
                 //Registramos el tipo de viaje si esta vacio
                 else
                 {
+                    foreach ($canti as $key => $value) 
+                    {
+                        $cantidad = ((int)$value) + 1;
+                    }
+                    Rol::where('id',$id)
+                        ->update(['cantidad' => $cantidad]);
+
                     $rol->tipoc = $request->lugar;
                     $rol->fecha = $request->fecha;
                     $rol->save();
@@ -206,11 +264,6 @@ class RolesController extends Controller
     {
         $roles = Rol::find($id);
 
-        $completo = Rol::where('id',$id)
-                    ->get(['completo'])
-                    ->lists('completo')
-                    ->toArray();
-
         $tipoa = Rol::where('id',$id)
                     ->get(['tipoa'])
                     ->lists('tipoa')
@@ -235,18 +288,31 @@ class RolesController extends Controller
                         {
                             if(!empty($valuc) || $valuc != NULL || $valuc != "")
                             {
-                                //Concateno los tres tipos de viajes llenos
-                                $complet = "1:".$valua." 2:".$valub." 3:".$valuc;
-                                //los concatenos con los que habian para cuardarlo en uno
-                                $com = Rol::where('id',$id)
-                                    ->get(['completo'])
-                                    ->lists('completo')
+                                //Obtenemos el id del rol
+                                $ids = Rol::where('id',$id)
+                                    ->get(['id'])
+                                    ->lists('id')
                                     ->toArray();
-                                //convierto de array a string
-                                $completo = implode($com);
-                                $resultado= $completo." - ".$complet; 
-                                $completo = Rol::where('id',$id)
-                                            ->update(['completo' => $resultado]);
+                                $idrol = implode($ids);
+                                $idroles = (int)$idrol;
+                                //dd($idroles);
+                                $idcho = Rol::where('id',$id)
+                                    ->get(['chofer_id'])
+                                    ->lists('chofer_id')
+                                    ->toArray();
+                                $idcho = implode($idcho);
+                                $idchof = (int)$idcho;
+                                $dia = date('Y-m-d h:m:s');
+                                //Incerto los viajes q realizo cada chofer
+                                RolViaje::create([
+                                    'chofer' =>$idchof,
+                                    'tipoa'=>$valua,
+                                    'tipob'=>$valub,
+                                    'tipoc'=>$valuc,
+                                    'fecha'=>$dia,
+                                    'rol_id'=>$idroles
+                                ]);
+
                                 //Actualizo los tipos de viaje a cero
                                 $tipoa = Rol::where('id',$id)
                                         ->update(['tipoa' => '']);
@@ -286,5 +352,21 @@ class RolesController extends Controller
             }
         }
         return Redirect::to('/roles');
+    }
+    public function getImprimir()
+    {
+        $roles = \DB::table('roles')
+        ->orderBy('id','ASC')
+        ->select('roles.id','roles.chofer_id','roles.tipoa','roles.tipob','roles.tipoc','roles.fecha','roles.cantidad')
+        ->get();
+        //dd($roles);
+        $responsable = Auth::user()->full_name;
+        //dd($responsable);
+        $date = date('d-m-Y');
+        //dd($date);
+        $view =  \View::make('automotores.roles.pdf', compact('date', 'roles','responsable'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta', 'portrat');
+        return $pdf->stream('rol_de_viajes');
     }
 }

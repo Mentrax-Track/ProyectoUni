@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreateRolviajeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,20 +12,19 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('rolviajes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('chofer_id')->unsigned();
+            $table->string('chofer');
             $table->string('tipoa');
             $table->string('tipob');
             $table->string('tipoc');
             $table->dateTime('fecha');
-            $table->integer('cantidad');
+            $table->integer('rol_id')->unsigned();
 
-            $table->foreign('chofer_id')
-                ->references('id')->on('users')
+            $table->foreign('rol_id')
+                ->references('id')->on('roles')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-            
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles');
+        Schema::drop('rolviajes');
     }
 }

@@ -164,6 +164,7 @@ Route::resource('presupuestos','PresupuestoController');
 Route::resource('salidas','SalidasController');
 
 Route::get('roles/{id}/limpiar','RolesController@getLimpiar');
+Route::get('roles/pdf','RolesController@getImprimir');
 Route::resource('roles','RolesController');
 
 ///////   Esto es para roles aqui recive lo que se envio ///////////////

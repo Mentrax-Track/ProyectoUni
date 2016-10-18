@@ -29,6 +29,7 @@
 </div>
 @stop
 @section('javascript')
+{!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/select2.js') !!}
 <script type="text/javascript">
  $(document).ready(function () {
