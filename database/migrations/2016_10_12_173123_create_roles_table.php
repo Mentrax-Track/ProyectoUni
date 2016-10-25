@@ -20,6 +20,7 @@ class CreateRolesTable extends Migration
             $table->string('tipoc');
             $table->dateTime('fecha');
             $table->integer('cantidad');
+            $table->softDeletes();
 
             $table->foreign('chofer_id')
                 ->references('id')->on('users')

@@ -104,8 +104,10 @@ function sumar()
     document.getElementById("combustible").value=(parseFloat(total)/parseFloat(division)).toFixed(2);
     //Funciones aritmeticas para Descripcion Presupuestaria
     var cantidadC = verificar("cantidadC");
+    var carta1    = verificar("carta1")
     var precioC   = verificar("precioC");
-    document.getElementById("totalC").value=(parseFloat(cantidadC)*parseFloat(precioC)).toFixed(2);
+    var result    =(parseFloat(cantidadC)+parseFloat(carta1)).toFixed(2);
+    document.getElementById("totalC").value=(parseFloat(result)*parseFloat(precioC)).toFixed(2);
 
     var cantidadVC = verificar("cantidadVC");
     var precioVC   = verificar("precioVC");

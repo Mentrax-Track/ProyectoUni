@@ -62,11 +62,54 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+        // recogemos el id del chofer que quiere entrar
+        $idcho = (int)$request['chofer_id'];
+        //dd($idcho);
+        // comprobamos con cualquier id q este en la base de datos en la tabla roles y si deleted_at esta vacio
+        $estaeli = \DB::table('roles')->where('chofer_id',$idcho)->where('deleted_at',null)->get();
+        //dd($estaeli);
+        foreach($estaeli as $key => $value)
+        {
+            if(!empty($value) || $value != NULL || $value != "")
+            {
+                Session::flash('mensaje-rol','El chofer ya está en el rol de viajes!!!');
+                return Redirect::to('/roles');
+            }
+        }
+        $esta = \DB::table('roles')->where('chofer_id',$idcho)
+                    ->select('deleted_at')->get();
+        //dd($esta);
+        foreach($esta as $key => $value)
+        {
+            $i = \DB::table('roles')->where('chofer_id',$idcho)
+                    ->select('id')->get();
+            $anid = \DB::table('roles')->where('chofer_id',$idcho)
+                    ->value('id');
+            foreach($i as $key => $value)
+            {
+                if(!empty($value) || $value != NULL || $value != "")
+                {
+                    \DB::table('roles')->where('chofer_id',$idcho)->delete();
+                }
+            }   
+            if(!empty($value) || $value != NULL || $value != "")
+            {
+                $dat = date('Y-m-d h:m:s');
+                $ids = \DB::table('roles')->insertGetId([
+                    'chofer_id'     => $request['chofer_id'],
+                    'created_at'  =>$dat,
+                    'updated_at'  =>$dat
+                ]);
+                //dd($ids);
+                Rol::where('id',$ids)->update(['id'=> $anid]);
+                Session::flash('message','El chofer volvió al rol de viajes...!!!');
+                return Redirect::to('/roles');
+            }
+        }
         Rol::create([
-            'chofer_id'     => $request['chofer_id'],
-            ]);
-      //  dump($request['encargado']);
-        Session::flash('message','El chofer fue introducido al rol de viajes');
+                    'chofer_id'     => $request['chofer_id'],
+                ]);
+        Session::flash('message','El chofer fue agregado al rol de viajes');
         return Redirect::to('/roles');
     }
 
@@ -257,7 +300,9 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-
+        $this->rol->delete();
+        Session::flash('message','El chofer fue eliminado del rol de viajes!!!');
+        return Redirect::to('/roles');
         
     }
     public function getLimpiar($id)
@@ -327,7 +372,7 @@ class RolesController extends Controller
                                 $fecha = Rol::where('id',$id)
                                         ->update(['fecha' => $date]); 
                                 
-                                Session::flash('message','Se guardo y limpió los tres tipos de Viajes');
+                                Session::flash('message','Se guardó y limpió los tres tipos de Viajes');
                                 return Redirect::to('/roles');
 
                             }
@@ -357,6 +402,7 @@ class RolesController extends Controller
     {
         $roles = \DB::table('roles')
         ->orderBy('id','ASC')
+        ->where('deleted_at',null)
         ->select('roles.id','roles.chofer_id','roles.tipoa','roles.tipob','roles.tipoc','roles.fecha','roles.cantidad')
         ->get();
         //dd($roles);

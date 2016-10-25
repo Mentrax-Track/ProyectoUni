@@ -29,6 +29,7 @@ class CreatePresupuestoTable extends Migration
 
             //Descripcion del Presupuesto
             $table->string('cantidad1');
+            $table->string('carta1');
             $table->string('precio1');
             $table->string('total1C');
             $table->string('cantidad2');

@@ -42,7 +42,7 @@ use Infraestructura\Rol;
 </table>  
 </main><h4 class="km">Fecha: {{ $date }}</h4>
     <h4><b>NOTA: </h4>
-        <h4><strong>A) </strong><i>El orden de los choferes se respesta según la llegada del tipo de vije.</i></h4>
+        <h4><strong>A) </strong><i>El orden de los choferes se respesta según la llegada del tipo de viaje.</i></h4>
         <h4><strong>B) </strong><i>La fecha muestra la ultima modificacion o designación que se realizó en el rol de viajes.</i></h4>
         <h4><strong>C) </strong><i>El # muestra el numero de viajes realizados dentro del rol de cada chofer.</i></h4>
         <br /><br /><br /><br />

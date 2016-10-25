@@ -28,11 +28,11 @@
                 <th class="text-center">Cantidad</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Operación</th> 
-            </tr> 
+            </tr> <?php $i=1; ?>
             @foreach($roles as $rol)
                 <tbody>
                     <tr>
-                        <td  class="info text-center"><center>{{ $rol->id }}</center></td>
+                        <td  class="info text-center"><center>{{ $i }}</center></td>
                         <td>{{ $rol->enviarChofer->full_name }}</td>
                         <td>{{ $rol->tipoa }}</td>
                         <td>{{ $rol->tipob }}</td>
@@ -47,11 +47,18 @@
                                     {!!link_to_route('roles.show', $title = ' Mostrar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon fa fa-bars'])!!}
                                     <br />
                                     {!!link_to_action('RolesController@getLimpiar', $title = ' Limpiar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-paint-brush'])!!}
+
+                                    {!! Form::open(['route'=>['roles.destroy',$rol->id],'method'=>'DELETE']) !!}
+                                        <button type="submit" class="btn btn-danger btn-xs glyphicon fa fa-trash-o"> 
+                                            Eliminar
+                                        </button>   
+                                    {!! Form::close() !!}
+                                
                                 </center>
                             </div>
                         </td>
                     </tr>
-                </tbody>
+                </tbody><?php $i++; ?>
             @endforeach
         </table>
       </div>

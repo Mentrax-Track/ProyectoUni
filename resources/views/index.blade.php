@@ -23,11 +23,11 @@
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <div class="navbar-header ">
-              <a class="navbar-brand" href="#"><p class="www">DEPARTAMENTO  DE  INFRAESTRUCTURA</p></a>
+              <a class="navbar-brand" href=""><p class="www">DEPARTAMENTO  DE  INFRAESTRUCTURA</p></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><p class="www">U.A.T.F</p></a></li>
+                <li><a href="http://www.uatf.edu.bo" target="_blank"><p class="www">U.A.T.F</p></a></li>
               </ul>
             </div>
           </div>
@@ -45,9 +45,8 @@
               <img class="first-slide" src="img/uno.jpg" alt="First slide" align="center">
               <div class="container">
                 <div class="carousel-caption">
-                  <i><h1>Automotores</h1></i>
-                    <p>Vea el calendario de las reservas y viajes... </p>
-                      <p><a class="btn btn-lg btn-primary" data-toggle="modal"  href="{!! URL::to('/Automotores') !!}">Ingrese...</a></p>
+                  <i><h1>Viajes</h1></i>
+                      <p><a data-toggle="modal" class="btn btn-primary " href="{!! URL::to('/Automotores') !!}" >  Ingrese</a></p>
                 </div>
               </div>
             </div>
@@ -56,9 +55,8 @@
                 <img class="second-slide" src="img/dos.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                          <h1>Servicios Generales</h1>
-                            <p>Realiza los tramites para la solicitud de vehiculos...</p>
-                            <p><a class="btn btn-lg btn-primary" data-toggle="modal"  href="{!! URL::to('/Servicios') !!}">Ingrese...</a></p>
+                          <h1>Control General</h1>
+                            <p><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Servicios') !!}">Ingrese</a></p>
                         </div>
                     </div>
             </div>
@@ -67,9 +65,8 @@
                 <img class="third-slide" src="img/tres.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                          <h1>Mantenimiento</h1>
-                            <p>Registra o verifica el estado del vehiculo...</p>
-                            <p><a class="btn btn-lg btn-primary" data-toggle="modal"  href="{!! URL::to('/Mantenimiento') !!}">Ingrese...</a></p>                 
+                          <h1>Mantenimiento Vehicular</h1>
+                            <p><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Mantenimiento') !!}">Ingrese</a></p>                 
                         </div>
                     </div>
             </div>
@@ -85,27 +82,27 @@
               <span class="sr-only">Next</span>
           </a>
         </div><br>
-      <!-- Main component for a primary marketing message or call to action -->
+
       <div class="jumbotron">
         <div class="container marketing">
           <div class="row">
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/calendario.jpg" alt="Generic placeholder image" width="140" height="140" pading="1px"></span></center>
-                  <i><h2 class="text-center">Automotores</h2></i>
-                  <p>Podra verificar la disponibilidad de vehiculosy los dias de viajes disponibles para realizar la reserva...</p>
-                  <p class="text-center"><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Automotores') !!}">Ingresar...&raquo;</a></p>
+                  <i><h2 class="text-center">Viajes</h2></i>
+                  <p align="justify">Podra verificar la disponibilidad de los vehiculos en un calendario de viajes, realizar las reservas de los mismos y mucho más... </p>
+                  <p class="text-center"><a class="btn btn-primary glyphicon glyphicon-calendar" data-toggle="modal"  href="{!! URL::to('/Automotores') !!}"> Ingresar...&raquo;</a></p>
               </div> 
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/tramitess.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Servicios Generales</h2></i>
-                  <p>En esta sección podrá realizar los tramites para realizar el viaje o las solicitudes de vehiculos...</p>
-                  <p class="text-center"><a class="btn btn-primary" href="{!! URL::to('/Servicios') !!}" role="button">Ingresar...&raquo;</a></p>
+                  <p align="justify">Podrá realizar el control de los usuarios de los distintos sub departamentos del departamento de Infraestructura...</p>
+                  <p class="text-center"><a class="btn btn-primary " href="{!! URL::to('/Servicios') !!}" role="button">Ingresar...&raquo;</a></p>
               </div>
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/autos.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Mantenimiento</h2></i>
-                  <p>Aquí podra registrar y verificar el estado del vehiculo como tambien los revisar los informes anteriores...</p>
-                  <p class="text-center"><a class="btn btn-primary" href="{!! URL::to('/Mantenimiento') !!}" role="button">Ingresar... &raquo;</a></p>
+                  <p align="justify">Podrá ver el estado de los vehiculos que cuenta nuestra universidad como tambien registrar los accesorios nuevos y mucho más...</p>
+                  <p class="text-center"><a class="btn btn-primary glyphicon glyphicon-bed" href="{!! URL::to('/Mantenimiento') !!}" role="button"> Ingresar... &raquo;</a></p>
               </div>
           </div>
         </div>
@@ -124,7 +121,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     {!! Html::script('js/jquery.min.js') !!}
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"></script>')</script>
     {!! Html::script('js/bootstrap.min.js') !!}
     {!! Html::script('js/holder.min.js') !!}
   </body>

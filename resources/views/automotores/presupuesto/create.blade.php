@@ -20,14 +20,8 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Presupuesto de Viaje</p></h4></div>
     <div class="panel-body"> 
-        {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','files' => true,'data-toggle'=>'validator' ]) !!}
         
             @include('automotores.presupuesto.forms.presu')
-                <div class="col-md-4"></div>
-                <div class="col-md-4">    
-                    <center>{!! Form::submit('Registrar',['class'=>'btn btn-primary btn-sm btn-block']) !!}</center>
-                </div>
-                <div class="col-md-4"></div>
         {!! Form::close() !!}
         </div>
 </div>
@@ -47,7 +41,10 @@
 {!! Html::script('js/select2.js') !!}
 {!! Html::script('js/validator.js')!!}
 <script type="text/javascript">
-    $('select').select2();    
+    $('select').select2({
+        placeholder: "Seleccione una opción",
+        allowClear: true
+    });    
 </script>
 <script type="text/javascript">
  $(function () {
@@ -93,30 +90,33 @@ function sumar()
     // .toFixed(2) Convierte un número en una cadena , manteniendo sólo dos decimales
     document.getElementById("combustible").value=(parseFloat(total)/parseFloat(division)).toFixed(2);
     //Funciones aritmeticas para Descripcion Presupuestaria
+    //Combustible
     var cantidadC = verificar("cantidadC");
+    var carta1    = verificar("carta1")
     var precioC   = verificar("precioC");
-    document.getElementById("totalC").value=(parseFloat(cantidadC)*parseFloat(precioC)).toFixed(2);
-
+    var result    =(parseFloat(cantidadC)+parseFloat(carta1)).toFixed(2);
+    document.getElementById("totalC").value=(parseFloat(result)*parseFloat(precioC)).toFixed(2);
+    //Viaticos Ciudad
     var cantidadVC = verificar("cantidadVC");
     var precioVC   = verificar("precioVC");
     document.getElementById("totalVC").value=(parseFloat(cantidadVC)*parseFloat(precioVC)).toFixed(2);
-
+    //Viaticos Ciuada
     var cantidadVP = verificar("cantidadVP");
     var precioVP   = verificar("precioVP");
     document.getElementById("totalVP").value=(parseFloat(cantidadVP)*parseFloat(precioVP)).toFixed(2);
-
+    //Viaticos Frontera
     var cantidadVF = verificar("cantidadVF");
     var precioVF   = verificar("precioVF");
     document.getElementById("totalVF").value=(parseFloat(cantidadVF)*parseFloat(precioVF)).toFixed(2);
-
+    //Viaticos Peajes
     var cantidadP = verificar("cantidadP");
     var precioP   = verificar("precioP");
     document.getElementById("totalP").value=(parseFloat(cantidadP)*parseFloat(precioP)).toFixed(2);
-
+    //Mantenimiento
     var cantidadM = verificar("cantidadM");
     var precioM   = verificar("precioM");
     document.getElementById("totalM").value=(parseFloat(cantidadM)*parseFloat(precioM)).toFixed(2);
-
+    //Garage
     var cantidadG = verificar("cantidadG");
     var precioG   = verificar("precioG");
     document.getElementById("totalG").value=(parseFloat(cantidadG)*parseFloat(precioG)).toFixed(2);

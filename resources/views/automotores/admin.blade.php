@@ -108,7 +108,10 @@
                             <a href="#"><i class="glyphicon fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa fa-list-alt'></i> Listar</a>
+                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa fa-list-alt'></i> Tipo A (Cheque)</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa fa-list-alt'></i> Tipo B (Caja)</a>
                                 </li>
                             </ul>
                         </li>
@@ -139,6 +142,7 @@
 
         <div id="page-wrapper">
             @yield('content')
+            @include('automotores.tablero')
         </div>
 
     </div>

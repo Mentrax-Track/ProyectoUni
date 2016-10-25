@@ -92,8 +92,8 @@ use Infraestructura\User;
         <td colspan="1" class="kn"> Peajes ida y vuelta</td>
         <td class="km" colspan="1"> {{$presupuesto->precio5}}</td>
         <td class="km" colspan="1"> {{$presupuesto->total5P}}</td>
-        <td colspan="1" class="km"> <center>Combustible</center></td>
-        <td class="km" colspan="1"> {{$presupuesto->cantidad1}}</td>
+        <td colspan="1" class="km"> <center><u><strong>Combustible</strong></u></center></td>
+        <td class="km" colspan="1"> <u><strong>{{$presupuesto->cantidad1}}</strong></u></td>
     </tr>
     <tr>
         <td class="km" colspan="1"> {{$presupuesto->cantidad6}}</td>
@@ -102,7 +102,7 @@ use Infraestructura\User;
         <td class="km" colspan="1"> {{$presupuesto->precio6}}</td>
         <td class="km" colspan="1"> {{$presupuesto->total6M}}</td>
         <td colspan="1" class="kn"> Con Pedido</td>
-        <td class="km" colspan="1"> 0.00</td>
+        <td class="km" colspan="1"> {{ $presupuesto->carta1 }}</td>
     </tr>
     <tr>
         <td class="km" colspan="1"> {{$presupuesto->cantidad7}}</td>
@@ -114,9 +114,14 @@ use Infraestructura\User;
         <td class="km" colspan="1"> {{$presupuesto->cantidad1}}</td>
     </tr>
     <tr>
+        <?php 
+            $carta = $presupuesto->cantidad1;
+            $pedido= $presupuesto->carta1;
+            $resultadoFinal = ((int)$carta + (int)$pedido);
+         ?>
         <td colspan="4" class="km"><b>TOTAL (a) bs.</b></td>
         <td class="kn" colspan="1"><b>{{$presupuesto->total8T}}</b></td>
-        <td colspan="2" class="km"><b> COMBUSTIBLE TOTAL: {{$presupuesto->cantidad1}} Litros.</b></td>
+        <td colspan="2" class="km"><b> COMBUSTIBLE TOTAL: {{$resultadoFinal}} Litros.</b></td>
         
     </tr>
     <tr>
