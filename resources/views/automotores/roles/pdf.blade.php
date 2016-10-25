@@ -23,21 +23,21 @@ use Infraestructura\Rol;
         <td class="preti" colspan="1"><strong><center>Fecha</center></strong></td>
         <td class="preti" colspan="1"><strong><center>#</center></strong></td>
     </tr>
-
+    <?php $ids = 1; ?>
     @foreach ($roles as $value) 
         <tr><?php  $i = $value->chofer_id;
                     $r = User::where('id',$i)
                         ->get(['nombres','apellidos'])
                         ->lists('fullname')->toArray();
                     $nombre = implode($r);?>
-            <td class="kn"><center>{{ $value->id }}</center></td>
+            <td class="kn"><center>{{ $ids }}</center></td>
             <td class="kn">{{ $nombre }}</td>
             <td class="kn">{{ $value->tipoa }}</td>
             <td class="kn">{{ $value->tipob }}</td>
             <td class="kn">{{ $value->tipoc }}</td>
             <td class="kn"><center>{{ $value->fecha }}</center></td>
             <td class="kn"><center>{{ $value->cantidad }}</center></td>
-        </tr>
+        </tr><?php $ids++; ?>
     @endforeach
 </table>  
 </main><h4 class="km">Fecha: {{ $date }}</h4>
