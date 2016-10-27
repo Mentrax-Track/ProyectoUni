@@ -26,6 +26,10 @@ class Ruta extends Model
     {
         return $this->belongsTo('Infraestructura\Presupuesto');
     }
+    public function presupuestoDia()
+    {
+        return $this->belongsTo('Infraestructura\PresupuestoDia');
+    }
     public function enviDes()
     {
         return $this->hasOne('Infraestructura\Destino','id','destino_id');

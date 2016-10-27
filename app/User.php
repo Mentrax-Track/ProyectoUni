@@ -110,6 +110,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('Infraestructura\Presupuesto');
     }
+    public function presupuestosDia()
+    {
+        return $this->hasMany('Infraestructura\PresupuestoDia');
+    }
     public function roles()
     {
         return $this->hasMany('Infraestructura\Rol');

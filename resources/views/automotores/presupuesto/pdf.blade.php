@@ -16,7 +16,7 @@ use Infraestructura\User;
 <main>
 <table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black;" class="body">
     <tr>
-        <td class="preti" colspan="5"><strong><center>VIAJE</center></strong></td>
+        <td class="preti" colspan="5"><strong><center>VIAJE ({{ $viaje->tipo }})</center></strong></td>
         <td class="preti" colspan="1"><strong><center>Ruta</center></strong></td>
         <td class="preti" colspan="1"><strong><center>KM</center></strong></td> 
     </tr>

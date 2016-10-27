@@ -56,6 +56,10 @@ class Viaje extends Model
     {
         return $this->hasMany('Infraestructura\Presupuesto');
     }
+    public function presupuestosDia()
+    {
+        return $this->hasMany('Infraestructura\PresupuestoDia');
+    }
     public function scopeVia($query, $via)
     {
         if(trim($via) != "")

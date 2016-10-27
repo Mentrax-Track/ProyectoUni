@@ -1,6 +1,7 @@
 <?php
 
 namespace Infraestructura\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Infraestructura\Viaje;
 use Infraestructura\Vehiculo;
@@ -10,25 +11,24 @@ use Infraestructura\User_Viaje;
 use Infraestructura\Vehiculo_Viaje;
 use Infraestructura\Ruta;
 use Infraestructura\Destino_Viaje;
-use Infraestructura\Presupuesto;
-
+use Infraestructura\PresupuestoDia;
+use Infraestructura\Http\Requests\PresuDiaCreateRequest;
 use Infraestructura\Http\Requests;
-use Infraestructura\Http\Requests\PresupuestoCreateRequest;
 use Infraestructura\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
 use Auth;
-class PresupuestoController extends Controller
+
+class PresupuestosDiaController extends Controller
 {
     public function __construct()
     {
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
-
     }
     public function find(Route $route)
     {
-        $this->viaje   = Viaje::find($route->getParameter('viajes'));
+        $this->presupuesto = PresupuestoDia::find($route->getParameter('presudias'));
     }
     /**
      * Display a listing of the resource.
@@ -37,8 +37,8 @@ class PresupuestoController extends Controller
      */
     public function index(Request $request)
     {
-        $presupuesto = Presupuesto::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
-        return view('automotores.presupuesto.index',compact('presupuesto'));
+        $presupuesto = PresupuestoDia::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
+        return view('automotores.presupuestoDia.index',compact('presupuesto'));
     }
 
     /**
@@ -49,6 +49,7 @@ class PresupuestoController extends Controller
     public function create()
     {
 
+        
     }
 
     /**
@@ -57,11 +58,12 @@ class PresupuestoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PresupuestoCreateRequest $request)
+    public function store(PresuDiaCreateRequest $request)
     {
-        Presupuesto::create($request->all());
-        Session::flash('message','Presupuesto creado correctamente');
-        return redirect('presupuestos');
+        //dd($request);
+        PresupuestoDia::create($request->all());
+        Session::flash('message','Presupuesto de viaje creado correctamente...');
+        return redirect('presupuestosDia');
     }
 
     /**
@@ -72,52 +74,6 @@ class PresupuestoController extends Controller
      */
     public function show($id)
     {
-        /* Todo bien nomas nomas nomas 
-        //dd($id);
-        $consulta = User_Viaje::where('viaje_id',(int)$id)->get();
-        //dd($consulta);
-        $encargados[]="Seleccione un Encargado";
-        $choferes[]  ="Seleccione un Chofer";
-        foreach ($consulta as $key => $value) 
-        {
-            $iduser = $value->user_id;
-            //dd($iduser);
-            $tipo = User::where('id',$iduser)->value('tipo');
-            //dd($tipo);
-            $encargado = User::where('id',$iduser)
-                    ->where('tipo','encargado')
-                    ->get(['id', 'nombres', 'apellidos'])
-                    ->lists('full_name','id')->toArray();
-            //dd($encargado);
-            $encargados = array_merge($encargados, $encargado);
-
-            $chofer = User::where('id',$iduser)
-                    ->where('tipo','chofer')
-                    ->get(['id', 'nombres', 'apellidos'])
-                    ->lists('full_name','id')->toArray();
-            //dd($encargado);
-            $choferes = array_merge($choferes, $chofer);
-
-        }
-
-        $vehivia = Vehiculo_Viaje::where('viaje_id',(int)$id)->get();
-        //dd($vehivia);
-        $vehiculos[]="Seleccione un Vehiculo";
-        foreach ($vehivia as $key => $value) 
-        {
-            $idvehi = $value->vehiculo_id;
-            //dd($iduser);
-            //$vehi = Vehiculo::where('id',$idvehi)->value('tipo');
-            //dd($tipo);
-            $vehi = Vehiculo::where('id',$idvehi)
-                    ->get(['id', 'tipo', 'placa'])
-                    ->lists('full_vehiculo','id')->toArray();
-            //dd($encargado);
-            $vehiculos = array_merge($vehiculos, $vehi);
-
-        } */ //Hasta aqui todo bien para mostrar solo los nombres
-        //dd($encargados);
-        //dd($vehiculos);       
         $encargados  = User::where('tipo', 'encargado')
                     ->orderBy('id','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
@@ -177,7 +133,7 @@ class PresupuestoController extends Controller
 
         $responsable = Auth::user()->full_name;
 
-        return view('automotores.presupuesto.create',compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
+        return view('automotores.presupuestoDia.create',compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
     }
 
     /**
@@ -205,7 +161,7 @@ class PresupuestoController extends Controller
                     ->get(['id','origen', 'destino'])
                     ->lists('full_destino');
 
-        $ide = Presupuesto::where('id',$id)
+        $ide = PresupuestoDia::where('id',$id)
                     ->get(['viaje_id'])->lists('viaje_id')->toArray();
         $ids = $ide[0];
         //dd($ids);
@@ -252,9 +208,10 @@ class PresupuestoController extends Controller
 
         $responsable = Auth::user()->full_name;
 
-        $presupuesto = Presupuesto::find($id);
+        $presupuesto = PresupuestoDia::find($id);
        // dd($presupuesto);
-        return view('automotores.presupuesto.edit',['presupuesto'=>$presupuesto],compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
+        return view('automotores.presupuestoDia.edit',['presupuesto'=>$presupuesto],compact('responsable','dest1','dest2','dest3','dest4','dest5','destino_id','ruta','viaje','choferes','encargados','vehiculos'));
+
     }
 
     /**
@@ -266,12 +223,12 @@ class PresupuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $presupuesto=Presupuesto::find($id);
+        $presupuesto=PresupuestoDia::find($id);
         $presupuesto->fill($request->all());
         
         $presupuesto->save();
         Session::flash('message','Presupuesto editado correctamente');
-        return redirect('presupuestos');
+        return redirect('presupuestosDia');
     }
 
     /**
@@ -282,13 +239,14 @@ class PresupuestoController extends Controller
      */
     public function destroy($id)
     {
-        Presupuesto::destroy($id);
+        PresupuestoDia::destroy($id);
         Session::flash('message','Presupuesto Eliminado correctamente');
-        return Redirect::to('/presupuestos');
+        return Redirect::to('/presupuestosDia');
     }
+
     public function getImprimir($id)
     {
-        $ide = Presupuesto::where('id',$id)
+        $ide = PresupuestoDia::where('id',$id)
                     ->get(['viaje_id'])->lists('viaje_id')->toArray();
         $ids = $ide[0];
         //dd($ids);
@@ -345,10 +303,11 @@ class PresupuestoController extends Controller
             ->get(['id','origen', 'destino'])
             ->lists('full_destino')->toArray();
         $destino6 = implode(",",$dest5);
+        $responsable = Auth::user()->full_name;
 
-        $presupuesto = Presupuesto::find($id);
+        $presupuesto = PresupuestoDia::find($id);
         $date = date('d-m-Y');
-        $view =  \View::make('automotores.presupuesto.pdf', compact('date', 'presupuesto','destino1','destino2','destino3','destino4','destino5','destino6','ruta','viaje'))->render();
+        $view =  \View::make('automotores.presupuestoDia.pdf', compact('date', 'presupuesto','destino1','destino2','destino3','destino4','destino5','destino6','ruta','viaje','responsable'))->render();
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta', 'portrat');
         return $pdf->stream('presupuesto');

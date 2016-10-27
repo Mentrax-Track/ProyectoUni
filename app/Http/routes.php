@@ -161,6 +161,9 @@ Route::resource('reserviaje','ReservaViajeController');
 Route::get('presupuestos/{id}/pdf','PresupuestoController@getImprimir');
 Route::resource('presupuestos','PresupuestoController');
 
+Route::get('presupuestosDia/{id}/pdf','PresupuestosDiaController@getImprimir');
+Route::resource('presupuestosDia','PresupuestosDiaController');
+
 Route::resource('salidas','SalidasController');
 
 Route::get('roles/{id}/limpiar','RolesController@getLimpiar');

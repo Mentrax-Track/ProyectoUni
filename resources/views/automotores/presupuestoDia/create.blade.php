@@ -20,9 +20,16 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Presupuesto de Viaje</p></h4></div>
     <div class="panel-body"> 
-        
-            @include('automotores.presupuesto.forms.presu')
-        
+        {!! Form::open(['route'=>'presupuestosDia.store','method'=>'POST','data-toggle'=>'validator' ]) !!}
+            @include('automotores.presupuestoDia.forms.press')
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <center><button type="submit" class="btn btn-primary btn-block" >
+                      <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                  </button> </center>
+            </div>
+        {!! Form::close() !!}
     </div>
 </div>
 @endsection
@@ -101,79 +108,12 @@
 function sumar()
 {
 
-    var total = verificar("total");
-    var division=verificar("division");
-
-    document.getElementById("total").value=parseFloat(total);
-    // .toFixed(2) Convierte un número en una cadena , manteniendo sólo dos decimales
-    document.getElementById("combustible").value=(parseFloat(total)/parseFloat(division)).toFixed(2);
-    //Funciones aritmeticas para Descripcion Presupuestaria
-    //Combustible
-    var cantidadC = verificar("cantidadC");
-    var carta1    = verificar("carta1")
-    var precioC   = verificar("precioC");
-    var result    =(parseFloat(cantidadC)+parseFloat(carta1)).toFixed(2);
-    document.getElementById("totalC").value=(parseFloat(result)*parseFloat(precioC)).toFixed(2);
     //Viaticos Ciudad
-    var cantidadVC = verificar("cantidadVC");
-    var precioVC   = verificar("precioVC");
-    document.getElementById("totalVC").value=(parseFloat(cantidadVC)*parseFloat(precioVC)).toFixed(2);
-    //Viaticos Ciuada
-    var cantidadVP = verificar("cantidadVP");
-    var precioVP   = verificar("precioVP");
-    document.getElementById("totalVP").value=(parseFloat(cantidadVP)*parseFloat(precioVP)).toFixed(2);
-    //Viaticos Frontera
-    var cantidadVF = verificar("cantidadVF");
-    var precioVF   = verificar("precioVF");
-    document.getElementById("totalVF").value=(parseFloat(cantidadVF)*parseFloat(precioVF)).toFixed(2);
-    //Viaticos Peajes
-    var cantidadP = verificar("cantidadP");
-    var precioP   = verificar("precioP");
-    document.getElementById("totalP").value=(parseFloat(cantidadP)*parseFloat(precioP)).toFixed(2);
-    //Mantenimiento
-    var cantidadM = verificar("cantidadM");
-    var precioM   = verificar("precioM");
-    document.getElementById("totalM").value=(parseFloat(cantidadM)*parseFloat(precioM)).toFixed(2);
-    //Garage
-    var cantidadG = verificar("cantidadG");
-    var precioG   = verificar("precioG");
-    document.getElementById("totalG").value=(parseFloat(cantidadG)*parseFloat(precioG)).toFixed(2);
-
-    //Para el total en Bolivianos
-    var totalT  = verificar("totalT");
-    var totalC  = verificar("totalC");
-    var totalVC = verificar("totalVC");
-    var totalVP = verificar("totalVP");
-    var totalVF = verificar("totalVF");
-    var totalP  = verificar("totalP");
-    var totalM  = verificar("totalM");
-    var totalG  = verificar("totalG");
-    //document.getElementById("totalT").value=parseFloat(totalT);
-    document.getElementById("totalT").value=(parseFloat(totalC)+parseFloat(totalVC)+parseFloat(totalVP)+parseFloat(totalVF)+parseFloat(totalP)+parseFloat(totalM)+parseFloat(totalG)).toFixed(2);
-
-    //Transporte publico
-    var p1 = verificar("p1");
-    var c1 = verificar("c1");
-    document.getElementById("t1").value=(parseFloat(p1)*parseFloat(c1)).toFixed(2);
-
-    var p2 = verificar("p2");
-    var c2 = verificar("c2");
-    document.getElementById("t2").value=(parseFloat(p2)*parseFloat(c2)).toFixed(2);
-
-    var p3 = verificar("p3");
-    var c3 = verificar("c3");
-    document.getElementById("t3").value=(parseFloat(p3)*parseFloat(c3)).toFixed(2);
-
-    var t1 = verificar("t1");
-    var t2 = verificar("t2");
-    var t3 = verificar("t3");
-    document.getElementById("t4").value=(parseFloat(t1)+parseFloat(t2)+parseFloat(t3)).toFixed(2);
-
-    //Diferencia
-    var totalT = verificar("totalT");
-    var t4     = verificar("t4");
-    document.getElementById("diferencia").value=(parseFloat(totalT)-parseFloat(t4)).toFixed(2);
-
+    var combu = verificar("combu");
+    var divi = verificar("divi");
+    var li  = verificar("li");
+    document.getElementById("li").value=(parseFloat(combu)/parseFloat(divi)).toFixed(2);
+    
 }
 function verificar(id)
 {

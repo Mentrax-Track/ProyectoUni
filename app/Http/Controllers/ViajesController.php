@@ -273,7 +273,7 @@ class ViajesController extends Controller
         else{
             dd("adicional vacio");    
         }
-        Session::flash('message','El viaje se registro correctamente...');
+        Session::flash('message','El viaje se registró correctamente...');
         return Redirect::to('viajes');
 
         
