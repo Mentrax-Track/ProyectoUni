@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Infraestructura\User;
 use Infraestructura\Viaje;
+use Infraestructura\Salida;
 class Vehiculo extends Model
 {
 
@@ -73,5 +74,9 @@ class Vehiculo extends Model
     public function presupuestos()
     {
         return $this->hasMany('Infraestructura\Presupuesto');
+    }
+    public function salida()
+    {
+        return $this->hasOne('Infraestructura\Salida');
     }
 }

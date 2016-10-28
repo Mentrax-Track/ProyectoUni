@@ -119,7 +119,7 @@
                             <a href="#"><i class="glyphicon fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/salidas/create') !!}"><i class='fa fa-file-text-o'></i> Generar</a>
+                                    <a href="{!! URL::to('/salidas/create') !!}"><i class='fa fa-file-text-o'></i> Crear</a>
                                 </li>
                                 <li>
                                     <a href="{!! URL::to('/salidas') !!}"><i class='fa fa-sort-numeric-asc'></i> Listar</a>

@@ -26,6 +26,19 @@ header {
   margin-bottom: 30px;
 }
 
+#log{
+  border-top: 1px solid  #5D6975;
+  border-bottom: 1px solid  #5D6975;
+  color: #1A1A1A;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 250 20px 0;
+  background: url(dimension.png);
+  float: left;
+  vertical-align: middle;
+}
 #logo {
   text-align: left;
  
@@ -77,7 +90,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   margin-bottom: 20px;
-
+}
+#tab {
+  width: 50%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
 }
 
 table tr:nth-child(2n-2) td {

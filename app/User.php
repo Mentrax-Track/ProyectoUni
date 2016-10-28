@@ -14,6 +14,7 @@ use Infraestructura\Vehiculo;
 use Infraestructura\Viaje;
 use Infraestructura\Reserva;
 use Infraestructura\User_Viaje;
+use Infraestructura\Salida;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -117,5 +118,9 @@ class User extends Model implements AuthenticatableContract,
     public function roles()
     {
         return $this->hasMany('Infraestructura\Rol');
+    }
+    public function salida()
+    {
+        return $this->hasOne('Infraestructura\Salida');
     }
 }
