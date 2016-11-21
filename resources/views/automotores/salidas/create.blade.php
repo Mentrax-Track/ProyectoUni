@@ -15,7 +15,7 @@
     <div class="panel-heading text-center"><h4><p class="www">Autorización de Salidas</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'salidas.store','method'=>'POST','files' => true,'data-toggle'=>'validator']) !!}
-        
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('automotores.salidas.forms.salida')
 
                 <div class="col-md-4"></div>

@@ -8,7 +8,7 @@ use Infraestructura\User;
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Presupuesto de Viaje</title>
+    <title>Boleta de Salida</title>
     {!! Html::style('css/pdf/pdf.css') !!}
 </head>
 <br>

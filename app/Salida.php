@@ -30,6 +30,13 @@ class Salida extends Model
     {
         return $this->hasOne('Infraestructura\Vehiculo','id','vehiculo');
     }
+    public function scopeRespo($query, $respo)
+    {
+        if(trim($respo) != "")
+        {
+            $query->where('responsable', "LIKE","%$respo%");    
+        }
+    }
 
 
 }

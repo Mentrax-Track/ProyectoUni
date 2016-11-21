@@ -71,7 +71,7 @@
                   <div class="col-md-4">   
                         <center>{!! Form::label('Hora Llegada') !!}</center>
                         <div class='input-group date input-group-sm' id='datetimepicker4'>
-                            {!! Form::text('hllegada',null,['class'=>'form-control','data-error'=>'Seleccione una hora','required']) !!}
+                            {!! Form::text('hllegada',null,['class'=>'form-control','data-error'=>'Seleccione una hora']) !!}
                             <center><div class="help-block with-errors"></div></center>
                             <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                         </div>  

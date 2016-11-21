@@ -15,6 +15,7 @@ use Infraestructura\Viaje;
 use Infraestructura\Reserva;
 use Infraestructura\User_Viaje;
 use Infraestructura\Salida;
+use Infraestructura\InformeViaje;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -122,5 +123,9 @@ class User extends Model implements AuthenticatableContract,
     public function salida()
     {
         return $this->hasOne('Infraestructura\Salida');
+    }
+    public function informeviajes()
+    {
+        return $this->hasOne('Infraestructura\InformeViaje');
     }
 }

@@ -22,7 +22,15 @@
     <div class="panel-body"> 
         
             @include('automotores.presupuesto.forms.presu')
-        
+        <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                  <button type="submit" class="btn btn-primary btn-block" >
+                      <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                  </button>        
+              </div>
+              <div class="col-md-4"></div>   
+          </div>
     </div>
 </div>
 @endsection

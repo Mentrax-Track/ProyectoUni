@@ -24,8 +24,8 @@
             {!!Form::model($presupuesto,['route'=> ['presupuestos.update',$presupuesto->id],'method'=>'PUT'])!!}
 
                 @include('automotores.presupuesto.forms.presu')
-                <div class="col-md-2"></div>
-                <div class="col-md-3">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <center>
                     {!! Form::submit('Actualizar',['class'=>'btn btn-primary btn-sm btn-block']) !!}
                     </center>
@@ -34,7 +34,8 @@
             {!! Form::close() !!}
             <br>
             {!! Form::open(['route'=>['presupuestos.destroy',$presupuesto->id],'method'=>'DELETE']) !!}
-                <div class="col-md-3">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                     <center>
                         {!! Form::submit('Eliminar',['class'=>'btn btn-danger btn-sm btn-block']) !!}
                     </center>

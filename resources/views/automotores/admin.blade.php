@@ -134,6 +134,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Informes de Viajes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/informes') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
             </div>

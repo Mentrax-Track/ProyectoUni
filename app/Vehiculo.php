@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Infraestructura\User;
 use Infraestructura\Viaje;
 use Infraestructura\Salida;
+use Infraestructura\InformeViaje;
 class Vehiculo extends Model
 {
 
@@ -78,5 +79,9 @@ class Vehiculo extends Model
     public function salida()
     {
         return $this->hasOne('Infraestructura\Salida');
+    }
+    public function informeviajes()
+    {
+        return $this->hasOne('Infraestructura\InformeViaje');
     }
 }

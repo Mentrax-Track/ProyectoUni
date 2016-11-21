@@ -30,9 +30,10 @@ class SalidasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $salidas = Salida::orderBy('id','DESC')->paginate(10);
+        //dd($request);
+        $salidas = Salida::respo($request->get('respo'))->orderBy('id','DESC')->paginate(10);
 
         return view('automotores.salidas.index', compact('salidas'));
     }

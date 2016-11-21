@@ -1,5 +1,5 @@
 {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','data-toggle'=>'validator' ]) !!}
-
+  <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
     <div class="panel panel-default">
     <div class="panel-body">
 
@@ -661,15 +661,7 @@
               </div> 
             </div>
           </div>
-          <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4">
-                  <button type="submit" class="btn btn-primary btn-block" >
-                      <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
-                  </button>        
-              </div>
-              <div class="col-md-4"></div>   
-          </div>
+          
       </div>
     </div>
 {!! Form::close() !!}

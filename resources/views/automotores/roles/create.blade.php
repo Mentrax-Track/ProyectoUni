@@ -11,7 +11,7 @@
     <div class="panel-heading text-center"><h4><p class="www">Registrar al rol de Viajes</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'roles.store','method'=>'POST','files' => true,'data-toggle'=>'validator']) !!}
-        
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('automotores.roles.forms.rol')
 
                 <div class="col-md-4"></div>

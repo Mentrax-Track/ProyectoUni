@@ -181,3 +181,7 @@ Route::resource('roles','RolesController');
 
     });
 ///////// Hasta aqui los roles///////////////
+
+Route::resource('informes','InformeController');
+
+

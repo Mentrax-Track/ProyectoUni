@@ -1,12 +1,10 @@
 @extends('automotores.admin')
 
 @section('subtitulo','Vehiculos')
-    
 @section('content')
 @include('alertas.success')
 <br>
 <div class="panel panel-default">
-    
     <div class="panel-heading text-center"><h4><p class="www">Vehiculos</p></h4></div>
     <div class="panel-body"> 
 

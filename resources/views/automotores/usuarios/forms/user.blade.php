@@ -38,6 +38,7 @@ function mostrar(id) {
  
     <center><h2><p class="www">Formulario Interno</p></h2></center>
     {!! Form::open(['route'=>'users.store','method'=>'POST','data-toggle'=>'validator']) !!}
+        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
     <div class="panel panel-default">
     <div class="panel-body">
     <div class="jumbotron ">
@@ -118,6 +119,7 @@ function mostrar(id) {
 <div id="encargado" class="element" style="display: none;">
     <center><h2><p class="www">Formulario para el Encargado de Viaje</p></h2></center>
     {!! Form::open(['route'=>'encar.store','method'=>'POST','data-toggle'=>'validator']) !!}
+        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
     <div class="panel panel-default">
     <div class="panel-body">
         <div class="jumbotron"> 

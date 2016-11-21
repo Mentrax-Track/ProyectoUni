@@ -20,7 +20,7 @@
     <div class="panel-heading text-center"><h4><p class="www">Nueva Reserva</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'reservas.store','method'=>'POST','data-toggle'=>'validator']) !!}
-        
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('automotores.reservas.forms.reser')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">

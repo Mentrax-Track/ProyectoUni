@@ -12,6 +12,9 @@
 
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/style.css') !!}
+    {!!Html::style('css/metisMenu.min.css')!!}
+    {!!Html::style('css/sb-admin-2.css')!!}
+    {!!Html::style('css/font-awesome.min.css')!!}
 
     <link href="carousel.css" rel="stylesheet">
   </head>
@@ -51,11 +54,11 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
               <div class="panel panel-default">
-                <div class="panel-heading"><p class="www text-center">Mantenimiento Vehícular</p></div>
+                <div class="panel-heading"><p class="www text-center">Mobilidades U.A.T.F.</p></div>
                  <div class="panel-body">
                     <div class="list-group-item">
                       <div class="jumbotron">
-                              
+                          @include('mantenimiento.tablero')                             
                       </div>
                   </div>
                  </div>
@@ -78,8 +81,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    {!! Html::script('js/jquery.min.js') !!}
-    {!! Html::script('js/bootstrap.min.js') !!}
-    {!! Html::script('js/holder.min.js') !!}
+    {!!Html::script('js/jquery.min.js')!!}
+    {!!Html::script('js/bootstrap.min.js')!!}
+    {!!Html::script('js/metisMenu.min.js')!!}
+    {!!Html::script('js/sb-admin-2.js')!!}
   </body>
 </html>

@@ -21,6 +21,7 @@
     <div class="panel-heading text-center"><h4><p class="www">Presupuesto de Viaje</p></h4></div>
     <div class="panel-body"> 
         {!! Form::open(['route'=>'presupuestosDia.store','method'=>'POST','data-toggle'=>'validator' ]) !!}
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('automotores.presupuestoDia.forms.press')
             <div class="col-md-4">
             </div>

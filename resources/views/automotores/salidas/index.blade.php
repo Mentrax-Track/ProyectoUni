@@ -9,7 +9,12 @@
     
     <div class="panel-heading text-center"><h4><p class="www">Salidas</p></h4></div>
     <div class="panel-body">
-
+    <form class="form-inline">
+        <div class="form-group">
+            <label>Busqueda</label> 
+            @include('automotores.salidas.forms.busqueda')
+        </div>
+    </form><br>
     <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed "><br>
             <tr class="info text-center">
@@ -44,4 +49,5 @@
       </div>
     </div>
 </div>
+{!! $salidas->appends(Request::only(['respo']))->render() !!}
 @stop
