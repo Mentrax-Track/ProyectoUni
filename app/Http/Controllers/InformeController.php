@@ -4,6 +4,7 @@ namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Infraestructura\Presupuesto;
+use Infraestructura\PresupuestoDia;
 use Infraestructura\Viaje;
 use Infraestructura\User;
 use Infraestructura\Ruta;
@@ -277,4 +278,65 @@ class InformeController extends Controller
         Session::flash('message','El informe fue Eliminada correctamente');
         return Redirect::to('/informes');
     }
+    public function getPresudia($id)
+    {
+        $ids = (int)$id;
+        //dd($ids);
+
+        $viaje = Viaje::find($ids);
+        //dd($viaje);
+        $presupuesto = PresupuestoDia::where('viaje_id',$ids)->first();
+        //dd($presupuesto);
+        $encargados = User::where('tipo', 'encargado')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $choferes    = User::where('tipo', 'chofer')
+                    ->orderBy('nombres','ASC')
+                    ->get(['id', 'nombres', 'apellidos'])
+                    ->lists('full_name','id');
+        $vehiculos  = Vehiculo::where('estado', 'Optimo')
+                    ->orderBy('tipo','ASC')
+                    ->get(['id', 'tipo', 'placa'])
+                    ->lists('full_vehiculo','id')->toArray();
+
+        $destino   = Destino::orderBy('id','ASC')
+                    ->get(['id','origen', 'destino'])
+                    ->lists('full_destino','id')
+                    ->toArray();
+
+        $kmtotal   = Ruta::where('viaje_id',$ids)
+                    ->get(['total'])
+                    ->lists('total')
+                    ->toArray();
+        //dd($ruta);
+
+        return view('automotores.informe.createinfob', compact('viaje','presupuesto','encargados','choferes','vehiculos','destino','kmtotal'));
+
+    }
+
+    public function getImprimir($id)
+    {
+        //dd($id);
+        $informe = InformeViaje::find($id);
+        //dd($informe);
+
+        $iddevolu = InfoDebolucion::where('informesviaje_id',$id)
+                    ->get(['id']);
+        //dd($iddevolu);
+        $debolu = InfoDebolucion::find($id);
+        //dd($debolu);          
+        $vehiculo = InfoVehi::where('informesviaje_id',$id)
+                    ->get(['mantenimiento'])
+                    ->lists('mantenimiento')
+                    ->toArray();
+        //dd($vehiculo);
+        //dd($deboluciones);
+        $date = date('d-m-Y');
+        $view =  \View::make('automotores.informe.pdf', compact('date', 'informe','debolu','vehiculo','date'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta', 'portrat');
+        return $pdf->stream('informe de viaje');
+    }
+
 }

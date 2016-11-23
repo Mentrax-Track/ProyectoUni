@@ -1,5 +1,6 @@
 <!--laravelshop-->
 <div class="jumbotron text-center">
+    <input type="hidden" name="viaje_id" value='{{ $viaje->id }}' />
     <div class="row">
       <div class="col-md-3">
           <div>
@@ -26,7 +27,7 @@
           <div>
             {!! Form::label('Entidad:') !!}  
           </div>
-          {!! Form::text('entidad',$viaje->entidad,['class'=>'form-control','placeholder'=>'Seleccione una Entidad','data-error'=>'Seleccione un Vehículo','required','id'=>'entidad']) !!}
+          {!! Form::text('entidad',$viaje->entidad,['class'=>'form-control','placeholder'=>'Seleccione una Entidad','data-error'=>'Seleccione/Inserte una Entidad','required','id'=>'entidad']) !!}
           <center><div class="help-block with-errors"></div></center>
       </div>
     </div><hr>
@@ -46,7 +47,6 @@
             <div class="form-group">
                 {!! Form::label('Kilometraje:') !!}   
                 {!! Form::number('kilopartida',null,['class'=>'form-control', 'placeholder'=>'km. de partida']) !!}
-                <center><div class="help-block with-errors"></div></center>
             </div>
             <div class="form-group">
                 {!! Form::label('Hora:') !!}
@@ -74,8 +74,7 @@
             </div>
             <div class="form-group">
                 {!! Form::label('Kilometraje:') !!}   
-                {!! Form::number('kilollegada',null,['class'=>'form-control', 'placeholder'=>'km. de llegada',]) !!}
-                <center><div class="help-block with-errors"></div></center>
+                {!! Form::number('kilollegada',null,['class'=>'form-control', 'placeholder'=>'km. de llegada']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('Hora:') !!}
@@ -93,16 +92,24 @@
             <li class="list-group-item">
               <div class="form-group">
                   {!! Form::label('Viáticos Ciudad:') !!}
-                  {!! Form::text('viaticoa',$presupuesto->total2VC,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viaci','value'=>'id']) !!}  
+                <div class="input-group">
+                  {!! Form::text('viaticoa',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viaci','value'=>'0']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Bs.</span>
+                </div>   
               </div>
               <div class="form-group">
                   {!! Form::label('Viáticos Provincia:') !!}
-               
-                  {!! Form::text('viaticob',$presupuesto->total3VP,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viapro','value'=>'id']) !!} 
+                <div class="input-group">               
+                  {!! Form::text('viaticob',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viapro','value'=>'0']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Bs.</span>
+                </div>  
               </div>
               <div class="form-group">
                   {!! Form::label('Viáticos Frontera:') !!}
-                  {!! Form::text('viaticoc',$presupuesto->total4VF,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viafro','value'=>'id']) !!}
+                <div class="input-group">  
+                  {!! Form::text('viaticoc',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viafro','value'=>'0']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Bs.</span>
+                </div>
               </div>
             </li>
         </div>
@@ -110,17 +117,26 @@
             <li class="list-group-item">
               <div class="form-group">
                   {!! Form::label('Pasajeros:') !!}
+                <div class="input-group">  
                   {!! Form::text('pasajeros',$viaje->pasajeros,['class'=>'form-control','placeholder'=>'Nro. Pasajeros','data-error'=>'Inserte una cantidad','required','id'=>'pasa','value'=>'id']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Personas</span>
+                </div>
                   <center><div class="help-block with-errors"></div></center>
               </div>
               <div class="form-group">
-                  {!! Form::label('Km. Total:') !!}
-                  {!! Form::text('kmtotal',$kmtotal[0],['class'=>'form-control','placeholder'=>'Seleccione un responsable','data-e rror'=>'Inserte una cantidad','required','id'=>'kmtotal','value'=>'id']) !!}
+                  {!! Form::label('Kms. Designados') !!}
+                <div class="input-group">
+                  {!! Form::text('kmtotal',$kmtotal[0],['class'=>'form-control','placeholder'=>'Seleccione un responsable','data-error'=>'Inserte una cantidad de km.','required','id'=>'kmtotal','value'=>'id']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Kms.</span>
+                </div>  
                   <center><div class="help-block with-errors"></div></center>
               </div>
               <div class="form-group">
                   {!! Form::label('Dias de Viaje:') !!}
+                <div class="input-group">
                   {!! Form::text('dias',$viaje->dias,['class'=>'form-control','placeholder'=>'Nro. Pasajeros','data-error'=>'Inserte una cantidad','required','id'=>'encar','value'=>'id']) !!}
+                  <span class="input-group-addon" id="basic-addon3">Dias</span>
+                </div>  
                   <center><div class="help-block with-errors"></div></center>
               </div>
             </li>
@@ -138,13 +154,13 @@
                 <li class="list-group-item ">
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon3">Recargue:</span>
-                        {!! Form::text('recargue1',null,['class'=>'form-control','id'=>'recargue1a','onkeyup'=>'sumar();','data-error'=>'Inserte una cantidad','required']) !!}
+                        {!! Form::text('recargue1',null,['class'=>'form-control','id'=>'recargue1a','onkeyup'=>'sumar();','data-error'=>'Inserte una cantidad','required']) !!}    
                         <center><div class="help-block with-errors"></div></center>
 
                         <span class="input-group-addon" id="basic-addon3">Compra:</span>
                         {!! Form::text('compra1',null,['class'=>'form-control','id'=>'compra1a','onkeyup'=>'sumar();','data-error'=>'Inserte una cantidad','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
-
+                    
                         <span class="input-group-addon" id="basic-addon3">Bs.:</span>
                     </div>
                     <div class="input-group">
@@ -170,7 +186,7 @@
                               {!! Form::text('combustotalu',null,['class'=>'form-control','id'=>'totalU',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
                               <span class="input-group-addon">Lts. usados</span>
                               <center><div class="help-block with-errors"></div></center>
-
+                            
                           </div>
                       </center>
                     </div>
@@ -181,7 +197,7 @@
                             {!! Form::text('combustotalco',null,['class'=>'form-control','id'=>'totalCO',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
                             <span class="input-group-addon">Bs.</span>
                             <center><div class="help-block with-errors"></div></center>
-
+                    
                         </div>
                     </div>    
                 </div>
@@ -195,19 +211,17 @@
                 {!! Form::label('Peajes / Imprevistos') !!}
                 <li class="list-group-item ">
                     <div class="input-group">
-                        {!! Form::textarea('descripe',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Describa todos los peajes o los imprevistos que obtuvo','data-error'=>'Describa los peajes','required']) !!}
+                        {!! Form::textarea('descripe',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Describa todos los peajes o los imprevistos que obtuvo','data-error'=>'Inserte una descripción','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
-
+                        
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon3">Peajes:</span>
-                        {!! Form::text('montope',null,['class'=>'form-control','id'=>'montope1','onkeyup'=>'sumar();','data-error'=>'Inserte la cantidad de peaje','required']) !!}    
+                        {!! Form::text('montope',null,['class'=>'form-control','id'=>'montope1','onkeyup'=>'sumar();','data-error'=>'Este campo debe estar lleno','required']) !!}    
                         <span class="input-group-addon" id="basic-addon3">Bs.</span>
                         <center><div class="help-block with-errors"></div></center>
-
+                    
                     </div>
-                    <center><div class="help-block with-errors"></div></center>
-
                     <div class="input-group">
                         <span class="input-group-addon" id="basic-addon3">Imprevistos:</span>
                         {!! Form::text('montoim',null,['class'=>'form-control','id'=>'montoim1','onkeyup'=>'sumar();']) !!}    
@@ -223,7 +237,7 @@
                               {!! Form::text('totalpeim',null,['class'=>'form-control','id'=>'totalPI',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
                               <span class="input-group-addon">Bs.</span>
                               <center><div class="help-block with-errors"></div></center>
-
+                    
                           </div>
                       </center>
                     </div>  
@@ -241,12 +255,12 @@
                   <div class="col-md-12">
                     <div class="input-group">
                         <span class="input-group-addon" id="">Combustibles:</span>
-                        {!! Form::text('combus',$informesdebolu->combus,['class'=>'form-control','id'=>'combus1','onkeyup'=>'sumar();']) !!}
+                        {!! Form::text('combus',null,['class'=>'form-control','id'=>'combus1','onkeyup'=>'sumar();']) !!}
                         <span class="input-group-addon" id="">Peajes:</span>
-                        {!! Form::text('peaje',$informesdebolu->peaje,['class'=>'form-control','id'=>'peaje1','onkeyup'=>'sumar();']) !!}<span class="input-group-addon" id="">Imprevistos:</span>
-                        {!! Form::text('impre',$informesdebolu->impre,['class'=>'form-control','id'=>'impre1','onkeyup'=>'sumar();']) !!}
+                        {!! Form::text('peaje',null,['class'=>'form-control','id'=>'peaje1','onkeyup'=>'sumar();']) !!}<span class="input-group-addon" id="">Imprevistos:</span>
+                        {!! Form::text('impre',null,['class'=>'form-control','id'=>'impre1','onkeyup'=>'sumar();']) !!}
                         <span class="input-group-addon" id="">Total:</span>
-                        {!! Form::text('totalcopeim',$informesdebolu->totalpeim,['class'=>'form-control','id'=>'totalcopeim1',' value'=>'0']) !!}
+                        {!! Form::text('totalcopeim',null,['class'=>'form-control','id'=>'totalcopeim1',' value'=>'0']) !!}
                         <span class="input-group-addon" id="">Bs.</span>
                     </div>
                   </div>
@@ -254,8 +268,8 @@
               <div class="row">
                 {!! Form::label('Informe Delegación') !!}
                  <div class="col-md-12">
-                     {!! Form::textarea('delegacion',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Inserte un informe sobre la delegación del viaje','data-error'=>'Describa un informe sobre la delegación','required']) !!}
-                      <center><div class="help-block with-errors"></div></center>
+                     {!! Form::textarea('delegacion',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Inserte un informe sobre la delegación del viaje','required','data-error'=>'Describa un informe sobre la delegación del viaje']) !!}
+                      <center><div class="help-block with-errors"></div></center> 
                  </div>
 
               </div>
@@ -269,13 +283,36 @@
                 <center><h4><u>Informe Técnico del Vehículo </u></h4></center>
             </li>
             <div class="panel-body text-center jumbotron">
-              
+              <!--<div class="form-group mantenimiento-select-container">
+                  <li class="list-group-item ">
+                    <div class="row">
+                          <div class="col-md-4">
+                            <div class="input-group ">
+                              <span class="input-group-addon" id="">Objeto:</span>
+                              {!! Form::select('mantenimiento', config('mantenimiento.mante'), null, ['class' => 'form-control','id'=>'mantes','placeholder'=>'Seleccione un Objeto']) !!}    
+                            </div>
+                          </div>
+                          <div class="col-md-8">
+                            <div class="input-group">
+                              <span class="input-group-addon" id="">Descripción:</span>
+                              {!! Form::input('descripmante', null, null,['class'=>'form-control','placeholder'=>'Describa el estado del objeto seleccionado','id'=>'descripman']) !!}   
+                            </div>
+                          </div>
+                      </div>
+                </li>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                    <center><a href="#" class="btn btn-info fa fa-plus-square btn-add-more-mantenimiento"> Añadir</a></center>
+                </div>
+              </div><br>
+              {!! Form::label('Inserte nuevo Objeto') !!}-->
               <li class="list-group-item ">
                   <div class="row">
                         <div class="col-md-4">
                           <div class="input-group ">
                             <span class="input-group-addon" id="">Objeto:</span>
-                            {!! Form::select('mantenimiento[]', config('mantenimiento.mante'), $mantenimiento, ['multiple'=>'multiple','class' => 'form-control','id'=>'mante','placeholder']) !!}    
+                            {!! Form::select('mantenimiento[]', config('mantenimiento.mante'), null, ['multiple'=>'multiple','class' => 'form-control','id'=>'mante','placeholder']) !!}    
                           </div>
                         </div>
                         <div class="col-md-8">
@@ -288,7 +325,7 @@
               </li><hr>
                 <div class="col-md-12">
                   {!! Form::label('Recomendación') !!}
-                  {!! Form::textarea('recomendacion',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Inserte un mensaje de recomendación para el mantenimiento de este Vehiculo','data-error'=>'Inserte un recomendación para el mantenimiento de esta mobilidad','required']) !!}
+                  {!! Form::textarea('recomendacion',null,['class'=>'form-control', 'rows'=>'2','placeholder'=>'Inserte un mensaje de recomendación para el mantenimiento de este Vehiculo','required','data-error'=>'Este campo es obligatorio']) !!}
                   <center><div class="help-block with-errors"></div></center>
                 </div>
             </div>

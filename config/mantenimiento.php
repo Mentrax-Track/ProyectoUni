@@ -3,20 +3,20 @@
 return array(
 
     'mante' => [
-         '1) Motor'         =>'1) Motor',
-         '2) Caja de Cambio'=>'2) Caja de Cambio',
-         '3) Ruedas'        =>'3) Ruedas',
-         '4) Muelles o espirales'=>'4) Muelles o espirales',
-         '5) Dirección'          =>'5) Dirección',
-         '6) Caja de dirección'  =>'6) Caja de dirección',
-         '7) Soporte Motor'      =>'7) Soporte Motor',
-         '8) Chasis'             =>'8) Chasis',
-         '9) Sistema eléctrico'  =>'9) Sistema eléctrico',
-         '10) Iluminación'        =>'10) Iluminación',
-         '11) Toca cintas'        =>'11) Toca cintas',
-         '12) Frenos'             =>'12) Frenos',
-         '13) Amortiguadores'     =>'13) Amortiguadores',
-         '14) Bomba de gasolina'  =>'14) Bomba de gasolina'
+         'A) Motor'         =>'A) Motor',
+         'B) Caja de Cambio'=>'B) Caja de Cambio',
+         'C) Ruedas'        =>'C) Ruedas',
+         'D) Muelles o espirales'=>'D) Muelles o espirales',
+         'E) Dirección'          =>'E) Dirección',
+         'F) Caja de dirección'  =>'F) Caja de dirección',
+         'G) Soporte Motor'      =>'G) Soporte Motor',
+         'H) Chasis'             =>'H) Chasis',
+         'I) Sistema eléctrico'  =>'I) Sistema eléctrico',
+         'J) Iluminación'        =>'J) Iluminación',
+         'K) Toca cintas'        =>'K) Toca cintas',
+         'L) Frenos'             =>'L) Frenos',
+         'M) Amortiguadores'     =>'M) Amortiguadores',
+         'N) Bomba de gasolina'  =>'N) Bomba de gasolina'
     ]
 )
 

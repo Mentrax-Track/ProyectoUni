@@ -66,11 +66,11 @@ class CreateInformeRequest extends Request
     public function messages()
     {
         return [
-                'entidad.regex'   => 'En la entidad solo se aceptan letras. Maximo 40 caracteres',
-                'descripe.regex'  => 'En la descripción de peajes e imprevistos solo se aceptan letras máximo 100 caracteres',
-                'delegacion.regex'=> 'En al descripcion de la delegacion solo se aceptan letras máximo 250 caracteres',
-                'recomendacion.regex'=>'En la recomendación solo se aceptan letras como máximo 200 caracteres',
-                'descripmante.regex'=> 'En la descrioción del mantenimiento solo deben haber letras hasta 200 caracteres'
+                'entidad.regex'      => 'En la entidad solo se aceptan letras. Maximo 40 caracteres',
+                'descripe.regex'     => 'En la descripción de peajes e imprevistos solo se aceptan letras máximo 100 caracteres',
+                'delegacion.regex'   => 'En al descripcion de la delegacion solo se aceptan letras máximo 250 caracteres',
+                'recomendacion.regex'=> 'En la recomendación solo se aceptan letras como máximo 200 caracteres',
+                'descripmante.regex' => 'En la descripción del mantenimiento solo deben haber letras hasta 200 caracteres'
         ];
     }
 }

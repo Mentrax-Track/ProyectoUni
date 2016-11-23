@@ -113,12 +113,12 @@
               <div class="panel-body text-center jumbotron">
                   <div class="row"> 
                       <div class="col-md-5 btn-group" role="group">
-                          {!! Form::label('Combustible (Litros)') !!}
+                          {!! Form::label('Kilometraje total') !!}
                           {!! Form::text('combustible',null,['class'=>'form-control','id'=>'combu','onkeyup'=>'sumar();']) !!}
                                 
                       </div>
                       <div class="col-md-3 btn-group"   role="group">
-                          {!! Form::label('Division Km.') !!}
+                          {!! Form::label('Gasolina/Diesel') !!}
                           {!! Form::text('division',null,['class'=>'form-control','id'=>'divi','onkeyup'=>'sumar();']) !!}
                                 
                       </div>

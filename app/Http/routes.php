@@ -182,6 +182,8 @@ Route::resource('roles','RolesController');
     });
 ///////// Hasta aqui los roles///////////////
 
+Route::get('informes/{id}/pdf','InformeController@getImprimir');
+Route::get('infodias/{id}','InformeController@getPresudia');
 Route::resource('informes','InformeController');
 
 

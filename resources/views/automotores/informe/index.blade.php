@@ -35,7 +35,9 @@
                             <td>{{ $infovi->fechapartida }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                    {!!link_to_route('informes.edit', $title = 'Editar', $parameters = $infovi, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                                    {!!link_to_route('informes.edit', $title = 'Editar', $parameters = $infovi, $attributes = ['class'=>'btn btn-info btn-xs btn-block  glyphicon glyphicon-edit'])!!}
+
+                                    {!!link_to_action('InformeController@getImprimir', $title = ' Imprimir', $parameters = $infovi->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block  glyphicon fa fa-print'])!!} 
                                 </center>
                             </td>
                         </tr>

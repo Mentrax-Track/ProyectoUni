@@ -10,8 +10,8 @@ use Infraestructura\User;
     <meta charset="UTF-8">
     <title>Presupuesto de Viaje</title>
     {!! Html::style('css/pdf/pdf.css') !!}
-</head>
-<body><br>
+</head><br><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS</strong></center>
+<body>
    <h1>PRESUPUESTO DE VIAJE <img style="float:right;" src="img/presupuesto.jpg" width="100px"/></h1>
 <main>
 <table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black;" class="body">

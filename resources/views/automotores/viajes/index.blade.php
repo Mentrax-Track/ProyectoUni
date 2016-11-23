@@ -48,12 +48,15 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
-                                    <li class="disabled"><a href="">Elija una Opción</a></li>
-                                    <a class="btn btn-primary  btn-xs btn-block glyphicon  glyphicon-list-alt" href="{{ route('informes.show',['id' => $via->id] )}}" > Informe</a>
+                                    <li class="disabled"><a href="">Realize un Informe</a></li>
+
+                                    <a class="btn btn-primary  btn-xs btn-block glyphicon  glyphicon-list-alt" href="{{ route('informes.show',['id' => $via->id] )}}" > Informe/Cheque</a>
+
+                                   {!!link_to_action('InformeController@getPresudia', $title = ' Informe/Caja', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block glyphicon glyphicon-list-alt'])!!} 
 
                                         
                                     <li role="separator" class="divider"></li>
-                                    <li class="disabled"><a href="">Vizualizar</a></li>
+                                    <li class="disabled"><a href="">Vizualizar Datos</a></li>
 
                                     <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
 
