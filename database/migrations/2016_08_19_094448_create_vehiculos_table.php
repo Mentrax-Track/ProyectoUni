@@ -15,13 +15,11 @@ class CreateVehiculosTable extends Migration
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('codigo');
-            $table->string('tipo');
             $table->string('placa');
             $table->string('color');
-            $table->float('kilometraje');
-            $table->string('pasageros');
-            $table->string('path');
-            $table->enum('estado',['Optimo','Mantenimiento','Desuso']);
+            $table->string('pasajeros');
+            $table->string('tipog');
+            $table->enum('estado',['optimo','mantenimiento','desuso']);
             $table->timestamps();
         });
     }

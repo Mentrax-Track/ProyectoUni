@@ -18,14 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('apellidos');
             $table->string('cedula')->nullable();
             $table->string('celular')->nullable();
-            $table->string('facultad')->nullable();
-            $table->string('carrera')->nullable();
-            $table->string('materia')->nullable();
-            $table->string('sigla')->nullable();
-            $table->enum('tipo',['administrador','supervisor','chofer','mecánico','encargado']);
             $table->string('email')->nullable();
-            $table->string('password', 60);
+            $table->enum('tipo',['administrador','supervisor','chofer','mecanico','encargado']);
             $table->boolean('active')->default(true);
+            $table->string('insertador');
+            $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
         });

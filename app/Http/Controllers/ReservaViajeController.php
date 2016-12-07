@@ -60,7 +60,10 @@ class ReservaViajeController extends Controller
     public function show($id)
     {
         $reserva = Reserva::find($id);
+        //$idencar = $reserva->user_id;
+        //$encar = User::where('id',$idencar)->get(['nombres','apellidos','id'])->lists('full_name','id')->toArray();
         //dd($reserva);
+        
         $encargados = User::where('tipo', 'encargado')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
@@ -69,14 +72,17 @@ class ReservaViajeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculos  = Vehiculo::where('estado', 'Optimo')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+        $vehiculos  = Vehiculo::where('estado', 'optimo')
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino'])
-                    ->lists('full_destino');
+                    ->lists('full_destino','id')
+                    ->toArray();
+
+                    //dd($encar);
         return view('automotores.reservi.create',compact('reserva','choferes','destino','vehiculos','encargados'));
     }
 

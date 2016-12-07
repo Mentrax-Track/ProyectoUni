@@ -67,11 +67,11 @@ class ViajesController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculos  = Vehiculo::where('estado', 'Optimo')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+        $vehiculos  = Vehiculo::where('estado', 'optimo')
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
-
+        
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino'])
                     ->lists('full_destino','id')
@@ -88,7 +88,7 @@ class ViajesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ViajeCreateRequest $request)
-    {
+    {   //dd($request);
         $a = strtotime($request['fecha_inicial']);
         $b = strtotime($request['fecha_final']);
         if($a > $b)
@@ -315,8 +315,8 @@ class ViajesController extends Controller
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
         $vehiculos  = Vehiculo::where('estado', 'Optimo')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')

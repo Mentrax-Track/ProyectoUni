@@ -1,0 +1,11 @@
+{
+    "Tipo general del Vehículo": [
+        {"character": "Vagoneta", "realName": "U.A.T.F."},
+        {"character": "Automovil", "realName": "U.A.T.F."},
+        {"character": "Jeep", "realName": "U.A.T.F."},
+        {"character": "Buss W41", "realName": "U.A.T.F."},        
+        {"character": "Buss MKB210", "realName": "U.A.T.F."},
+        {"character": "Camioneta", "realName": "U.A.T.F."},
+        {"character": "Camion", "realName": "U.A.T.F."}
+    ]
+}

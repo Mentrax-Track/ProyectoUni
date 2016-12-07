@@ -56,7 +56,7 @@ class CreatePresupuestoTable extends Migration
             $table->string('responsable');
             $table->string('materia');
             $table->string('sigla');
-            $table->integer('ndocentes');
+            $table->string('ndocentes');
             $table->time('hsalida');
             $table->time('hllegada');
 

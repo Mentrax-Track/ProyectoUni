@@ -24,20 +24,27 @@ class VehiculoCreateRequest extends Request
     public function rules()
     {
         return [
-            'codigo'     => 'required|unique:vehiculos,codigo|max:10',
-            'placa'      => 'required|unique:vehiculos,placa|max:15',
-            'pasageros'  => 'required|numeric',
-            'kilometraje'=> 'required|numeric',
-            'tipo'  => 'required|in:Camión,Camioneta,Civilian,Jeep,Omnibus,Taxi,Vagoneta',
-            'estado'=> 'required|in:Optimo,Mantenimiento,Desuso',
-            'color' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
-            'path'  => 'mimes:jpg,jpeg,bmp,png',
+            'codigo'     => 'required|unique:vehiculos,codigo|max:10|min:2|alpha_dash',
+            'placa'      => 'required|unique:vehiculos,placa|max:20|min:3|alpha_dash',
+            'color' => 'required|alpha|max:20',
+            'pasajeros'  => 'required|numeric',
+            'kilometraje'=> 'numeric',
+            'tipog'  => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
+            'estado'=> 'required|in:optimo,mantenimiento,desuso',
+            'modelo'=> 'required|numeric',
+            'tipoe' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
+            'marca' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
+            'chasis'=> 'required|max:70|min:3|alpha_dash',
+            'chasis'=> 'required|max:70|min:3',
+            'cilindrada'=> 'required|numeric',
         ];
     }
     public function messages()
     {
         return [
-                'color.regex' => 'En el color solo se aceptan letras',
+                'tipog.regex'  => 'En el tipo general solo se aceptan letras',
+                'tipoe.regex'  => 'En el tipo específico solo se aceptan letras',
+                'marca.regex'  => 'En la marca solo se aceptan letras',
         ];
     }
 }

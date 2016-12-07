@@ -26,11 +26,11 @@ class UserUpdateRequest extends Request
         return [
             'nombres'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
             'apellidos'=> 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'cedula'   => 'required|between:8,12',
-            'celular'  => 'required|between:8,12',
+            'cedula'   => 'between:7,12',
+            'celular'  => 'between:8,12',
             'tipo'     => 'required|in:chofer,mecánico,encargado',
             'email'    => 'max:50',
-            'faucltad' => 'regex:/^[a-z ñáéíóú]+$/i|min:10|max:30',
+            'facultad' => 'regex:/^[a-z ñáéíóú]+$/i|min:10|max:30',
             'carrera'  => 'regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
             'materia'  => 'regex:/^[a-z ñáéíóú]+$/i|min:5|max:20',
             'sigla'    => 'min:5|max:15'

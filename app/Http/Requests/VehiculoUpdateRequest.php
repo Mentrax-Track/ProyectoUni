@@ -24,18 +24,19 @@ class VehiculoUpdateRequest extends Request
     public function rules()
     {
         return [
-            'pasageros'  => 'required|numeric',
-            'kilometraje'=> 'required|numeric',
-            'tipo'  => 'required|in:Camión,Camioneta,Civilian,Jeep,Omnibus,Taxi,Vagoneta',
-            'estado'=> 'required|in:Optimo,Mantenimiento,Desuso',
-            'color' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
-            'path'  => 'mimes:jpg,jpeg,bmp,png',
-        ];
-    }
-    public function messages()
-    {
-        return [
-                'color.regex' => 'En el color solo se aceptan letras',
+            'codigo'     => 'required|max:10|min:2|alpha_dash',
+            'placa'      => 'required|max:20|min:3|alpha_dash',
+            'color' => 'required|alpha|max:20',
+            'pasajeros'  => 'required|numeric',
+            'kilometraje'=> 'numeric',
+            'tipog'  => 'required|alpha|max:30|min:4',
+            'estado'=> 'required|in:optimo,mantenimiento,desuso',
+            'modelo'=> 'required|numeric',
+            'tipoe' => 'required|alpha|max:30|min:4',
+            'marca' => 'required|alpha|max:30|min:4',
+            'chasis'=> 'required|max:70|min:3|alpha_dash',
+            'chasis'=> 'required|max:70|min:3',
+            'cilindrada'=> 'required|numeric',
         ];
     }
 }

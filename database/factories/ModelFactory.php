@@ -17,29 +17,45 @@ $factory->define(Infraestructura\User::class, function (Faker\Generator $faker) 
         'apellidos'=> $faker->lastName,
         'cedula'   => $faker->randomNumber($nbDigits = 8),
         'celular'  => $faker->randomNumber($nbDigits = 8),
+        'email'  => $faker->email,
+        'password' => str_random(10),
+        'remember_token' => str_random(10),
+        'tipo' => $faker->randomElement(['administrador','supervisor','chofer','mecanico','encargado']),
+        'active'=> $faker->boolean,
+        'insertador'=> $faker->name
+    ];
+});
+
+$factory->define(Infraestructura\Entidad::class, function (Faker\Generator $faker) {
+    return [
         'facultad' => $faker->state,
         'carrera'  => $faker->city,
         'materia'  => $faker->jobTitle,
         'sigla'    => $faker->secondaryAddress,
-        'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
-        'tipo' => $faker->randomElement(['administrador','supervisor','chofer','mecánico','encargado']),
-        'active'=> $faker->boolean
+        'user_id'  => $faker->numberBetween($min = 1, $max = 50),
     ];
 });
-
+/*$factory->define(Infraestructura\Celular::class, function (Faker\Generator $faker) {
+    return [
+        'celular'  => $faker->randomNumber($nbDigits = 8),
+        'user_id'  => $faker->numberBetween($min = 1, $max = 50),
+    ];
+});
+$factory->define(Infraestructura\Email::class, function (Faker\Generator $faker) {
+    return [
+        'email'  => $faker->email,
+        'user_id'=> $faker->numberBetween($min = 1, $max = 50),
+    ];
+});*/
 
 $factory->define(Infraestructura\Vehiculo::class, function (Faker\Generator $faker) {
     return [
         'codigo'     => $faker->secondaryAddress,
-        'tipo'       => $faker->randomElement(['Camión','Camioneta','Civilian','Jeep','Omnibus','Taxi','Vagoneta']),
         'placa'      => $faker->userName,
         'color'      => $faker->colorName,
-        'kilometraje'=> $faker->numberBetween($min = 100, $max = 10000),
-        'pasageros'  => $faker->numberBetween($min = 5, $max = 36),
-        'path'       => $faker->bothify('Hello ##??') ,
-        'estado'     => $faker->randomElement(['Optimo','Mantenimiento','Desuso']),
+        'pasajeros'  => $faker->numberBetween($min = 5, $max = 36),
+        'tipog'       => $faker->randomElement(['Camión','Camioneta','Civilian','Jeep','Omnibus','Taxi','Vagoneta']),
+        'estado'     => $faker->randomElement(['optimo','mantenimiento','desuso']),
         
     ];
 });

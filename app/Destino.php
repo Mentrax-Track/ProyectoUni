@@ -4,6 +4,7 @@ namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
 use Infraestructura\Viaje;
+use Infraestructura\Mapa;
 
 class Destino extends Model
 {
@@ -14,6 +15,10 @@ class Destino extends Model
     public function viajes()
     {
         return $this->belongsToMany('Infraestructura\Viaje', 'destino_viaje');
+    }
+    public function mapa()
+    {
+        return $this->hasOne('Infraestructura\Mapa');
     }
     /*public function viaje()
     {

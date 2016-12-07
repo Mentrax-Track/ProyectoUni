@@ -62,6 +62,12 @@
 {!! Html::script('js/select2.js') !!}
 {!! Html::script('js/entidades.js') !!}
 {!! Html::script('js/validator.js') !!}
+<script type="text/javascript">
+    $('select').select2({
+        placeholder: "Seleccione una opción",
+        allowClear: true
+    });    
+</script>
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({

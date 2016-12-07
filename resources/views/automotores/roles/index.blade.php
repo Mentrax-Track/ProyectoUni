@@ -14,7 +14,7 @@
                 <label>Opciones: </label> 
                 {!!link_to_route('roles.create', $title = ' Agregar chofer', $parameters = "", $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-user '])!!}
 
-                {!!link_to_action('RolesController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-danger  glyphicon fa fa-print'])!!}
+                {!!link_to_action('RolesController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-danger  glyphicon fa fa-print','target'=>'_blank'])!!}
             </div>
         </form>
     <div class="table-responsive">

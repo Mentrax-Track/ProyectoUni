@@ -24,12 +24,12 @@ class DestinoCreateRequest extends Request
     public function rules()
     {
         return [
-            'origen'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
-            'destino'    => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',
+            'origen'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:50',
+            'destino'    => 'required|regex:/^[a-z ñáéíóú]+$/i|min:5|max:50',
             'ruta'       => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:200',
-            'dep_inicio' => 'required|in:Potosí,Oruro,La_paz,Pando,Cochabamba,Sucre,Tarija,Santa_cruz,Beni',
-            'dep_final'  => 'required|in:Potosí,Oruro,La_paz,Pando,Cochabamba,Sucre,Tarija,Santa_cruz,Beni',
-            'kilometraje'=> 'required|between:1,5',
+            'dep_inicio' => 'required|in:Potosí,Oruro,La_Paz,Pando,Cochabamba,Sucre,Tarija,Santa_Cruz,Beni',
+            'dep_final'  => 'required|in:Potosí,Oruro,La_Paz,Pando,Cochabamba,Sucre,Tarija,Santa_Cruz,Beni',
+            'kilometraje'=> 'required|between:1,6',
             'tiempo'     => 'required',
         ];
     }

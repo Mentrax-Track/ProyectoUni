@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     protected $username = 'cedula';
+
+    //Número intentos para loguearse
+    protected $maxLoginAttempts = 3;
+    //Le damos un tiempo en segundos para volver a loguearse
+    //protected $lockoutTime = 60;
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -56,14 +61,14 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    /*protected function create(array $data)
     {
         /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);*/
-        $user = new User([
+        /*$user = new User([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
@@ -72,7 +77,7 @@ class AuthController extends Controller
         $user->save();
         
         return $user;
-    }
+    }*/
     /**
      * Get the path to the login route.
      *
@@ -105,6 +110,24 @@ class AuthController extends Controller
             'password'=>$request->get('password'),
             'active' => true
         ];
+    }
+    /**
+     * Get the login lockout error message.
+     *
+     * @param  int  $seconds
+     * @return string
+     */
+    protected function getLockoutErrorMessage($seconds)
+    {
+        /*$minutos = round($seconds / 60);
+
+        return \Lang::has('auth.throttle')
+            ? \Lang::get('auth.throttle', ['minutos' => $minutos])
+            : 'Too many login attempts. Please try again in '.$seconds.' seconds.';
+        */
+        return \Lang::has('auth.throttle')
+        ? \Lang::get('auth.throttle', ['seconds' => $seconds])
+        : 'Too many login attempts. Please try again in '.$seconds.' seconds.';
     }
 }
 

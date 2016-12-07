@@ -1,0 +1,30 @@
+.sombra {
+  background-color: #eee;
+  color: inherit;
+  border-top-color: #d5d5d5;
+  border-radius: 1px;
+  max-width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 0px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+
+.sumbral {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  color: inherit;
+  background-color: #eee;
+  color: inherit;
+  margin-bottom: 15px;
+  font-size: 13px;
+  font-weight: 100;
+  border-top-color: #d5d5d5;
+  padding-right: 5px;
+  padding-left: 15px;
+  border-radius: 6px;
+}
+

@@ -3,8 +3,7 @@
 return array(
 
     'types' => [
-         ''         => 'Seleccione un tipo',
-         'Camión'   => 'Camión',
+         'Camión'   =>'Camión',
          'Camioneta'=>'Camioneta',
          'Civilian' =>'Civilian',
          'Jeep'     =>'Jeep',

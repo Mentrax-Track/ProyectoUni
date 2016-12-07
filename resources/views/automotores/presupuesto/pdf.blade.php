@@ -159,10 +159,28 @@ use Infraestructura\User;
     </tr>
 </table>
 </main>
-        <h4><b>NOTA: {{ $presupuesto->nota }} </b> Viaje con {{$viaje->pasajeros }}  estudiantes, {{$presupuesto->ndocentes}} Docente, Carrera {{ $presupuesto->entidad }}, Sigla {{ $presupuesto->sigla }}, Tipo {{ $viaje->tipo }}.</h4>
-        <h4><b>Fecha de Partida:</b> {{$viaje->fecha_inicial}} a Hrs. {{$presupuesto->hsalida}}; Retorno:{{$viaje->fecha_final}} a Hrs. {{$presupuesto->hllegada}}.</h4>
-        <h4><b>Fecha: </b>Potosi, {{ $date }}.</h4>
-        <br /><br /><br /><br />
+    <table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black;" class="body">
+        
+        <tr>
+            <td class="km" colspan="6"><CENTER><b>NOTA: {{ $presupuesto->nota }}</b></CENTER></td>
+        </tr>
+        <tr>
+            <td class="kn" colspan="1"><b>Tipo:</b> {{ $viaje->tipo }}</td>
+            <td class="kn" colspan="1"><b>Pasajeros:</b> {{$viaje->pasajeros }}</td>
+            <td class="kn" colspan="1"><b>Docentes a cargo:</b> {{$presupuesto->ndocentes}}</td>
+            <td class="kn" colspan="1"><b>Carrera:</b> {{ $presupuesto->entidad }}</td>
+            <td class="kn" colspan="1"><b>Materia:</b> {{ $presupuesto->materia }}</td>
+            <td class="kn" colspan="1"><b>Sigla:</b> {{ $presupuesto->sigla }}</td>
+        </tr>
+        <tr>
+            <td class="kn" colspan="2"><b>Fecha de Partida:</b> {{$viaje->fecha_inicial}}</td>
+            <td class="kn" colspan="1"><b>Hora:</b> {{$presupuesto->hsalida}}</td>
+            <td class="kn" colspan="2"><b>Fecha de Retorno:</b> {{$viaje->fecha_final}}</td>
+            <td class="kn" colspan="1"><b>Hora:</b> {{$presupuesto->hllegada}}</td>
+        </tr>
+
+
+    </table><br><br><br>
         <center><h4 >Sr. {{$presupuesto->responsable}}<br />ENCARGADO DE AUTOMOTORES </h4></center>
 </body>
 </html>

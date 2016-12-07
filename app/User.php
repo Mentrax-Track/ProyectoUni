@@ -16,6 +16,7 @@ use Infraestructura\Reserva;
 use Infraestructura\User_Viaje;
 use Infraestructura\Salida;
 use Infraestructura\InformeViaje;
+use Infraestructura\Entidad;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -35,7 +36,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['nombres','apellidos','cedula','celular','facultad','carrera','materia','sigla' ,'tipo','email', 'password'];
+    protected $fillable = ['nombres','apellidos','cedula','celular','tipo','email', 'password'];
 
     //Un usuario puede tener muchos vehiculos
     public function vehiculos()
@@ -51,7 +52,11 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('Infraestructura\User_Viaje');   
     }
-
+    //Relacion uno a uno con Entidad
+    public function entidad()
+    {
+        return $this->hasOne('Infraestructura\Entidad');
+    }
     //Un usuario puede realizar muchas reservas 
     public function reservas()
     {
@@ -69,10 +74,6 @@ class User extends Model implements AuthenticatableContract,
     public function getFullnameAttribute()
     {
         return $this->nombres.' '.$this->apellidos;
-    }
-    public function getFullinstitucionAttribute()
-    {
-        return $this->facultad.' '.$this->carrera.' '.$this->materia.' '.$this->sigla;
     }
 
     public function setPasswordAttribute($valor)

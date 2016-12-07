@@ -1,7 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-body">
     <div class="jumbotron">
-    <div class=" list-group-item">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -51,31 +50,40 @@
         </div>
     </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <center>{!! Form::label('Facultad:') !!}</center>
-                    {!! Form::text('facultad',null,['class'=>'form-control', 'placeholder'=>'Ingrese la facultad del encargado']) !!}
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <center>{!! Form::label('Facultad:') !!}</center>
+                        <center>
+                        {!! Form::text('facultad',$entidad->facultad,['class'=>'form-control','data-error'=>'La Facultad es obligatorio...','id'=>'facultad','placeholder'=>'Seleccione una Facultad','value'=>'']) !!}
+                        </center>
+                       <!-- <input id="facultad" class="form-control" placeholder="Seleccione una Facultad"/>-->
+                         <center><div class="help-block with-errors"></div></center>
+                         
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <center>{!! Form::label('Carrera:') !!}</center>
-                    {!! Form::text('carrera',null,['class'=>'form-control', 'placeholder'=>'Ingrese la carrera del encargado']) !!}
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <center>{!! Form::label('Carrera:') !!}</center>
+                        <center>
+                        {!! Form::text('carrera',$entidad->carrera,['class'=>'form-control','data-error'=>'La Carrera es obligatorio...','id'=>'carrera','placeholder'=>'Seleccione una Carrera']) !!}
+                        </center>
+                      <!-- <input id="carrera" class="form-control" placeholder="Seleccione una Carrera"/>-->
+                         <center><div class="help-block with-errors"></div></center>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <center>{!! Form::label('Materia:') !!}</center>
-                    {!! Form::text('materia',null,['class'=>'form-control', 'placeholder'=>'Ingrese la materia del encargado']) !!}
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <center>{!! Form::label('Materia:') !!}</center>
+                        {!! Form::text('materia',$entidad->materia,['class'=>'form-control', 'placeholder'=>'Ingrese la materia del encargado','data-error'=>'La Materia es obligatorio...']) !!}
+                         <center><div class="help-block with-errors"></div></center>
+                    </div>
                 </div>
-            </div>
             <div class="col-md-2">
                 <div class="form-group">
                     <center>{!! Form::label('Sigla:') !!}</center>
-                    {!! Form::text('sigla',null,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla de la materia del encargado']) !!}
+                    {!! Form::text('sigla',$entidad->sigla,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla de la materia del encargado']) !!}
                 </div>
             </div>
         </div>
-    </div>
     </div>
     </div>

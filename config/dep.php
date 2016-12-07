@@ -3,15 +3,14 @@
 return array(
 
     'deps' => [
-         ''          =>'Seleccione un Departamento',
          'Potosí'    =>'Potosí',
          'Oruro'     =>'Oruro',
-         'La_paz'    =>'La_paz',
+         'La_Paz'    =>'La Paz',
          'Pando'     =>'Pando',
          'Cochabamba'=>'Cochabamba',
          'Sucre'     =>'Sucre',
          'Tarija'    =>'Tarija',
-         'Santa_cruz'=>'Santa_cruz',
+         'Santa_Cruz'=>'Santa Cruz',
          'Beni'      =>'Beni',
     ]
 )

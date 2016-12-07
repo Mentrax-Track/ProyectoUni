@@ -20,8 +20,7 @@ class ReservasController extends Controller
     }
     public function find(Route $route)
     {
-        $this->user = User::find($route->getParameter('user'));
-        $this->reserva = Reserva::find($route->getParameter('reservas','user'));
+        $this->reserva = Reserva::find($route->getParameter('reservas'));
     }
     /**
      * Display a listing of the resource.
@@ -42,11 +41,12 @@ class ReservasController extends Controller
     public function create()
     {
     
-        $user = User::where('tipo', 'encargado')
-            ->get(['id', 'nombres', 'apellidos'])->lists('full_name','id');
+        $user_id = User::where('tipo', 'encargado')
+            ->get(['id', 'nombres', 'apellidos'])
+            ->lists('full_name','id')->toArray();
         //dd($user);
 
-        return view('automotores.reservas.create',compact('user'));
+        return view('automotores.reservas.create',compact('user_id'));
     }
 
     /**
@@ -77,8 +77,8 @@ class ReservasController extends Controller
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => $days,
-            'user_id'       => $request['encargado'],
+            'dias'          => 1+$days,
+            'user_id'       => $request['user_id'],
             ]);
       //  dump($request['encargado']);
         Session::flash('message','Reserva creada correctamente');
@@ -104,9 +104,11 @@ class ReservasController extends Controller
      */
     public function edit($id)
     {
-        $user = User::lists('nombres','id');
+        $user_id = User::where('tipo', 'encargado')
+            ->get(['id', 'nombres', 'apellidos'])
+            ->lists('full_name','id')->toArray();
         
-        return view('automotores.reservas.edit',['reser'=>$this->reserva],compact('user'));
+        return view('automotores.reservas.edit',['reser'=>$this->reserva],compact('user_id'));
     }
 
     /**
@@ -118,9 +120,22 @@ class ReservasController extends Controller
      */
     public function update(ReservaCreateRequest $request, $id)
     {
-        $user = User::lists('nombres','id');         
-        $this->reserva->fill($request->all());
-        $this->reserva->save();
+        $diferencia = abs(strtotime($request['fecha_final']) - strtotime($request['fecha_inicial']));
+
+        $years  = floor($diferencia / (365*60*60*24));
+        $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
+        $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+        $reservas=Reserva::find($id);
+        //dd($reservas);
+        $reservas->entidad = $request->entidad;
+        $reservas->objetivo = $request->objetivo;
+        $reservas->pasajeros = $request->pasajeros;
+        $reservas->fecha_inicial = $request->fecha_inicial;
+        $reservas->fecha_final = $request->fecha_final;
+        $reservas->user_id = $request->user_id;
+        $reservas->dias = 1+$days;
+        $reservas->save();
         Session::flash('message','La reserva fue editada correctamente');
         return Redirect::to('/reservas');
     }
@@ -133,7 +148,6 @@ class ReservasController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::lists('nombres','id'); 
         $this->reserva->delete();
         Session::flash('message','La reserva fue Eliminada correctamente');
         return Redirect::to('/reservas');

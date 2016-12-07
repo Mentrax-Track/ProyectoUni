@@ -31,6 +31,12 @@ class DatabaseSeeder extends Seeder
  
         $this->call(ReservaTableSeeder::class);
 
+        $this->call(EntidadTableSeeder::class);
+
+        /*$this->call(CelularTableSeeder::class);
+
+        $this->call(EmailTableSeeder::class);*/
+
         Model::reguard();
         
     }

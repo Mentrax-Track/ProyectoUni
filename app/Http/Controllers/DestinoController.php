@@ -4,6 +4,8 @@ namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Infraestructura\Destino;
+use Infraestructura\Provincia;
+use Infraestructura\Municipio;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
 use Infraestructura\Http\Requests\DestinoCreateRequest;
@@ -40,6 +42,7 @@ class DestinoController extends Controller
      */
     public function create()
     {
+
         return view('automotores.destino.create');
     }
 
@@ -64,7 +67,7 @@ class DestinoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -89,7 +92,7 @@ class DestinoController extends Controller
     {
         $this->des->fill($request->all());
         $this->des->save();
-        Session::flash('message','Destino Editado correctamente...');
+        Session::flash('message','Destino Editado corréctamente...');
         return redirect('destinos');
     }
 
@@ -102,7 +105,7 @@ class DestinoController extends Controller
     public function destroy($id)
     {
         $this->des->delete();
-        Session::flash('message','Destino Eliminado correctamente...');
+        Session::flash('message','Destino Eliminado corréctamente...');
         return redirect('destinos');
     }
 }

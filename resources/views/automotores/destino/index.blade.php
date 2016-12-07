@@ -1,3 +1,4 @@
+<?php use Infraestructura\Mapa; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Destinos')
@@ -39,7 +40,16 @@
                             <td>{{ $des->tiempo }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                    {!!link_to_route('destinos.edit', $title = 'Editar', $parameters = $des, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
+                                    {!!link_to_route('destinos.edit', $title = 'Editar', $parameters = $des, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                <?php 
+                                    $ides =  $des->id;
+                                    $resul = Mapa::where('destino_id',$ides)
+                                            ->get(['id'])->lists('id')->toArray();
+                                    
+                                    if (empty($resul)) 
+                                    { ?>
+                                    {!!link_to_route('mapas.show', $title = ' Mapa', $parameters = $des->id, $attributes = ['class'=>'btn btn-primary btn-xs glyphicon fa fa-map-marker'])!!}
+                                <?php } ?>
                                 </center>
                             </td>
                         </tr>

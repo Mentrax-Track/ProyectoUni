@@ -9,7 +9,7 @@
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
                         <center>{!! Form::label('Destino: ') !!}</center>
-                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','id'=>'destino_id','data-error'=>'Escoja un destino','required']) !!}
+                        {!! Form::select('destino_id',$destino,null,['class'=>'form-control','id'=>'destino_id','data-error'=>'Escoja un destino','required', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="col-md-4 btn-group" role="group">
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest1',$destino,null,['class'=>'form-control','id'=>'dest1','data-error'=>'Escoja un destino','required']) !!}
+                        {!! Form::select('dest1',$destino,null,['class'=>'form-control','id'=>'dest1','data-error'=>'Escoja un destino','required', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="col-md-4 btn-group" role="group">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2']) !!}
+                        {!! Form::select('dest2',$destino,null,['class'=>'form-control','id'=>'dest2', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class=" col-md-8 btn-group" role="group">
-                        {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3']) !!}
+                        {!! Form::select('dest3',$destino,null,['class'=>'form-control','id'=>'dest3', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -66,7 +66,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4']) !!}
+                        {!! Form::select('dest4',$destino,null,['class'=>'form-control','id'=>'dest4', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                         <div class="input-group date">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group row">   
                     <div class="col-md-8 btn-group" role="group">
-                        {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5']) !!}
+                        {!! Form::select('dest5',$destino,null,['class'=>'form-control','id'=>'dest5', 'value'=>'$destino->id','placeholder'=>'Selecione un Destino']) !!}
                     </div>
                     <div class="col-md-4 btn-group" role="group">
                        <div class="input-group date">
@@ -111,14 +111,9 @@
                     {!! Form::label('Km. Total:') !!}
                 </div>
                 <div class="btn-group" role="group">
-                    <div class="input-group date">        
-                         {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-road">km.</span>
-                        </span>
-                    </div>
-                    <center><div class="help-block with-errors"></div></center>
-                </div>            
+                     {!! Form::text('total',null,['class'=>'form-control','id'=>'total',' value'=>'0','data-error'=>'Este campo debe estar lleno','required']) !!}
+                     <center><div class="help-block with-errors"></div></center>
+                </div>
             </li>
         </div>
     </div>
@@ -169,7 +164,7 @@
             <div class="form-group">
                 {!! Form::label('Entidad/Carrera') !!}
                 <div class="input-group date">
-                    <input class="form-control" name="entidad" type="text" value="{{$reserva->entidad}}" id="entidad" data-error="Seleccione una Entidad" required>
+                    {!! Form::text('entidad',$reserva->entidad,['class'=>'form-control', 'placeholder'=>'Entidad responsable','id'=>'entidad','data-error'=>'Seleccione una Entidad','required']) !!}
                     <span class="input-group-addon">
                         <i class="fa fa-university" aria-hidden="true"></i>
                     </span>
@@ -185,29 +180,28 @@
   <div class="col-md-5">
     <div class="form-group">
         {!! Form::label('Tipo:') !!}
-        {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control','data-error'=>'Seleccione un tipo de viaje','required'])!!}
+        {!! Form::select('tipo',config('viaTipo.viaTipos'),null,['class'=>'form-control','id'=>'tipo','data-error'=>'Seleccione un tipo de viaje','required'])!!}
         <center><div class="help-block with-errors"></div></center>
     </div>
   </div>
   <div class="col-md-2">
     <div class="form-group">
         {!! Form::label('# Pasajeros:') !!}
-
-        <input class="form-control" name="pasajeros" type="number" value="{{$reserva->pasajeros}}"  data-error="Inserte el número de pasajeros" required>
+        {!! Form::number('pasajeros',$reserva->pasajeros,['class'=>'form-control', 'placeholder'=>'número','data-error'=>'Inserte el número de pasajeros','required']) !!}
         <center><div class="help-block with-errors"></div></center>
-            
+
     </div>
   </div>
   <div class="col-md-5">
     <div class="form-group">
         {!! Form::label('Objetivo:') !!}
         <div class="input-group date">
-            <input class="form-control" name="objetivo" type="text" value="{{$reserva->objetivo}}"  data-error="Inserte el objetivo del viaje" required>
+            {!! Form::text('objetivo',$reserva->objetivo,['class'=>'form-control', 'placeholder'=>'Ingrese el objetivo del viaje','data-error'=>'Inserte el objetivo del viaje','required']) !!}
             <span class="input-group-addon">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
             </span>
         </div>
-        <center><div class="help-block with-errors"></div></center> 
+        <center><div class="help-block with-errors"></div></center>        
     </div>
   </div>
 </div>
@@ -217,8 +211,7 @@
         <div class="form-group">
             {!! Form::label('Fecha Inicial:') !!}
             <div class='input-group date ' id='datetimepicker6'>
-                
-                <input class="form-control" name="fecha_inicial" type="text" value="{{$reserva->fecha_inicial}}"  data-error="Inserte la fecha Inicial" required>
+                {!! Form::text('fecha_inicial',$reserva->fecha_inicial,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
@@ -231,8 +224,7 @@
         <div class="form-group ">
             {!! Form::label('Fecha Final:') !!}
             <div class='input-group date ' id='datetimepicker7'>
-                
-                <input class="form-control" name="fecha_final" type="text" value="{{$reserva->fecha_final}}"  data-error="Inserte la fecha Final" required>
+                {!! Form::text('fecha_final',$reserva->fecha_final,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
@@ -243,12 +235,9 @@
     
      <div class="col-md-1"></div>
 </div>
-
-
-<!--Faltan 
 </div>
 </div>
--->
+
 
 
 

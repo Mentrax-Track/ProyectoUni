@@ -24,7 +24,7 @@ class ReservaCreateRequest extends Request
     public function rules()
     {
         return [
-            'encargado' => 'required',
+            'user_id' => 'required',
             'entidad'   => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:50',
 
 

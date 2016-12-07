@@ -11,7 +11,7 @@
     {!!Html::style('css/metisMenu.min.css')!!}
     {!!Html::style('css/sb-admin-2.css')!!}
     {!!Html::style('css/font-awesome.min.css')!!}
-
+    {!!Html::style('css/app.css')!!}
     @yield('css')
     
 </head>
@@ -83,7 +83,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon fa fa-bus"></i> Vehiculos<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bus"></i> Vehiculos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
@@ -105,7 +105,15 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon glyphicon glyphicon-map-marker"></i> Mapas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/mapas') !!}"><i class='fa fa-list'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/presupuestos') !!}"><i class='fa fa fa-usd'></i> Tipo A (Cheque)</a>
@@ -116,7 +124,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/salidas/create') !!}"><i class='fa fa-file-text-o'></i> Crear</a>
@@ -127,7 +135,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/roles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
@@ -135,7 +143,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-list-alt"></i> Informes de Viajes<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-file-word-o"></i> Informes de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/informes') !!}"><i class='fa fa-sliders'></i> Mostrar</a>

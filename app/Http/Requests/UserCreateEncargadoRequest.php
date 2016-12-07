@@ -26,13 +26,14 @@ class UserCreateEncargadoRequest extends Request
         return [
             'nombres'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
             'apellidos'=> 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'cedula'   => 'regex:/^[0-9]+$/i|between:7,12|unique:users,cedula',
             'celular'  => 'regex:/^[0-9]+$/i|between:8,12|unique:users,celular',
-            'facultad' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
+            'facultad' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:50',
             'carrera'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
             'materia'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
             'sigla'    => 'required|min:5|max:15',
             'password' => 'required|max:20',
-            'tipo'     => 'required|in:encargado',
+            'email'    => 'unique:users,email|max:50',
         ];
     }
     public function messages()
@@ -44,6 +45,7 @@ class UserCreateEncargadoRequest extends Request
                 'facultad.regex'     => 'En el campo facultad solo se aceptan letras',
                 'carrera.regex'      => 'En el campo carrera aceptan letras',
                 'materia.regex'      => 'En el campo materia solo se aceptan letras',
+                'cedula.regex'       => 'En el campo cédula minimo son 7 caracteres',
         ];
     }
 }

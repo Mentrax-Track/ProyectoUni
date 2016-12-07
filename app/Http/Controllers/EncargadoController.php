@@ -4,6 +4,7 @@ namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Infraestructura\User;
+use Infraestructura\Entidad;
 use Infraestructura\Http\Requests\UserCreateEncargadoRequest;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Controllers\Controller;
@@ -26,9 +27,16 @@ class EncargadoController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
+        $users = User::name($request->get('name'))->tipo($request->get('tipo'))->orderBy('id','DESC')->paginate(10);
 
-        return view('automotores.usuarios.index', compact('users'));
+
+        $entidad = \DB::table('entidades')
+            ->join('users', 'entidades.user_id', '=', 'users.id')
+            ->select('entidades.*')
+            ->get();
+        //  dd($entidad);
+
+        return view('automotores.usuarios.index', compact('users','entidad'));
     }
 
     /**
@@ -49,7 +57,41 @@ class EncargadoController extends Controller
      */
     public function store(UserCreateEncargadoRequest $request)
     {
-        User::create($request->all());
+        //dd($request);
+        //User::create($request->all());
+        $insertador = \Auth::user()->full_name;
+        $dat = date('Y-m-d h:m:s');
+        $iduser = \DB::table('users')->insertGetId([
+                    'nombres'   => $request['nombres'],
+                    'apellidos' => $request['apellidos'],
+                    'celular'   => $request['celular'],
+                    'email'     => $request['email'],
+                    'tipo'      => 'encargado',
+                    'insertador'=> $insertador,
+                    'password'  => bcrypt($request['password']),
+                    'created_at'=>$dat,
+                    'updated_at'=>$dat
+                ]);
+
+        $cedu = $request->cedula;
+        if (!empty($cedu)) 
+        {
+            User::where('id',$iduser)
+                ->update(['cedula' => $cedu ]);   
+        }
+        
+
+
+        \DB::table('entidades')->insert([  
+            'facultad' => $request['facultad'],
+            'carrera'  => $request['carrera'],
+            'materia'  => $request['materia'],
+            'sigla'    => $request['sigla'],
+            'user_id'  => $iduser,
+            'created_at'=>$dat,
+            'updated_at'=>$dat
+        ]);
+
         Session::flash('message','Usuario encargado creado correctamente...');
         return redirect('users');
     }

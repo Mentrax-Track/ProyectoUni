@@ -41,7 +41,7 @@ use Infraestructura\User;
                         <td> 
                             <center>
                                 {!!link_to_route('presupuestosDia.edit', $title = ' Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info btn-xs  glyphicon fa fa-pencil-square-o'])!!}
-                                {!!link_to_action('PresupuestosDiaController@getImprimir', $title = ' Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon fa fa-print'])!!} 
+                                {!!link_to_action('PresupuestosDiaController@getImprimir', $title = ' Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon fa fa-print','target'=>'_blank'])!!} 
                             </center>
                         </td>
                     </tbody>

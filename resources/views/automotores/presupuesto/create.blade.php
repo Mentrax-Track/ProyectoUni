@@ -10,7 +10,7 @@
      {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
      {!! Html::style('css/easy-autocomplete.min.css') !!}
      {!! Html::style('css/select2.css') !!}
-
+     {!! Html::style('css/app.css') !!}
 @stop
 @section('content')
 @include('alertas.request')
@@ -18,19 +18,21 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4><p class="www">Presupuesto de Viaje</p></h4></div>
-    <div class="panel-body"> 
-        
-            @include('automotores.presupuesto.forms.presu')
-        <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4">
-                  <button type="submit" class="btn btn-primary btn-block" >
-                      <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
-                  </button>        
-              </div>
-              <div class="col-md-4"></div>   
-          </div>
+    <div class="panel-heading text-center"><h4><p class="www"><strong><u>Presupuesto de Viaje</u></strong></p></h4></div><center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> verde </strong></font> son Obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#8a6d3b"><strong> dorado </strong></font> son autogenerados (no modifique).</center>
+    <div class="panel-body jumbotron"> 
+        {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','data-toggle'=>'validator' ]) !!}
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+                @include('automotores.presupuesto.forms.presu')
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                      <button type="submit" class="btn btn-primary btn-block" >
+                          <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                      </button>        
+                  </div>
+                  <div class="col-md-4"></div>   
+                </div>
+        {!! Form::close() !!}    
     </div>
 </div>
 @endsection

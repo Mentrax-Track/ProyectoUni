@@ -37,7 +37,7 @@
                                 <center>
                                     {!!link_to_route('informes.edit', $title = 'Editar', $parameters = $infovi, $attributes = ['class'=>'btn btn-info btn-xs btn-block  glyphicon glyphicon-edit'])!!}
 
-                                    {!!link_to_action('InformeController@getImprimir', $title = ' Imprimir', $parameters = $infovi->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block  glyphicon fa fa-print'])!!} 
+                                    {!!link_to_action('InformeController@getImprimir', $title = ' Imprimir', $parameters = $infovi->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block  glyphicon fa fa-print','target'=>'_blank'])!!} 
                                 </center>
                             </td>
                         </tr>

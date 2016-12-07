@@ -1,6 +1,7 @@
 <?php
 use Infraestructura\Destino;
 use Infraestructura\User;
+use Infraestructura\Mapa;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,6 +17,7 @@ Route::get('/', function () {
     return view('index');
 });
 
+//Estas tres rutas ya no uso 
 Route::get('Automotores', function () {
     return view('autoLayout');
 });
@@ -46,7 +48,7 @@ Route::get('Salir', [
 
 
 
-// Registration routes...
+// Registration routes... No lo uso 
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
@@ -105,9 +107,9 @@ Route::group(['middleware' => 'auth'], function(){
     */
     Route::get('vehiculo', function (Illuminate\Http\Request  $request) {
         $term = $request->term ?: '';
-        $vehiculos = Infraestructura\Vehiculo::where('estado', 'Optimo', $term.'%')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+        $vehiculos = Infraestructura\Vehiculo::where('estado', 'optimo', $term.'%')
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id');
         $valid_vehiculos = [];                                               
         foreach ($vehiculos as $id => $vehi) {
@@ -185,5 +187,44 @@ Route::resource('roles','RolesController');
 Route::get('informes/{id}/pdf','InformeController@getImprimir');
 Route::get('infodias/{id}','InformeController@getPresudia');
 Route::resource('informes','InformeController');
+
+
+//Ruta para el tablero de muestras de viajes
+Route::get('Viajes-Realizados', [
+    'uses' => 'TableroController@getRealizados',
+    'as' => 'viajeros'
+    ]);
+Route::get('Viajes-Reservados', [
+    'uses' => 'TableroController@getReservas',
+    'as'   => 'reservas'
+    ]);
+Route::get('Viajes-del-Mes', [
+    'uses' => 'TableroController@getVmes',
+    'as'   => 'meses'
+    ]);
+
+//Rutas para el mapa implementado/////
+Route::resource('mapas','MapaController');
+Route::get('mapas/{id}/Ver','MapaController@getVer');
+
+
+///Para imprimir los viajes del tablero
+Route::get('Impresión-de-Viajes', [
+    'uses' => 'TableroController@getImprimirealizados',
+    'as'   => 'realizados'
+    ]);
+Route::get('Impresión-de-Viajes-Reservados', [
+    'uses' => 'TableroController@getImprimireservados',
+    'as'   => 'reservas'
+    ]);
+Route::get('Impresión-de-Viajes-del-Mes', [
+    'uses' => 'TableroController@getImprimirmes',
+    'as'   => 'meses'
+    ]);
+
+
+
+
+
 
 

@@ -25,7 +25,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                 <center>
-                <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
+                <button type="submit" class="btn btn-primary btn-block" >
                     <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                 </button>
                 </center>
@@ -71,7 +71,10 @@
     });
 </script>
 <script type="text/javascript">
-    $('select').select2();    
+    $('select').select2({
+        placeholder: "Seleccione una opción",
+        allowClear: true
+    });    
 </script>
 
 @endsection

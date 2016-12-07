@@ -102,8 +102,8 @@ function mostrar(id) {
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
-                    <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-floppy-save "> Registrar</span> 
                 </button>        
             </div>
             <div class="col-md-4"></div>   
@@ -171,28 +171,32 @@ function mostrar(id) {
                 <div class="col-md-4">
                     <div class="form-group">
                         <center>{!! Form::label('Materia:') !!}</center>
-                        {!! Form::text('materia',null,['class'=>'form-control', 'placeholder'=>'Ingrese el celular del usuario','data-error'=>'La Materia es obligatorio...','required']) !!}
+                        {!! Form::text('materia',null,['class'=>'form-control', 'placeholder'=>'Ingrese la materia del encargado','data-error'=>'La Materia es obligatorio...','required']) !!}
                          <center><div class="help-block with-errors"></div></center>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-1"></div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <center>{!! Form::label('Sigla:') !!}</center>
-                        {!! Form::text('sigla',null,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla del usuario','data-error'=>'La Sigla de la materia es obligatorio...','required']) !!}
+                        {!! Form::text('sigla',null,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla del encargado','data-error'=>'La Sigla de la materia es obligatorio...','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
-                     
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <center>{!! Form::label('tipo', 'Tipo de usuario') !!}</center>
-                        {!! Form::select('tipo', config('doce.doces'), null, ['class' => 'form-control','data-error'=>'Elija un tipo de usuario','required']) !!}
+                        <center>{!! Form::label('E-mail:(Opcional)') !!}</center>
+                        {!! Form::email('email',null,['class'=>'form-control', 'placeholder'=>'Ingrese el email del usuario','data-error'=>'Ingrese un email valido']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
-                     
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <center>{!! Form::label('Cédula:(Opcional)') !!}</center>
+                        {!! Form::number('cedula',null,['class'=>'form-control', 'placeholder'=>'Ingrese la cédula del Encargado','data-error'=>'Ingrese la cédula del Encargado']) !!}
+                        <center><div class="help-block with-errors"></div></center>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
@@ -200,14 +204,12 @@ function mostrar(id) {
                         {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingrese su password/clave', 'data-error'=>'La clave debe contener al menos 6 caracteres','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
-                     
                 </div>
-                <div class="col-md-1"></div>
             </div>
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
+                    <button type="submit" class="btn btn-primary btn-block" >
                         <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                     </button>        
                 </div>

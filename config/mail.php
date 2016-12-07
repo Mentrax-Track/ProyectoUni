@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'uatf.infraestructura@gmail.com', 'name' => 'Infraestructura Uatf'],
+    'from' => ['address' => 'uatf.infraestructura@gmail.com', 'name' => 'Dpto. de Infraestructura Uatf'],
 
     /*
     |--------------------------------------------------------------------------

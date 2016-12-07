@@ -42,4 +42,19 @@ class PasswordController extends Controller
     {
         return isset($this->subject) ? $this->subject : 'Su enlace de restablecimiento de contraseña';
     }
+    /**
+     * Reset the given user's password.
+     *
+     * @param  \Illuminate\Contracts\Auth\CanResetPassword  $user
+     * @param  string  $password
+     * @return void
+     */
+    protected function resetPassword($user, $password)
+    {
+        $user->password = $password;
+
+        $user->save();
+
+        \Auth::login($user);
+    }
 }

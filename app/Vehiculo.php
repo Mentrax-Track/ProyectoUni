@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Infraestructura\User;
 use Infraestructura\Viaje;
+use Infraestructura\Modelo;
 use Infraestructura\Salida;
 use Infraestructura\InformeViaje;
 class Vehiculo extends Model
@@ -13,7 +14,7 @@ class Vehiculo extends Model
 
     protected $table = 'vehiculos';
     
-    protected $fillable = ['codigo','tipo','placa','color','kilometraje','pasageros','path','estado'];
+    protected $fillable = ['codigo','placa','color','pasageros','tipog','estado'];
 
     //Un vehiculo puede pertenecer a muchos usuarios
     public function users()
@@ -29,48 +30,35 @@ class Vehiculo extends Model
     {
         return $this->hasMany('Infraestructura\Vehiculo_Viaje');   
     }
-   
-    //mutador para modificar elementos antes de ser guardados
-    /*public function setPathAttribute($path){
-        if(! empty($path)){
-            $name = Carbon::now()->second.$path->getClientOriginalName();
-            $this->attributes['path'] = $name;
-            \Storage::disk('local')->put($name, \File::get($path));
-        }
-    }*/
-    public static function filtroBusqueda($tip, $esta)
+    public function modelo()
     {
-        return Vehiculo::tip($tip)
-            ->esta($esta)
-            ->orderBy('id','DES')
-            ->paginate(10);
+        return $this->hasOne('Infraestructura\Modelo');
     }
-    //scope es una funcion de laravfel
-    public function scopeTip($query, $tip)
+    
+    public function scopePlaca($query, $placa)
     {
-        //La funcion trim para eliminar los espacion
-        if(trim($tip) != "")
+        //si el campo placa no esta vacio entra y si no no
+        //trim para eliminar los espacios en blanco
+        if(trim($placa) != "")
         {
-            //$query->where('tipo', "LIKE", "%$pla%");
-             $query->where('tipo', $tip);
+            $query->where(\DB::raw("CONCAT(codigo, ' ',placa)"),"LIKE","%$placa%");    
         }
+        
     }
-    public function scopeEsta($query, $esta)
+    public function scopeEstado($query, $estado)
     {
-        //En esta variable agarramos todos las opciones de la columna estado
-        $estas = config('estados.estas');
+        $estados = config('vehiculos.estados');
 
-        //if(trim($esta) != "")
-        //Verificamos el estado q esta enviando el usuario no este vacio 
-        //y Ademas que exista dentro de los estados validos del vehiculo
-        if($esta != "" && isset($estas[$esta]))
+        if($estado != "" && isset($estados[$estado]))
         {
-            $query->where('estado',$esta);
+            $query->where('estado',$estado);
         }
     }
+    
+
     public function getFullvehiculoAttribute()
     {
-        return $this->tipo.' '.$this->placa;
+        return $this->tipog.' '.$this->placa;
     }
     public function presupuestos()
     {

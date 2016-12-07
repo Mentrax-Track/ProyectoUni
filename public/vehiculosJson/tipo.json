@@ -1,0 +1,15 @@
+{
+    "Tipo general del Vehículos": [
+        {"character": "Prado", "realName": "U.A.T.F."},
+        {"character": "Land Cruiser", "realName": "U.A.T.F."},
+        {"character": "Patrol", "realName": "U.A.T.F."},
+        {"character": "Lancer", "realName": "U.A.T.F."},        
+        {"character": "Civilian", "realName": "U.A.T.F."},
+        {"character": "Mopar", "realName": "U.A.T.F."},
+        {"character": "Condor", "realName": "U.A.T.F."},
+        {"character": "Hilux", "realName": "U.A.T.F."},
+        {"character": "Ranger", "realName": "U.A.T.F."},
+        {"character": "Canter", "realName": "U.A.T.F."},
+        {"character": "Estacas", "realName": "U.A.T.F."}
+    ]
+}

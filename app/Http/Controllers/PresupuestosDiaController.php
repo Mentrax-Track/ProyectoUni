@@ -82,9 +82,9 @@ class PresupuestosDiaController extends Controller
                     ->orderBy('id','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id')->toArray();            
-        $vehiculos  = Vehiculo::where('estado', 'Optimo')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+        $vehiculos  = Vehiculo::where('estado', 'optimo')
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
@@ -152,9 +152,9 @@ class PresupuestosDiaController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculos  = Vehiculo::where('estado', 'Optimo')
-                    ->orderBy('tipo','ASC')
-                    ->get(['id', 'tipo', 'placa'])
+        $vehiculos  = Vehiculo::where('estado', 'optimo')
+                    ->orderBy('tipog','ASC')
+                    ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')

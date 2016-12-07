@@ -10,7 +10,7 @@
      {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
      {!! Html::style('css/easy-autocomplete.min.css') !!}
      {!! Html::style('css/select2.css') !!}
-
+    {!! Html::style('css/app.css') !!}
 @stop
 @section('content')
 @include('alertas.request')

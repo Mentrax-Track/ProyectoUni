@@ -37,7 +37,7 @@
                                     {!!link_to_route('salidas.edit', $title = ' Editar', $parameters = $sal->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
                                     
                                     {!!link_to_route('salidas.show', $title = '
-                                     Imprimir   ', $parameters = $sal->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-print'])!!}
+                                     Imprimir   ', $parameters = $sal->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-print','target'=>'_blank'])!!}
                                 </center>
                             </div>
                         </td>

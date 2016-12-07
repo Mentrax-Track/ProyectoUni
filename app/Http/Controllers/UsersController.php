@@ -4,6 +4,7 @@ namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Infraestructura\User;
+use Infraestructura\Entidad;
 use Infraestructura\Http\Requests\UserCreateRequest;
 use Infraestructura\Http\Requests\UserUpdateRequest;
 use Infraestructura\Http\Requests;
@@ -35,7 +36,14 @@ class UsersController extends Controller
 
         $users = User::name($request->get('name'))->tipo($request->get('tipo'))->orderBy('id','DESC')->paginate(10);
 
-        return view('automotores.usuarios.index', compact('users'));
+
+        $entidad = \DB::table('entidades')
+            ->join('users', 'entidades.user_id', '=', 'users.id')
+            ->select('entidades.*')
+            ->get();
+        //dd($entidad);
+
+        return view('automotores.usuarios.index', compact('users','entidad'));
     }
 
     /**
@@ -56,11 +64,25 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        User::create($request->all());
+        //dd($request);
+        //User::create($request->all());
         
-        //$usuarioResponsable = Auth::user()->full_name;
+        $insertador = Auth::user()->full_name;
+        $dat = date('Y-m-d h:m:s');
+        $iduser = \DB::table('users')->insertGetId([
+                    'nombres'   => $request['nombres'],
+                    'apellidos' => $request['apellidos'],
+                    'cedula'    => $request['cedula'],
+                    'celular'   => $request['celular'],
+                    'email'     => $request['email'],
+                    'tipo'      => $request['tipo'],
+                    'insertador'=> $insertador,
+                    'password'  => bcrypt($request['password']),
+                    'created_at'=>$dat,
+                    'updated_at'=>$dat
+                ]);
 
-        Session::flash('message','Usuario creado correctamente...');
+        Session::flash('message','Usuario creado correctamente');
         return redirect('users');
     }
 
@@ -83,7 +105,18 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        return view('automotores.usuarios.edit',['user'=>$this->user]);
+        $entidad = Entidad::where('user_id',$id)
+        ->first();
+       //dd($entidad);
+        if(!empty($entidad) || $entidad != NULL || $entidad != "")
+        {
+            return view('automotores.usuarios.edit',['user'=>$this->user],compact('entidad'));
+        }else{
+            $entidad = User::find($id);
+            return view('automotores.usuarios.edit',['user'=>$this->user],compact('entidad'));    
+        }
+
+        
     }
 
     /**
@@ -95,10 +128,57 @@ class UsersController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $this->user->fill($request->all());
-        $this->user->save();
+        //dd($request);
+        //$reservas=Reserva::find($id);
+        $yo = \Auth::user()->full_name;
+        $user = User::find($id);
+        $user->nombres = $request->nombres;
+        $user->apellidos = $request->apellidos;
+        $user->cedula = $request->cedula;
+        $user->celular = $request->celular;
+        $user->email = $request->email;
+        $user->tipo = $request->tipo;
+        $user->insertador = $yo;
+        $user->active = 1;
+        $user->save();
+
+
+        $d = Entidad::where('user_id',$id)->get(['user_id'])->toArray();
+        //dd($d);
+        if(!empty($d) || $d != NULL || $d != "")
+        {
+            $a = $request->facultad;
+            $b = $request->carrera;
+            $c = $request->materia;
+            $d = $request->sigla;
+            Entidad::where('user_id',$id)
+                        ->update([
+                            'facultad'=> $a,
+                            'carrera' => $b,
+                            'materia' => $c,
+                            'sigla'   => $d,
+                            'user_id' => $id
+                        ]);
+        }
+        $dat = date('Y-m-d h:m:s');
+        Entidad::create([
+                'facultad'  => $request['facultad'],
+                'carrera'   => $request['carrera'],
+                'materia'   => $request['materia'],
+                'sigla'     => $request['sigla'],
+                'user_id'   => $id,
+                'created_at'=>$dat,
+                'updated_at'=>$dat
+        ]);
+        
+
+        
+
+        /*$this->user->fill($request->all());
+        $this->user->save();*/
         Session::flash('message','Usuario editado correctamente...');
         return redirect('users');
+        
     }
 
     /**

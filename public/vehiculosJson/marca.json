@@ -1,0 +1,10 @@
+{
+    "Marca del Vehículo": [
+        {"character": "Toyota", "realName": "U.A.T.F."},
+        {"character": "Nissan", "realName": "U.A.T.F."},
+        {"character": "Mitsubhisi", "realName": "U.A.T.F."},
+        {"character": "Mercedes Benz", "realName": "U.A.T.F."},        
+        {"character": "Hino", "realName": "U.A.T.F."},
+        {"character": "Mercedes", "realName": "U.A.T.F."}
+    ]
+}

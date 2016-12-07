@@ -1,0 +1,23 @@
+{
+    "Modelo del Vehículo": [
+        {"character": "1684", "realName": "U.A.T.F."},
+        {"character": "1994", "realName": "U.A.T.F."},
+        {"character": "1997", "realName": "U.A.T.F."},
+        {"character": "1979", "realName": "U.A.T.F."},
+        {"character": "1995", "realName": "U.A.T.F."},
+        {"character": "1992", "realName": "U.A.T.F."},
+        {"character": "1998", "realName": "U.A.T.F."},
+        {"character": "1990", "realName": "U.A.T.F."},
+        {"character": "1977", "realName": "U.A.T.F."},
+        {"character": "1993", "realName": "U.A.T.F."},
+        {"character": "1984", "realName": "U.A.T.F."},
+
+        {"character": "2013", "realName": "U.A.T.F."},
+        {"character": "2006", "realName": "U.A.T.F."},
+        {"character": "2003", "realName": "U.A.T.F."},
+        {"character": "2007", "realName": "U.A.T.F."},
+        {"character": "2004", "realName": "U.A.T.F."},
+        {"character": "2002", "realName": "U.A.T.F."}
+
+    ]
+}

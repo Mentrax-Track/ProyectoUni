@@ -14,13 +14,11 @@ class VehiculoTableSeeder extends Seeder
 
         factory(Infraestructura\Vehiculo::class)->create([
             'codigo'     => 'C-123',
-            'tipo'       => 'Camioneta',
             'placa'      => '153-AVG',
             'color'      => 'rojo',
-            'kilometraje'=> '1200',
-            'pasageros'  => '10',
-            'path'       => 'eigrp.jpg',
-            'estado'     => 'Optimo',
+            'pasajeros'  => '10',
+            'tipog'      => 'Vagoneta',
+            'estado'     => 'optimo',
 
             ]);
         factory(Infraestructura\Vehiculo::class, 39)->create();

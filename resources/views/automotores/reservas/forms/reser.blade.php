@@ -3,7 +3,7 @@
   <div class="col-md-4">
       <div class="form-group">
               <center>{!! Form::label('Nombre y apellido de Encargado') !!}</center>
-              {!! Form::select('encargado',$user,null,['class'=>'form-control','placeholder'=>'Seleccione un Encargado','data-error'=>'La Encargado es obligatorio...','required']) !!}
+              {!! Form::select('user_id',$user_id,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable','data-error'=>'Seleccione a un Encargado','required','id'=>'user_id','value'=>'id']) !!}
               <center><div class="help-block with-errors"></div></center>
       </div>
   </div>

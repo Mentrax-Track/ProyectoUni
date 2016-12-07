@@ -1,75 +1,72 @@
-<div class="list-group-item">
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
+<div class="panel panel-default">
+    <div class="panel-body text-center jumbotron">
+          
             <div class="form-group">
-                <center>{!! Form::label('Código:') !!}</center>
-                {!! Form::text('codigo',null,['class'=>'form-control', 'placeholder'=>'Ingrese el código del vehiculo','data-error'=>'Inserte un Código de vehiculo','required']) !!}
+                <label class="control-label" for="codig">Código:</label>
+                {!! Form::text('codigo',null,['class'=>'form-control', 'placeholder'=>'Ejm. V-5','id'=>'codig','data-error'=>'Inserte el código del vehículo','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div>
-        </div>
-        <div class="col-md-4">
             <div class="form-group">
-                <center>{!! Form::label('Placa:') !!}</center>
-                {!! Form::text('placa',null,['class'=>'form-control', 'placeholder'=>'Ingrese la placa del vehiculo','data-error'=>'Inserte una placa válida','required']) !!}
+                <label class="control-label" for="plac">Placa:</label>
+                {!! Form::text('placa',null,['class'=>'form-control', 'placeholder'=>'Ejm. 3027-TRL','id'=>'plac','data-error'=>'Inserte la placa del vehículo','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-4">
             <div class="form-group">
-                <center>{!! Form::label('Numero de pasageros:') !!}</center>
-                {!! Form::number('pasageros',null,['class'=>'form-control', 'placeholder'=>'Ingrese el numero de asientos disponibles','data-error'=>'Inserte el número de asientos','required']) !!}
+                <label class="control-label" for="colo">Color:</label>
+                {!! Form::text('color',null,['class'=>'form-control','placeholder'=>'Ejm. Blanco','id'=>'colo','data-error'=>'Inserte el color del vehículo','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <center>{!! Form::label('Kilometraje:') !!}</center>
-                {!! Form::number('kilometraje',null,['class'=>'form-control', 'placeholder'=>'Ingrese la cantidad de kilometros ','data-error'=>'Inserte el kilometraje vehicular','required']) !!}
-                <center><div class="help-block with-errors"></div></center>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+            </div><hr>
 
-    <div class="row">
-        <div class="col-md-4">
             <div class="form-group">
-                <center>{!! Form::label('Tipo:') !!}</center>
-                {!! Form::select('tipo', config('opciones.types'),null,['class'=>'form-control','data-error'=>'Seleccione un tipo de vehiculo','required']) !!}
+                <label class="control-label">Motor:</label>
+                {!! Form::text('motor',null,['class'=>'form-control','placeholder'=>'Serie del motor','data-error'=>'Inserte la serie del motor','required']) !!}
+                          <center><div class="help-block with-errors"></div></center>
+            </div>
+            <div class="form-group">
+                <label class="control-label" >Chasis:</label>
+                {!! Form::text('chasis',null,['class'=>'form-control','placeholder'=>'Serie del Chasis','data-error'=>'Inserte la serie del chasis','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div>
-        </div>
-        <div class="col-md-4">
             <div class="form-group">
-                <center>{!! Form::label('Estado:') !!}</center>
-                {!! Form::select('estado',config('estados.estas'),null,['class'=>'form-control','data-error'=>'Seleccione el estado del vehiculo','required']) !!}
+                <label class="control-label">Cilindrada:</label>
+                {!! Form::number('cilindrada',null,['class'=>'form-control','placeholder'=>'Ejm. 3000','data-error'=>'Inserte el número de cilindrada','required',]) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div><hr>
+            
+            <div class="form-group">
+                <label class="control-label"> Pasajeros:</label>
+                {!! Form::number('pasajeros',null,['class'=>'form-control','placeholder'=>'Ejm. 50','data-error'=>'Inserte el múmero de pasajeros','required']) !!}
+                          <center><div class="help-block with-errors"></div></center>
+            </div>
+            <div class="form-group">
+                <label class="control-label" > Kilometraje:</label>
+                {!! Form::number('kilometraje',null,['class'=>'form-control','placeholder'=>'Ejm. 22015','data-error'=>'Inserte el kilometraje del vehículo']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div><div class="form-group">
+                <label class="control-label"> Estado:</label>
+                {!! Form::select('estado',config('vehiculos.estados'),null,['class'=>'form-control','placeholder'=>'Seleccione un estado','data-error'=>'Inserte el estado del vehículo','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div><hr>
+        
+            <div class="form-group">
+                <label class="control-label" >Tipo general:</label>
+                {!! Form::text('tipog',null,['class'=>'form-control','placeholder'=>'Ejm. Vagoneta','id'=>'tipog','data-error'=>'Inserte el motor del vehículo','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div>&ensp;&ensp;
+            <div class="form-group">
+                <label class="control-label" >Marca:</label>
+                {!! Form::text('marca',null,['class'=>'form-control','placeholder'=>'Ejm. Toyota','id'=>'mar','data-error'=>'Inserte el chasis del vehículo','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div>&ensp;&ensp;
+            <div class="form-group">
+                <label class="control-label" >Modelo:</label>
+                {!! Form::number('modelo',null,['class'=>'form-control','placeholder'=>'Ejm. 2002','id'=>'model','data-error'=>'Inserte el modelo del vehículo','required']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div>&ensp;&ensp;  
+            <div class="form-group">
+                <label class="control-label" >Tipo especifico:</label>
+                {!! Form::text('tipoe',null,['class'=>'form-control','placeholder'=>'Ejm. Patrol','id'=>'tipoe','data-error'=>'Inserte el tipo especifo','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <center>{!! Form::label('Color:') !!}</center>
-                {!! Form::text('color',null,['class'=>'form-control', 'placeholder'=>'Ingrese los colores del vehiculo','data-error'=>'Inserte el color del vehiculo','required']) !!}
-                <center><div class="help-block with-errors"></div></center>
-            </div>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="form-group">
-                <center>{!!Form::label('Imagen del Vehiculo: ')!!}</center>
-                {!!Form::file('path',['class'=>'btn btn-info btn-block'])!!}
-            </div>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-    
-</div>
 </div>

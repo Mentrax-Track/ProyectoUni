@@ -46,7 +46,7 @@ class SalidasController extends Controller
     public function create()
     {
         $vehiculo = Vehiculo::orderBy('id','DESC')
-                ->get(['id','tipo','placa'])
+                ->get(['id','tipog','placa'])
                 ->lists('full_vehiculo','id')->toArray();
         //dd($vehiculo);
         $chofer = User::orderBy('id','DESC')

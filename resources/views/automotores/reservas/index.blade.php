@@ -1,3 +1,4 @@
+<?php use Infraestructura\Viaje; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Reservas')
@@ -45,7 +46,18 @@
                             <center>
                             {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
                             
-                            <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>
+                            
+                            <?php 
+                                $re = $reser->id;
+                                //dd($re); 
+                                $resul = Viaje::where('id',$re)
+                                        ->get(['id'])->lists('id')->toArray();
+                                //dd($resul);
+                                if (empty($resul)) 
+                                { ?>
+                                    <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>        
+                                <?php }
+                            ?>
                             </center>
                         </div>
                     </td>

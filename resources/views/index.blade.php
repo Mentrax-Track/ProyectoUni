@@ -12,6 +12,7 @@
 
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::style('css/style.css') !!}
+    {!! Html::style('css/app.css') !!}
 
     <link href="carousel.css" rel="stylesheet">
   </head>
@@ -20,16 +21,26 @@
 
   <body class="letra">
     <div class="container">
-        <nav class="navbar navbar-default">
+        
+        <nav class="navbar navbar-default navbar-static-top">
           <div class="container-fluid">
-            <div class="navbar-header ">
-              <a class="navbar-brand" href=""><p class="www">DEPARTAMENTO  DE  INFRAESTRUCTURA</p></a>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <p class="www">DEPARTAMENTO DE INFRAESTRUCTURA</p>
+                </a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://www.uatf.edu.bo" target="_blank"><p class="www">U.A.T.F</p></a></li>
-              </ul>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                  <li><a href="{{ route('login') }}"><p class="www">INGRESAR</p></a></li>
+                @else
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->nombres }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="{{ route('logout') }}">Salir</a></li>
+                    </ul>
+                  </li>
+                @endif
+            </ul>
           </div>
         </nav>
 
@@ -45,8 +56,9 @@
               <img class="first-slide" src="img/uno.jpg" alt="First slide" align="center">
               <div class="container">
                 <div class="carousel-caption">
-                  <i><h1>Viajes</h1></i>
-                      <p><a data-toggle="modal" class="btn btn-primary " href="{!! URL::to('/Automotores') !!}" >  Ingrese</a></p>
+                  <i><h1>Viajes de Práctica</h1></i>
+                      <!--<p><a data-toggle="modal" class="btn btn-primary " href="{!! URL::to('/Automotores') !!}" >  Ingrese</a></p>-->
+                      <p><a data-toggle="modal" class="btn btn-primary glyphicon glyphicon-hand-up" href="{{ route('login') }}" > INGRESAR</a></p>
                 </div>
               </div>
             </div>
@@ -55,8 +67,8 @@
                 <img class="second-slide" src="img/dos.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption">
-                          <h1>Control General</h1>
-                            <p><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Servicios') !!}">Ingrese</a></p>
+                          <i><h1>Control General</h1></i>
+                            <p><a data-toggle="modal" class="btn btn-primary glyphicon glyphicon-hand-up" href="{{ route('login') }}" > INGRESAR</a></p>
                         </div>
                     </div>
             </div>
@@ -65,8 +77,9 @@
                 <img class="third-slide" src="img/tres.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption">
-                          <h1>Mantenimiento Vehicular</h1>
-                            <p><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Mantenimiento') !!}">Ingrese</a></p>                 
+                          <i><h1>Mantenimiento Vehicular</h1></i>
+                            <!--<p><a class="btn btn-primary" data-toggle="modal"  href="{!! URL::to('/Mantenimiento') !!}">Ingrese</a></p>-->
+                            <p><a data-toggle="modal" class="btn btn-primary glyphicon glyphicon-hand-up" href="{{ route('login') }}" > INGRESAR</a></p>                 
                         </div>
                     </div>
             </div>
@@ -89,20 +102,20 @@
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/calendario.jpg" alt="Generic placeholder image" width="140" height="140" pading="1px"></span></center>
                   <i><h2 class="text-center">Viajes</h2></i>
-                  <p align="justify">Podra verificar la disponibilidad de los vehiculos en un calendario de viajes, realizar las reservas de los mismos y mucho más... </p>
-                  <p class="text-center"><a class="btn btn-primary glyphicon glyphicon-calendar" data-toggle="modal"  href="{!! URL::to('/Automotores') !!}"> Ingresar...&raquo;</a></p>
+                  <p align="justify">Podra verificar la disponibilidad de los vehiculos en un calendario de viajes, realizar las reservas de los mismos y mucho más...&raquo;</p>
+                  <p class="text-center"><a class="btn btn-info glyphicon glyphicon-calendar" data-toggle="modal"  href="{!! URL::to('/inicio-de-sesion') !!}"> Ingresar</a></p>
               </div> 
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/tramitess.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Servicios Generales</h2></i>
-                  <p align="justify">Podrá realizar el control de los usuarios de los distintos sub departamentos del departamento de Infraestructura...</p>
-                  <p class="text-center"><a class="btn btn-primary " href="{!! URL::to('/Servicios') !!}" role="button">Ingresar...&raquo;</a></p>
+                  <p align="justify">Podrá realizar el control de los usuarios de los distintos sub departamentos del departamento de Infraestructura...&raquo;</p>
+                  <p class="text-center"><a class="btn btn-info glyphicon glyphicon-briefcase" href="{!! URL::to('/inicio-de-sesion') !!}" role="button"> Ingresar</a></p>
               </div>
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/autos.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Mantenimiento</h2></i>
-                  <p align="justify">Podrá ver el estado de los vehiculos que cuenta nuestra universidad como tambien registrar los accesorios nuevos y mucho más...</p>
-                  <p class="text-center"><a class="btn btn-primary glyphicon glyphicon-bed" href="{!! URL::to('/Mantenimiento') !!}" role="button"> Ingresar... &raquo;</a></p>
+                  <p align="justify">Podrá ver el estado de los vehiculos que cuenta nuestra universidad como tambien registrar los accesorios nuevos y mucho más...&raquo;</p>
+                  <p class="text-center"><a class="btn btn-info glyphicon glyphicon-bed" href="{!! URL::to('/inicio-de-sesion') !!}" role="button"> Ingresar</a></p>
               </div>
           </div>
         </div>

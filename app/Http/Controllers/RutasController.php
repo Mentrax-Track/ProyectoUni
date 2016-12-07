@@ -77,7 +77,7 @@ class RutasController extends Controller
         ->join('vehiculo_viaje','vehiculos.id','=','vehiculo_viaje.vehiculo_id')
         ->join('viajes','vehiculo_viaje.viaje_id','=','viajes.id')
         ->where('vehiculo_viaje.viaje_id',$id)
-        ->select('vehiculos.tipo as t','vehiculos.placa as p','viajes.id as i')
+        ->select('vehiculos.tipog as t','vehiculos.placa as p','viajes.id as i')
         ->get();
         //dd($vehiculos);
 ///////////////////////////////////// Destinos ///////////////////////

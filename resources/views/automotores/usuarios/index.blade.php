@@ -24,24 +24,33 @@
                     <th class="text-center">Tipo</th>
                     <th class="text-center">Institución</th>
                     <th class="text-center">Operación</th>
-                </tr>
+                </tr><?php $num=1; ?>
                 @foreach($users as $user)
                     <tbody>
                         <tr>
-                            <td  class="info text-center">{{ $user->id }}</td>
+                            <td  class="info text-center">{{ $num}}</td>
                             <td>{{ $user->full_name }}</td>
                             <td>{{ $user->cedula }}</td>
                             <td>{{ $user->celular }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->tipo }}</td>
-                            <td>{{ $user->full_institucion }}</td>
+                            <td><?php $id = $user->id; ?>
+                                @foreach ($entidad as $key => $enti)
+                                    <?php $i = $enti->user_id; 
+                                    if ($i==$id) 
+                                    {
+                                        echo "$enti->facultad "."$enti->carrera "."$enti->materia "." $enti->sigla";
+                                    }
+                                    ?>
+                                @endforeach
+                            </td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
                                 {!!link_to_route('users.edit', $title = 'Editar', $parameters = $user, $attributes = ['class'=>'btn btn-info btn-sm glyphicon glyphicon-edit'])!!}
                                 </center>
                             </td>
                         </tr>
-                    </tbody>
+                    </tbody><?php $num++; ?>
                 @endforeach
             </table>
             <p class="text-center">Hay {{ $users->total() }} registros</p>

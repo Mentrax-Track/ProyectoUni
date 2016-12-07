@@ -5,6 +5,9 @@
      {!! Html::style('css/datetimepicker/prettify-1.0.css') !!}
      {!! Html::style('css/datetimepicker/base.css') !!}
      {!! Html::style('css/datetimepicker/bootstrap-datetimepicker.css') !!}
+     {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
+     {!! Html::style('css/easy-autocomplete.min.css') !!}
+     {!! Html::style('css/select2.css') !!}
 @stop
 @section('content')
 @include('alertas.request')
@@ -34,17 +37,49 @@
 {!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/datetimepicker/transition.js') !!}
 {!! Html::script('js/datetimepicker/collapse.js') !!}
+{!! Html::script('js/validator.js')!!}
+{!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
+{!! Html::script('js/select2.js') !!}
 
+{!! Html::script('js/provincia/pro.js')!!}
+{!! Html::script('js/municipio/mu.js')!!}
 {!! Html::script('js/datetimepicker/prettify-1.0.min.js') !!}
 {!! Html::script('js/datetimepicker/base.js') !!}
 {!! Html::script('js/datetimepicker/bootstrap-datetimepicker.min.js') !!}
 {!! Html::script('js/datetimepicker/bootstrap-datetimepicker.es.js') !!}
-{!! Html::script('js/validator.js')!!}
+
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker3').datetimepicker({
             format: 'LT',
         });
     });
+
+ $(document).ready(function () {
+    $('#depini').select2({
+        placeholder: "Departamento de Inicio",
+        allowClear: true
+    });
+    $('#proini').select2({
+        placeholder: "Provincia de Inicio",
+        allowClear: true
+    }); 
+    $('#munini').select2({
+        placeholder: "Municipio de Inicio",
+        allowClear: true
+    });
+    $('#depfin').select2({
+        placeholder: "Departamento de llegada",
+        allowClear: true
+    });
+    $('#profin').select2({
+        placeholder: "Provincia de llegada",
+        allowClear: true
+    }); 
+    $('#munfin').select2({
+        placeholder: "Municipio de llegada",
+        allowClear: true
+    });  
+ });
 </script>
 @endsection
