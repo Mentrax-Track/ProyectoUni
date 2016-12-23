@@ -13,12 +13,12 @@ use Infraestructura\User;
 @include('alertas.errors')
 <br>
 @include('alertas.success')
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Presupuestos de Viajes</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
         <form class="form-inline">
             <div class="form-group">
-                <label>Busqueda</label> 
+                <label>Búsqueda</label> 
                 @include('automotores.presupuesto.forms.busqueda')
             </div>
         </form><br>
@@ -27,7 +27,7 @@ use Infraestructura\User;
                 <tr class="info">
                     <th class="text-center">#</th>
                     <th class="text-center">Chofer</th> 
-                    <th class="text-center">Vehiculo</th> 
+                    <th class="text-center">Vehículo</th> 
                     <th class="text-center">Entidad</th>
                     <th class="text-center">Operaciones</th>
                 </tr>

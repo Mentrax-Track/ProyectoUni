@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Salidas de los vehiculos')
+@section('subtitulo','Salidas de los vehículos')
     
 @section('content')
 @include('alertas.success')
@@ -11,7 +11,7 @@
     <div class="panel-body">
     <form class="form-inline">
         <div class="form-group">
-            <label>Busqueda</label> 
+            <label>Búsqueda</label> 
             @include('automotores.salidas.forms.busqueda')
         </div>
     </form><br>
@@ -20,7 +20,7 @@
             <tr class="info text-center">
                 <th class="text-center">#</th>
                 <th class="text-center">Chofer</th>
-                <th class="text-center">Mobilidad</th>
+                <th class="text-center">Movilidad</th>
                 <th class="text-center">Responsable</th>
                 <th class="text-center">Operaciones</th>
             </tr> <?php $i=1; ?>

@@ -19,12 +19,13 @@
 <div class="panel panel-default">
     
     <div class="panel-heading text-center"><h4><p class="www">Editar el Presupuesto</p></h4></div>
+    <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> verde </strong></font> son Obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#8a6d3b"><strong> dorado </strong></font> son autogenerados (no modifique).</center>
     <div class="panel-body"> 
 
             {!!Form::model($presupuesto,['route'=> ['presupuestos.update',$presupuesto->id],'method'=>'PUT'])!!}
 
                 @include('automotores.presupuesto.forms.presu')
-                <div class="col-md-4"></div>
+                <div class="col-md-2"></div>
                 <div class="col-md-4">
                     <center>
                     {!! Form::submit('Actualizar',['class'=>'btn btn-primary btn-sm btn-block']) !!}

@@ -4,9 +4,9 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
-    <div class="panel-heading text-center"><h4><p class="www">Mapa de Destinos</p></h4></div>
-    <div class="panel-body">
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4><p class="www">Lista de destinos con su ubición en el mapa</p></h4></div>
+    <div class="panel-body jumbotron">
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
                  <tr class="info">
@@ -21,7 +21,7 @@
                     <tbody>
                         <tr>
                             <td  class="info text-center">{{ $mapa->id }}</td>
-                            <td class="info">{{ $mapa->destino_id}}</td>
+                            <td class="info">{{ $mapa->enviDesti->full_mapadesti}}</td>
                             <td class="info">{{ $mapa->titulo}}</td>
                             <td>{{ $mapa->lat }}</td>
                             <td>{{ $mapa->lng }}</td>

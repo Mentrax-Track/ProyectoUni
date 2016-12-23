@@ -18,14 +18,17 @@
 @include('alertas.success')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Inserte la ubicación en el mapa</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-body jumbotron">
+      <li class="list-group-item list-group-item-info">
+          <center><font color="blue">■ </font><font color = "#1a1a1a"><strong>Los campos de <font color="blue">LONGITUD</font> y <font color="blue">LATITUD</font> se generan automáticamente cuando usted mueva la posición</strong></font><font color = "#F5443A"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></font></center>
+      </li>
          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALsfWww_p2mj2KjasPSKbPzCR3pXsbvdc&callback=initMap&libraries=places&callback=initAutocomplete" async defer></script>
         
         <div class="container">
             <div class="col-md-2"></div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 {!! Form::model($mapa,['route'=>['mapas.update',$mapa->id],'method'=>'PUT','data-toggle'=>'validator']) !!}
                     @include('automotores.mapas.forms.updateMapa')
                             <div class="col-md-4"></div>
@@ -59,10 +62,15 @@
  
     function initAutocomplete() 
     {
-        var myLatLng = {lat: -19.58416272813471, lng: -65.7566471661072};
+      var lat = {{ $mapa->lat }}
+      var lng = {{ $mapa->lng }}
+        //var myLatLng = {lat: -19.58416272813471, lng: -65.7566471661072};
         var map = new google.maps.Map(document.getElementById('map-canvas'), 
         {
-            center: myLatLng,
+            center:{
+              lat: lat,
+              lng: lng
+            },
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             scrollwheel: true,
             zoom: 16
@@ -70,7 +78,10 @@
         var marker = new google.maps.Marker({
           map: map,
           draggable: true,
-          position: myLatLng,
+          position: {
+              lat: lat,
+              lng: lng
+            },
           title: 'Está ubicación!'
         });
 
@@ -168,8 +179,7 @@
                                     'Error: El servicio de Geolocalización falló.' :
                                     'Error: Su navegador no admite geolocalización.');
             }      
-    }
+}
 
 </script>
 @stop
-

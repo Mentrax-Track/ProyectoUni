@@ -5,15 +5,15 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Lista de viajes</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
         <br>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <table class='table table-bordered table-hover table-condensed jumbotron'>
+            <table class='table table-bordered table-hover table-condensed '>
                 <tr class="info">
                     <!--<th class="text-center"># Viaje</th>-->
                     <th class="text-center">Tipo "A"</th>

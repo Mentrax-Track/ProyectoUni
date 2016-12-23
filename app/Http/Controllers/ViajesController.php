@@ -47,7 +47,7 @@ class ViajesController extends Controller
      */
     public function index(Request $request)
     {
-        $viaje = Viaje::entidad($request->get('entidad'))->tipo($request->get('tipo'))->orderBy('id', 'DESC')->paginate(12);
+        $viaje = Viaje::entidad($request->get('entidad'))->tipo($request->get('tipo'))->orderBy('id', 'DESC')->paginate(10);
         return view('automotores.viajes.index', compact('viaje'));
     }
 
@@ -73,7 +73,7 @@ class ViajesController extends Controller
                     ->lists('full_vehiculo','id')->toArray();
         
         $destino   = Destino::orderBy('id','ASC')
-                    ->get(['id','origen', 'destino'])
+                    ->get(['id','origen', 'destino','dep_inicio','dep_final'])
                     ->lists('full_destino','id')
                     ->toArray();
 
@@ -93,7 +93,7 @@ class ViajesController extends Controller
         $b = strtotime($request['fecha_final']);
         if($a > $b)
         {
-            Session::flash('message-error','La fecha Inicial no debe ser mayor a la fecha Final');   
+            Session::flash('message-error','La fecha Inicial no debe ser mayor a la fecha Final!!!');   
             return Redirect::to('/viajes/create');          
         }
         $tipo      = $request['tipo'];
@@ -101,8 +101,16 @@ class ViajesController extends Controller
        // dd($tipo);
         if($tipo == 'Viaje de Práctica' && $pasajeros < 20 )
         {
-            Session::flash('message-error','La cantidad de pasageros para el viaje de práctica es incorrecto');   
+            Session::flash('mensaje-rol','La cantidad de pasageros para el viaje de práctica es incorrecto!!!');
             return Redirect::to('/viajes/create');          
+        }
+        $cantcho = count($request->chofer);
+        $cantvehi= count($request->vehiculo);
+        //dd($cantvehi);
+        if ($cantcho < $cantvehi) 
+        {
+            Session::flash('message-error','La cantidad de vehículos no tiene que ser mayor a la de los choferes!!!');   
+            return Redirect::to('/viajes/create');
         }
 
         $diferencia = abs(strtotime($request['fecha_final']) - strtotime($request['fecha_inicial']));
@@ -111,7 +119,10 @@ class ViajesController extends Controller
         $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
         $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-
+        if($days == 0)
+        {
+             $days++;
+        }   
         $viaje_id = \DB::table('viajes')->insertGetId([
             'entidad'       => $request['entidad'],
             'tipo'          => $request['tipo'],
@@ -119,7 +130,7 @@ class ViajesController extends Controller
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => 1+$days
+            'dias'          => $days
             ]);
 
         $chofer_id = $request['chofer'];
@@ -154,7 +165,7 @@ class ViajesController extends Controller
             $destino_id = $request['destino_id'];
             $kilome     = $request['kilome'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$destino_id,
+                'destino_id'=> $destino_id,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -167,7 +178,7 @@ class ViajesController extends Controller
             $dest1  = $request['dest1'];
             $k1     = $request['k1'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$dest1,
+                'destino_id'=> $dest1,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -180,7 +191,7 @@ class ViajesController extends Controller
             $dest2 = $request['dest2'];
             $k2    = $request['k2'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$dest2,
+                'destino_id'=> $dest2,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -193,7 +204,7 @@ class ViajesController extends Controller
             $dest3  = $request['dest3'];
             $k3     = $request['k3'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$dest3,
+                'destino_id'=> $dest3,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -206,7 +217,7 @@ class ViajesController extends Controller
             $dest4 = $request['dest4'];
             $k4    = $request['k4'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$dest4,
+                'destino_id'=> $dest4,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -219,7 +230,7 @@ class ViajesController extends Controller
             $dest5 = $request['dest5'];
             $k5    = $request['k5'];
             Destino_Viaje::create([
-                'destino_id'=> 1+$dest5,
+                'destino_id'=> $dest5,
                 'viaje_id'  => $viaje_id
                 ]);
         }
@@ -234,21 +245,7 @@ class ViajesController extends Controller
         $e = intval($dest3);
         $f = intval($dest4);
         $g = intval($dest5);
-        if(!empty($a))
-            $a++;
-        if(!empty($c))
-            $c++;
-        if(!empty($d))
-            $d++;
-        if(!empty($e))
-            $e++;
-        if(!empty($f))
-            $f++;
-        if(!empty($g))
-            $g++;
 
-       // $b = (float)$kilome;
-       // dd($b);
         if(!empty($request['adicional']))
         {
             Ruta::create([
@@ -275,15 +272,6 @@ class ViajesController extends Controller
         }
         Session::flash('message','El viaje se registró correctamente...');
         return Redirect::to('viajes');
-
-        
-
-
-        //dump($request['encargado']);
-        /*Session::flash('message','El viaje se registro correctamente...');
-        return Redirect::to('/viajes');*/
-       
-        
     }
 
     /**
@@ -322,24 +310,7 @@ class ViajesController extends Controller
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino'])
                     ->lists('full_destino');
-        //dd($destino);
-        
-        /*//Destino numero 1 esto esta bien pero no....
-        $destino_i = Ruta::where('viaje_id',$id)
-                ->select('destino_id')->lists('destino_id')->toArray();
-        //dd($destino_i);
-        $destino_id = Destino::where('id',$destino_i)
-            ->get(['origen','destino'])
-            ->lists('full_destino');
-        //dd($destino_id);
-        $kilome = Ruta::where('viaje_id',$id)
-            ->get(['kilome'])
-            ->lists('kilome')->toArray();*/
 
-       /* $encar = User_Viaje::where('viaje_id',$id)
-            ->select('user_id')->lists('user_id')->toArray();
-
-        dd($encar);*/
         return view('automotores.viajes.edit',['via'=>$this->viaje],compact('choferes','encargados','vehiculos','destino'));
         
     }
@@ -353,14 +324,6 @@ class ViajesController extends Controller
      */
     public function update(ViajeUpdateRequest $request, $id)
     {
-        /*$viaje = Viaje::find($id);
-        $vehiculo = Vehiculo_Viaje::find($id);*/
-        /*$ruta = Ruta::find($id);
-        $destino = Destino::find($id);
-        
-        dd($ruta);*/    
-        
-        ////// Actualizando la tabla rutas///
 
         $ruta = Ruta::find($id);
 
@@ -385,13 +348,6 @@ class ViajesController extends Controller
         $this->viaje->fill($request->all());
         $this->viaje->save();
 
-
-        /*$this->ruta->fill($request->all());
-        $this->ruta->save();
-        $this->user_viaje->fill($request->all());
-        $this->user_viaje->save();
-        $this->destino_viaje->fill($request->all());
-        $this->destino_viaje->save();*/
         Session::flash('message','El registro de viaje fue editado correctamente...');
         return Redirect::to('/viajes');
     }

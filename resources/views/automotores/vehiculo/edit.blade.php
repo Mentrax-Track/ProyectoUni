@@ -10,7 +10,7 @@
     
     @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Actualización de datos del Vehiculo</p></h4></div>
     <div class="panel-body"> 

@@ -26,7 +26,7 @@ class UserCreateRequest extends Request
         return [
             'nombres'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
             'apellidos'=> 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'cedula'   => 'required|regex:/^[0-9]+$/i|between:7,12|unique:users,cedula',
+            'cedula'   => 'required|regex:/^[0-9 A-Z a-z]+$/i|between:7,12|unique:users,cedula',
             'celular'  => 'required|regex:/^[0-9]+$/i|between:8,12|unique:users,celular',
             'password' => 'required|max:20',
             'tipo'     => 'required',

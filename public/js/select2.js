@@ -4489,7 +4489,7 @@ S2.define('select2/i18n/en',[],function () {
       return 'Loading more results…';
     },
     maximumSelected: function (args) {
-      var message = 'Solo puede seleccionar ' + args.maximum + ' opción';
+      var message = 'You can only select ' + args.maximum + ' item';
 
       if (args.maximum != 1) {
         message += 's';
@@ -4498,10 +4498,10 @@ S2.define('select2/i18n/en',[],function () {
       return message;
     },
     noResults: function () {
-      return 'No existen registros...';
+      return 'No results found';
     },
     searching: function () {
-      return 'Cargando…';
+      return 'Searching…';
     }
   };
 });

@@ -8,11 +8,10 @@
 <body><br>
    <h1>Viajes Reservados &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="float:right;" src="img/rol.jpg" width="100px"/></h1>
 <main>
-<table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black; "  class="body" >
+<table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black; border-collapse:unset;"  class="body" >
     <tr>
         <td class="kn" colspan="1"><strong><center>Nro.</center></strong></td>
         <td class="kn" colspan="1"><strong><center>Entidad</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Tipo</center></strong></td>
         <td class="kn" colspan="1"><strong><center>Objetivo</center></strong></td>
         <td class="kn" colspan="1"><strong><center>Dias</center></strong></td>
         <td class="kn" colspan="1"><strong><center>Pasajeros</center></strong></td>
@@ -24,7 +23,6 @@
             <tr>
                 <td class="kn"><center>{{ $ids }}</center></td>
                 <td class="kn"><center>{{ $via->entidad }}</center></td>
-                <td class="kn"><center>{{ $via->tipo }}</center></td>
                 <td class="kn"><center>{{ $via->objetivo }}</center></td>
                 <td class="kn"><center>{{ $via->dias }}</center></td>
                 <td class="kn"><center>{{ $via->pasajeros }}</center></td>

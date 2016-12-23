@@ -12,7 +12,7 @@
 @section('content')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Destino</p></h4></div>
     <div class="panel-body">      
@@ -22,7 +22,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
                 <center>
-                <button type="submit" class="btn btn-primary btn-block" onClick="this.disabled='disabled'">
+                <button type="submit" class="btn btn-primary btn-block">
                     <span class="glyphicon glyphicon-floppy-save ">   Registrar</span> 
                 </button>
                 </center>
@@ -48,14 +48,8 @@
 {!! Html::script('js/datetimepicker/bootstrap-datetimepicker.min.js') !!}
 {!! Html::script('js/datetimepicker/bootstrap-datetimepicker.es.js') !!}
 
- <script type="text/javascript">
-    $(function () {
-        $('#datetimepicker3').datetimepicker({
-            format: 'LT',
-        });
-    });
-
- $(document).ready(function () {
+<script type="text/javascript">
+$(document).ready(function () {
     $('#depini').select2({
         placeholder: "Departamento de Inicio",
         allowClear: true

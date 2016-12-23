@@ -1,128 +1,144 @@
-<div class="text-center">
-    <div class="row">
+<div class="row ">
+<ul class="list-group">
+    <li class="list-group-item list-group-item-success col-md-12">
         <div class="col-md-3 form-group has-success has-feedback">
             <div>
               <label class="control-label" for="inputGroupSuccess3">Vehículo</label>  
             </div>
-            {!! Form::select('vehiculo',$vehiculos,null,['class'=>'form-control','placeholder'=>'Seleccione un Vehiculo','data-error'=>'Seleccione un Vehículo','required','id'=>'vehis','value'=>'id']) !!}
+            {!! Form::select('vehiculo',$vehiculos,null,['class'=>'js-example-responsive','style'=>'width: 100%','placeholder'=>'Seleccione un Vehiculo','data-error'=>'Seleccione un Vehículo','required','id'=>'vehis','value'=>'id']) !!}
             <center><div class="help-block with-errors"></div></center>
         </div>
         <div class="col-md-3 form-group has-success has-feedback">
-          <div>
+            <div>
               <label class="control-label" for="inputGroupSuccess3">Chofer</label>
-          </div>
-          {!! Form::select('chofer',$choferes,null,['class'=>'form-control','id'=>'chofs','placeholder'=>'Seleccione un chofer','data-error'=>'Seleccione a un Chofer','required','value'=>'id']) !!}
-          <center><div class="help-block with-errors"></div></center>
+            </div>
+            {!! Form::select('chofer',$choferes,null,['class'=>'js-example-responsive','style'=>'width: 100%','id'=>'chofs','placeholder'=>'Seleccione un chofer','data-error'=>'Seleccione a un Chofer','required','value'=>'id']) !!}
+            <center><div class="help-block with-errors"></div></center>
         </div>
         <div class="col-md-3 form-group has-success has-feedback">
-          <div>
-              <label class="control-label" for="inputGroupSuccess3">Encargado del Viaje</label>
-          </div>
-          {!! Form::select('encargado',$encargados,null,['class'=>'form-control','placeholder'=>'Seleccione un responsable','data-error'=>'Seleccione a un Encargado','required','id'=>'encars','value'=>'id']) !!}
-           <center><div class="help-block with-errors"></div></center>
+            <div>
+               <label class="control-label" for="inputGroupSuccess3">Encargado del viaje</label>
+            </div>
+            {!! Form::select('encargado',$encargados,null,['class'=>'js-example-responsive','style'=>'width: 100%','placeholder'=>'Seleccione un responsable','data-error'=>'Seleccione a un Encargado','required','id'=>'encars','value'=>'id']) !!}
+            <center><div class="help-block with-errors"></div></center>
         </div>
         <div class="col-md-3 form-group has-success has-feedback">
           <div class="form-group">
               <label class="control-label" for="inputGroupSuccess3">Fecha de solicitud</label>
               <div class='input-group date' id='datetimepicker8'>
                 {!! Form::text('fecha_sa',null,['class'=>'form-control input-sm','data-error'=>'Seleccione una fecha','required','aria-describedby'=>'inputGroupSuccess3Status','placeholder'=>'Solicitud en D.S.A.']) !!}
-                <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
               </div>
+              <center><div class="help-block with-errors"></div></center>
           </div>  
         </div>
-    </div><input type="hidden" name="viaje_id" value="{{ $viaje->id }}" />
+        </div><input type="hidden" name="viaje_id" value="{{ $viaje->id }}" />
+    </li>
+  </ul>
 </div>
-
-<div class="col-md-12" >
-      <div class="panel panel-default">
-      
-            <center><h4><strong>Descripcion del Presupuesto</strong></h4></center>
-  
-        <div class="panel-body text-center jumbotron">
-          <div class="form-group">
-              <div class="input-group has-success has-feedback">
-                    <span class="input-group-addon" id="basic-addon3">Km. Total</span>
-                    {!! Form::text('total1',$ruta->total,['class'=>'form-control','disabled','id'=>'total']) !!}
-                    <span class="input-group-addon" id="basic-addon3"></span>
-                    
-                    <span class="input-group-addon" id="basic-addon3">Divicion: Gasolina/Diesel</span>
-                    {!! Form::text('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();','data-error'=>'Inserte un valor','required','placeholder'=>'4 o 6','aria-describedby'=>'inputGroupSuccess3Status']) !!} 
-                    <center><div class="help-block with-errors"></div></center>
-                    
-                    <span class="input-group-addon" id="basic-addon3"></span>
-                    <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Combustible Total:</strong></font></span>
-                     {!! Form::text('combustible1',null,['class'=>'form-control','id'=>'combustible']) !!}
-                    <center><div class="help-block with-errors"></div></center>
-                
-                    <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Litros</strong></font></span>
-              </div>
-              <li class="list-group-item ">
-                    <center><strong>Costo del combustible</strong></center>
-              </li>
-              <div class="input-group text-center has-success has-feedback">
-                   
-                  <span class="input-group-addon" id="basic-addon3">Designación del combustible Total:</span>
-                  {!! Form::text('cantidad1',null,['class'=>'form-control','id'=>'cantidadC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
-                                <center><div class="help-block with-errors"></div></center>
-                  <span class="input-group-addon" id="basic-addon3">Litros</span>
+<div class="row">
+  <div class="col-md-5">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success col-md-12">
+            <input type="hidden" name="total1" id="total" value="{{ $ruta->total }}" />
+            <div class="col-md-6">
+                <center>{!! Form::label('Gasolina/Diesel: ') !!}</center>
+                {!! Form::text('division1',null,['class'=>'form-control','id'=>'division','onkeyup'=>'sumar();','data-error'=>'Inserte un valor','required','placeholder'=>'4 o 6','aria-describedby'=>'inputGroupSuccess3Status']) !!} 
+                <center><div class="help-block with-errors"></div></center>
+            </div>
+            <div class="col-md-6">
+                <center>{!! Form::label('Combustible: ') !!}</center>
+                 {!! Form::text('combustible1',null,['class'=>'form-control','id'=>'combustible','readonly'=>'readonly']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div>
+        </li>
+        <input type="hidden" name="carta1" id="carta1" value="0" />
               
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                  <span class="input-group-addon" id="basic-addon3"><font color = "black"><strong> Combustible por Pedido:</strong></font></span>
-                  {!! Form::text('carta1',null,['class'=>'form-control','id'=>'carta1','onkeyup'=>'sumar();','value'=>'0','placeholder'=>'No es necesario']) !!}
-                                <center><div class="help-block with-errors"></div></center>
-                  <span class="input-group-addon" id="basic-addon3"><font color = "black"><strong>Litros</strong></font></span></div>
-              
-              <div class="input-group text-center has-success has-feedback">
-                  <span class="input-group-addon" id="basic-addon3">Precio por litro:</span>
-                  {!! Form::text('precio1',null,['class'=>'form-control','id'=>'precioC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
-                                <center><div class="help-block with-errors"></div></center>
-                  <span class="input-group-addon" id="basic-addon3">Bs.</span>
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                   
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Costo de combustible total:</strong></font></span>              
-                  {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
-                                 <center><div class="help-block with-errors"></div></center>
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Bs.</strong></font></span>
-              </div>
-              <li class="list-group-item ">
-                    <center><strong>Peajes ida y vuelta</strong></center>
-              </li>
-              <div class="input-group text-center has-success has-feedback">
-                  <span class="input-group-addon" id="basic-addon3">Cantidad de Peajes:</span> 
-                  {!! Form::text('cantidad5',null,['class'=>'form-control','id'=>'cantidadP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
+        <li class="list-group-item list-group-item-success col-md-12">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <center>{!! Form::label('Combustible Total: ') !!}</center>
+                {!! Form::text('cantidad1',null,['class'=>'form-control','id'=>'cantidadC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Redondee']) !!}
+                <center><div class="help-block with-errors"></div></center>
+            </div>
+                <!--<div class="col-md-6">
+                    <center>{!! Form::label('Pedido: ') !!}</center>
+                    {!! Form::text('carta1',null,['class'=>'form-control','id'=>'carta1','onkeyup'=>'sumar();','value'=>'0','placeholder'=>'No es necesario']) !!}
+                    <center><div class="help-block with-errors"></div></center>
+                </div>-->
+            <div class="col-md-2"></div>          
+        </li>
+        <li class="list-group-item list-group-item-success col-md-12">
+                <div class="col-md-6">
+                    <center>{!! Form::label('Precio por litro: ') !!}</center>
+                    {!! Form::text('precio1',null,['class'=>'form-control','id'=>'precioC','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Ejm.: 3.50']) !!}
+                    <center><div class="help-block with-errors"></div></center>
+                </div>
+                <div class="col-md-6">
+                    <center>{!! Form::label('Costo total: ') !!}</center>
+                    {!! Form::text('total1C',null,['class'=>'form-control','id'=>'totalC',' value'=>'0','data-error'=>'Valor por defecto','required','readonly'=>'readonly']) !!}
+                    <center><div class="help-block with-errors"></div></center>
+                </div>
+        </li>
+    </ul>
+  </div>
+  <div class="col-md-7">
+        <li class="list-group-item list-group-item-success col-md-12">
+            <center><font color = "#8a6d3b"><strong><h4><u>Peajes ida y vuelta</u></h4></strong></font></center>
+            <div class="row">
+                <div class="col-md-4">
+                    <center>{!! Form::label('Cantidad de peajes: ') !!}</center>
+                    {!! Form::number('cantidad5',null,['class'=>'form-control','id'=>'cantidadP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Ejm.: 2']) !!}
+                    <center><div class="help-block with-errors"></div></center>
+                </div>
+                <div class="col-md-4">
+                    <center>{!! Form::label('Precio por Unidad: ') !!}</center>
+                    {!! Form::number('precio5',null,['class'=>'form-control','id'=>'precioP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Ejm.: 10']) !!}
+                    <center><div class="help-block with-errors"></div></center>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <center>{!! Form::label('Total: ') !!}</center>
+                        <div class='input-group date'>
+                            {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0','data-error'=>'Valor por defecto','required','readonly'=>'readonly']) !!}
+                            <span class="input-group-addon">Bs.</span>
+                        </div>
+                        <center><div class="help-block with-errors"></div></center>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item list-group-item-success col-md-12">
+            <center><font color = "#8a6d3b"><strong><h4><u>Viáticos ciudad</u></h4></strong></font></center>
+            <div class="row">
+                <div class="col-md-4">
+                    <center>{!! Form::label('Cantidad de días: ') !!}</center>
+                    {!! Form::number('cantidad2',null,['class'=>'form-control','id'=>'cantidadVC','onkeyup'=>'sumar();','placeholder'=>'Ejm.: 4']) !!}
+                </div>
+                <div class="col-md-4">
+                    <center>{!! Form::label('Precio por día: ') !!}</center>
+                    {!! Form::number('precio2',null,['class'=>'form-control','id'=>'precioVC','onkeyup'=>'sumar();','placeholder'=>'Ejm.: 100']) !!}
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <center>{!! Form::label('Total: ') !!}</center>
+                        <div class='input-group date'>
+                            {!! Form::text('total2VC',null,['class'=>'form-control','id'=>'totalVC',' value'=>'0','readonly'=>'readonly']) !!}
+                            <span class="input-group-addon">Bs.</span>
+                        </div>
+                        <center><div class="help-block with-errors"></div></center>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    </ul>
+</div>        
 
-                  <span class="input-group-addon" id="basic-addon3">Dias</span>
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                  <span class="input-group-addon" id="basic-addon3">Precio por peaje:</span>
-                  {!! Form::text('precio5',null,['class'=>'form-control','id'=>'precioP','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required']) !!}
 
-                  <span class="input-group-addon" id="basic-addon3">Bs.</span>
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Total:</strong></font></span>
-                  {!! Form::text('total5P',null,['class'=>'form-control','id'=>'totalP',' value'=>'0','data-error'=>'Valor por defecto','required']) !!}
-
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Bs.</strong></font></span>
-              </div>
-
-              <li class="list-group-item ">
-                    <center><strong>Viáticos Ciudad</strong></center>
-              </li>
-              <div class="input-group text-center">
-                  <span class="input-group-addon" id="basic-addon3"><strong>Cantidad de Dias:</strong></span>                     
-                  {!! Form::text('cantidad2',null,['class'=>'form-control','id'=>'cantidadVC','onkeyup'=>'sumar();']) !!}
-                  <span class="input-group-addon" id="basic-addon3"><strong>Dias</strong></span>
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                  <span class="input-group-addon" id="basic-addon3"><strong>Monto en Bs. por dia</strong></span>
-                  {!! Form::text('precio2',null,['class'=>'form-control','id'=>'precioVC','onkeyup'=>'sumar();']) !!}
-                  <span class="input-group-addon" id="basic-addon3"><strong>Bs.</strong></span>
-                  <span class="input-group-addon" id="basic-addon3"></span>
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Total:</strong></font></span>
-                  {!! Form::text('total2VC',null,['class'=>'form-control','id'=>'totalVC',' value'=>'0']) !!}
-                  <span class="input-group-addon" id="basic-addon3"><font color = "#8a6d3b"><strong>Bs.</strong></font></span>
-              </div>
+</div>
 
               <li class="list-group-item ">
                     <center><strong>Viáticos Provincia</strong></center>

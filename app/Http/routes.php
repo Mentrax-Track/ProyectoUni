@@ -152,8 +152,8 @@ Route::group(['middleware' => 'auth'], function(){
             
         return Response::json($kilo);
     });
-///////// Hasta aqui las rutas para los kilometrajes de viajes///////////////
-});
+///////// Hasta aqui las rutas para los kilometrajes de viajes/////////////////
+//});
 /////////// rutas //////////
 Route::resource('rutas','RutasController');
 
@@ -223,8 +223,12 @@ Route::get('Impresión-de-Viajes-del-Mes', [
     ]);
 
 
+Route::resource('solicitudes','SolicitudController');
+
+Route::resource('mecanicos','MecanicoController');
 
 
+Route::resource('mail','MailController');
 
 
-
+});

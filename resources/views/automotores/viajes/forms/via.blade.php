@@ -224,7 +224,7 @@
         <div class="form-group ">
             {!! Form::label('Fecha Final:') !!}
             <div class='input-group date ' id='datetimepicker7'>
-                {!! Form::text('fecha_final',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}
+                {!! Form::text('fecha_final',null,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha final','data-error'=>'Inserte la fecha Final','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>

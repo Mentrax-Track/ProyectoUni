@@ -89,14 +89,12 @@
     </style>
     @section('content')
     <br>
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel-heading text-center"><h3><p class="www">Calendario de Viajes</p></h3></div>
-        <div class="panel-body"> 
-                <div class="list-group-item">
-                    <div class="jumbotron">
-                        <h4><div id='calendar'></div></h4>    
-                    </div>
-                </div>
+        <div class="panel-body jumbotron"> 
+            <li class="list-group-item list-group-item-info">
+                <h4><div id='calendar'></div></h4>    
+            </li>
         </div>
     </div>
     @endsection

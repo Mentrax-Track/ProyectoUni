@@ -102,7 +102,7 @@
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/calendario.jpg" alt="Generic placeholder image" width="140" height="140" pading="1px"></span></center>
                   <i><h2 class="text-center">Viajes</h2></i>
-                  <p align="justify">Podra verificar la disponibilidad de los vehiculos en un calendario de viajes, realizar las reservas de los mismos y mucho más...&raquo;</p>
+                  <p align="justify">Podrá verificar la disponibilidad de los vehículos en un calendario de viajes, realizar las reservas de los mismos y mucho más...&raquo;</p>
                   <p class="text-center"><a class="btn btn-info glyphicon glyphicon-calendar" data-toggle="modal"  href="{!! URL::to('/inicio-de-sesion') !!}"> Ingresar</a></p>
               </div> 
               <div class="col-lg-4">
@@ -114,7 +114,7 @@
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/autos.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Mantenimiento</h2></i>
-                  <p align="justify">Podrá ver el estado de los vehiculos que cuenta nuestra universidad como tambien registrar los accesorios nuevos y mucho más...&raquo;</p>
+                  <p align="justify">Podrá verificar las solicitudes de trabajo para poder realizarlo, como tambien verificar el Kardex y mucho más...&raquo;</p>
                   <p class="text-center"><a class="btn btn-info glyphicon glyphicon-bed" href="{!! URL::to('/inicio-de-sesion') !!}" role="button"> Ingresar</a></p>
               </div>
           </div>

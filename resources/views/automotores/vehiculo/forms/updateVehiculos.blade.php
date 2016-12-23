@@ -44,7 +44,7 @@
                 <center><div class="help-block with-errors"></div></center>
             </div><div class="form-group">
                 <label class="control-label"> Estado:</label>
-                {!! Form::select('estado',config('vehiculos.estados'),null,['class'=>'form-control','placeholder'=>'Seleccione un estado','data-error'=>'Inserte el estado del vehículo','required']) !!}
+                {!! Form::select('estado',config('vehiculos.estados'),null,['class'=>'js-example-responsive','style'=>'width: 100%','placeholder'=>'Seleccione un estado','data-error'=>'Inserte el estado del vehículo','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div><hr>
         

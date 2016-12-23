@@ -74,7 +74,7 @@ class TableroController extends Controller
     }
     public function getImprimireservados()
     {   
-        $viajes = Reserva::orderBy('id','DESC')->get();
+        $viajes = Reserva::orderBy('id','DESC')->paginate(10);
         //dd($viajes);
         $responsable = Auth::user()->full_name;
         //dd($responsable);
@@ -92,7 +92,6 @@ class TableroController extends Controller
     }
     public function getImprimirealizados()
     {   
-        echo "hasta aqui";
         $viajes = Viaje::orderBy('id','DESC')->get();
         //dd($viajes);
         $responsable = Auth::user()->full_name;

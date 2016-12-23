@@ -22,7 +22,7 @@ class DestinoViajeTableSeeder extends Seeder
             'kilometraje' => '0',
             'tiempo'      => '0:00',
             ]);*/
-        factory(Infraestructura\Destino::class, 100)->create();
+        factory(Infraestructura\Destino::class, 30)->create();
         /*for($i=1 ; $i<=100; $i++)
         {
             $user = Viaje::find($i);

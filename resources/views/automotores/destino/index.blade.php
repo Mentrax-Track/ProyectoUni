@@ -5,12 +5,12 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
-    <div class="panel-heading text-center"><h4><p class="www">Lista de Destinos</p></h4></div>
-    <div class="panel-body">
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4><p class="www">Lista de los destinos</p></h4></div>
+    <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-            <label>Busqueda</label> 
+            <label>Búsqueda</label> 
             @include('automotores.destino.forms.busqueda')
         </div>
     </form><br>

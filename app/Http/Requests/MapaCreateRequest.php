@@ -24,7 +24,7 @@ class MapaCreateRequest extends Request
     public function rules()
     {
         return [
-            'titulo'   => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|min:5|max:50',
+            'titulo'   => 'required|regex:/^[a-z ñáéíóú 0-9 , .]+$/i|min:5|max:50',
             'lat'      => 'required',
             'lng'      => 'required',
         ];

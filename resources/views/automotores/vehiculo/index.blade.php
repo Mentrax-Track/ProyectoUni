@@ -6,14 +6,14 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Vehiculos</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
 
     <form class="form-inline">
         <div class="col-md-6"></div>
         <div class="form-group">
-            <label>Busqueda:</label> 
+            <label>Búsqueda:</label> 
             @include('automotores.vehiculo.forms.busqueda')
         </div>
     </form>
@@ -49,7 +49,7 @@
                     </tbody>
             @endforeach
         </table>
-        <center><p class="text-center">Hay {{ $vehiculos->total() }} registros</p></center> 
+        <center><p class="text-center">Existen {{ $vehiculos->total() }} registros</p></center> 
     </div>
    </div>
 </div>

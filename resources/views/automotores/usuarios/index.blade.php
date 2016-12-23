@@ -4,12 +4,12 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Lista de Usuarios</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-            <label>Busqueda</label> 
+            <label>Búsqueda</label> 
             @include('automotores.usuarios.forms.busqueda')
         </div>
     </form><br>
@@ -18,7 +18,7 @@
                  <tr class="info">
                     <th class="text-center">#</th>
                     <th class="text-center">Nombres</th>
-                    <th class="text-center">Cedula</th>
+                    <th class="text-center">Cédula</th>
                     <th class="text-center">Celular</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">Tipo</th>

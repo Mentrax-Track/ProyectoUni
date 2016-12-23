@@ -26,7 +26,7 @@ class UserCreateEncargadoRequest extends Request
         return [
             'nombres'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:20',
             'apellidos'=> 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
-            'cedula'   => 'regex:/^[0-9]+$/i|between:7,12|unique:users,cedula',
+            'cedula'   => 'regex:/^[0-9 a-z A-Z]+$/i|between:7,12|unique:users,cedula',
             'celular'  => 'regex:/^[0-9]+$/i|between:8,12|unique:users,celular',
             'facultad' => 'required|regex:/^[a-z ñáéíóú]+$/i|max:50',
             'carrera'  => 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',

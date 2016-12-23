@@ -1,14 +1,15 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Rol de Viajes')
+@section('subtitulo','Rol de viajes')
 @section('css')
      {!! Html::style('css/select2.css') !!}
 @stop
 @section('content')
 @include('alertas.request')
-<div class="panel panel-default">
+<br>
+<div class="panel panel-success">
     
-    <div class="panel-heading text-center"><h4><p class="www">Registrar al rol de Viajes</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Registrar al rol de viajes</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'roles.store','method'=>'POST','files' => true,'data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

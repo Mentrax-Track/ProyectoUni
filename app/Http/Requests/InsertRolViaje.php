@@ -24,7 +24,7 @@ class InsertRolViaje extends Request
     public function rules()
     {
         return [
-            'tipo'  => 'required',
+            'tipo'  => 'required|in:provincia,ciudad,frontera',
             'fecha' => 'required',
             'lugar' => 'required|regex:/^[a-z ñáéíóú-]+$/i|max:50',
         ];

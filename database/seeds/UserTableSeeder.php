@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder
             'cedula'    => '87654321',
             'celular'   => '12585678',
             'email'     => 'peralta.rfrratf@gmail.com',
-            'tipo'          => 'supervisor',
+            'tipo'      => 'supervisor',
             'password'  => 'admin1',
             'active'    => true
 
@@ -67,6 +67,6 @@ class UserTableSeeder extends Seeder
             'active'    => true
 
             ]);
-        factory(Infraestructura\User::class, 50)->create();
+        //factory(Infraestructura\User::class, 50)->create();
     }
 }

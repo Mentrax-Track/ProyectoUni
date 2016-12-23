@@ -9,7 +9,7 @@
     <div class="panel-body">
     <form class="form-inline">
         <div class="form-group">
-            <label>Busqueda</label> 
+            <label>Búsqueda</label> 
             @include('automotores.informe.forms.busqueda')
         </div>
     </form><br>
@@ -17,7 +17,7 @@
             <table class="table table-bordered table-hover table-condensed">
                  <tr class="info">
                     <th class="text-center">#</th>
-                    <th class="text-center">Vehiculo</th>
+                    <th class="text-center">Vehículo</th>
                     <th class="text-center">Chofer</th>
                     <th class="text-center">Encargado</th>
                     <th class="text-center">Entidad</th>

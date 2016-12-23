@@ -17,26 +17,25 @@
     <div class="panel-body">
      {!! Form::model($user,['route'=>['users.update',$user->id],'method'=>'PUT']) !!}
                 @include('automotores.usuarios.forms.update')
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
                 <center>
                 <button type="submit" class="btn btn-primary btn-sm btn-block">
                     <span class="glyphicon glyphicon-ok">   Actualizar</span> 
                 </button>
                 </div>
-                <div class="col-md-4"></div><br>
     {!! Form::close() !!}
-            <br>
+            
     {!! Form::open(['route'=>['users.destroy',$user->id],'method'=>'DELETE']) !!}
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+                <div class="col-md-2"></div>
+                <div class="col-md-3">
                 <center>
                 <button type="submit" class="btn btn-danger btn-sm btn-block">
                     <span class="glyphicon glyphicon-trash">   Eliminar</span> 
                 </button>
                 </center>
                 </div>
-                <div class="col-md-4"></div><br>
+                <div class="col-md-2"></div><br>
     {!! Form::close() !!}
     </div>
 </div>    

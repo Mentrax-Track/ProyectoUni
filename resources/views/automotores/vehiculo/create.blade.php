@@ -9,9 +9,9 @@
 @section('content')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
-    <div class="panel-heading text-center"><h4><p class="www">Nuevo Vehiculo</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Nuevo Vehículo</p></h4></div>
     <div class="panel-body">      
        {!! Form::open(['route'=>'vehiculos.store','method'=>'POST','data-toggle'=>'validator','class'=>'form-inline has-success has-feedback']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />

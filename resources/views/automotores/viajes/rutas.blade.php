@@ -5,7 +5,7 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Detalle del viaje</p></h4></div>
     <div class="panel-body"> 
@@ -76,6 +76,7 @@
                 <tr class="info">
                     <th class="text-center">Dpto. Inicio</th>
                     <th class="text-center">Origen</th>
+                    <th class="text-center">Ruta</th>
                     <th class="text-center">Destino</th>
                     <th class="text-center">Dpto. Destino</th>
                     <th class="text-center">Kilometraje</th>
@@ -85,6 +86,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>
@@ -95,6 +97,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>
@@ -105,6 +108,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>
@@ -115,6 +119,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>
@@ -125,6 +130,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>
@@ -135,6 +141,7 @@
                     <!--<td class="text-center">{{ $destino->i }}</td>-->
                     <td>{{ $destino->ini }}</td>
                     <td>{{ $destino->o }}</td>
+                    <td>{{ $destino->r }}</td>
                     <td>{{ $destino->d }}</td>
                     <td>{{ $destino->fin }}</td>
                     <td class="text-center">{{ $destino->k }}</td>

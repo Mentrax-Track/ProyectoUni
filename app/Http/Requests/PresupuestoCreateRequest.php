@@ -25,7 +25,7 @@ class PresupuestoCreateRequest extends Request
     {
         return [
             'vehiculo'    => 'required|numeric',
-            'chofer'      => 'required|numeric',
+            'chofer'      => 'required',
             'encargado'   => 'required|numeric',
             'entidad'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:10|max:60',
             'fecha_sa'    => 'required|date',

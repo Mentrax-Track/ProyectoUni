@@ -19,14 +19,14 @@
 							<div class="form-group">
 								<label class="col-md-4 control-label">Cédula de Identidad:</label>
 								<div class="col-md-6">
-								    {!! Form::number('cedula', null, ['class' => 'form-control','placeholder'=>'Ingrese su Cédula de Identidad','data-error'=>'La cédula de identidad es obligatorio','required']) !!}
+								    {!! Form::text('cedula', null, ['class' => 'form-control','placeholder'=>'Ingrese su Cédula de Identidad','data-error'=>'La cédula de identidad es obligatorio','required']) !!}
 								    <center><div class="help-block with-errors"></div></center>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-4 control-label">Contraseña:</label>
 								<div class="col-md-6">
-							    	{!! Form::password('password', ['class' => 'form-control','placeholder'=>'Ingrese su contraseña','data-error'=>'La contraseña es obligatorio','required']) !!}
+							    	{!! Form::password('password', ['class' => 'form-control','placeholder'=>'Ingrese su contraseña','data-error'=>'La contraseña es obligatoria','required']) !!}
 							    	<center><div class="help-block with-errors"></div></center>
 								</div>
 							</div>

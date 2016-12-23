@@ -19,19 +19,19 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserTableSeeder::class);
 
-        $this->call(VehiculoTableSeeder::class);
+        //$this->call(VehiculoTableSeeder::class);
        
-        $this->call(VehiculoUserTableSeeder::class);
+       // $this->call(VehiculoUserTableSeeder::class);
 
-        $this->call(UserViajeTableSeeder::class);
+        //$this->call(UserViajeTableSeeder::class);
  
-        $this->call(VehiculoViajeTableSeeder::class);
+        //$this->call(VehiculoViajeTableSeeder::class);
  
-        $this->call(DestinoViajeTableSeeder::class);
+      //  $this->call(DestinoViajeTableSeeder::class);
  
-        $this->call(ReservaTableSeeder::class);
+       // $this->call(ReservaTableSeeder::class);
 
-        $this->call(EntidadTableSeeder::class);
+        //$this->call(EntidadTableSeeder::class);
 
         /*$this->call(CelularTableSeeder::class);
 

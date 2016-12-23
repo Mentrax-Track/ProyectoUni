@@ -5,7 +5,7 @@
 @section('content')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
 
     <div class="panel-heading text-center"><h4><p class="www">Editar Destino</p></h4></div>
     <div class="panel-body">

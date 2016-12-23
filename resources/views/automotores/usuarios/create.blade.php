@@ -13,7 +13,7 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4><p class="www">Nuevo Usuarios</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Insertar Usuarios</p></h4></div>
     <div class="panel-body">
         
         @include('automotores.usuarios.forms.user')
@@ -33,3 +33,13 @@
 {!!Html::script('js/validator.js')!!}
 @stop
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#tipou').select2({
+            placeholder: "Tipo de usuario",
+            language: "es",
+            allowClear: true
+        });
+    });
+</script>

@@ -3,17 +3,19 @@ use Infraestructura\PresupuestoDia;  ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Reservas')
-
+@section('css')
+{!! Html::style('css/select2.css') !!}
+@stop
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Viajes</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
         <form class="form-inline">
             <div class="form-group">
-                <label>Busqueda</label> 
+                <label>Búsqueda</label> 
                 @include('automotores.viajes.forms.busqueda')
             </div>
         </form>
@@ -28,7 +30,7 @@ use Infraestructura\PresupuestoDia;  ?>
                 <th class="text-center">Pasajeros</th>
                 <th class="text-center">Inicio</th>
                 <th class="text-center">Final</th>
-                <th class="text-center">Operacion</th>
+                <th class="text-center">Operación</th>
             </tr>
         
             @foreach($viaje as $via)
@@ -61,12 +63,12 @@ use Infraestructura\PresupuestoDia;  ?>
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
-                                    <li class="disabled"><a href="">Vizualizar Datos</a></li>
+                                    <li class="disabled"><a href="">Vizualización de Datos</a></li>
 
                                     <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
 
                                     <li role="separator" class="divider"></li>
-                                    <li class="disabled"><a href="">Realize un Informe</a></li>
+                                    <li class="disabled"><a href="">Informe del viaje</a></li>
 
                                     <?php $idvi =  $via->id;
                                         $resul = Presupuesto::where('viaje_id',$idvi)
@@ -89,7 +91,7 @@ use Infraestructura\PresupuestoDia;  ?>
                                     <li role="separator" class="divider"></li>
                                     
 
-                                    <li class="disabled"><a href="">Elimine el viaje</a></li>
+                                    <li class="disabled"><a href="">Eliminación del viaje</a></li>
                                                                         
                                     {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
                                         <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
@@ -112,3 +114,20 @@ use Infraestructura\PresupuestoDia;  ?>
 {!! $viaje->appends(Request::only(['entidad','tipo']))->render() !!}</div>
      
 @stop
+@section('javascript')
+{!! Html::script('js/select2.js') !!}
+{!! Html::script('js/es.js') !!}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#tipov').select2({
+            placeholder: "Seleccione un tipo",
+            tags: true,
+            language: "es",
+            maximumSelectionLength: 1,
+            allowClear: true
+        });
+    });    
+</script>
+@endsection

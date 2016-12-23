@@ -17,19 +17,19 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Inserte la ubicación en el mapa</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-body jumbotron">
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALsfWww_p2mj2KjasPSKbPzCR3pXsbvdc&callback=initMap&libraries=places"
                     async defer></script>
         
             <div class="container">
                 <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-6">
-                        <center><h1>{{$mapa->titulo}} </h1></center>
+                    <li class="list-group-item list-group-item-info col-md-8">
+                        <center><h3>{{$mapa->titulo}} </h3></center>
                         <div id="map-canvas"></div>
-                    </div>
+                    </li>
                 </div>
             </div>
         </div>

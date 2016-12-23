@@ -20,6 +20,15 @@ class Destino extends Model
     {
         return $this->hasOne('Infraestructura\Mapa');
     }
+    public function mapax()
+    {
+        return $this->hasMany('Infraestructura\Mapa');
+    }
+    public function getFullmapadestiAttribute()
+    {
+        return  'Ubicación: '.$this->destino;
+    }
+
     /*public function viaje()
     {
         return $this->belongsTo('Infraestructura\Viaje');
@@ -44,7 +53,7 @@ class Destino extends Model
     }
     public function getFulldestinoAttribute()
     {
-        return $this->origen.' '.'->'.' '.$this->destino;
+        return '('.$this->dep_inicio.'):'.$this->origen.'║->║('.$this->dep_final.'):'.$this->destino;
     }
     public function presupuestos()
     {

@@ -26,7 +26,6 @@
                 @include('automotores.presupuestoDia.forms.press')
                 
             
-                <div class="col-md-2"></div>
                 <div class="col-md-3">
                 <center><button type="submit" class="btn btn-primary btn-sm btn-block" >
                       <span class="glyphicon glyphicon-floppy-save ">  Actuaalizar</span> 
@@ -34,16 +33,16 @@
                 </div>        
                 <div class="col-md-2"></div>
             {!! Form::close() !!}    
-                    {!! Form::open(['route'=>['presupuestosDia.destroy',$presupuesto->id],'method'=>'DELETE']) !!}
-                            <div class="col-md-3">
-                                <center>
-                                <button type="submit" class="btn btn-danger btn-sm btn-block" >
-                                    <span class="glyphicon glyphicon-trash">  Eliminar</span> 
-                                </button>
-                                </center>
-                            </div>
-                        <div class="col-md-2"></div><br>
-                    {!! Form::close() !!}
+            {!! Form::open(['route'=>['presupuestosDia.destroy',$presupuesto->id],'method'=>'DELETE']) !!}
+                    <div class="col-md-3">
+                        <center>
+                        <button type="submit" class="btn btn-danger btn-sm btn-block" >
+                            <span class="glyphicon glyphicon-trash">  Eliminar</span> 
+                        </button>
+                        </center>
+                    </div>
+                <div class="col-md-2"></div><br>
+            {!! Form::close() !!}
                 
             </div>
          </div>

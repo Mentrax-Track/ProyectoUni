@@ -23,6 +23,12 @@
         
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> 
                 <a class="navbar-brand" href="{{ route('auto') }}">Automotores | @yield('subtitulo')</a>
             </div>
            
@@ -44,17 +50,60 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
-                            <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{!! URL::to('/users/create') !!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
-                                    </li>
-                                    <li>
-                                        <a href="{!! URL::to('/users') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
-                                    </li>
-                                </ul>
-                            </li>
+                    @if(Auth::user()->tipo == 'supervisor' || Auth::user()->tipo == 'administrador')    
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/users/create') !!}"><i class='fa fa-plus fa-fw'></i> Agregar</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/users') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    
+                        <li>
+                            <a href="#"><i class="fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/roles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if(Auth::user()->tipo == 'supervisor' || Auth::user()->tipo == 'administrador' || Auth::user()->tipo == 'mecanico')
+                        <li>
+                            <a href="#"><i class="fa fa-bus"></i> Vehículos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/vehiculos') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-road"></i> Destinos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/destinos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon glyphicon glyphicon-map-marker"></i> Mapas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/mapas') !!}"><i class='fa fa-list'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="#"><i class='glyphicon glyphicon-list-alt'></i> Reservas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -83,36 +132,6 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bus"></i> Vehiculos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::to('/vehiculos') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon-road"></i> Destinos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
-                                </li>
-                                <li>
-                                    <a href="{!! URL::to('/destinos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#"><i class="glyphicon glyphicon glyphicon glyphicon-map-marker"></i> Mapas<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/mapas') !!}"><i class='fa fa-list'></i> Listar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
                             <a href="#"><i class="fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -134,14 +153,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/roles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
-                                </li>
-                            </ul>
-                        </li>
+                    @endif    
+                    @if(Auth::user()->tipo == 'chofer' || Auth::user()->tipo == 'administrador') 
                         <li>
                             <a href="#"><i class="fa fa-file-word-o"></i> Informes de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -150,7 +163,31 @@
                                 </li>
                             </ul>
                         </li>
-
+                        <li>
+                            <a href="#"><i class="fa fa-sign-in"></i> Solicitud de Trabajo<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/solicitudes/create') !!}"><i class='fa fa-file-text-o'></i> Crear</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/solicitudes') !!}"><i class='fa fa-sort-numeric-asc'></i> Listar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if(Auth::user()->tipo == 'mecanico' || Auth::user()->tipo == 'administrador')
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-wrench"></i> Mantenimiento<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/mecanicos/create') !!}"><i class='fa fa-sliders'></i> Solicitudes</a>
+                                </li>
+                                <li>
+                                    <a href="{!! URL::to('/mecanicos') !!}"><i class='fa fa-file-text-o'></i> Kardex</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     </ul>
                 </div>
             </div>

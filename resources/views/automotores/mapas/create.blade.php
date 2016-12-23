@@ -18,35 +18,38 @@
 @include('alertas.success')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Inserte la ubicación en el mapa</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-body jumbotron">
+      <li class="list-group-item list-group-item-info">
+          <center><font color="blue">■ </font><font color = "#1a1a1a"><strong>Los campos de <font color="blue">LONGITUD</font> y <font color="blue">LATITUD</font> se generan automáticamente cuando usted mueva la posición</strong></font><font color = "#F5443A"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i></font></center>
+      </li>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALsfWww_p2mj2KjasPSKbPzCR3pXsbvdc&callback=initMap&libraries=places&callback=initAutocomplete" async defer></script>
         
         <div class="container">
             <div class="col-md-2"></div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 {!! Form::open(['route'=>'mapas.store','method'=>'POST','files' => true,'data-toggle'=>'validator']) !!}
                     <div class="form-group">
-                        <center><label for="">Titulo</label></center>
+                        <center><label for="">Título</label></center>
                         <input type="text" class="form-control input-sm" name="titulo" data-error="Inserte un título de la ubicación" required placeholder="Ejemplo : Universidad Tomas Frias Potosi">
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <input type="hidden" name="destino_id" value="{!! $ides !!}" />
                     <input type="hidden" name="insertador" value="{!! $insertador !!}" />
                     <div class="form-group">
-                        <label for="">Mapa</label>
-                        <input type="text" id="mibusqueda" placeholder="Realize una Búsqueda..." class="form-control">
+                        <center><label for="">Mapa</label></center>
+                        <input type="text" id="mibusqueda" placeholder="Realice una Búsqueda..." class="form-control"><br>
                         <div id="map-canvas" ></div>
                     </div>
                     <div class="form-group">
                         <label for="">Latitud:</label>
-                        <input type="text" class="form-control input-sm" name="lat" id="lat" data-error="Este campo se llena cuando mueve la posisión" required placeholder="Ejm. -19.58416272813471">
+                        <input type="text" class="form-control input-sm " readonly="readonly" name="lat" id="lat" data-error="Este campo se llena cuando mueve la posisión" required placeholder="Mueva la posición para generar este campo">
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <div class="form-group">
                         <label for="">Longitud:</label>
-                        <input type="text" class="form-control input-sm" name="lng" id="lng" data-error="Este campo se llena cuando mueve la posisión" required placeholder="Ejm. -65.7566471661072">
+                        <input type="text" class="form-control input-sm" readonly="readonly" name="lng" id="lng" data-error="Este campo se llena cuando mueve la posisión" required placeholder="Mueva la posición para generar este campo">
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                     <center><button class="btn btn-sm btn-info fa fa-hand-o-up"> Guardar</button></center>

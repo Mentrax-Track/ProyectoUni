@@ -64,8 +64,8 @@
                 <center><div class="help-block with-errors"></div></center>
             </div>&ensp;&ensp;  
             <div class="form-group">
-                <label class="control-label" >Tipo especifico:</label>
-                {!! Form::text('tipoe',null,['class'=>'form-control','placeholder'=>'Ejm. Patrol','id'=>'tipoe','data-error'=>'Inserte el tipo especifo','required']) !!}
+                <label class="control-label" >Tipo específico:</label>
+                {!! Form::text('tipoe',null,['class'=>'form-control','placeholder'=>'Ejm. Patrol','id'=>'tipoe','data-error'=>'Inserte el tipo específico','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
             </div>
     </div>

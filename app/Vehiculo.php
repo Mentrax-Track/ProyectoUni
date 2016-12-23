@@ -8,6 +8,7 @@ use Infraestructura\User;
 use Infraestructura\Viaje;
 use Infraestructura\Modelo;
 use Infraestructura\Salida;
+use Infraestructura\Solicitud;
 use Infraestructura\InformeViaje;
 class Vehiculo extends Model
 {
@@ -71,5 +72,10 @@ class Vehiculo extends Model
     public function informeviajes()
     {
         return $this->hasOne('Infraestructura\InformeViaje');
+    }
+
+    public function solicitudes()
+    {
+        return $this->hasMany('Infraestructura\Solicitud');
     }
 }

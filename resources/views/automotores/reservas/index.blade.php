@@ -6,10 +6,10 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Reservas</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
 
     <form class="form-inline">
         <div class="form-group pull-rigth">
@@ -65,7 +65,7 @@
                 </tbody>
         @endforeach
     </table>
-    <center><p>Existen {{ $reserva->total() }} registros en total</p></center>
+    <center><p>Existen {{ $reserva->total() }} registros</p></center>
     </div>
     </div>
 </div>

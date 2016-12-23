@@ -78,7 +78,7 @@ class ReservaViajeController extends Controller
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
-                    ->get(['id','origen', 'destino'])
+                    ->get(['id','origen', 'destino','dep_inicio','dep_final'])
                     ->lists('full_destino','id')
                     ->toArray();
 

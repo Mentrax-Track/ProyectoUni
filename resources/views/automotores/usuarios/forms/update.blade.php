@@ -1,7 +1,6 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-    <div class="jumbotron">
-        <div class="row">
+<div class="row">
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success col-md-12">
             <div class="col-md-4">
                 <div class="form-group">
                     <center>{!! Form::label('Nombre:') !!}</center>
@@ -20,9 +19,8 @@
                     {!! Form::password('password',['class'=>'form-control', 'placeholder'=>'Ingrese su password/clave']) !!}
                 </div>
             </div>
-        </div>
-        
-        <div class="row">
+        </li>
+        <li class="list-group-item list-group-item-success col-md-12">
             <div class="col-md-4">
                 <div class="form-group ">
                     <center>{!! Form::label('Email: (Opcional)') !!}</center>
@@ -47,30 +45,26 @@
                     {!! Form::select('tipo', config('update.updates'), null, ['class' => 'form-control']) !!}
                 </div>
             </div>
-        </div>
-    </div>
-        <div class="row">
-                <div class="col-md-4">
+        </li>
+        <li class="list-group-item list-group-item-info col-md-12">
+                <div class="col-md-3">
                     <div class="form-group">
                         <center>{!! Form::label('Facultad:') !!}</center>
                         <center>
-                        {!! Form::text('facultad',$entidad->facultad,['class'=>'form-control','data-error'=>'La Facultad es obligatorio...','id'=>'facultad','placeholder'=>'Seleccione una Facultad','value'=>'']) !!}
+                        {!! Form::text('facultad',$entidad->facultad,['class'=>'js-example-responsive','style'=>'width: 98%','data-error'=>'La Facultad es obligatorio...','id'=>'facultad','placeholder'=>'Seleccione una Facultad','value'=>'']) !!}
                         </center>
-                       <!-- <input id="facultad" class="form-control" placeholder="Seleccione una Facultad"/>-->
-                         <center><div class="help-block with-errors"></div></center>
-                         
+                        <center><div class="help-block with-errors"></div></center>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div><div class="col-md-1"></div>
+                <div class="col-md-3">
                     <div class="form-group">
                         <center>{!! Form::label('Carrera:') !!}</center>
                         <center>
-                        {!! Form::text('carrera',$entidad->carrera,['class'=>'form-control','data-error'=>'La Carrera es obligatorio...','id'=>'carrera','placeholder'=>'Seleccione una Carrera']) !!}
+                        {!! Form::text('carrera',$entidad->carrera,['class'=>'js-example-responsive','style'=>'width: 97%','data-error'=>'La Carrera es obligatorio...','id'=>'carrera','placeholder'=>'Seleccione una Carrera']) !!}
                         </center>
-                      <!-- <input id="carrera" class="form-control" placeholder="Seleccione una Carrera"/>-->
-                         <center><div class="help-block with-errors"></div></center>
+                        <center><div class="help-block with-errors"></div></center>
                     </div>
-                </div>
+                </div><div class="col-md-1"></div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <center>{!! Form::label('Materia:') !!}</center>
@@ -84,6 +78,6 @@
                     {!! Form::text('sigla',$entidad->sigla,['class'=>'form-control', 'placeholder'=>'Ingrese la sigla de la materia del encargado']) !!}
                 </div>
             </div>
-        </div>
-    </div>
+        </li>
+    </ul>
     </div>

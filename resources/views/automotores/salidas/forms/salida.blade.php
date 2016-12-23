@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <center>{!! Form::label('Chofer : ') !!}</center>
-                    {!! Form::select('chofer',$chofer,null,['class'=>'form-control', 'placeholder'=>'Seleccione un Chofer','data-error'=>'Seleccione un Chofer','required','id'=>'chof']) !!}
+                    {!! Form::select('chofer',$chofer,null,['class'=>'js-example-responsive','style'=>'width: 100%','placeholder'=>'Seleccione un Chofer','data-error'=>'Seleccione un Chofer','required','id'=>'chof']) !!}
                     <center><div class="help-block with-errors"></div></center>  
                 </div>
                 <div class="col-md-6">
-                    <center>{!! Form::label('Mobilidad : ') !!}</center>
-                    {!! Form::select('vehiculo',$vehiculo,null,['class'=>'form-control', 'placeholder'=>'Seleccione una mobilidad','data-error'=>'Seleccione una mobilidad','required','id'=>'vehi']) !!}
+                    <center>{!! Form::label('Movilidad : ') !!}</center>
+                    {!! Form::select('vehiculo',$vehiculo,null,['class'=>'js-example-responsive','style'=>'width: 100%','placeholder'=>'Seleccione una movilidad','data-error'=>'Seleccione una movilidad','required','id'=>'vehi']) !!}
                     <center><div class="help-block with-errors"></div></center>  
                 </div>
             </div>
@@ -24,7 +24,7 @@
                         {!! Form::label('Lugar : ') !!}
                     </div>
                     <div class="btn-group col-md-10" role="group">
-                        {!! Form::text('lugar',null, ['class' => 'form-control','placeholder'=>'Inserte el lugar donde recorrera la mobilidad','data-error'=>'Inserte el lugar','required']) !!}
+                        {!! Form::text('lugar',null, ['class' => 'form-control','placeholder'=>'Inserte el lugar donde recorrera la movilidad','data-error'=>'Inserte el lugar','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                 </center>
@@ -37,7 +37,7 @@
                         {!! Form::label('Motivo : ') !!}
                     </div>
                     <div class="btn-group col-md-10" role="group">
-                        {!! Form::text('motivo',null, ['class' => 'form-control','placeholder'=>'Inserte el motivo de peticion de la mobilidad','data-error'=>'Inserte el motivo','required']) !!}
+                        {!! Form::text('motivo',null, ['class' => 'form-control','placeholder'=>'Inserte el motivo de petición de la movilidad','data-error'=>'Inserte el motivo','required']) !!}
                         <center><div class="help-block with-errors"></div></center>
                     </div>
                 </center>

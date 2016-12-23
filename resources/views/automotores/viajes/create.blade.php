@@ -14,14 +14,15 @@
 @section('content')
 @include('alertas.request')
 @include('alertas.errors')
+@include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
-    <div class="panel-heading text-center"><h4><p class="www">Nuevo Viaje</p></h4></div>
-    <div class="panel-body">      
+    <div class="panel-heading text-center"><h4><p class="www"><strong>Nuevo Viaje</strong></p></h4></div>
+    <div class="panel-body jumbotron">      
        {!! Form::open(['route'=>'viajes.store','method'=>'POST','data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-            @include('automotores.viajes.forms.via')
+            @include('automotores.viajes.forms.viajes')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">    
                 <center><button type="submit" class="btn btn-primary btn-block" >
@@ -48,9 +49,75 @@
 
 {!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/es.js') !!}
 {!! Html::script('js/entidades.js') !!}
 {!! Html::script('js/kilometrajeViajes.js') !!}
 {!! Html::script('js/validator.js')!!}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // inicializamos el plugin
+        $('#destino_id').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#dest1').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#dest2').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#dest3').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#dest4').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#dest5').select2({
+            placeholder: "Seleccione un destino",
+            language: "es",
+            allowClear: true
+        });
+        $('#chofer').select2({
+            placeholder: "Seleccione al chofer",
+            language: "es",
+            allowClear: true
+        });
+        $('#vehiculo').select2({
+            placeholder: "Seleccione al vehículo",
+            language: "es",
+            allowClear: true
+        });
+        $('#encargado').select2({
+            placeholder: "Seleccione al encargado",
+            language: "es",
+            allowClear: true
+        });
+        $('#tipo').select2({
+            placeholder: "Seleccione o Inserte el tipo de viaje",
+            tags: true,
+            language: "es",
+            maximumSelectionLength: 1,
+            allowClear: true
+        });
+        $('#tipov').select2({
+            placeholder: "Seleccione un tipo",
+            tags: true,
+            language: "es",
+            maximumSelectionLength: 1,
+            allowClear: true
+        });
+    });
+</script>
  <script type="text/javascript">
     $(function () {
         $('#datetimepicker6').datetimepicker({
@@ -69,92 +136,6 @@
             $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });    
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        // inicializamos el plugin
-        $('select').select2({
-            placeholder: "Selecione un Destino",
-            allowClear: true
-        });
-        $('#tipo').select2({
-            placeholder: "Selecione un tipo de viaje",
-            allowClear: true
-        });
-        $('#chofer').select2({
-            // Activamos la opcion "Chofer" del plugin
-            tags: false,
-            tokenSeparators: [','],
-            placeholder: "Selecione al Chofer",
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("chofer") }}',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                  return {
-                    results: data
-                  };
-                },
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        // inicializamos el plugin
-        $('#vehiculo').select2({
-            // Activamos la opcion "Vehiculo" del plugin
-            tags: false,
-            tokenSeparators: [','],
-            placeholder: "Selecione el Vehiculo",
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("vehiculo") }}',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                  return {
-                    results: data
-                  };
-                },
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        // inicializamos el plugin
-        $('#encargado').select2({
-            // Activamos la opcion "Encargado" del plugin
-            tags: false,
-            tokenSeparators: [','],
-            placeholder: "Selecione al Encargado",
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("encargado") }}',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                  return {
-                    results: data
-                  };
-                },
-            }
-        });
-    });
 </script>
 @endsection
 
