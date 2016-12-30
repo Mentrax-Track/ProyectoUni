@@ -41,22 +41,26 @@
                     <td class="text-center">{{ $reser->fecha_inicial }}</td>
                     <td class="text-center">{{ $reser->fecha_final }}</td>
                     <td class="text-center">{{ $reser->dias }}</td>
-                    <td class="btns" style="vertical-align:middle;">
+                    <td class="btns text-center" style="vertical-align:middle; ">
                         <div class="btn-group btn-group-sm">
                             <center>
-                            {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
-                            
-                            
                             <?php 
                                 $re = $reser->id;
                                 //dd($re); 
-                                $resul = Viaje::where('id',$re)
-                                        ->get(['id'])->lists('id')->toArray();
+                                $resul = Viaje::where('reserva_id',$re)
+                                        ->get(['reserva_id'])
+                                        ->lists('reserva_id')->toArray();
                                 //dd($resul);
                                 if (empty($resul)) 
                                 { ?>
+
+                                    {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
+
                                     <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>        
                                 <?php }
+                                else{    
+                                    echo "<a class='bg-success'>Realizado</a>";
+                                }
                             ?>
                             </center>
                         </div>
@@ -70,6 +74,6 @@
     </div>
 </div>
 <!--con appends adjunto los parametros adicionales de busqueda -->
-{!! $reserva->appends(Request::only(['entidad']))->render() !!}</div>
+{!! $reserva->appends(Request::only(['entidad']))->render() !!}
        
 @stop

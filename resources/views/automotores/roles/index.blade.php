@@ -10,12 +10,16 @@
     <div class="panel-heading text-center"><h4><p class="www">Turnos</p></h4></div>
     <div class="panel-body jumbotron">
         <form class="form-inline">
-            <div class="form-group">
-                <label>Opciones: </label> 
-                {!!link_to_route('roles.create', $title = ' Agregar chofer', $parameters = "", $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-user '])!!}
+            <?php $user = \Auth::user()->tipo; 
+                //dd($user);?>
+            @if ($user == 'administrador' OR $user == 'supervisor') 
+                <div class="form-group">
+                    <label>Opciones: </label> 
+                    {!!link_to_route('roles.create', $title = ' Agregar chofer', $parameters = "", $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-user '])!!}
 
-                {!!link_to_action('RolesController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-danger  glyphicon fa fa-print','target'=>'_blank'])!!}
-            </div>
+                    {!!link_to_action('RolesController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-danger  glyphicon fa fa-print','target'=>'_blank'])!!}
+                </div>
+            @endif
         </form>
     <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed "><br>
@@ -42,10 +46,12 @@
                         <td class="text-center">
                             <div class="btn-group btn-group-sm">
                                 <center>
-                                    {!!link_to_route('roles.edit', $title = ' Insertar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs glyphicon fa fa-tachometer'])!!}
+                                    {!!link_to_route('roles.show', $title = ' Mostrar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block fa fa-bars'])!!}
                                     <br />
-                                    {!!link_to_route('roles.show', $title = ' Mostrar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon fa fa-bars'])!!}
+                                @if ($user == 'administrador' OR $user == 'supervisor')    
+                                    {!!link_to_route('roles.edit', $title = ' Insertar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block  fa fa-tachometer'])!!}
                                     <br />
+                                    
                                     {!!link_to_action('RolesController@getLimpiar', $title = ' Limpiar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-paint-brush'])!!}
 
                                     {!! Form::open(['route'=>['roles.destroy',$rol->id],'method'=>'DELETE']) !!}
@@ -53,7 +59,7 @@
                                             Eliminar
                                         </button>   
                                     {!! Form::close() !!}
-                                
+                                @endif
                                 </center>
                             </div>
                         </td>

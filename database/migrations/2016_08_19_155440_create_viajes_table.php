@@ -21,6 +21,12 @@ class CreateViajesTable extends Migration
             $table->integer('pasajeros');
             $table->date('fecha_inicial');
             $table->date('fecha_final');
+            
+            $table->string('estado');
+            $table->integer('reserva_id')->unsigned();
+            $table->foreign('reserva_id')
+                ->references('id')->on('reservas');
+
             $table->timestamps();
         });
     }

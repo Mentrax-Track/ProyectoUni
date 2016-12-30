@@ -53,7 +53,7 @@ class Destino extends Model
     }
     public function getFulldestinoAttribute()
     {
-        return '('.$this->dep_inicio.'):'.$this->origen.'║->║('.$this->dep_final.'):'.$this->destino;
+        return '('.$this->dep_inicio.'):'.$this->origen.' HASTA ('.$this->dep_final.'):'.$this->destino;
     }
     public function presupuestos()
     {

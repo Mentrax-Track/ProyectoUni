@@ -40,7 +40,7 @@ class InformeController extends Controller
      */
     public function index(Request $request)
     {
-        $informeviajes = InformeViaje::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
+        $informeviajes = InformeViaje::entidad($request->get('entidad'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.informe.index',compact('informeviajes'));
     }
     
@@ -130,7 +130,7 @@ class InformeController extends Controller
             ]);
         }
 
-        Session::flash('message','El informe del vijae fue creado correctamente...');
+        Session::flash('message','El informe del viaje fue creado correctamente...');
         return Redirect::to('/informes');
        
     }
@@ -154,10 +154,12 @@ class InformeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $choferes    = User::where('tipo', 'chofer')
+        /*$choferes    = User::where('tipo', 'chofer')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
-                    ->lists('full_name','id');
+                    ->lists('full_name','id');*/
+        $chofer = Auth::user()->full_name;
+
         $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
@@ -174,7 +176,7 @@ class InformeController extends Controller
                     ->toArray();
         //dd($ruta);
 
-        return view('automotores.informe.create', compact('viaje','presupuesto','encargados','choferes','vehiculos','destino','kmtotal'));
+        return view('automotores.informe.create', compact('viaje','presupuesto','encargados','chofer','vehiculos','destino','kmtotal'));
     }
 
     /**
@@ -205,10 +207,7 @@ class InformeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $choferes    = User::where('tipo', 'chofer')
-                    ->orderBy('nombres','ASC')
-                    ->get(['id', 'nombres', 'apellidos'])
-                    ->lists('full_name','id');
+        $chofer = Auth::user()->full_name;
         $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
@@ -224,7 +223,7 @@ class InformeController extends Controller
                     ->lists('total')
                     ->toArray();
 
-        return view('automotores.informe.edit',['informes'=>$this->informes],compact('presupuesto','encargados','choferes','vehiculos','destino','kmtotal','viaje','informesdebolu','mantenimiento'));
+        return view('automotores.informe.edit',['informes'=>$this->informes],compact('presupuesto','encargados','chofer','vehiculos','destino','kmtotal','viaje','informesdebolu','mantenimiento'));
     }
 
     /**
@@ -291,10 +290,7 @@ class InformeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $choferes    = User::where('tipo', 'chofer')
-                    ->orderBy('nombres','ASC')
-                    ->get(['id', 'nombres', 'apellidos'])
-                    ->lists('full_name','id');
+        $chofer = Auth::user()->full_name;
         $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
@@ -311,7 +307,7 @@ class InformeController extends Controller
                     ->toArray();
         //dd($ruta);
 
-        return view('automotores.informe.createinfob', compact('viaje','presupuesto','encargados','choferes','vehiculos','destino','kmtotal'));
+        return view('automotores.informe.createinfob', compact('viaje','presupuesto','encargados','chofer','vehiculos','destino','kmtotal'));
 
     }
 

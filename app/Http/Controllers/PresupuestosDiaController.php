@@ -37,7 +37,7 @@ class PresupuestosDiaController extends Controller
      */
     public function index(Request $request)
     {
-        $presupuesto = PresupuestoDia::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
+        $presupuesto = PresupuestoDia::entidad($request->get('entidad'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.presupuestoDia.index',compact('presupuesto'));
     }
 
@@ -88,7 +88,7 @@ class PresupuestosDiaController extends Controller
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
-                    ->get(['id','origen', 'destino'])
+                    ->get(['id','origen', 'destino','dep_inicio','dep_final'])
                     ->lists('full_destino');
 
         $viaje = Viaje::find($id);
@@ -98,37 +98,37 @@ class PresupuestosDiaController extends Controller
         $destino_i = Ruta::where('viaje_id',$id)
                 ->select('destino_id')->lists('destino_id')->toArray();
         $destino_id = Destino::where('id',$destino_i)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         //dd($destino_id);
         $dest = Ruta::where('viaje_id',$id)
                 ->select('dest1')->lists('dest1')->toArray();
         $dest1 = Destino::where('id',$dest)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
 
         $dest2a = Ruta::where('viaje_id',$id)
                 ->select('dest2')->lists('dest2')->toArray();
         $dest2 = Destino::where('id',$dest2a)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();        
 
         $dest3a = Ruta::where('viaje_id',$id)
                         ->select('dest3')->lists('dest3')->toArray();
         $dest3 = Destino::where('id',$dest3a)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
 
         $dest4a = Ruta::where('viaje_id',$id)
                         ->select('dest4')->lists('dest4')->toArray();
         $dest4 = Destino::where('id',$dest4a)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
 
         $dest5a = Ruta::where('viaje_id',$id)
                         ->select('dest5')->lists('dest5')->toArray();
         $dest5 = Destino::where('id',$dest5a)
-            ->get(['origen','destino'])
+            ->get(['origen','destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
 
         $responsable = Auth::user()->full_name;
@@ -260,7 +260,7 @@ class PresupuestosDiaController extends Controller
                 ->select('destino_id')->lists('destino_id')->toArray();
         $destino_id = Destino::where('id',$destino_i)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino1 = implode(",",$destino_id);
         //dd($destino_id);
@@ -268,7 +268,7 @@ class PresupuestosDiaController extends Controller
                 ->select('dest1')->lists('dest1')->toArray();
         $dest1 = Destino::where('id',$dest)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino2 = implode(",",$dest1);
 
@@ -276,7 +276,7 @@ class PresupuestosDiaController extends Controller
                 ->select('dest2')->lists('dest2')->toArray();
         $dest2 = Destino::where('id',$dest2a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();        
         $destino3 = implode(",",$dest2);
 
@@ -284,7 +284,7 @@ class PresupuestosDiaController extends Controller
                         ->select('dest3')->lists('dest3')->toArray();
         $dest3 = Destino::where('id',$dest3a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino4 = implode(",",$dest3);
 
@@ -292,7 +292,7 @@ class PresupuestosDiaController extends Controller
                         ->select('dest4')->lists('dest4')->toArray();
         $dest4 = Destino::where('id',$dest4a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino5 = implode(",",$dest4);
 
@@ -300,14 +300,28 @@ class PresupuestosDiaController extends Controller
                         ->select('dest5')->lists('dest5')->toArray();
         $dest5 = Destino::where('id',$dest5a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino6 = implode(",",$dest5);
         $responsable = Auth::user()->full_name;
 
         $presupuesto = PresupuestoDia::find($id);
-        $date = date('d-m-Y');
-        $view =  \View::make('automotores.presupuestoDia.pdf', compact('date', 'presupuesto','destino1','destino2','destino3','destino4','destino5','destino6','ruta','viaje','responsable'))->render();
+
+        //$date = date('d-m-Y');
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes',
+               'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $date = $arrayDias[date('w')].", ".date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        /*"Miercoles, 07 de Diciembre de 2016"*/
+
+
+        $administrador = User::where('tipo','supervisor')
+                            ->get(['id','nombres','apellidos'])
+                            ->lists('full_name')
+                            ->toArray();
+        //dd($administrador);
+        $view =  \View::make('automotores.presupuestoDia.pdf', compact('administrador','date', 'presupuesto','destino1','destino2','destino3','destino4','destino5','destino6','ruta','viaje','responsable'))->render();
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta', 'portrat');
         return $pdf->stream('presupuesto');

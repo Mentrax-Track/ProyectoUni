@@ -29,15 +29,33 @@
                 //Cambia los colores del evento
                 eventAfterRender: function (event, element, view) {
                     var dataHoje = new Date();
+                    //var estado = event.estado;
+                    //var cancelado =  "calcelado";
+                   //alert(cancelado);
                     if (event.start < dataHoje && event.end > dataHoje) {
                         //event.color = "#FFB347"; //En funcion
-                        element.css('background-color', '#FFB347');
+                        if (event.estado == 'cancelado') {
+                            //event.color = "#AEC6CF"; //Cancelado
+                            element.css('background-color', '#FA5858');
+                        }else{
+                            element.css('background-color', '#FFB347');
+                        }
                     } else if (event.start < dataHoje && event.end < dataHoje) {
                         //event.color = "#77DD77"; //Concluído OK
-                        element.css('background-color', '#77DD77');
+                        if (event.estado == 'cancelado') {
+                            //event.color = "#AEC6CF"; //Cancelado
+                            element.css('background-color', '#FA5858');
+                        }else{
+                            element.css('background-color', '#77DD77');
+                        }
                     } else if (event.start > dataHoje && event.end > dataHoje) {
                         //event.color = "#AEC6CF"; //No iniciado
-                        element.css('background-color', '#88BAF9');
+                        if (event.estado == 'cancelado') {
+                            //event.color = "#AEC6CF"; //Cancelado
+                            element.css('background-color', '#FA5858');
+                        }else{
+                            element.css('background-color', '#88BAF9');
+                        }    
                     }
                 },
                 //Muestra las cabezeras del calendario
@@ -91,7 +109,8 @@
     <br>
     <div class="panel panel-success">
         <div class="panel-heading text-center"><h3><p class="www">Calendario de Viajes</p></h3></div>
-        <div class="panel-body jumbotron"> 
+        <div class="panel-body">
+            <center><font color="red">■</font>El evento de color <font color = "#77DD77"><strong> VERDE </strong></font> es un viaje concluido.<font color="red">■</font> El evento de color <font color = "#FFB347"><strong> AMARILLO </strong></font> es un viaje en proceso.<font color="red">■</font> El evento de color <font color = "#FA5858"><strong> ROJO </strong></font> es un viaje cancelado.</center>
             <li class="list-group-item list-group-item-info">
                 <h4><div id='calendar'></div></h4>    
             </li>

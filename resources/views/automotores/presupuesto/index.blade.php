@@ -18,7 +18,7 @@ use Infraestructura\User;
     <div class="panel-body jumbotron"> 
         <form class="form-inline">
             <div class="form-group">
-                <label>Búsqueda</label> 
+                <label>Búsqueda:</label> 
                 @include('automotores.presupuesto.forms.busqueda')
             </div>
         </form><br>

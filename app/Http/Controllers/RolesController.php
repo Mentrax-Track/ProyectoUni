@@ -19,6 +19,7 @@ class RolesController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('admin',['only'=>['create','edit']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)

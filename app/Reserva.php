@@ -3,6 +3,7 @@
 namespace Infraestructura;
 
 use Illuminate\Database\Eloquent\Model;
+use Infraestructura\Viaje;
 
 class Reserva extends Model
 {
@@ -12,6 +13,10 @@ class Reserva extends Model
     //delete from reservas where user_id not in  (select id from users where tipo='encargado')
     
     //cada reserva puede estar con un solo encargado
+    public function viaje()
+    {
+        return $this->belongsTo('Infraestructura\Viaje');
+    }
     public function user()
     {
         return $this->belongsTo('Infraestructura\User');

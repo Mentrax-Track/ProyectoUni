@@ -15,7 +15,7 @@ use Infraestructura\PresupuestoDia;  ?>
     <div class="panel-body jumbotron"> 
         <form class="form-inline">
             <div class="form-group">
-                <label>Búsqueda</label> 
+                <label>Búsqueda:</label> 
                 @include('automotores.viajes.forms.busqueda')
             </div>
         </form>
@@ -32,8 +32,33 @@ use Infraestructura\PresupuestoDia;  ?>
                 <th class="text-center">Final</th>
                 <th class="text-center">Operación</th>
             </tr>
-        
             @foreach($viaje as $via)
+                <?php $estado = $via->estado; ?>
+                @if($estado == 'cancelado')
+                <tbody BGCOLOR="#d9edf7">
+                    <td class="info text-center">{{ $via->id }}</td>
+                    <td>{{ $via->entidad }} {!! "<font color='red'>(Cancelado)</font>" !!}</td>
+                    <td>{{ $via->tipo }}</td>
+                    <td>{{ $via->objetivo }}</td>
+                    <td class="text-center">{{ $via->dias }} </td>
+                    <td class="text-center">{{ $via->pasajeros }}</td>
+                    <td class="text-center">{{ $via->fecha_inicial }}</td>
+                    <td class="text-center">{{ $via->fecha_final }}</td>
+                    <td class="btns text-center" style="vertical-align:middle;">
+                        <div class="btn-group btn-group-sm">
+                            <div class="dropdown">
+                                 {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
+                                        <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
+                                            <span class="glyphicon glyphicon-trash"> Eliminar</span> 
+                                        </button>   
+                                 {!! Form::close() !!}
+                                 <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
+                            </div>
+                        </div>
+                    </td>
+                </tbody>
+                @else 
+
                 <tbody>
                     <td class="info text-center">{{ $via->id }}</td>
                     <td>{{ $via->entidad }}</td>
@@ -43,11 +68,10 @@ use Infraestructura\PresupuestoDia;  ?>
                     <td class="text-center">{{ $via->pasajeros }}</td>
                     <td class="text-center">{{ $via->fecha_inicial }}</td>
                     <td class="text-center">{{ $via->fecha_final }}</td>
-                    <td class="btns" style="vertical-align:middle;">
+                    <td class="btns text-center" style="vertical-align:middle;">
                         <div class="btn-group btn-group-sm">
-                            <center>
                             <div class="dropdown">
-                                <button class="btn btn-warning btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Presupuesto
+                                <button class="btn btn-primary btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Presupuesto
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
@@ -99,11 +123,14 @@ use Infraestructura\PresupuestoDia;  ?>
                                         </button>   
                                     {!! Form::close() !!}
                                 </ul>
-                            </div>                            
-                          </center>
+                            </div>  
+                            <div class="dropdown">
+                                 {!!link_to_action('ViajesController@getCancelar', $title = ' Cancelar', $parameters = $via->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block dropdown-toggle fa fa-ban'])!!}
+                            </div>
                         </div>
                     </td>
                 </tbody>
+                @endif
             @endforeach   
         </table>
         <center><p>Existen {{ $viaje->total() }} registros en total</p></center>

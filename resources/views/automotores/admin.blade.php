@@ -50,7 +50,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
-                    @if(Auth::user()->tipo == 'supervisor' || Auth::user()->tipo == 'administrador')    
+                     
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -71,8 +71,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endif
-                    @if(Auth::user()->tipo == 'supervisor' || Auth::user()->tipo == 'administrador' || Auth::user()->tipo == 'mecanico')
+                   
                         <li>
                             <a href="#"><i class="fa fa-bus"></i> Vehículos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -153,8 +152,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endif    
-                    @if(Auth::user()->tipo == 'chofer' || Auth::user()->tipo == 'administrador') 
+                    
                         <li>
                             <a href="#"><i class="fa fa-file-word-o"></i> Informes de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -174,8 +172,7 @@
                                 </li>
                             </ul>
                         </li>
-                    @endif
-                    @if(Auth::user()->tipo == 'mecanico' || Auth::user()->tipo == 'administrador')
+                    
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-wrench"></i> Mantenimiento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -187,7 +184,6 @@
                                 </li>
                             </ul>
                         </li>
-                    @endif
                     </ul>
                 </div>
             </div>

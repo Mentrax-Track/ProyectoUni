@@ -151,6 +151,7 @@
                 </h4>
             </center>
         </li>
+        <input type="hidden" name="reserva_id" value='{{ $reserva->id }}' />
         <li class="list-group-item list-group-item-info">
             <div class='input-group date ' id='datetimepicker6'>
                 {!! Form::text('fecha_inicial',$reserva->fecha_inicial,['class'=>'form-control', 'placeholder'=>'Ingrese la fecha de inicio','data-error'=>'Inserte la fecha Inicial','required']) !!}

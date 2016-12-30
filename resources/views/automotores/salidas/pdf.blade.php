@@ -19,24 +19,24 @@ use Infraestructura\User;
    <br>Boleta de Salida</h5>
     <table id="tab" style="border-width: 2px; border-style: double; border-color: black; " > 
         <tr>
-            <td colspan="1"><strong>Mobilidad:</strong> {{$salida->enviVehi->full_vehiculo}}</td>
-            <td colspan="1"><strong>Fecha:</strong> {{ $date }}</td>
+            <td colspan="1" class="sa"><strong>Mobilidad:</strong> {{$salida->enviVehi->full_vehiculo}}</td>
+            <td colspan="1"  class="sa"><strong>Fecha:</strong> {{ $date }}</td>
         </tr>
         <tr>
-            <td colspan="2"><strong>Chofer:</strong>  {{$salida->enviCho->full_name}}</td>
+            <td colspan="2" class="sa"><strong>Chofer:</strong>  {{$salida->enviCho->full_name}}</td>
         </tr>
         <tr>
-            <td colspan="2"><strong>Responsable:</strong>  {{$salida->responsable}}</td>
+            <td colspan="2"  class="sa"><strong>Responsable:</strong>  {{$salida->responsable}}</td>
         </tr>
         <tr>
-            <td colspan="2"><strong>Lugar:</strong>  {{$salida->lugar}}</td>
+            <td colspan="2"  class="sa"><strong>Lugar:</strong>  {{$salida->lugar}}</td>
         </tr>
         <tr>
-            <td colspan="2"><strong>Motivo:</strong>  {{$salida->motivo}}</td>
+            <td colspan="2"  class="sa"><strong>Motivo:</strong>  {{$salida->motivo}}</td>
         </tr>
         <tr>
-            <td colspan="1"><strong>Salida:</strong>  {{$salida->hsalida}}</td>
-            <td colspan="1"><strong>Legada:</strong>  {{$salida->hllegada}}</td>
+            <td colspan="1"  class="sa"><strong>Salida:</strong>  {{$salida->hsalida}}</td>
+            <td colspan="1"  class="sa"><strong>Legada:</strong>  {{$salida->hllegada}}</td>
         </tr>
     </table>
 <main><br><br>

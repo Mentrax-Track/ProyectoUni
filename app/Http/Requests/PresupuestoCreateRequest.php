@@ -27,7 +27,7 @@ class PresupuestoCreateRequest extends Request
             'vehiculo'    => 'required|numeric',
             'chofer'      => 'required',
             'encargado'   => 'required|numeric',
-            'entidad'     => 'required|regex:/^[a-z ñáéíóú]+$/i|min:10|max:60',
+            'entidad'     => 'required',
             'fecha_sa'    => 'required|date',
             'division1'   => 'required|numeric',
             'viaje_id'    => 'required|numeric',

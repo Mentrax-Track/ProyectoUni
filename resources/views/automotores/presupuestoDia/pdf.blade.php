@@ -10,16 +10,18 @@ use Infraestructura\User;
     <meta charset="UTF-8">
     <title>Presupuesto de Viaje</title>
     {!! Html::style('css/pdf/pdf.css') !!}
-</head>
+</head><br><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS <br />DEPARTAMENTO DE INFRAESTRUCTURA <br / > SECCIÓN AUTOMOTORES</strong></center>
 <body><br>
    <h1>PRESUPUESTO DE VIAJE <img style="float:right;" src="img/presupuesto.jpg" width="100px"/></h1>
 <main>
 
 </main>
     <br>
-    <h4>P-{{ $date }}</h4> <h4><p class="km">{{ $presupuesto->numero }}</p></h4>
+    <h4>{{ $date }}</h4> <h4><p class="km">{{ $presupuesto->numero }}</p></h4>
+    <h4>Señor: {{ $administrador[0] }}</h4> 
+    <h4>JEFE DEL DEPARTAMENTO DE INFRAESTRUCTURA</h4>
     <br><br>
-    <h3><u><b>Señor:</b> Jefe del Departamento de Infraestructura.</u></h3>
+    <h3><u><b>Ref.:</b> <strong>Aprobación del presupuesto de viaje por caja</strong></u></h3>
     <br><br>
     <style>
         div {
@@ -45,22 +47,30 @@ use Infraestructura\User;
         <td class="kn" colspan="1"> {{$destino2}} </td>
         <td class="km" colspan="1"> {{$ruta->k1}}</td>
     </tr>
-    <tr>
-        <td class="kn" colspan="1"> {{$destino3}} </td>
-        <td class="km" colspan="1"> {{$ruta->k2}}</td>
-    </tr>
-    <tr>
-        <td class="kn"colspan="1">{{$destino4}} </td>
-        <td class="km" colspan="1">{{$ruta->k3}} </td>
-    </tr>
-    <tr>
-        <td colspan="1" class="kn"> {{$destino5}} </td>
-        <td  colspan="1" class="km">{{$ruta->k4}} </td>
-    </tr>
-    <tr>
-        <td colspan="1" class="kn">{{$destino6}} </td>
-        <td colspan="1" class="km" >{{$ruta->k5}}</td>
-    </tr>
+    @if(!empty($destino3))
+        <tr>
+            <td class="kn" colspan="1"> {{$destino3}} </td>
+            <td class="km" colspan="1"> {{$ruta->k2}}</td>
+        </tr>
+    @endif
+    @if(!empty($destino4))
+        <tr>
+            <td class="kn"colspan="1">{{$destino4}} </td>
+            <td class="km" colspan="1">{{$ruta->k3}} </td>
+        </tr>
+    @endif
+    @if(!empty($destino5))
+        <tr>
+            <td colspan="1" class="kn"> {{$destino5}} </td>
+            <td  colspan="1" class="km">{{$ruta->k4}} </td>
+        </tr>
+    @endif
+    @if(!empty($destino6))
+        <tr>
+            <td colspan="1" class="kn">{{$destino6}} </td>
+            <td colspan="1" class="km" >{{$ruta->k5}}</td>
+        </tr>
+    @endif
     <tr>
         <td class="kn" colspan="1"> <b>RECORRIDO ADICIONAL</b></td>
         <td class="km" colspan="1"> {{ $ruta->adicional }}</td>
@@ -79,12 +89,12 @@ use Infraestructura\User;
     <tr>
         <td class="km" colspan="1"> <b>Viáticos</b></td>
         <td class="kn" colspan="1"> {{ $viaje->dias }} Dias.</td>
-    </tr><br><br>
+    </tr>
 </table>
     <h4>Es cuanto se informa para fines consiguientes.</h4>
     </main>
     
-        <br /><br /><br /><br />
+        <br /><br />
         <center><h4 >Sr. {{$responsable}}<br />ENCARGADO DE AUTOMOTORES </h4></center>
 </body>
 </html>

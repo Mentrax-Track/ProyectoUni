@@ -7,6 +7,7 @@ use Infraestructura\User;
 use Infraestructura\Vehiculo;
 use Infraestructura\Destino;
 use Infraestructura\Ruta;
+use Infraestructura\Reserva;
 use Infraestructura\Presupuesto;
 
 use Infraestructura\Vehiculo_Viaje;
@@ -18,8 +19,12 @@ class Viaje extends Model
     protected $fillable = 
     [
         'entidad','tipo','objetivo','pasajeros',
-        'dias','fecha_inicial','fecha_final'
+        'dias','fecha_inicial','fecha_final','reserva_id','estado',
     ];
+    public function reserva()
+    {
+        return $this->hasOne('Infraestructura\Reserva');
+    }
 
     public function users()
     {

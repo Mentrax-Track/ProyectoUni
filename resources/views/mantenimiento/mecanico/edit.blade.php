@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Editar Solicitud')
+@section('subtitulo','Editar Trabajo')
 @section('css')
      {!! Html::style('css/datetimepicker/prettify-1.0.css') !!}
      {!! Html::style('css/datetimepicker/base.css') !!}
@@ -12,10 +12,10 @@
 @section('content')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
 
-    <div class="panel-heading text-center"><h4><p class="www">Editar Solicitud</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-heading text-center"><h4><p class="www">Editar el trabajo realizado</p></h4></div>
+    <div class="panel-body jumbotron">
      {!! Form::model($mecanico,['route'=>['mecanicos.update',$mecanico->id],'method'=>'PUT']) !!}
                 @include('mantenimiento.mecanico.forms.trabajoUpdate')
                 <div class="col-md-4"></div>

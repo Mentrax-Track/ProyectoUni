@@ -12,10 +12,10 @@
 @section('content')
 @include('alertas.request')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Solicitud de Trabajo</p></h4></div>
-    <div class="panel-body">      
+    <div class="panel-body jumbotron">      
        {!! Form::open(['route'=>'solicitudes.store','method'=>'POST','data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('mantenimiento.solicitudes.forms.solicitud')

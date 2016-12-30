@@ -84,6 +84,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('events','CalendarioController@index');
 
     Route::resource('reservas','ReservasController');
+
+    Route::get('viajes/{id}/Cancelar','ViajesController@getCancelar');
     Route::resource('viajes','ViajesController');
 ///////////////////////////////////////////////////////////////////////////////////////
     /////////////////// Estas rutas son para el plugins select2 en viajes ////////////

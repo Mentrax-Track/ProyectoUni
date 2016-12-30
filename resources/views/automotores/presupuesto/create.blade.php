@@ -18,8 +18,9 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4><p class="www"><strong><u>Presupuesto del viaje de {{ $viaje->entidad }} con km.:</u> <font color="red">{{ $ruta->total }}</font></strong></p></h4></div><center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#8a6d3b"><strong> DORADO </strong></font> son autogenerados (no modifique).</center>
-    <div class="panel-body jumbotron"> 
+    <div class="panel-heading text-center"><h4><p class="www"><strong><u>Presupuesto del viaje de {{ $viaje->entidad }} con km.:</u> <font color="red">{{ $ruta->total }}</font></strong></p></h4></div>
+    <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#3f3f3f"><strong> OSCURO </strong></font> son opcionales.</center>
+    <div class="panel-body"> 
         {!! Form::open(['route'=>'presupuestos.store','method'=>'POST','data-toggle'=>'validator' ]) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                 

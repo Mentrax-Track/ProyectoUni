@@ -14,7 +14,8 @@
 <br>
 <div class="panel panel-default">
 
-    <div class="panel-heading text-center"><h4><p class="www">Editar Informe</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www"><u>Informe de viaje de la entidad de <strong>{{ $viaje->entidad }}</strong></u></p></h4></div>
+    <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#337ab7"><strong> AZUL </strong></font> son opcionales.</center>
     <div class="panel-body">
      {!! Form::model($informes,['route'=>['informes.update',$informes->id],'method'=>'PUT']) !!}
                 @include('automotores.informe.forms.infoupdate')

@@ -49,6 +49,7 @@
 {!! Html::script('js/jquery.easy-autocomplete.min.js') !!}
 {!! Html::script('js/bootstrap-datetimepicker.es.js') !!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/es.js') !!}
 {!! Html::script('js/entidades.js') !!}
 {!! Html::script('js/validator.js') !!}
  <script type="text/javascript">
@@ -73,6 +74,7 @@
 <script type="text/javascript">
     $('select').select2({
         placeholder: "Seleccione una opción",
+        language: "es",
         allowClear: true
     });    
 </script>

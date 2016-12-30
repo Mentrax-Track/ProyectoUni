@@ -123,6 +123,12 @@ class ViajesController extends Controller
         {
              $days++;
         }   
+        $activo = 'activo';
+        $reseri = $request['reserva_id'];
+        if(empty($reseri))
+        {
+            $reseri = null;
+        }
         $viaje_id = \DB::table('viajes')->insertGetId([
             'entidad'       => $request['entidad'],
             'tipo'          => $request['tipo'],
@@ -130,7 +136,9 @@ class ViajesController extends Controller
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => $days
+            'dias'          => $days,
+            'estado'        => $activo,
+            'reserva_id'    => $reseri
             ]);
 
         $chofer_id = $request['chofer'];
@@ -294,25 +302,26 @@ class ViajesController extends Controller
      */
     public function edit($id)
     {
-        $encargados = User::where('tipo', 'encargado')
+        $encargado = User::where('tipo', 'encargado')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $choferes    = User::where('tipo', 'chofer')
+        $chofer    = User::where('tipo', 'chofer')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculos  = Vehiculo::where('estado', 'Optimo')
+        $vehiculo  = Vehiculo::where('estado', 'Optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
-                    ->get(['id','origen', 'destino'])
+                    ->get(['id','origen', 'destino','dep_inicio','dep_final'])
                     ->lists('full_destino');
+        $viaje = Viaje::find($id);
+        //dd($viaje);
 
-        return view('automotores.viajes.edit',['via'=>$this->viaje],compact('choferes','encargados','vehiculos','destino'));
-        
+        return view('automotores.viajes.edit',['via'=>$this->viaje],compact('viaje','destino','chofer','encargado','vehiculo'));        
     }
 
     /**si es recuando nos perman
@@ -362,6 +371,14 @@ class ViajesController extends Controller
     {
         $this->viaje->delete();
         Session::flash('message','El registro de viaje fue eliminado correctamente...');
+        return Redirect::to('/viajes');
+    }
+    public function getCancelar($id)
+    {
+        Viaje::where('id',$id)
+            ->update(['estado' => 'cancelado']);
+
+        Session::flash('message','El viaje fue cancelado');
         return Redirect::to('/viajes');
     }
 }

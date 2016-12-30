@@ -37,7 +37,7 @@ class PresupuestoController extends Controller
      */
     public function index(Request $request)
     {
-        $presupuesto = Presupuesto::entidad($request->get('entidad'))->orderBy('id','ASC')->paginate(10);
+        $presupuesto = Presupuesto::entidad($request->get('entidad'))->orderBy('id','DESC')->paginate(10);
         return view('automotores.presupuesto.index',compact('presupuesto'));
     }
 
@@ -59,6 +59,7 @@ class PresupuestoController extends Controller
      */
     public function store(PresupuestoCreateRequest $request)
     {
+     //   dd($request);
         Presupuesto::create($request->all());
         Session::flash('message','Presupuesto creado correctamente');
         return redirect('presupuestos');
@@ -302,7 +303,7 @@ class PresupuestoController extends Controller
                 ->select('destino_id')->lists('destino_id')->toArray();
         $destino_id = Destino::where('id',$destino_i)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino1 = implode(",",$destino_id);
         //dd($destino_id);
@@ -310,7 +311,7 @@ class PresupuestoController extends Controller
                 ->select('dest1')->lists('dest1')->toArray();
         $dest1 = Destino::where('id',$dest)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino2 = implode(",",$dest1);
 
@@ -318,7 +319,7 @@ class PresupuestoController extends Controller
                 ->select('dest2')->lists('dest2')->toArray();
         $dest2 = Destino::where('id',$dest2a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();        
         $destino3 = implode(",",$dest2);
 
@@ -326,7 +327,7 @@ class PresupuestoController extends Controller
                         ->select('dest3')->lists('dest3')->toArray();
         $dest3 = Destino::where('id',$dest3a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino4 = implode(",",$dest3);
 
@@ -334,7 +335,7 @@ class PresupuestoController extends Controller
                         ->select('dest4')->lists('dest4')->toArray();
         $dest4 = Destino::where('id',$dest4a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino5 = implode(",",$dest4);
 
@@ -342,7 +343,7 @@ class PresupuestoController extends Controller
                         ->select('dest5')->lists('dest5')->toArray();
         $dest5 = Destino::where('id',$dest5a)
             ->orderBy('id','ASC')
-            ->get(['id','origen', 'destino'])
+            ->get(['id','origen', 'destino','dep_inicio','dep_final'])
             ->lists('full_destino')->toArray();
         $destino6 = implode(",",$dest5);
 
@@ -352,5 +353,7 @@ class PresupuestoController extends Controller
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta', 'portrat');
         return $pdf->stream('presupuesto');
+
+
     }
 }

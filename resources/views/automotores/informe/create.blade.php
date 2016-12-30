@@ -11,23 +11,23 @@
 @stop
 @section('content')
 @include('alertas.request')
-<div class="panel panel-default">
+<br>
+<div class="panel panel-success">
     
-    <div class="panel-heading text-center"><h4><p class="www">Informe del Viaje</p></h4></div>
-    <div class="panel-body">      
+    <div class="panel-heading text-center"><h4><p class="www"><u>Informe de viaje de la entidad de <strong>{{ $viaje->entidad }}</strong></u></p></h4></div>
+    <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#337ab7"><strong> AZUL </strong></font> son opcionales.</center>
+    <div class="panel-body ">      
        {!! Form::open(['route'=>'informes.store','method'=>'POST','data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-            @include('automotores.informe.forms.info')
-
-              
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <button type="submit" class="btn btn-primary btn-block">
-                 <span class="glyphicon glyphicon-floppy-save ">  Registrar</span> 
-            </button>
-          </div>
-        </div>      
+            @include('automotores.informe.forms.infoa')
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-block">
+                     <span class="glyphicon glyphicon-floppy-save ">  Registrar</span> 
+                </button>
+              </div>
+            </div>      
         {!! Form::close() !!}
     </div>
 </div>

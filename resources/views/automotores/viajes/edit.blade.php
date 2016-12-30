@@ -12,11 +12,11 @@
 <br>
 <div class="panel panel-default">
     
-    <div class="panel-heading text-center"><h4><p class="www">Actualización de la Reserva</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Actualizar viaje</p></h4></div>
     <div class="panel-body"> 
 
             {!! Form::model($via,['route'=>['viajes.update',$via->id],'method'=>'PUT']) !!}
-                @include('automotores.viajes.forms.vias')
+                @include('automotores.viajes.forms.viajes')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                 <center>

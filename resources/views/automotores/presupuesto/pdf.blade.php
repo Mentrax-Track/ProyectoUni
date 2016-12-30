@@ -10,7 +10,7 @@ use Infraestructura\User;
     <meta charset="UTF-8">
     <title>Presupuesto de Viaje</title>
     {!! Html::style('css/pdf/pdf.css') !!}
-</head><br><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS</strong></center>
+</head><br><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS <br />DEPARTAMENTO DE INFRAESTRUCTURA <br / > SECCIÓN AUTOMOTORES</strong></center>
 <body>
    <h1>PRESUPUESTO DE VIAJE <img style="float:right;" src="img/presupuesto.jpg" width="100px"/></h1>
 <main>
@@ -62,7 +62,7 @@ use Infraestructura\User;
     </tr>
     <tr>
         <td class="km" colspan="1"> {{$presupuesto->cantidad2}}</td>
-        <td colspan="1" class="kn"> dia</td>
+        <td colspan="1" class="kn"> día</td>
         <td colspan="1" class="kn"> Viáticos Ciudad</td>
         <td class="km" colspan="1"> {{$presupuesto->precio2}}</td>
         <td class="km" colspan="1"> {{$presupuesto->total2VC}}</td>
@@ -71,8 +71,8 @@ use Infraestructura\User;
     </tr>
     <tr>
         <td class="km" colspan="1"> {{$presupuesto->cantidad3}}</td>
-        <td colspan="1" class="kn"> dia</td>
-        <td colspan="1" class="kn"> Viáticos provincia</td>
+        <td colspan="1" class="kn"> día</td>
+        <td colspan="1" class="kn"> Viáticos Província</td>
         <td class="km" colspan="1"> {{$presupuesto->precio3}}</td>
         <td class="km" colspan="1"> {{$presupuesto->total3VP}}</td>
         <td class="km" colspan="2"> <b>RECORRIDO TOTAL: {{ $ruta->total }} Km.</b></td>
@@ -80,7 +80,7 @@ use Infraestructura\User;
     </tr>
     <tr>
         <td class="km" colspan="1"> {{$presupuesto->cantidad4}}</td>
-        <td colspan="1" class="kn"> dia</td>
+        <td colspan="1" class="kn"> día</td>
         <td colspan="1" class="kn"> Viáticos Frontera</td>
         <td class="km" colspan="1"> {{$presupuesto->precio4}}</td>
         <td class="km" colspan="1"> {{$presupuesto->total4VF}}</td>

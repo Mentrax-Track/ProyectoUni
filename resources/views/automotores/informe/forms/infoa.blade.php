@@ -84,21 +84,21 @@
               <div class="form-group">
                 <font color="#337ab7">{!! Form::label('Viáticos Ciudad:') !!}</font>    
                 <div class="input-group">
-                  {!! Form::text('viaticoa',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viaci','value'=>'0']) !!}
+                  {!! Form::text('viaticoa',$presupuesto->total2VC,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viaci','value'=>'0']) !!}
                   <span class="input-group-addon" id="basic-addon3">Bs.</span>
                 </div>   
               </div>
               <div class="form-group">
                  <font color="#337ab7"> {!! Form::label('Viáticos Provincia:') !!}</font>
                 <div class="input-group">               
-                  {!! Form::text('viaticob',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viapro','value'=>'0']) !!}
+                  {!! Form::text('viaticob',$presupuesto->total3VP,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viapro','value'=>'0']) !!}
                   <span class="input-group-addon" id="basic-addon3">Bs.</span>
                 </div>  
               </div>
               <div class="form-group">
                  <font color="#337ab7"> {!! Form::label('Viáticos Frontera:') !!}</font>
                 <div class="input-group">  
-                  {!! Form::text('viaticoc',null,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viafro','value'=>'0']) !!}
+                  {!! Form::text('viaticoc',$presupuesto->total4VF,['class'=>'form-control','placeholder'=>'Monto del viático','id'=>'viafro','value'=>'0']) !!}
                   <span class="input-group-addon" id="basic-addon3">Bs.</span>
                 </div>
               </div>

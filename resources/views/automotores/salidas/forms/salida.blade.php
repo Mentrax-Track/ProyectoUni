@@ -1,9 +1,8 @@
-<div class="list-group-item">
-<div class="jumbotron ">
+
 <div class="row">    
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <li class="list-group-item">
+        <li class="list-group-item list-group-item-success">
             <div class="row">
                 <div class="col-md-6">
                     <center>{!! Form::label('Chofer : ') !!}</center>
@@ -17,7 +16,7 @@
                 </div>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item list-group-item-success">
             <div class="row">
                 <center>
                     <div class="btn-group col-md-2" role="group">
@@ -30,7 +29,7 @@
                 </center>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item list-group-item-success">
             <div class="row">
                 <center>
                     <div class="btn-group col-md-2" role="group">
@@ -43,7 +42,7 @@
                 </center>
             </div>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item list-group-item-success">
             <div class="row">
                 <center>
                     <div class="btn-group col-md-2" role="group">
@@ -59,7 +58,7 @@
         <li class="list-group-item">
             <div class="row">   
                   <div class="col-md-1"></div>
-                  <div class="col-md-4">
+                  <div class="col-md-4 list-group-item-success">
                       <center>{!! Form::label('Hora Salida') !!}</center>
                       <div class='input-group date input-group-sm' id='datetimepicker3'>
                         {!! Form::text('hsalida',null,['class'=>'form-control','data-error'=>'Seleccione una hora','required']) !!}

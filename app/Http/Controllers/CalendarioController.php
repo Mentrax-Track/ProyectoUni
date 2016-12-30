@@ -27,13 +27,14 @@ class CalendarioController extends Controller
         $star = Viaje::all()->lists('fecha_inicial');
         $end = Viaje::all()->lists('fecha_final');
         $count = count($id); //contamos los ids obtenidos para saber el numero exacto de eventos
- 
+        $estado = Viaje::all()->lists('estado');
         //hacemos un ciclo para anidar los valores obtenidos a nuestro array principal $data
         for($i=0;$i<$count;$i++){
             $data[$i] = array(
                 "title"=>$title[$i], //obligatoriamente "title", "start" y "url" son campos requeridos
                 "start"=>$star[$i],
                 "end"=>$end[$i], //por el plugin asi que asignamos a cada uno el valor correspondiente
+                "estado"=>$estado[$i],
                 "url"=>"/viajes/".$id[$i]
                 //en el campo "url" concatenamos el el URL con el id del evento para luego
                 //en el evento onclick de JS hacer referencia a este y usar el método show

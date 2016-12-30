@@ -4,12 +4,12 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-success">
     <div class="panel-heading text-center"><h4><p class="www">Lista de Informes</p></h4></div>
-    <div class="panel-body">
+    <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-            <label>Búsqueda</label> 
+            <label>Búsqueda:</label> 
             @include('automotores.informe.forms.busqueda')
         </div>
     </form><br>
@@ -29,7 +29,7 @@
                         <tr>
                             <td  class="info text-center">{{ $num }}</td>
                             <td>{{ $infovi->enviVehi->full_vehiculo}}</td>
-                            <td>{{ $infovi->enviCho->full_name }}</td>
+                            <td>{{ $infovi->chofer }}</td>
                             <td>{{ $infovi->enviEncar->full_name }}</td>
                             <td>{{ $infovi->entidad }}</td>
                             <td>{{ $infovi->fechapartida }}</td>

@@ -57,6 +57,8 @@ class ReservasController extends Controller
      */
     public function store(ReservaCreateRequest $request)
     {
+
+
         $a = strtotime($request['fecha_inicial']);
         $b = strtotime($request['fecha_final']);
         if($a > $b)
@@ -70,14 +72,17 @@ class ReservasController extends Controller
         $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
         $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-
+        if($days == 0)
+        {
+             $days++;
+        }
         Reserva::create([
             'entidad'       => $request['entidad'],
             'objetivo'      => $request['objetivo'],
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => 1+$days,
+            'dias'          => $days,
             'user_id'       => $request['user_id'],
             ]);
       //  dump($request['encargado']);
@@ -125,7 +130,10 @@ class ReservasController extends Controller
         $years  = floor($diferencia / (365*60*60*24));
         $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
         $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-
+        if($days == 0)
+        {
+             $days++;
+        }
         $reservas=Reserva::find($id);
         //dd($reservas);
         $reservas->entidad = $request->entidad;
@@ -134,7 +142,7 @@ class ReservasController extends Controller
         $reservas->fecha_inicial = $request->fecha_inicial;
         $reservas->fecha_final = $request->fecha_final;
         $reservas->user_id = $request->user_id;
-        $reservas->dias = 1+$days;
+        $reservas->dias = $days;
         $reservas->save();
         Session::flash('message','La reserva fue editada correctamente');
         return Redirect::to('/reservas');
@@ -149,7 +157,7 @@ class ReservasController extends Controller
     public function destroy($id)
     {
         $this->reserva->delete();
-        Session::flash('message','La reserva fue Eliminada correctamente');
+        Session::flash('message','La reserva fue eliminada correctamente');
         return Redirect::to('/reservas');
     }
 }
