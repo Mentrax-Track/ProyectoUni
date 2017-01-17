@@ -8,7 +8,7 @@
 <div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www">Detalle del viaje</p></h4></div>
-    <div class="panel-body"> 
+    <div class="panel-body jumbotron"> 
         <br>
     <div class="row">
         <div class="col-md-5">

@@ -34,10 +34,14 @@
                         <td class="text-center">
                             <div class="btn-group btn-group-sm">
                                 <center>
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                                     {!!link_to_route('salidas.edit', $title = ' Editar', $parameters = $sal->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
                                     
                                     {!!link_to_route('salidas.show', $title = '
                                      Imprimir   ', $parameters = $sal->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-print','target'=>'_blank'])!!}
+                                @else 
+                                    <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
+                                @endif
                                 </center>
                             </div>
                         </td>

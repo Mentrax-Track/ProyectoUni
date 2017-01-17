@@ -1,8 +1,8 @@
 <?php use Infraestructura\Viaje; ?><br>
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading text-center"><h4><p class="www">Tablero de Control</p></h4></div>
     <div class="panel-body">
-            <div class="jumbotron">    
+            <li class="list-group-item list-group-item-success"> 
             <div class="row">
                 <center><h4><p class="www">Viajes</p></h4></center>
                 <div class="col-lg-4 col-md-6">
@@ -110,7 +110,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+            </li>
         
     </div>
 </div>

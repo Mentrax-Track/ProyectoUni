@@ -1,4 +1,5 @@
-<?php use Infraestructura\Accesorio; ?>
+<?php use Infraestructura\Accesorio; 
+    use Infraestructura\Mecanico;?>
 @extends('automotores.admin')
 
 @section('subtitulo','Solicitudes de Trabajo')
@@ -24,6 +25,7 @@
                     <th class="text-center">Descripción</th>
                     <th class="text-center">Fecha</th>
                     <th class="text-center">Operación</th>
+                    <th class="text-center">Trabajos</th>
                 </tr>
                 @foreach($solicitudes as $sol)
                     <tbody>
@@ -51,6 +53,16 @@
                                 <center>
                                     {!!link_to_route('mecanicos.show', $title = 'Concretar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
                                 </center>      
+                            </td>
+                            <td>
+                                <?php $so = $sol->id;
+                                    $re = Mecanico::where('solicitud_id',$so)->count();
+                                    ?>
+                                @if ($re == 0) 
+                                    <center><font color="red">{{$re}}</font> </center>
+                                @else 
+                                    <center><font color="blue">{{$re}}</font> </center>
+                                @endif
                             </td>
                         </tr>
                     </tbody>

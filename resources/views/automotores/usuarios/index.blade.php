@@ -11,6 +11,11 @@
         <div class="form-group">
             <label>Búsqueda</label> 
             @include('automotores.usuarios.forms.busqueda')
+            <?php $user = \Auth::user()->tipo; 
+                //dd($user);?>
+            @if ($user == 'administrador' OR $user == 'supervisor') 
+                <a href="{!! URL::to('/imprimir') !!}" class="btn btn-warning"><i class='fa fa-print'></i> Imprimir</a>
+            @endif
         </div>
     </form><br>
         <div class="table-responsive">

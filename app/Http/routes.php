@@ -72,6 +72,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('Inicio-Automotores','AutomotoresController@index');
 
 ///// Rutas para intrudcir un usuario normal o encargado /////////// 
+    Route::get('imprimir','UsersController@getImpresiones');
     Route::resource('users','UsersController');
     Route::resource('encar','EncargadoController');
 
@@ -232,5 +233,25 @@ Route::resource('mecanicos','MecanicoController');
 
 Route::resource('mail','MailController');
 
+//Impresiones para los tipos de choferes/////*
+Route::get('Todos-los-Usuarios', [
+    'uses' => 'UsersController@getTodos',
+    'as'   => 'todos'
+    ]);
+Route::get('Todos-los-choferes', [
+    'uses' => 'UsersController@getChoferes',
+    'as'   => 'choferes'
+    ]);
+Route::get('Todos-los-mecánicos', [
+    'uses' => 'UsersController@getMecanicos',
+    'as'   => 'mecanicos'
+    ]);
+Route::get('Todos-los-encargados', [
+    'uses' => 'UsersController@getEncargados',
+    'as'   => 'encargados'
+    ]);
 
+/////////////////Impreciones de los Vehículos/8////
+Route::get('imprimir','VehiculosController@getImprimir');
+Route::get('imprimirDestino','DestinoController@getImprimir');
 });

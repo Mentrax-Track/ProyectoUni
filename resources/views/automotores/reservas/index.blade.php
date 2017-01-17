@@ -44,6 +44,7 @@
                     <td class="btns text-center" style="vertical-align:middle; ">
                         <div class="btn-group btn-group-sm">
                             <center>
+
                             <?php 
                                 $re = $reser->id;
                                 //dd($re); 
@@ -55,8 +56,9 @@
                                 { ?>
 
                                     {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
-
-                                    <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>        
+                                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                                        <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>
+                                    @endif        
                                 <?php }
                                 else{    
                                     echo "<a class='bg-success'>Realizado</a>";

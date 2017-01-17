@@ -15,6 +15,7 @@ class ReservasController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('reserva',['only'=>['create','edit','index']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
 
     }

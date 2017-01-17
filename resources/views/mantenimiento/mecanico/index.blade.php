@@ -59,7 +59,11 @@
                             <td>{{ $mec->observacion }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
+                                 @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')
                                     {!!link_to_route('mecanicos.edit', $title = ' Editar', $parameters = $mec->id, $attributes = ['class'=>'btn btn-primary btn-xs glyphicon glyphicon-edit'])!!}
+                                 @else
+                                     <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>                                           
+                                 @endif
                                 </center>      
                             </td>
                         </tr>

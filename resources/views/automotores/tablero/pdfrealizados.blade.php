@@ -1,40 +1,93 @@
+<?php 
+use Infraestructura\User;
+use Infraestructura\Rol;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tablero</title>
-    {!! Html::style('css/pdf/pdf.css') !!}
+  <meta charset="UTF-8">
+  <title>Tablero</title>
+  {!! Html::style('css/pdf/bien.css') !!}
 </head>
-<body><br>
-   <h1>Viajes Realizados &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="float:right;" src="img/rol.jpg" width="100px"/></h1>
-<main>
-<table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black; "  class="body" >
-    <tr>
-        <td class="kn" colspan="1"><strong><center>Nro.</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Entidad</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Tipo</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Objetivo</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Dias</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Pasajeros</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Fecha Inicial</center></strong></td>
-        <td class="kn" colspan="1"><strong><center>Fecha Final</center></strong></td>
-        </tr>
-        <?php $ids = 1; ?>
-        @foreach ($viajes as $via ) 
-            <tr>
-                <td class="kn"><center>{{ $ids }}</center></td>
-                <td class="kn"><center>{{ $via->entidad }}</center></td>
-                <td class="kn"><center>{{ $via->tipo }}</center></td>
-                <td class="kn"><center>{{ $via->objetivo }}</center></td>
-                <td class="kn"><center>{{ $via->dias }}</center></td>
-                <td class="kn"><center>{{ $via->pasajeros }}</center></td>
-                <td class="kn"><center>{{ $via->fecha_inicial }}</center></td>
-                <td class="kn"><center>{{ $via->fecha_final }}</center></td>
-            </tr><?php $ids++; ?>
-        @endforeach
-</table>
-{{ $fecha }}
-</main><br /><br /><br /><br />
-        <center><h4 >Sr. {{$responsable}}<br />ENCARGADO DE AUTOMOTORES </h4></center>
+<body>
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+            </div><!-- /.box-header -->
+                <div id="client">
+                    <header class="clearfix">
+                      <div id="logo">
+                        <center><img style="float:center;" src="img/uatf.jpg" width="70px"></center>
+                      </div>
+                      <h3><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS <br />DEPARTAMENTO DE INFRAESTRUCTURA <br /> SECCIÓN AUTOMOTORES </strong></center></h3>
+                      <h4><center><strong> Viajes Realizados </strong></center></h4>
+
+                    </header>
+                </div>
+                <div class="box-body">           
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Nro.</th>
+                            <th>Entidad</th>
+                            <th>Tipo</th>
+                            <th>Objetivo</th>
+                            <th>Dias</th>
+                            <th>Pasajeros</th>
+                            <th>Fecha Inicial</th>
+                            <th>Fecha Final</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($viajes as $key => $via) 
+                        <tbody>
+                          <tr>    
+                            <td ><center>{{ ++$key }}</center></td>
+                            <td>{{ $via->entidad }}</td>
+                            <td>{{ $via->tipo }}</td>
+                            <td>{{ $via->objetivo }}</td>
+                            <td>{{ $via->dias }}</td>
+                            <td>{{ $via->pasajeros }}</td>
+                            <td>{{ $via->fecha_inicial }}</td>
+                            <td>{{ $via->fecha_final }}</td>
+                          </tr>
+                        </tbody>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                {{$fecha}}
+                </div><br /><br /><br /><br /><br />
+                <div class="box-body">               
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>
+                            {{$responsable}} <br />
+                            Encargado Automotores</th>
+                           
+                          </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  
+                </div>
+            </div><!-- /.box -->
+
+            </div>
+
+            <footer>
+      Sistema Web Departamento de Infraestructura U.A.T.F.
+    </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+

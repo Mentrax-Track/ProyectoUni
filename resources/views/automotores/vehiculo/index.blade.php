@@ -7,7 +7,7 @@
 @include('alertas.success')
 <br>
 <div class="panel panel-success">
-    <div class="panel-heading text-center"><h4><p class="www">Vehiculos</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Lista de Vehículos</p></h4></div>
     <div class="panel-body jumbotron"> 
 
     <form class="form-inline">
@@ -15,6 +15,11 @@
         <div class="form-group">
             <label>Búsqueda:</label> 
             @include('automotores.vehiculo.forms.busqueda')
+            <?php $user = \Auth::user()->tipo; 
+                //dd($user);?>
+            @if ($user == 'administrador' OR $user == 'supervisor' OR $user == 'mecanico') 
+                {!!link_to_action('VehiculosController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning fa fa-print','target'=>'_blank'])!!}
+            @endif
         </div>
     </form>
 
@@ -40,7 +45,10 @@
                             <td>{{ $vehi->estado }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')
+                                    {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                @endif
 
                                 <a class="btn btn-info  btn-xs  glyphicon glyphicon-th-list" href="{{ route('vehiculos.show',['id' => $vehi->id] )}}" > Detalle</a>
                                </center>

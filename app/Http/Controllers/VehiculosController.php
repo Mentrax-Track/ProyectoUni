@@ -17,6 +17,7 @@ class VehiculosController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('vehiculo',['only'=>['create','edit','getImprimir']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -200,5 +201,90 @@ class VehiculosController extends Controller
         $this->vehi->delete();
         Session::flash('message','Vehículo eliminado correctamente...');
         return redirect('vehiculos');
+    }
+    public function getImprimir()
+    {
+        $vagoneta = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Vagoneta')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($vagoneta);
+
+        $automovil = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Automovil')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($automovil);
+
+        $jeep = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Jeep')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($jeep);
+
+        $bussw = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Buss W41')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($bussw);
+        
+        $bussmk = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Buss MKB210')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($bussmk);
+
+        $camioneta = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Camioneta')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+
+        $camion = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','Camion')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($camion);
+        
+        $otros = \DB::table('vehiculos')
+        ->join('modelos','vehiculos.id','=','modelos.vehiculo_id')
+        ->join('marcas','modelos.id','=','marcas.modelo_id')
+        ->where('vehiculos.tipog','!=','Camion')
+        ->where('vehiculos.tipog','!=', 'Camioneta')
+        ->where('vehiculos.tipog','!=', 'Buss MKB210')
+        ->where('vehiculos.tipog','!=', 'Buss W41')
+        ->where('vehiculos.tipog','!=', 'Jeep')
+        ->where('vehiculos.tipog','!=', 'Automovil')
+        ->where('vehiculos.tipog','!=', 'Vagoneta')
+        ->select('vehiculos.* as v','modelos.* as m','marcas.* as ma')
+        ->get();
+        //dd($otros);
+
+        $responsable = \Auth::user()->full_name;
+        //dd($responsable);
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes',
+               'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $date = $arrayDias[date('w')].", ".date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        /*"Miercoles, 07 de Diciembre de 2016"*/
+        //dd($date);
+        $view =  \View::make('automotores.vehiculo.pdf', compact('otros','date', 'vagoneta','automovil','jeep','bussw','bussmk','camioneta','camion','responsable'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta','landscape');
+        return $pdf->stream('Vehiculos');
     }
 }

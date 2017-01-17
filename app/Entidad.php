@@ -21,4 +21,8 @@ class Entidad extends Model
     {
         return $this->facultad.' '.$this->carrera.' '.$this->materia.' '.$this->sigla;
     }
+    public function envisUser()
+    {
+        return $this->hasOne('Infraestructura\User','id','user_id');
+    }
 }

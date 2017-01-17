@@ -12,6 +12,11 @@
         <div class="form-group">
             <label>Búsqueda</label> 
             @include('automotores.destino.forms.busqueda')
+             <?php $user = \Auth::user()->tipo; 
+                //dd($user);?>
+            @if ($user == 'administrador' OR $user == 'supervisor' ) 
+                {!!link_to_action('DestinoController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning fa fa-print','target'=>'_blank'])!!}
+            @endif
         </div>
     </form><br>
         <div class="table-responsive">
@@ -40,16 +45,21 @@
                             <td>{{ $des->tiempo }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                    {!!link_to_route('destinos.edit', $title = 'Editar', $parameters = $des, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
-                                <?php 
-                                    $ides =  $des->id;
-                                    $resul = Mapa::where('destino_id',$ides)
-                                            ->get(['id'])->lists('id')->toArray();
-                                    
-                                    if (empty($resul)) 
-                                    { ?>
-                                    {!!link_to_route('mapas.show', $title = ' Mapa', $parameters = $des->id, $attributes = ['class'=>'btn btn-primary btn-xs glyphicon fa fa-map-marker'])!!}
-                                <?php } ?>
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                                    {!!link_to_route('destinos.edit', $title = ' Editar', $parameters = $des, $attributes = ['class'=>'btn btn-info btn-xs  fa fa-pencil-square-o'])!!}
+                                                                        
+                                    <?php 
+                                        $ides =  $des->id;
+                                        $resul = Mapa::where('destino_id',$ides)
+                                                ->get(['id'])->lists('id')->toArray();
+                                        
+                                        if (empty($resul)) 
+                                        { ?>
+                                        {!!link_to_route('mapas.show', $title = ' Mapa', $parameters = $des->id, $attributes = ['class'=>'btn btn-primary btn-xs fa fa-map-marker'])!!}
+                                    <?php } ?>
+                                @else
+                                    <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
+                                @endif
                                 </center>
                             </td>
                         </tr>

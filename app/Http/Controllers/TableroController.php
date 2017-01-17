@@ -10,6 +10,10 @@ use Infraestructura\Http\Controllers\Controller;
 use Auth;
 class TableroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin',['only'=>['getImprimirmes','getImprimireservados','getImprimirealizados']]);
+    }
     public function getRealizados()
     {
         //$viajes = Viaje::orderBy('id', 'DESC')->firstUserId;

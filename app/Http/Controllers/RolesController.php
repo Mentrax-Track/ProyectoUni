@@ -19,7 +19,7 @@ class RolesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin',['only'=>['create','edit']]);
+        $this->middleware('admin',['only'=>['create','edit','getImprimir','getLimpiar','destroy']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -34,6 +34,11 @@ class RolesController extends Controller
      */
     public function index()
     {
+        if (\Auth::user()->tipo == 'mecanico' OR \Auth::user()->tipo == 'encargado') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $roles = Rol::orderBy('id','ASC')->paginate(15);
        // dd($choferes);
         return view('automotores.roles.index', compact('roles'));
@@ -409,11 +414,18 @@ class RolesController extends Controller
         //dd($roles);
         $responsable = Auth::user()->full_name;
         //dd($responsable);
-        $date = date('d-m-Y');
+        
+        
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes',
+               'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $date = $arrayDias[date('w')].", ".date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        /*"Miercoles, 07 de Diciembre de 2016"*/
         //dd($date);
         $view =  \View::make('automotores.roles.pdf', compact('date', 'roles','responsable'))->render();
         $pdf  = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view)->setPaper('carta', 'portrat');
+        $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
         return $pdf->stream('rol_de_viajes');
     }
 }

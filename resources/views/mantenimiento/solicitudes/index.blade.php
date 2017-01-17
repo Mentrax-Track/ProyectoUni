@@ -49,7 +49,11 @@
                             <td>{{ $sol->fecha }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
+                                @if(Auth::user()->full_name == $sol->chofer )
                                     {!!link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                @else
+                                    <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
+                                @endif
                                 </center>      
                             </td>
                         </tr>

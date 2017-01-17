@@ -11,7 +11,9 @@
     <div class="panel-body"> 
     <p class="text-center">Hay {{ $viajes->total() }} registros</p> 
     <center>
+    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
         {!!link_to_action('TableroController@getImprimirealizados', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-print','target'=>'_blank'])!!}
+    @endif
     </center> 
     <div class="row">
         <div class="col-md-12">

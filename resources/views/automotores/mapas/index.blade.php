@@ -27,8 +27,9 @@
                             <td>{{ $mapa->lng }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')
                                     {!!link_to_route('mapas.edit', $title = ' Editar', $parameters = $mapa->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon fa fa-pencil-square-o'])!!}
-
+                                @endif
                                     {!!link_to_action('MapaController@getVer', $title = ' Ver', $parameters = $mapa->id, $attributes = ['class'=>'btn btn-primary btn-xs glyphicon fa fa-map-marker'])!!}
                                 </center>
                             </td>

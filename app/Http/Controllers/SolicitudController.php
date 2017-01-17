@@ -19,6 +19,7 @@ class SolicitudController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('informe',['only'=>['create','edit','index']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -110,6 +111,18 @@ class SolicitudController extends Controller
      */
     public function edit($id)
     {
+        $cho = Auth::user()->full_name;
+        //dd($cho);
+        $sol = Solicitud::where('id',$id)->get(['chofer'])
+            ->lists('chofer')->toArray();
+        $sole = implode ( $sol );
+        //dd($sole);
+        if ($cho != $sole) 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
+
         $vehiculo = Vehiculo::where('estado','optimo')
                     ->get(['id','placa','tipog'])
                     ->lists('full_vehiculo','id')
