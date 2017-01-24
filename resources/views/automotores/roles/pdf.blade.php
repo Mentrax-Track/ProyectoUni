@@ -1,51 +1,82 @@
-<?php 
-use Infraestructura\User;
-use Infraestructura\Rol;
-
- ?>
+<?php use Infraestructura\User; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rol de Viajes</title>
-    {!! Html::style('css/pdf/pdf.css') !!}
+  <meta charset="UTF-8">
+  <title>Rol de viajes</title>
+  {!! Html::style('css/pdf/bien.css') !!}
 </head>
-<body><br>
-   <h1>ROL DE VIAJES &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="float:right;" src="img/rol.jpg" width="100px"/></h1>
-<main>
-<table border="2x"rowspan="2" colspan="1"style="border-width: 2px; border-style: double; border-color: black; "  class="body">
-    <tr>
-        <td class="preti" colspan="1"><strong><center>Nro.</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>Chofer</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>Ciudad "A"</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>Provincia "B"</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>Frontera "C"</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>Fecha</center></strong></td>
-        <td class="preti" colspan="1"><strong><center>#</center></strong></td>
-    </tr>
-    <?php $ids = 1; ?>
-    @foreach ($roles as $value) 
-        <tr><?php  $i = $value->chofer_id;
-                    $r = User::where('id',$i)
-                        ->get(['nombres','apellidos'])
-                        ->lists('fullname')->toArray();
-                    $nombre = implode($r);?>
-            <td class="kn"><center>{{ $ids }}</center></td>
-            <td class="kn">{{ $nombre }}</td>
-            <td class="kn">{{ $value->tipoa }}</td>
-            <td class="kn">{{ $value->tipob }}</td>
-            <td class="kn">{{ $value->tipoc }}</td>
-            <td class="kn"><center>{{ $value->fecha }}</center></td>
-            <td class="kn"><center>{{ $value->cantidad }}</center></td>
-        </tr><?php $ids++; ?>
-    @endforeach
-</table>  
-</main><h4 class="km">Fecha: {{ $date }}</h4>
-    <h4><b>NOTA: </h4>
-        <h4><strong>A) </strong><i>El orden de los choferes se respesta según la llegada del tipo de viaje.</i></h4>
-        <h4><strong>B) </strong><i>La fecha muestra la última modificación o designación que se realizó en el rol de viajes.</i></h4>
-        <h4><strong>C) </strong><i>El # muestra el número de viajes realizados dentro del rol de cada chofer.</i></h4>
-        <br /><br /><br /><br />
-        <center><h4 >Sr. {{ $responsable }}<br />ENCARGADO DE AUTOMOTORES </h4></center>
+<body>
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+            </div><!-- /.box-header -->
+                <div id="client">
+                    <header class="clearfix">
+                      <div id="logo">
+                        <center><img style="float:center;" src="img/uatf.jpg" width="70px"></center>
+                      </div>
+                      <h3><center><strong>UNIVERSIDAD AUTÓNOMA TOMÁS FRÍAS <br />DEPARTAMENTO DE INFRAESTRUCTURA <br /> SECCIÓN AUTOMOTORES </strong></center></h3>
+                      <h4><center><strong>ROL DE VIAJES</strong></center></h4>
+                      <h4><center><strong>{{$date}} </strong></center></h4>
+                    </header>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Nro.</th>
+                            <th>Chofer</th>
+                            <th>Ciudad "A"</th>
+                            <th>Provincia "B"</th>
+                            <th>Frontera "C"</th>
+                            <th>Fecha</th>
+                            <th>#</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($roles as $key => $value) 
+                        <tbody>    
+                            <tr><?php  $i = $value->chofer_id;
+                                        $r = User::where('id',$i)
+                                            ->get(['nombres','apellidos'])
+                                            ->lists('fullname')->toArray();
+                                        $nombre = implode($r);?>
+                                <td class="kn"><center>{{ ++$key }}</center></td>
+                                <td class="kn">{{ $nombre }}</td>
+                                <td class="kn">{{ $value->tipoa }}</td>
+                                <td class="kn">{{ $value->tipob }}</td>
+                                <td class="kn">{{ $value->tipoc }}</td>
+                                <td class="kn"><center>{{ $value->fecha }}</center></td>
+                                <td class="kn"><center>{{ $value->cantidad }}</center></td>
+                            </tr>
+                        </tbody>
+                        @endforeach
+                    
+                  </tbody>
+
+                  </table>
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                  
+                </div>
+              
+                NOTA: <br />
+                A) El orden de los choferes se muestra según la antiguiedad laboral. <br /> 
+                B) La nueva designación de un viaje se realiza según: la antiguedad, el turno disponible del tipo de viaje y la disponibilidad del chofer. <br />
+                C) La fecha muestra la última modificación o designación que se realizó en el rol de viajes.<br />
+                D) El # muestra el número de viajes realizados de cada chofer. (dentro del rol de viajes) <br><br><br>
+            </div><!-- /.box --><br><br>
+            <center><h4 >Sr. {{ $responsable }}<br />ENCARGADO DE AUTOMOTORES </h4></center>
+              
+            </div>
+            <footer>
+      Sistema Web Departamento de Infraestructura U.A.T.F.
+    </footer>
 </body>
 </html>
+
+
+
+
+

@@ -19,6 +19,7 @@ class SolicitudController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('informe',['only'=>['create','edit','index']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -31,11 +32,20 @@ class SolicitudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $solicitudes = Solicitud::orderBy('id','DESC')->paginate(10);
+       //dd($request->get('chofer'));
+        $solicitudes = Solicitud::chofer($request->get('chofer'))->vehiculo_id($request->get('vehiculo_id'))->orderBy('id','DESC')->paginate(10);
         //dd($solicitudes);
-        return view('mantenimiento.solicitudes.index', compact('solicitudes'));
+            
+        $chofer = User::where('tipo','chofer')
+            ->get(['nombres','apellidos','id'])
+            ->lists('full_name','full_name')
+            ->toArray();
+
+        $vehiculo_id = Vehiculo::get(['tipog','placa','id'])->lists('full_vehiculo','id')->toArray();
+
+        return view('mantenimiento.solicitudes.index', compact('solicitudes','chofer','vehiculo_id'));
     }
 
     /**
@@ -110,6 +120,18 @@ class SolicitudController extends Controller
      */
     public function edit($id)
     {
+        $cho = Auth::user()->full_name;
+        //dd($cho);
+        $sol = Solicitud::where('id',$id)->get(['chofer'])
+            ->lists('chofer')->toArray();
+        $sole = implode ( $sol );
+        //dd($sole);
+        if ($cho != $sole) 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
+
         $vehiculo = Vehiculo::where('estado','optimo')
                     ->get(['id','placa','tipog'])
                     ->lists('full_vehiculo','id')

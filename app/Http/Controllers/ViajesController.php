@@ -24,6 +24,8 @@ class ViajesController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('viaje',['only'=>['create','edit','getCancelar','destroy']]);
+        $this->middleware('calendario',['only'=>['index']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
 
     }

@@ -20,6 +20,7 @@ class MecanicoController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('mecanico',['only'=>['create','edit','show','destroy']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -34,6 +35,11 @@ class MecanicoController extends Controller
      */
     public function index()
     {
+        if (\Auth::user()->tipo == 'encargado') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $mecanico = Mecanico::orderBy('id','DESC')->paginate(10);
         return view('mantenimiento.mecanico.index', compact('mecanico'));
     }

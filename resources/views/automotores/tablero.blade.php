@@ -1,8 +1,8 @@
 <?php use Infraestructura\Viaje; ?><br>
-<div class="panel panel-default">
+<div class="panel panel-info">
   <div class="panel-heading text-center"><h4><p class="www">Tablero de Control</p></h4></div>
     <div class="panel-body">
-            <div class="jumbotron">    
+            <li class="list-group-item list-group-item-success"> 
             <div class="row">
                 <center><h4><p class="www">Viajes</p></h4></center>
                 <div class="col-lg-4 col-md-6">
@@ -43,7 +43,7 @@
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
-                                <?php $numviajes = \DB::table('viajes')->count(); ?>
+                                <?php $numviajes = \DB::table('viajes')->where('estado','activo')->count(); ?>
                                 <div class="col-xs-3">
                                     <i class="fa fa-globe fa-5x"></i>
                                 </div>
@@ -88,7 +88,7 @@
                 <div class="col-lg-4 col-md-6">
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="panel panel-red">
+                    <div class="panel panel-danger">
                         <div class="panel-heading ">
                             <div class="row">
                                 <div class="col-xs-3">
@@ -109,8 +109,30 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading ">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-bar-chart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><i class="fa fa-pie-chart fa-1x"></i></div>
+                                    <div>Gráficas de los reportes</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{!! URL::to('/reportes') !!}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Visualizar</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
-            </div>
+            </li>
         
     </div>
 </div>

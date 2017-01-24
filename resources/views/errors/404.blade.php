@@ -1,7 +1,11 @@
+@extends('automotores.admin')
+
+@section('subtitulo','Página 404')
+@section('content')
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Error.</title>
+        <title>Página 404</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -38,10 +42,13 @@
         </style>
     </head>
     <body>
+    <li class="list-group-item list-group-item-danger">
         <div class="container">
             <div class="content">
-                <div class="title">Objeto no localizado señor...</div>
+                <div class="title">Acceso Denegado...</div>
             </div>
         </div>
+    </li>
     </body>
 </html>
+@endsection

@@ -35,7 +35,6 @@ class VehiculoCreateRequest extends Request
             'tipoe' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
             'marca' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
             'chasis'=> 'required|max:70|min:3|alpha_dash',
-            'chasis'=> 'required|max:70|min:3',
             'cilindrada'=> 'required|numeric',
         ];
     }

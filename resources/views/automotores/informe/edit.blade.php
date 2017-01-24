@@ -18,6 +18,7 @@
     <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#337ab7"><strong> AZUL </strong></font> son opcionales.</center>
     <div class="panel-body">
      {!! Form::model($informes,['route'=>['informes.update',$informes->id],'method'=>'PUT']) !!}
+                
                 @include('automotores.informe.forms.infoupdate')
                 <div class="col-md-4"></div>
                 <div class="col-md-4">

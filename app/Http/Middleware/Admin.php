@@ -23,7 +23,7 @@ class Admin
     public function handle($request, Closure $next)
     {
         $tipo = $this->auth->user()->tipo;
-        if ( $tipo != 'administrador') 
+        if ( $tipo != 'administrador' AND $tipo != 'supervisor') 
         {
             Session::flash('mensaje-rol','Sin privilegios');
             return redirect()->to('acceso');

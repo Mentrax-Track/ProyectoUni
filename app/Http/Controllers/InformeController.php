@@ -26,6 +26,8 @@ class InformeController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('informe',['only'=>['create','edit','show','getPresudia','index']]);
+
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
 
     }
@@ -41,6 +43,7 @@ class InformeController extends Controller
     public function index(Request $request)
     {
         $informeviajes = InformeViaje::entidad($request->get('entidad'))->orderBy('id','DESC')->paginate(10);
+
         return view('automotores.informe.index',compact('informeviajes'));
     }
     
@@ -62,7 +65,7 @@ class InformeController extends Controller
      */
     public function store(CreateInformeRequest $request)
     {
-
+        //dd($request['chofer']);
         //dd($request);
         $model = $request['mantenimiento'];
         //dd($model);
@@ -158,7 +161,8 @@ class InformeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');*/
-        $chofer = Auth::user()->full_name;
+        $chofer = Auth::user()->id;
+        //dd($chofer);
 
         $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
@@ -187,12 +191,28 @@ class InformeController extends Controller
      */
     public function edit($id)
     {
+        $idU = Auth::user()->id;
+        //dd($idU);
+        $in = InformeViaje::where('id',$id)->get(['chofer'])->lists('chofer')->toArray();   
+        $is = (int)$in[0];
+        //dd($is);
+        if ($idU != $is) 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
+
+        if (\Auth::user()->tipo == 'supervisor') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $infovi = InfoViaje::where('informeviaje_id',$id)
                     ->get(['viaje_id'])->lists('viaje_id')->toArray();
 
         $ids = (int)$infovi[0];
         //dd($ids);
-
+        
         $informesdebolu = InfoDebolucion::where('informesviaje_id',$id)->first();
         //dd($informesdebolu);
         
@@ -290,7 +310,7 @@ class InformeController extends Controller
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $chofer = Auth::user()->full_name;
+        $chofer = Auth::user()->id; 
         $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
@@ -313,6 +333,11 @@ class InformeController extends Controller
 
     public function getImprimir($id)
     {
+        if (\Auth::user()->tipo == 'mecanico' OR \Auth::user()->tipo == 'encargado') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         //dd($id);
         $informe = InformeViaje::find($id);
         //dd($informe);

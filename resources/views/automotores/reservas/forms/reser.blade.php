@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-4"></div>
   <div class="col-md-4">
+    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
     <li class="list-group-item list-group-item-success">
       <div class="form-group">
               <center>{!! Form::label('Nombre y apellido de Encargado') !!}</center>
@@ -8,6 +9,10 @@
               <center><div class="help-block with-errors"></div></center>
       </div>
     </li>
+    @else
+      <?php $user = Auth::user()->id; ?>
+        <input type="hidden" name="user_id" value='{{ $user }}' />
+    @endif
   </div>
   <div class="col-md-4"></div>
 </div>

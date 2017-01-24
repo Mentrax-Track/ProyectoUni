@@ -50,7 +50,7 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
-                     
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor') 
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -62,7 +62,8 @@
                                 </li>
                             </ul>
                         </li>
-                    
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="fa fa-share-alt"></i> Rol de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -71,30 +72,38 @@
                                 </li>
                             </ul>
                         </li>
-                   
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'mecanico' OR Auth::user()->tipo == 'chofer')
+                    
                         <li>
                             <a href="#"><i class="fa fa-bus"></i> Vehículos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
-                                </li>
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                                    <li>
+                                        <a href="{!! URL::to('/vehiculos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Agregar</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="{!! URL::to('/vehiculos') !!}"><i class='fa fa-list-ol fa-fw'></i> Mostrar</a>
                                 </li>
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-road"></i> Destinos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
-                                </li>
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                                    <li>
+                                        <a href="{!! URL::to('/destinos/create') !!}"><i class='glyphicon glyphicon-ok'></i> Insertar</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <a href="{!! URL::to('/destinos') !!}"><i class='fa fa-list-ol fa-fw'></i> Listar</a>
                                 </li>
                             </ul>
                         </li>
-
+                    
                         <li>
                             <a href="#"><i class="glyphicon glyphicon glyphicon glyphicon-map-marker"></i> Mapas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -103,6 +112,8 @@
                                 </li>
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'encargado')
                         <li>
                             <a href="#"><i class='glyphicon glyphicon-list-alt'></i> Reservas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -115,21 +126,27 @@
 
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo != 'mecanico')
                         <li>
                             <a href="#"><i class='glyphicon glyphicon-globe'></i> Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/calendario') !!}"><i class='glyphicon glyphicon-calendar'></i> Calendario</a>
                                 </li>
+                            @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')  
                                 <li>
                                     <a href="{!! URL::to('/viajes/create') !!}"><i class='glyphicon glyphicon-edit'></i> Agregar</a>
                                 </li>
+                            @endif
                                 <li>
                                     <a href="{!! URL::to('/viajes') !!}"><i class='glyphicon glyphicon-list-alt'></i> Listar</a>
                                 </li>
 
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                         <li>
                             <a href="#"><i class="fa fa-file-pdf-o"></i> Presupuestos de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -141,18 +158,22 @@
                                 </li>
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo != 'mecanico' AND Auth::user()->tipo != 'encargado')
                         <li>
                             <a href="#"><i class="fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                            @if (Auth::user()->tipo != 'chofer' )
                                 <li>
                                     <a href="{!! URL::to('/salidas/create') !!}"><i class='fa fa-file-text-o'></i> Crear</a>
                                 </li>
+                            @endif
                                 <li>
                                     <a href="{!! URL::to('/salidas') !!}"><i class='fa fa-sort-numeric-asc'></i> Listar</a>
                                 </li>
                             </ul>
                         </li>
-                    
+
                         <li>
                             <a href="#"><i class="fa fa-file-word-o"></i> Informes de Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -161,6 +182,8 @@
                                 </li>
                             </ul>
                         </li>
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="fa fa-sign-in"></i> Solicitud de Trabajo<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -172,18 +195,23 @@
                                 </li>
                             </ul>
                         </li>
-                    
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'mecanico' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-wrench"></i> Mantenimiento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                            @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')
                                 <li>
                                     <a href="{!! URL::to('/mecanicos/create') !!}"><i class='fa fa-sliders'></i> Solicitudes</a>
                                 </li>
+                            @endif
                                 <li>
                                     <a href="{!! URL::to('/mecanicos') !!}"><i class='fa fa-file-text-o'></i> Kardex</a>
                                 </li>
                             </ul>
                         </li>
+                     @endif
+                    
                     </ul>
                 </div>
             </div>

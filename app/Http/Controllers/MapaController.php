@@ -15,6 +15,7 @@ class MapaController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('admin',['only'=>['create','edit']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -29,6 +30,11 @@ class MapaController extends Controller
      */
     public function index()
     {
+        if (\Auth::user()->tipo == 'mecanico') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $mapas = Mapa::orderBy('id', 'DESC')->paginate(12);
         return view('automotores.mapas.index', compact('mapas'));
     }
@@ -116,6 +122,11 @@ class MapaController extends Controller
     }
     public function getVer($id)
     {
+        if (\Auth::user()->tipo == 'mecanico') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $mapa = Mapa::find($id);
         return view('automotores.mapas.ver',compact('mapa'));
     }

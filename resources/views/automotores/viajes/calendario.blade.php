@@ -110,7 +110,7 @@
     <div class="panel panel-success">
         <div class="panel-heading text-center"><h3><p class="www">Calendario de Viajes</p></h3></div>
         <div class="panel-body">
-            <center><font color="red">■</font>El evento de color <font color = "#77DD77"><strong> VERDE </strong></font> es un viaje concluido.<font color="red">■</font> El evento de color <font color = "#FFB347"><strong> AMARILLO </strong></font> es un viaje en proceso.<font color="red">■</font> El evento de color <font color = "#FA5858"><strong> ROJO </strong></font> es un viaje cancelado.</center>
+            <center><font color="red">■</font>El evento de color <font color = "#77DD77"><strong> VERDE </strong></font> es un viaje concluido.<font color="red">■</font> El evento de color <font color = "#FFB347"><strong> AMARILLO </strong></font> es un viaje en proceso.<font color="red">■</font> El evento de color <font color = "#337ab7"><strong> AZUL </strong></font> es el próximo viaje.<font color="red">■</font> El evento de color <font color = "#FA5858"><strong> ROJO </strong></font> es un viaje cancelado.</center>
             <li class="list-group-item list-group-item-info">
                 <h4><div id='calendar'></div></h4>    
             </li>

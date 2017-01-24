@@ -26,7 +26,7 @@ class SolicitudCreateRequest extends Request
         return [
             'vehiculo_id' => 'required',
             'solicitud'   => 'required|max:100',
-            'descripsoli' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:250',
+            'descripsoli' => 'required|regex:/^[a-z ñáéíóú )]+$/i|max:250',
         ];
     }
     public function messages()

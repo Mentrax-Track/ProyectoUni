@@ -59,6 +59,11 @@ class ReservaViajeController extends Controller
      */
     public function show($id)
     {
+        if (\Auth::user()->tipo == 'mecanico' OR \Auth::user()->tipo == 'encargado' OR \Auth::user()->tipo == 'chofer') 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
         $reserva = Reserva::find($id);
         //$idencar = $reserva->user_id;
         //$encar = User::where('id',$idencar)->get(['nombres','apellidos','id'])->lists('full_name','id')->toArray();

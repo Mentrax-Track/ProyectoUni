@@ -29,14 +29,17 @@
                         <tr>
                             <td  class="info text-center">{{ $num }}</td>
                             <td>{{ $infovi->enviVehi->full_vehiculo}}</td>
-                            <td>{{ $infovi->chofer }}</td>
+                            <td>{{ $infovi->enviCho->full_name }}</td>
                             <td>{{ $infovi->enviEncar->full_name }}</td>
                             <td>{{ $infovi->entidad }}</td>
                             <td>{{ $infovi->fechapartida }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                    {!!link_to_route('informes.edit', $title = 'Editar', $parameters = $infovi, $attributes = ['class'=>'btn btn-info btn-xs btn-block  glyphicon glyphicon-edit'])!!}
-
+                                @if (Auth::user()->tipo == 'chofer' OR Auth::user()->tipo == 'administrador')
+                                    @if (Auth::user()->id == $infovi->chofer)
+                                        {!!link_to_route('informes.edit', $title = 'Editar', $parameters = $infovi, $attributes = ['class'=>'btn btn-info btn-xs btn-block  glyphicon glyphicon-edit'])!!}
+                                    @endif
+                                @endif
                                     {!!link_to_action('InformeController@getImprimir', $title = ' Imprimir', $parameters = $infovi->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block  glyphicon fa fa-print','target'=>'_blank'])!!} 
                                 </center>
                             </td>

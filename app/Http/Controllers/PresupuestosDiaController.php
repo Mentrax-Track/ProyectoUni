@@ -24,6 +24,8 @@ class PresupuestosDiaController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('viaje',['only'=>['store','edit','getImprimir','index','show']]);
+        $this->middleware('presupuesto',['only'=>['edit']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
     }
     public function find(Route $route)

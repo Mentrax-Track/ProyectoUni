@@ -28,4 +28,20 @@ class Solicitud extends Model
     {
         return $this->hasMany('Infraestructura\Mecanico');
     }
+    public function scopeChofer($query, $chofer)
+    {
+       // dd("scope: ".$chofer);
+       if($chofer !=  "")
+       {
+            $query->where('chofer',$chofer);
+       } 
+    }
+    public function scopeVehiculo_id($query, $vehiculo_id)
+    {
+       // dd("scope: ".$chofer);
+       if($vehiculo_id !=  "")
+       {
+            $query->where('vehiculo_id',$vehiculo_id);
+       } 
+    }
 }

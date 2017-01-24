@@ -1,4 +1,5 @@
-<?php use Infraestructura\Viaje; ?>
+<?php use Infraestructura\Viaje;
+use Infraestructura\Reserva; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Reservas')
@@ -44,6 +45,7 @@
                     <td class="btns text-center" style="vertical-align:middle; ">
                         <div class="btn-group btn-group-sm">
                             <center>
+
                             <?php 
                                 $re = $reser->id;
                                 //dd($re); 
@@ -51,12 +53,22 @@
                                         ->get(['reserva_id'])
                                         ->lists('reserva_id')->toArray();
                                 //dd($resul);
+                                $esta = Reserva::where('id',$re)->get(['user_id'])->lists('user_id')->toArray();
+                                //dd($esta);
+
+
                                 if (empty($resul)) 
                                 { ?>
-
+                                @if(Auth::user()->id == $esta[0])
                                     {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
+                                @else
+                                    <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
+                                @endif                
 
-                                    <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>        
+
+                                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                                        <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-save" href="{{ route('reserviaje.show',['id' => $reser->id] )}}" >Concretar</a>
+                                    @endif        
                                 <?php }
                                 else{    
                                     echo "<a class='bg-success'>Realizado</a>";

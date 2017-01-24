@@ -30,6 +30,16 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \Infraestructura\Http\Middleware\RedirectIfAuthenticated::class,
         'admin' => \Infraestructura\Http\Middleware\Admin::class,
+        'vehiculo' => \Infraestructura\Http\Middleware\Vehiculo::class,
+        'reserva' => \Infraestructura\Http\Middleware\Reserva::class,
+        'viaje' => \Infraestructura\Http\Middleware\Viaje::class,
+        'informe' => \Infraestructura\Http\Middleware\Informe::class,
+        'calendario' => \Infraestructura\Http\Middleware\Calendario::class,
+        'presupuesto' => \Infraestructura\Http\Middleware\Presupuesto::class,
+        'mecanico' => \Infraestructura\Http\Middleware\Mecanico::class,
+
+
+        
     ];
 }
 

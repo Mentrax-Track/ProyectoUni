@@ -13,10 +13,11 @@
 @include('alertas.request')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-info">
     
     <div class="panel-heading text-center"><h4><p class="www">Nuevo Mensaje</p></h4></div>
-    <div class="panel-body jumbotron">      
+    <div class="panel-body "> 
+    <li class="list-group-item list-group-item-success col-md-12">      
        <div class="">
        {!! Form::open(['route'=>'mail.store','method'=>'POST','data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
@@ -44,6 +45,7 @@
 
         {!! Form::close() !!}
         </div>
+    </li>
     </div>
 </div>
 

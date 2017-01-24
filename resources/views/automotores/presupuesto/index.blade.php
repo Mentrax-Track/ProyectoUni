@@ -40,7 +40,9 @@ use Infraestructura\User;
                         <td>{{ $pre->entidad}}</td>
                         <td> 
                             <center>
+                            @if (Auth::user()->tipo == 'supervisor')
                                 {!!link_to_route('presupuestos.edit', $title = ' Editar', $parameters = $pre->id, $attributes = ['class'=>'btn btn-info btn-xs  glyphicon fa fa-pencil-square-o'])!!}
+                            @endif
                                 {!!link_to_action('PresupuestoController@getImprimir', $title = ' Imprimir', $parameters = $pre->id, $attributes = ['class'=>'btn btn-warning btn-xs  glyphicon fa fa-print','target'=>'_blank'])!!} 
                             </center>
                         </td>

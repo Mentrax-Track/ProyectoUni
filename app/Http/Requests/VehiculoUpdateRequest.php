@@ -29,14 +29,15 @@ class VehiculoUpdateRequest extends Request
             'color' => 'required|alpha|max:20',
             'pasajeros'  => 'required|numeric',
             'kilometraje'=> 'numeric',
-            'tipog'  => 'required|alpha|max:30|min:4',
+            'tipog'  => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
             'estado'=> 'required|in:optimo,mantenimiento,desuso',
             'modelo'=> 'required|numeric',
-            'tipoe' => 'required|alpha|max:30|min:4',
-            'marca' => 'required|alpha|max:30|min:4',
+            'tipoe' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
+            'marca' => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',
             'chasis'=> 'required|max:70|min:3|alpha_dash',
             'chasis'=> 'required|max:70|min:3',
             'cilindrada'=> 'required|numeric',
+
         ];
     }
 }

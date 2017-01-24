@@ -2,6 +2,9 @@
 @extends('automotores.admin')
 
 @section('subtitulo','Solicitudes de Trabajo')
+@section('css')
+{!! Html::style('css/select2.css') !!}
+@stop
 @section('content')
 @include('alertas.success')
 <br>
@@ -10,8 +13,8 @@
     <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-            <!--<label>Busqueda</label> 
-            @include('automotores.destino.forms.busqueda')-->
+            <label>Busqueda: </label> 
+            @include('mantenimiento.solicitudes.forms.busqueda')
         </div>
     </form><br>
         <div class="table-responsive">
@@ -49,7 +52,11 @@
                             <td>{{ $sol->fecha }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
+                                @if(Auth::user()->full_name == $sol->chofer )
                                     {!!link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                @else
+                                    <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
+                                @endif
                                 </center>      
                             </td>
                         </tr>
@@ -60,6 +67,32 @@
         </div>
     </div>
 </div>
-{!! $solicitudes->render() !!}
+{!! $solicitudes->appends(Request::only(['chofer','vehiculo_id']))->render() !!}
 
 @stop
+@section('javascript')
+{!! Html::script('js/select2.js') !!}
+{!! Html::script('js/es.js') !!}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        $('#chofer').select2({
+            placeholder: "Seleccione un Chofer",
+            tags: true,
+            language: "es",
+            maximumSelectionLength: 2,
+            allowClear: true
+        });
+
+        $('#vehiculo_id').select2({
+            placeholder: "Seleccione un vehículo",
+            tags: true,
+            language: "es",
+            maximumSelectionLength: 2,
+            allowClear: true
+        });
+
+    });    
+</script>
+@endsection

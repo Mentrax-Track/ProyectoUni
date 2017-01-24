@@ -15,6 +15,7 @@ class ReservasController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('reserva',['only'=>['create','edit','index']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
 
     }
@@ -109,6 +110,17 @@ class ReservasController extends Controller
      */
     public function edit($id)
     {
+        $idU = \Auth::user()->id;
+        //dd($idU);
+        $in = Reserva::where('id',$id)->get(['user_id'])->lists('user_id')->toArray();   
+        $is = (int)$in[0];
+        //dd($is);
+        if ($idU != $is) 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        }
+
         $user_id = User::where('tipo', 'encargado')
             ->get(['id', 'nombres', 'apellidos'])
             ->lists('full_name','id')->toArray();

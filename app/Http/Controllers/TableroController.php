@@ -10,10 +10,14 @@ use Infraestructura\Http\Controllers\Controller;
 use Auth;
 class TableroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin',['only'=>['getImprimirmes','getImprimireservados','getImprimirealizados']]);
+    }
     public function getRealizados()
     {
         //$viajes = Viaje::orderBy('id', 'DESC')->firstUserId;
-        $viajes = Viaje::orderBy('id','DESC')->paginate(10);
+        $viajes = Viaje::where('estado','activo')->orderBy('id','DESC')->paginate(10);
         //dd($viajes);
 
         return view('automotores.tablero.realizados', compact('viajes'));
@@ -40,7 +44,12 @@ class TableroController extends Controller
                     ->orderBy('id','DESC')->paginate(10);
         //dd($meses);
 
-        return view('automotores.tablero.meses', compact('meses'));
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $date = $arrayMeses[date('m')-1];
+        /*"Miercoles, 07 de Diciembre de 2016"*/
+        //dd($date);
+        return view('automotores.tablero.meses', compact('meses','date'));
     }
     public function getImprimirmes()
     {   

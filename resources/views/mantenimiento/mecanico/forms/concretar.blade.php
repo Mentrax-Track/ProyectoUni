@@ -62,7 +62,7 @@
             <center><div class="help-block with-errors"></div></center>
         </div>
         <div class="col-md-6">
-            <label>Cantidad</label>
+            <label>Nombre</label>
             {!! Form::text('unidad',null,['class'=>'form-control','value'=>'id','placeholder'=>'Ejm. piezas','data-error'=>'Inserte un Unidad de medida','required']) !!}
                 <center><div class="help-block with-errors"></div></center>
         </div>

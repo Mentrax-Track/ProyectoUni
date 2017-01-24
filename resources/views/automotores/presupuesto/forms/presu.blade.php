@@ -281,7 +281,7 @@
           </div>
           <div class="col-md-2">
               <center><label>Coto</label></center>
-             {!! Form::text('c1',null,['class'=>'form-control','id'=>'c1','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Ejm.40']) !!}
+             {!! Form::text('c1',null,['class'=>'form-control','id'=>'c1','onkeyup'=>'sumar();','data-error'=>'Campo obligatorio','required','placeholder'=>'Ejm.40','required']) !!}
              <center><div class="help-block with-errors"></div></center>
           </div>
           <div class="col-md-2">

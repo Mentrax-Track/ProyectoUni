@@ -9,6 +9,11 @@ use Infraestructura\Http\Controllers\Controller;
 
 class CalendarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('calendario',['only'=>['calendario','index']]);
+
+    }
     public function calendario()
     {
         return view('automotores.viajes.calendario');

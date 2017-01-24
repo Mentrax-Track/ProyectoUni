@@ -7,7 +7,7 @@ return array(
         'administrador'     => 'administrador',
         'supervisor'        => 'supervisor',
         'chofer'            => 'chofer',
-        'mecánico'          => 'mecánico',
+        'mecanico'          => 'mecánico',
         'encargado'         => 'encargado',
     ]
 )

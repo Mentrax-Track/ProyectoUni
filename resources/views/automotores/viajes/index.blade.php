@@ -46,6 +46,7 @@ use Infraestructura\PresupuestoDia;  ?>
                     <td class="text-center">{{ $via->fecha_final }}</td>
                     <td class="btns text-center" style="vertical-align:middle;">
                         <div class="btn-group btn-group-sm">
+                        @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                             <div class="dropdown">
                                  {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
                                         <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
@@ -54,6 +55,7 @@ use Infraestructura\PresupuestoDia;  ?>
                                  {!! Form::close() !!}
                                  <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
                             </div>
+                        @endif
                         </div>
                     </td>
                 </tbody>
@@ -70,6 +72,7 @@ use Infraestructura\PresupuestoDia;  ?>
                     <td class="text-center">{{ $via->fecha_final }}</td>
                     <td class="btns text-center" style="vertical-align:middle;">
                         <div class="btn-group btn-group-sm">
+                        @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                             <div class="dropdown">
                                 <button class="btn btn-primary btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Presupuesto
                                     <span class="caret"></span>
@@ -81,16 +84,20 @@ use Infraestructura\PresupuestoDia;  ?>
                                     <li role="separator" class="divider"></li>
                                     <li>{!!link_to_route('presupuestosDia.show', $title = 'Por Caja', $parameters = $via->id, $attributes = ['class'=>'alert-info'])!!}</li>
                                 </ul>
-                            </div>                           
+                            </div>    
+                        @endif                       
                             <div class="dropdown">
                                 <button class="btn btn-info btn-xs btn-block dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Realizar 
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
-                                    <li class="disabled"><a href="">Vizualización de Datos</a></li>
+                                    <li class="disabled"><a href="">Vizualización de Rutas</a></li>
 
-                                    <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
+                                    <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Ver</a>
 
+                                    <a class="btn btn-warning  btn-xs btn-block glyphicon glyphicon-print" target="_blank" href="{{ route('rutas.edit',['id' => $via->id] )}}" > Imprimir</a>
+
+                            @if (Auth::user()->tipo == 'chofer' OR Auth::user()->tipo == 'administrador' )
                                     <li role="separator" class="divider"></li>
                                     <li class="disabled"><a href="">Informe del viaje</a></li>
 
@@ -113,8 +120,8 @@ use Infraestructura\PresupuestoDia;  ?>
                                         <?php if (empty($resul) AND empty($rel)) echo "<i>Realize el Presupuesto de Viaje para el Informe</i>"; ?>
                                         
                                     <li role="separator" class="divider"></li>
-                                    
-
+                                @endif    
+                                @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                                     <li class="disabled"><a href="">Eliminación del viaje</a></li>
                                                                         
                                     {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
@@ -122,11 +129,14 @@ use Infraestructura\PresupuestoDia;  ?>
                                             <span class="glyphicon glyphicon-trash"> Eliminar</span> 
                                         </button>   
                                     {!! Form::close() !!}
+                                @endif
                                 </ul>
                             </div>  
+                        @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                             <div class="dropdown">
                                  {!!link_to_action('ViajesController@getCancelar', $title = ' Cancelar', $parameters = $via->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block dropdown-toggle fa fa-ban'])!!}
                             </div>
+                        @endif
                         </div>
                     </td>
                 </tbody>

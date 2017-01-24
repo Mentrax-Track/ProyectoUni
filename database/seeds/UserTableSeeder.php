@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
             'cedula'    => '12345689',
             'celular'   => '11589678',
             'email'     => 'peraltalorge.uatf@gmail.com',
-            'tipo'          => 'mecanico',
+            'tipo'      => 'mecanico',
             'password'  => 'admin1',
             'active'    => true
 
@@ -67,6 +67,6 @@ class UserTableSeeder extends Seeder
             'active'    => true
 
             ]);
-        //factory(Infraestructura\User::class, 50)->create();
+        factory(Infraestructura\User::class, 50)->create();
     }
 }
