@@ -19,7 +19,7 @@ class SolicitudController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('informe',['only'=>['create','edit','index']]);
+        $this->middleware('informe',['only'=>['create','edit','index','getImprimir']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -186,5 +186,44 @@ class SolicitudController extends Controller
         Solicitud::destroy($id);
         Session::flash('message','La solicitud fue Eliminado correctamente');
         return Redirect::to('/solicitudes');
+    }
+    public function getImprimir($id)
+    {
+        //dd($id);
+        $cho = Auth::user()->full_name;
+        //dd($cho);
+        $sol = Solicitud::where('id',$id)->get(['chofer'])
+            ->lists('chofer')->toArray();
+        $sole = implode ( $sol );
+        //dd($sole);
+        if ($cho != $sole) 
+        {
+            Session::flash('mensaje-rol','Sin privilegios');
+            return redirect()->to('acceso');
+        } 
+
+
+        $solicitud = Solicitud::find($id);
+        //dd($solicitud);
+        $accesorios= Accesorio::where('solicitud_id',$id)
+                        ->get(['solicitud'])->lists('solicitud')->toArray();
+        //dd($accesorios);
+        $ve = $solicitud->vehiculo_id;
+        //dd($ve);
+        $vehiculo = Vehiculo::find($ve);
+        //dd($vehiculo);
+        $responsable = Auth::user()->full_name;
+        //dd($responsable);
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes',
+               'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $date = $arrayDias[date('w')].", ".date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        /*"Miercoles, 07 de Diciembre de 2016"*/
+        //dd($date);
+        $view =  \View::make('mantenimiento.solicitudes.pdf', compact('solicitud','accesorios','vehiculo','date', 'encargados','responsable'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
+        return $pdf->stream('Sol. Trabajo');  
     }
 }

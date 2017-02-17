@@ -174,6 +174,9 @@ Route::resource('salidas','SalidasController');
 Route::get('roles/{id}/limpiar','RolesController@getLimpiar');
 Route::get('roles/pdf','RolesController@getImprimir');
 Route::resource('roles','RolesController');
+Route::get('roles/{id}/excepcion','RolesController@getExcepcion');
+Route::post('roles/excepcion', 'RolesController@getGuardar');
+Route::get('roles/{id}/ver', 'RolesController@getVer');
 
 ///////   Esto es para roles aqui recive lo que se envio ///////////////
     /*Ruta para obtener el id del chofer*/
@@ -227,9 +230,10 @@ Route::get('Impresión-de-Viajes-del-Mes', [
 
 
 Route::resource('solicitudes','SolicitudController');
+Route::get('imprimirSolicitudes/{id}/pdf','SolicitudController@getImprimir');
 
 Route::resource('mecanicos','MecanicoController');
-
+Route::get('imprimirSolicitudesTotal','MecanicoController@getImprimir');
 
 Route::resource('mail','MailController');
 
@@ -258,4 +262,13 @@ Route::get('imprimirDestino','DestinoController@getImprimir');
 
 //////////////////////////////////REPORTES///////
 Route::resource('reportes','ReportesController');
+//////////////////////////////////COMBUSTIBLES///////
+Route::post('combustible/create', 'CombustiblesController@getGuardar');
+Route::resource('combustibles','CombustiblesController');
+Route::get('combustible/{id}/limpiar','CombustiblesController@getLimpiar');
+Route::get('combustible/mostrar', 'CombustiblesController@getMostrar');
+Route::get('imprimirCombustible','CombustiblesController@getImprimir');
+Route::get('Combustible','CombustiblesController@getImprimire');
+Route::get('combustibleReportes','CombustiblesController@getReporte');
+Route::get('combustible/{id}/Actualizar','CombustiblesController@getActualizar');
 });

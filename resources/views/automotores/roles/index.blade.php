@@ -1,3 +1,4 @@
+<?php use Infraestructura\Excepcion; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Rol de Viajes')
@@ -30,6 +31,7 @@
                 <th class="text-center">Tipo B (Provincia)</th>
                 <th class="text-center">Tipo C (Frontera)</th>
                 <th class="text-center">Cantidad</th>
+                <th class="text-center">Exepciones</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Operación</th> 
             </tr> <?php $i=1; ?>
@@ -42,6 +44,15 @@
                         <td>{{ $rol->tipob }}</td>
                         <td>{{ $rol->tipoc }}</td>
                         <td class="text-center">{{ $rol->cantidad }}</td>
+                        <?php $i = $rol->chofer_id;
+                            $num = Excepcion::where('chofer_id',$i)->count(); ?>
+                        <td class="text-center">
+                        @if ($user == 'administrador' OR $user == 'supervisor') 
+                            {!!link_to_action('RolesController@getExcepcion', $title = ' Añadir', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block fa fa-magic'])!!} <br />
+                        @endif    
+                            {!!link_to_action('RolesController@getVer', $title = ' Ver', $parameters = $rol->id, $attributes = ['class'=>'btn btn-success btn-xs btn-block fa fa-bars'])!!} <br />
+                            <font color="red">{{ $num }}</font>
+                        </td>
                         <td class="text-center">{{ $rol->fecha }}</td>
                         <td class="text-center">
                             <div class="btn-group btn-group-sm">

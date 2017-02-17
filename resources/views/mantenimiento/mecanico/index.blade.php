@@ -3,6 +3,9 @@
 @extends('automotores.admin')
 
 @section('subtitulo','Kardex de Mantenimietno Vehicular')
+@section('css')
+{!! Html::style('css/select2.css') !!}
+@stop
 @section('content')
 @include('alertas.success')
 <br>
@@ -11,8 +14,13 @@
     <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-             <!--<label>Busqueda</label> 
-           @include('automotores.destino.forms.busqueda')-->
+            <label>Busqueda: </label> 
+           
+            <!--<?php $user = \Auth::user()->tipo; 
+                //dd($user);?>
+            @if ($user == 'administrador' OR $user == 'supervisor' OR $user == 'mecanico') 
+                {!!link_to_action('MecanicoController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning glyphicon glyphicon-print','target'=>'_blank'])!!}
+            @endif-->
         </div>
     </form><br>
         <div class="table-responsive">
@@ -70,10 +78,22 @@
                     </tbody>
                 @endforeach
             </table>
-            <p class="text-center">Hay {{ $mecanico->total() }} registros</p>
+            <p class="text-center">Existen {{ $mecanico->total() }} registros</p>
         </div>
     </div>
 </div>
-{!! $mecanico->render() !!}
+{!! $mecanico->appends(Request::only(['vehiculo']))->render() !!}
 
 @stop
+@section('javascript')
+{!! Html::script('js/select2.js') !!}
+<script type="text/javascript">
+ $(document).ready(function () {
+    $('select').select2({
+        placeholder: "Seleccione el Vehículo",
+        allowClear: true
+    });
+ });
+</script>
+@endsection
+

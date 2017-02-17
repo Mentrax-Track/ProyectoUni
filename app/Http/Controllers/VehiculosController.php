@@ -17,7 +17,7 @@ class VehiculosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin',['only'=>['create','edit']]);
+        $this->middleware('admin',['only'=>['create','edit','getImprimir']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
     }
     public function find(Route $route)

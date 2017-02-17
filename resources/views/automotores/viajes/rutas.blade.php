@@ -11,7 +11,7 @@
     <div class="panel-body jumbotron"> 
         <br>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 table-responsive">
             <h4 class="text-center www"><u> Encargados</u></h4>
             <table class='table table-bordered table-hover table-condensed jumbotron'>
                 <tr class="info">
@@ -30,7 +30,7 @@
                @endforeach
             </table>    
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 table-responsive">
             <h4 class="text-center www"><u> Choferes</u></h4>
             <table class='table table-bordered table-hover table-condensed  jumbotron' >
                 <tr class="info">
@@ -49,7 +49,7 @@
                 @endforeach
             </table>    
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 table-responsive">
             <h4 class="text-center www "><u>Vehiculos</u></h4>
             <table class='table table-bordered table-hover table-condensed  jumbotron'>
                 <tr class="info">
@@ -70,7 +70,7 @@
     <hr>
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-8">
+        <div class="col-md-8 table-responsive">
             <h4 class="text-center www"><u>Destinos</u></h4>
             <table class='table table-bordered table-hover table-condensed  jumbotron'>
                 <tr class="info">
@@ -149,7 +149,7 @@
                 @endforeach
             </table>    
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 table-responsive">
             
                 <h4 class="text-center www"><u>Kilometrajes</u></h4>
                 <table class='table table-bordered table-hover table-condensed jumbotron'>

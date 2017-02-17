@@ -18,7 +18,7 @@
             <?php $user = \Auth::user()->tipo; 
                 //dd($user);?>
             @if ($user == 'administrador' OR $user == 'supervisor' OR $user == 'mecanico') 
-                {!!link_to_action('VehiculosController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning fa fa-print','target'=>'_blank'])!!}
+                {!!link_to_action('VehiculosController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning glyphicon glyphicon-print','target'=>'_blank'])!!}
             @endif
         </div>
     </form>

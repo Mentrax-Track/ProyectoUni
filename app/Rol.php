@@ -24,4 +24,10 @@ class Rol extends Model
     {
         return $this->hasMany('Infraestructura\RolViaje');
     }
+    public function excepciones()
+    {
+        return $this->hasMany('Infraestructura\Excepcion');
+    }
+    
+
 }

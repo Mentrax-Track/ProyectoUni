@@ -6,11 +6,10 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-info">
     
     <div class="panel-heading text-center"><h4><p class="www">Viajes del mes de {{ $date }} </p></h4></div>
     <div class="panel-body"> 
-    <p class="text-center">Hay {{ $meses->total() }} registros</p>
     <center>
         @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor') 
             {!!link_to_action('TableroController@getImprimirmes', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-print','target'=>'_blank'])!!}
@@ -42,6 +41,7 @@
                 </tbody><?php $num++; ?>
                @endforeach
             </table> 
+            <p class="text-center">Existen {{ $meses->total() }} registros</p>
             <center>{!! $meses->render() !!}</center>       
         </div>
     </div>

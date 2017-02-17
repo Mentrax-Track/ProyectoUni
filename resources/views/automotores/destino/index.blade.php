@@ -66,7 +66,7 @@
                     </tbody>
                 @endforeach
             </table>
-            <p class="text-center">Hay {{ $destinos->total() }} registros</p>
+            <p class="text-center">Existen {{ $destinos->total() }} registros</p>
         </div>
     </div>
 </div>

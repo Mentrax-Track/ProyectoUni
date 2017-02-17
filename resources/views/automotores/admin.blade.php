@@ -89,6 +89,16 @@
                             </ul>
                         </li>
                     @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
+                        <li>
+                            <a href="#"><i class="fa fa-tachometer"></i> Combustible<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/combustibles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-road"></i> Destinos<span class="fa arrow"></span></a>

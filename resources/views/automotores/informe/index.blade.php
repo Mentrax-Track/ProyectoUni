@@ -47,7 +47,7 @@
                     </tbody><?php $num++; ?>
                 @endforeach
             </table>
-            <p class="text-center">Hay {{ $informeviajes->total() }} registros</p>
+            <p class="text-center">Existen {{ $informeviajes->total() }} registros</p>
         </div>
     </div>
 </div>

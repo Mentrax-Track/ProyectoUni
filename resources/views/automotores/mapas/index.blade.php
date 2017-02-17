@@ -37,7 +37,7 @@
                     </tbody>
                 @endforeach
             </table>
-            <p class="text-center">Hay {{ $mapas->total() }} registros</p>
+            <p class="text-center">Existen {{ $mapas->total() }} registros</p>
         </div>
     </div>
 </div>

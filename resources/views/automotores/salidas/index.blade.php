@@ -49,7 +49,7 @@
                 </tbody><?php $i++; ?>
             @endforeach
         </table>
-        <p class="text-center">Hay {{ $salidas->total() }} registros</p>
+        <p class="text-center">Existen {{ $salidas->total() }} registros</p>
       </div>
     </div>
 </div>

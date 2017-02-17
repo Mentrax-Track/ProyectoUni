@@ -53,7 +53,9 @@
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
                                 @if(Auth::user()->full_name == $sol->chofer )
-                                    {!!link_to_route('solicitudes.edit', $title = 'Editar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                    {!!link_to_route('solicitudes.edit', $title = ' Editar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-block btn-xs glyphicon glyphicon-edit'])!!}
+
+                                    {!!link_to_action('SolicitudController@getImprimir', $title = ' Imprimir', $parameters = $sol->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block glyphicon glyphicon-print','target'=>'_blank'])!!}
                                 @else
                                     <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>
                                 @endif
@@ -63,7 +65,7 @@
                     </tbody>
                 @endforeach
             </table>
-            <p class="text-center">Hay {{ $solicitudes->total() }} registros</p>
+            <p class="text-center">Existen {{ $solicitudes->total() }} registros</p>
         </div>
     </div>
 </div>

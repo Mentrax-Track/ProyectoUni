@@ -11,6 +11,7 @@ use Infraestructura\Solicitud;
 use Infraestructura\Vehiculo;
 use Infraestructura\Accesorio;
 use Infraestructura\Mecanico;
+use Infraestructura\User;
 use Session;
 use Redirect;
 use Illuminate\Routing\Route;
@@ -20,7 +21,7 @@ class MecanicoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('mecanico',['only'=>['create','edit','show','destroy']]);
+        $this->middleware('mecanico',['only'=>['create','edit','show','destroy','getImprimir']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -49,10 +50,18 @@ class MecanicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $solicitudes = Solicitud::orderBy('id','DESC')->paginate(10);
-        return view('mantenimiento.mecanico.create', compact('solicitudes'));
+        $solicitudes = Solicitud::chofer($request->get('chofer'))->vehiculo_id($request->get('vehiculo_id'))->orderBy('id','DESC')->paginate(10);
+        //dd($solicitudes);
+            
+        $chofer = User::where('tipo','chofer')
+            ->get(['nombres','apellidos','id'])
+            ->lists('full_name','full_name')
+            ->toArray();
+
+        $vehiculo_id = Vehiculo::get(['tipog','placa','id'])->lists('full_vehiculo','id')->toArray();
+        return view('mantenimiento.mecanico.create', compact('solicitudes','chofer','vehiculo_id'));
     }
 
     /**
@@ -132,5 +141,18 @@ class MecanicoController extends Controller
         Mecanico::destroy($id);
         Session::flash('message','El trabajo fue Eliminado correctamente');
         return Redirect::to('/mecanicos');
+    }
+    public function getImprimir()
+    {
+        $solicitudes = Solicitud::orderBy('chofer','DESC')->get();
+        //dd($Solicitudes);
+        $responsable = Auth::user()->full_name;
+        //dd($responsable);
+        $date = date('d-m-Y');
+        //dd($date);
+        $view =  \View::make('mantenimiento.mecanico.pdf', compact('solicitudes','date','responsable'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
+        return $pdf->stream('Solicitudes');  
     }
 }

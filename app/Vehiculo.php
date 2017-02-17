@@ -78,4 +78,8 @@ class Vehiculo extends Model
     {
         return $this->hasMany('Infraestructura\Solicitud');
     }
+    public function combustible()
+    {
+        return $this->hasOne('Infraestructura\Combustible');
+    }
 }

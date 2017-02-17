@@ -6,11 +6,10 @@
 @section('content')
 @include('alertas.success')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-warning">
     
     <div class="panel-heading text-center"><h4><p class="www">Viajes Reservados</p></h4></div>
     <div class="panel-body"> 
-    <p class="text-center">Hay {{ $reservas->total() }} registros</p> 
     <center>
     @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
         {!!link_to_action('TableroController@getImprimireservados', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning  glyphicon fa fa-print','target'=>'_blank'])!!}
@@ -42,6 +41,7 @@
                 </tbody>
                @endforeach
             </table> 
+            <p class="text-center">Existen {{ $reservas->total() }} registros</p>
             <center>{!! $reservas->render() !!}</center>       
         </div>
     </div>

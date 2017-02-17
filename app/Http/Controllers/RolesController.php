@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Infraestructura\Rol;
 use Infraestructura\User;
 use Infraestructura\RolViaje;
-
+use Infraestructura\Excepcion;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Requests\InsertRolViaje;
 use Infraestructura\Http\Controllers\Controller;
@@ -19,7 +19,7 @@ class RolesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin',['only'=>['create','edit','getImprimir','getLimpiar','destroy']]);
+        $this->middleware('admin',['only'=>['create','edit','getImprimir','getGuardar','getExcepcion','getLimpiar','destroy']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -427,5 +427,34 @@ class RolesController extends Controller
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
         return $pdf->stream('rol_de_viajes');
+    }
+    public function getExcepcion($id)
+    {
+        //dd($id);
+        $role = Rol::where('id',$id)->get(['id']);
+        $i = $role[0]->id;
+        //dd($i);
+        $rol = Rol::find($i);
+        //dd($rol);
+        return view('automotores.roles.editare',compact('rol','i'));
+    }
+    public function getGuardar(Request $request)
+    {
+        //dd($request);
+        Excepcion::create([
+                        'chofer_id' =>$request['chofer_id'],
+                        'roles_id'  =>$request['roles_id'],
+                        'tipo'      =>$request['tipo'],
+                        'lugar'     =>$request['lugar'],
+                        'fecha'     =>$request['fecha'],
+                    ]);
+        Session::flash('message','Excepción insertada correctamente!!!');
+        return redirect('roles');
+    }
+    public function getVer($id)
+    {
+        $excepciones = Excepcion::where('roles_id',$id)->get();
+        //dd($excepciones);
+        return view('automotores.roles.verexcepcion', compact('excepciones'));
     }
 }

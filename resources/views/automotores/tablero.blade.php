@@ -4,7 +4,6 @@
     <div class="panel-body">
             <li class="list-group-item list-group-item-success"> 
             <div class="row">
-                <center><h4><p class="www">Viajes</p></h4></center>
                 <div class="col-lg-4 col-md-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -86,6 +85,26 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading ">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="glyphicon glyphicon-oil fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge"><i class="fa fa-tachometer fa-1x"></i></div>
+                                    <div>Combustible</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{!! URL::to('/combustibleReportes') !!}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Verificar</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="panel panel-danger">
@@ -118,7 +137,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><i class="fa fa-pie-chart fa-1x"></i></div>
-                                    <div>Gráficas de los reportes</div>
+                                    <div>Gráficas</div>
                                 </div>
                             </div>
                         </div>

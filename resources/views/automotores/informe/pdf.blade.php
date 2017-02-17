@@ -149,7 +149,6 @@
     <tr>
         <td class="kn" colspan="3"><br><br><br>
             <center>
-                {{ $informe->enviCho->full_name }}<br>
                 <strong>Encargado de Automotores</strong><br>
             </center>
                 <strong>Fecha:</strong>
@@ -157,7 +156,6 @@
         </td>
         <td class="kn" colspan="3"><br><br><br>
             <center>
-                {{ $informe->enviEncar->full_name }}<br>
                 <strong>Jefe de Infraestructura</strong><br>
             </center>
                 <strong>Fecha:</strong>

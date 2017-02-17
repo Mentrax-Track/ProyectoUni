@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Incertar Destino')
+@section('subtitulo','Gráfica de viajes')
 @section('css')
      {!! Html::style('css/demo.css') !!}
 @stop
@@ -9,7 +9,7 @@
 {!! Html::script('js/jquery.min.js') !!}
 
  <script>
-        $(document).ready(function() {
+    $(document).ready(function() {
     $('#container').highcharts({
         chart: {
             zoomType: 'xy'
@@ -35,7 +35,7 @@
                 }
             },
             title: {
-                text: 'Temperature',
+                text: 'Aproximado',
                 style: {
                     color: Highcharts.getOptions().colors[2]
                 }
@@ -123,8 +123,14 @@
 @section('content')
 
 <br /><br /><br />
-
-        <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto; background-color: blue " ></div>
+<div class="panel panel-info">
+  <div class="panel-heading text-center"><h4><p class="www">Reporte de Viajes</p></h4></div>
+    <div class="panel-body">
+            <li class="list-group-item list-group-item-success"> 
+                <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto; background-color: blue " ></div>
+            </li>
+    </div>
+  </div>
 
 <br /><br /><br /><br /><br /><br /><br /><br />
 @endsection
