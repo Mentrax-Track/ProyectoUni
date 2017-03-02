@@ -271,4 +271,13 @@ Route::get('imprimirCombustible','CombustiblesController@getImprimir');
 Route::get('Combustible','CombustiblesController@getImprimire');
 Route::get('combustibleReportes','CombustiblesController@getReporte');
 Route::get('combustible/{id}/Actualizar','CombustiblesController@getActualizar');
+
+//////////////////////////////////RECARGUES///////
+Route::resource('recargues','RecargueController');
+Route::get('Recargas','RecargueController@getImprimir');
+Route::get('RecargasGuardar','RecargueController@getGuardar');
+Route::get('Capital','RecargueController@getCapital');
+
+
+Route::resource('capital','CapitalController');
 });

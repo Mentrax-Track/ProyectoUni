@@ -94,7 +94,7 @@
                             <a href="#"><i class="fa fa-tachometer"></i> Combustible<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{!! URL::to('/combustibles') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
+                                    <a href="{!! URL::to('/recargues') !!}"><i class='fa fa-sliders'></i> Mostrar</a>
                                 </li>
                             </ul>
                         </li>

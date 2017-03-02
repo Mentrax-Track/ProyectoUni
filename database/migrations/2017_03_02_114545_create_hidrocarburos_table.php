@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCombustiblesTable extends Migration
+class CreateHidrocarburosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,19 +12,20 @@ class CreateCombustiblesTable extends Migration
      */
     public function up()
     {
-        Schema::create('combustibles', function (Blueprint $table) {
+        Schema::create('hidrocarburos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vehiculo_id');
+            $table->string('npedido');
+            $table->string('fecha');
+            $table->string('factura');
+            $table->string('vehiculo');
+            $table->string('combustible');
             $table->string('gasolina');
             $table->string('diesel');
             $table->string('gnv');
-            $table->string('prega');
-            $table->string('predi');
-            $table->string('pregn');
-            $table->string('toga');
-            $table->string('todi');
-            $table->string('togn');
-            $table->timestamp('fecha');
+            $table->string('litros');
+            $table->string('precio');
+            $table->string('total');
+            $table->string('fecha_recargue');
             $table->timestamps();
         });
     }
@@ -36,6 +37,6 @@ class CreateCombustiblesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('combustibles');
+        Schema::drop('hidrocarburos');
     }
 }

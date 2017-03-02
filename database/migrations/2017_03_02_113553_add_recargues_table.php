@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDeletedToVehiculosTable extends Migration
+class AddRecarguesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class AddDeletedToVehiculosTable extends Migration
      */
     public function up()
     {
-        Schema::table('combustibles', function (Blueprint $table) {
+        Schema::table('recargues', function (Blueprint $table) {
             $table->softDeletes();
         });
     }
@@ -24,7 +24,7 @@ class AddDeletedToVehiculosTable extends Migration
      */
     public function down()
     {
-        Schema::table('combustibles', function (Blueprint $table) {
+        Schema::table('recargues', function (Blueprint $table) {
             //
         });
     }

@@ -9,6 +9,8 @@ use Infraestructura\Viaje;
 use Infraestructura\Modelo;
 use Infraestructura\Salida;
 use Infraestructura\Solicitud;
+
+use Infraestructura\Recargue;
 use Infraestructura\InformeViaje;
 class Vehiculo extends Model
 {
@@ -81,5 +83,10 @@ class Vehiculo extends Model
     public function combustible()
     {
         return $this->hasOne('Infraestructura\Combustible');
+    }
+
+    public function recargue()
+    {
+        return $this->hasOne('Infraestructura\Recargue');
     }
 }

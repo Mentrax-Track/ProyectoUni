@@ -31,7 +31,7 @@
                 <th class="text-center">Tipo B (Provincia)</th>
                 <th class="text-center">Tipo C (Frontera)</th>
                 <th class="text-center">Cantidad</th>
-                <th class="text-center">Exepciones</th>
+                <th class="text-center">Excepciones</th>
                 <th class="text-center">Fecha</th>
                 <th class="text-center">Operación</th> 
             </tr> <?php $i=1; ?>
