@@ -1,3 +1,4 @@
+<?php use Infraestructura\Modelo; ?>
 @extends('automotores.admin')
 @section('css')
 {!! Html::style('css/select2.css') !!}
@@ -31,6 +32,7 @@
                 <th class="text-center">Placa</th>
                 <th class="text-center">Asientos</th>
                 <th class="text-center">Tipo</th>
+                <th class="warning text-center">Kilometraje</th>
                 <th class="text-center">Estado</th>
                 <th class="text-center">Operaciones</th>
             </tr> 
@@ -39,18 +41,24 @@
                         <tr>
                             <td  class="info text-center">{{ $vehi->id }}</td>
                             <td>{{ $vehi->codigo}}</td>
-                            <td class="info">{{ $vehi->placa }}</td>
+                            <td class="info text-center">{{ $vehi->placa }}</td>
                             <td>{{ $vehi->pasajeros}}</td>
                             <td>{{ $vehi->tipog }}</td>
+                            <?php $vi = $vehi->id; 
+                                $kilo = Modelo::where('vehiculo_id',$vi)->get(['kilometraje'])->lists('kilometraje')->toArray(); ?>
+                            <td class="warning text-center">{{ $kilo[0] }}</td>
                             <td>{{ $vehi->estado }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
                                 
                                 @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
-                                    {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
-                                @endif
+                                    {!!link_to_route('vehiculos.edit', $title = 'Editar', $parameters = $vehi->id, $attributes = ['class'=>'btn-info btn-xs btn-block fa fa-pencil-square-o'])!!}
+                               <br>
+                                {!!link_to_action('VehiculosController@getKilometraje', $title = ' Actualizar Km.', $parameters = $vehi->id, $attributes = ['class'=>'btn-warning btn-xs btn-block fa fa-bus'])!!}
 
-                                <a class="btn btn-info  btn-xs  glyphicon glyphicon-th-list" href="{{ route('vehiculos.show',['id' => $vehi->id] )}}" > Detalle</a>
+                                 @endif
+                                <br>
+                                <a class="btn-primary  btn-xs  btn-block fa fa-bars" href="{{ route('vehiculos.show',['id' => $vehi->id] )}}" > Detalle</a>
                                </center>
                             </td>
                         </tr>

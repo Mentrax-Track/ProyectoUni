@@ -30,9 +30,7 @@
         <li class="list-group-item list-group-item-success">
             <div class="row">
                 <center>
-                    <div class="btn-group col-md-2" role="group">  
-                    </div>
-                    <div class="btn-group col-md-4" role="group">
+                    <div class="btn-group col-md-7" role="group">
                         {!! Form::label('Monto: ') !!}
                         <div class="input-group">
                             {!! Form::number('monto',null, ['class' => 'form-control','placeholder'=>'Ejm. 2000','id'=>'monto','onkeyup'=>'sumar();','data-error'=>'Inserte un número','required']) !!}
@@ -40,11 +38,12 @@
                             <span class="input-group-addon" id="basic-addon3">Bs.</span>
                         </div>   
                     </div>
-                    <div class="btn-group col-md-4" role="group">
+                    <div class="btn-group col-md-5" role="group">
                         {!! Form::label('Total Bs.:') !!}
-                        {!! Form::text('total',null, ['class' => 'form-control','id'=>'total',' value'=>'0','readonly'=>'readonly']) !!}
-                        <center><div class="help-block with-errors"></div></center>
-                    
+                        <div class="input-group">
+                            {!! Form::text('total',null, ['class' => 'form-control','id'=>'total',' value'=>'0','readonly'=>'readonly']) !!}
+                            <center><div class="help-block with-errors"></div></center>
+                        </div>
                     </div>
                 </center>
             </div>

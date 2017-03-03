@@ -1,5 +1,6 @@
 <?php use Infraestructura\Solicitud;
-      use Infraestructura\Vehiculo; ?>
+      use Infraestructura\Vehiculo;
+      use Infraestructura\Kilomecanico; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Kardex de Mantenimietno Vehicular')
@@ -14,7 +15,6 @@
     <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
-            <label>Busqueda: </label> 
            
             <!--<?php $user = \Auth::user()->tipo; 
                 //dd($user);?>
@@ -36,6 +36,7 @@
                     <th class="text-center">Marca</th>
                     <th class="text-center">Código</th>
                     <th class="text-center">Observación</th>
+                    <th class="text-center">Actualizar km.</th>
                     <th class="text-center">Operación</th>
                 </tr>
                 @foreach($mecanico as $mec)
@@ -65,6 +66,20 @@
                             <td>{{ $mec->marca }}</td>
                             <td>{{ $mec->codigo }}</td>
                             <td>{{ $mec->observacion }}</td>
+                            <?php //dd($mec); ?>
+                            
+                            <?php $mecid = $mec->id;  
+                                $re = Kilomecanico::where('vehiculo_id',$mecid)->first();
+                                //dd($re);?>
+                            @if (!empty($re) || $re != NULL || $re != "")
+                                <td class="info text-center"><strong><font color="green">ACTUALIZADO</font></strong></td>
+                            @else
+                                @if (Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'administrador')
+                                    <td class="info text-center">{!!link_to_action('VehiculosController@getKilometrajemecanico', $title = ' Actualizar Km.', $parameters = $mec->id, $attributes = ['class'=>'btn-warning btn-xs fa fa-bus'])!!}</td>
+                                @else
+                                    <td class="info text-center"><strong><font color="green">No revisado</font></strong></td>
+                                @endif
+                            @endif
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
                                  @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')

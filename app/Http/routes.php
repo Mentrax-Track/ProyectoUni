@@ -280,4 +280,20 @@ Route::get('Capital','RecargueController@getCapital');
 
 
 Route::resource('capital','CapitalController');
+
+Route::get('km/{id}/Actualizar','VehiculosController@getKilometraje');
+
+Route::get('kms/{id}/Actualizar','VehiculosController@getKilometrajeinforme');
+
+Route::resource('ks','KilometrajeController');
+
+Route::resource('kms','KilometrajeinformeController');
+
+
+
+Route::get('kmsm/{id}/Actualizar','VehiculosController@getKilometrajemecanico');
+
+
+Route::resource('kmm','KilomecanicoController');
 });
+

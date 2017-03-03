@@ -4,7 +4,10 @@ namespace Infraestructura\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Infraestructura\Vehiculo;
+use Infraestructura\Solicitud;
 use Infraestructura\Modelo;
+use Infraestructura\InformeViaje;
+use Infraestructura\Mecanico;
 use Infraestructura\Marca;
 use Infraestructura\Http\Requests;
 use Infraestructura\Http\Requests\VehiculoCreateRequest;
@@ -17,7 +20,7 @@ class VehiculosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin',['only'=>['create','edit','getImprimir']]);
+        $this->middleware('admin',['only'=>['getKilometrajemecanico','getKilometrajeinforme','getKilometraje','create','edit','getImprimir']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -286,5 +289,55 @@ class VehiculosController extends Controller
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta','landscape');
         return $pdf->stream('Vehiculos');
+    }
+
+    public function getKilometraje($id)
+    {
+        //dd($id);
+        $vehiculo = Vehiculo::find($id);
+        //dd($vehiculo);
+        $kilo = Modelo::where('vehiculo_id',$id)->get(['kilometraje'])->lists('kilometraje')->toArray();
+        //dd($kilo[0]);
+        $kilome = $kilo[0];
+        return view('automotores.vehiculo.kilometraje', compact('vehiculo','kilome'));
+    }
+
+    public function getKilometrajeinforme($id)
+    {
+        //dd($id);
+        $infoid = $id;
+        
+        $info = InformeViaje::where('id',$id)->first();
+        //dd($info);
+        $idvehi = $info->vehiculo;
+        //dd($idvehi);
+        $in = (int)$idvehi;
+        //dd($in);
+        $vehiculo = Vehiculo::find($in);
+        //dd($vehiculo);
+        $kilo = Modelo::where('vehiculo_id',$in)->get(['kilometraje'])->lists('kilometraje')->toArray();
+        //dd($kilo[0]);
+        $kilome = $kilo[0];
+        return view('automotores.vehiculo.kilometrajeinforme', compact('vehiculo','kilome','infoid'));
+    }
+    public function getKilometrajemecanico($id)
+    {
+        //dd($id);
+        $mecid = $id;
+        
+        $mec = Mecanico::where('id',$id)->first();
+        //dd($mec);
+        $idvehis = $mec->solicitud_id;
+        //dd($idvehi);
+        $idvehi = Solicitud::where('id',$idvehis)->get(['vehiculo_id'])->lists('vehiculo_id')->toArray();
+        //dd($idvehi[0]);
+        $in = (int)$idvehi[0];
+        //dd($in);
+        $vehiculo = Vehiculo::find($in);
+        //dd($vehiculo);
+        $kilo = Modelo::where('vehiculo_id',$in)->get(['kilometraje'])->lists('kilometraje')->toArray();
+        //dd($kilo[0]);
+        $kilome = $kilo[0];
+        return view('automotores.vehiculo.kilometrajemecanico', compact('vehiculo','kilome','mecid'));
     }
 }

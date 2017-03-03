@@ -1,3 +1,4 @@
+<?php use Infraestructura\Kilomeinforme; ?>
 @extends('automotores.admin')
 
 @section('subtitulo','Informe de Viajes')
@@ -22,6 +23,7 @@
                     <th class="text-center">Encargado</th>
                     <th class="text-center">Entidad</th>
                     <th class="text-center">Fecha de viaje</th>
+                    <th class="text-center">Actualizar km.</th>
                     <th class="text-center">Operación</th>
                 </tr><?php $num=1; ?>
                 @foreach($informeviajes as $infovi)
@@ -33,6 +35,18 @@
                             <td>{{ $infovi->enviEncar->full_name }}</td>
                             <td>{{ $infovi->entidad }}</td>
                             <td>{{ $infovi->fechapartida }}</td>
+                            <?php $infoid = $infovi->id; $vehiid = $infovi->vehiculo;  
+                                $re = Kilomeinforme::where('informe_id',$infoid)->first();
+                                //dd($re);?>
+                            @if (!empty($re) || $re != NULL || $re != "")
+                                <td class="info text-center"><strong><font color="green">ACTUALIZADO</font></strong></td>
+                            @else
+                                @if (Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'administrador')
+                                    <td class="info text-center">{!!link_to_action('VehiculosController@getKilometrajeinforme', $title = ' Actualizar Km.', $parameters = $infovi->id, $attributes = ['class'=>'btn-warning btn-xs fa fa-bus'])!!}</td>
+                                @else
+                                    <td class="info text-center"><strong><font color="green">No revisado</font></strong></td>
+                                @endif
+                            @endif
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
                                 @if (Auth::user()->tipo == 'chofer' OR Auth::user()->tipo == 'administrador')
