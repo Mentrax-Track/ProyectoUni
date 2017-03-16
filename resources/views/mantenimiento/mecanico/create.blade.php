@@ -10,7 +10,7 @@
 @include('alertas.success')
 <br>
 <div class="panel panel-success">
-    <div class="panel-heading text-center"><h4><p class="www">Kardex de Mantenimiento</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">Lista de solicitudes de trabajo</p></h4></div>
     <div class="panel-body jumbotron">
     <form class="form-inline">
         <div class="form-group">
@@ -59,7 +59,9 @@
                             <td>{{ $sol->fecha }}</td>
                             <td class="btns" style="vertical-align:middle;">
                                 <center>
-                                    {!!link_to_route('mecanicos.show', $title = 'Concretar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs glyphicon glyphicon-edit'])!!}
+                                    {!!link_to_route('mecanicos.show', $title = 'Concretar', $parameters = $sol->id, $attributes = ['class'=>'btn btn-info btn-xs  fa fa-check-square-o'])!!}
+
+                                    {!!link_to_route('peticion.show', $title = 'Pedido M.', $parameters = $sol->id, $attributes = ['class'=>'btn btn-warning btn-xs  fa fa-bell-o'])!!}
                                 </center>      
                             </td>
                             <td>

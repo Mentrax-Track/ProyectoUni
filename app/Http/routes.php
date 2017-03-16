@@ -258,6 +258,9 @@ Route::get('Todos-los-encargados', [
 
 /////////////////Impreciones de los Vehículos/8////
 Route::get('imprimir','VehiculosController@getImprimir');
+Route::get('imprimireVehiculos','VehiculosController@getImprimire');
+Route::post('imprimirVehiculosAlgunos','VehiculosController@getImprimirvehis');
+
 Route::get('imprimirDestino','DestinoController@getImprimir');
 
 //////////////////////////////////REPORTES///////
@@ -295,5 +298,19 @@ Route::get('kmsm/{id}/Actualizar','VehiculosController@getKilometrajemecanico');
 
 
 Route::resource('kmm','KilomecanicoController');
+
+
+Route::get('vehiculoKardex','MecanicoController@getImprimirk');
+
+Route::post('ImprimirKardex','MecanicoController@getImprimirkardex');
+
+
+Route::resource('peticion','PeticionController');
+
+Route::get('imprimir/{id}/Peticion','PeticionController@getImprimir');
+
+Route::resource('devoluciones','DevolucionController');
+Route::get('ImprimirDevoluciones','DevolucionController@getImprimir');
+Route::get('imprimir/{id}/Devolucion','DevolucionController@getImprimiru');
 });
 

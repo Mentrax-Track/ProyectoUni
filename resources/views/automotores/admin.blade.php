@@ -137,7 +137,7 @@
                             </ul>
                         </li>
                     @endif
-                    @if (Auth::user()->tipo != 'mecanico')
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer' OR Auth::user()->tipo == 'encargado')
                         <li>
                             <a href="#"><i class='glyphicon glyphicon-globe'></i> Viajes<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -169,7 +169,7 @@
                             </ul>
                         </li>
                     @endif
-                    @if (Auth::user()->tipo != 'mecanico' AND Auth::user()->tipo != 'encargado')
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'chofer')
                         <li>
                             <a href="#"><i class="fa fa-sign-in"></i> Autorización de Salidas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -210,7 +210,7 @@
                         <li>
                             <a href="#"><i class="glyphicon glyphicon-wrench"></i> Mantenimiento<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico')
+                            @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'mecanico' OR Auth::user()->tipo == 'supervisor')
                                 <li>
                                     <a href="{!! URL::to('/mecanicos/create') !!}"><i class='fa fa-sliders'></i> Solicitudes</a>
                                 </li>
@@ -220,8 +220,28 @@
                                 </li>
                             </ul>
                         </li>
+                        
                      @endif
-                    
+                     @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'mecanico' OR Auth::user()->tipo == 'mensajero')
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Compra de Material<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/peticion') !!}"><i class='fa fa-cogs'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'mecanico' )
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-retweet"></i> Devolución de Material<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{!! URL::to('/devoluciones') !!}"><i class='glyphicon glyphicon-duplicate'></i> Mostrar</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
                     </ul>
                 </div>
             </div>

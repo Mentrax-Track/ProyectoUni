@@ -49,8 +49,10 @@
                         <td class="text-center">
                         @if ($user == 'administrador' OR $user == 'supervisor') 
                             {!!link_to_action('RolesController@getExcepcion', $title = ' Añadir', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block fa fa-magic'])!!} <br />
-                        @endif    
+                        @endif   
+                        @if($user == 'administrador' OR $user == 'supervisor' OR Auth::user()->id == $rol->chofer_id ) 
                             {!!link_to_action('RolesController@getVer', $title = ' Ver', $parameters = $rol->id, $attributes = ['class'=>'btn btn-success btn-xs btn-block fa fa-bars'])!!} <br />
+                        @endif
                             <font color="red">{{ $num }}</font>
                         </td>
                         <td class="text-center">{{ $rol->fecha }}</td>

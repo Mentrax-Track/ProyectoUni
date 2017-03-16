@@ -14,9 +14,9 @@ use Infraestructura\User;
 <br>
 
 <body >
-   <h5 id="log"> Departamento de Infraestructura <br>Div. Servisios Generales<br>
+   <h5 id="log"> Departamento de Infraestructura <br>Sección Automotores<br>
     <img style="float:center;" src="img/uatf.jpg" width="70px">
-   <br>Boleta de Salida</h5>
+   <br>Salida e Informe</h5>
     <table id="tab" style="border-width: 2px; border-style: double; border-color: black; " > 
         <tr>
             <td colspan="1" class="sa"><strong>Mobilidad:</strong> {{$salida->enviVehi->full_vehiculo}}</td>
@@ -37,6 +37,14 @@ use Infraestructura\User;
         <tr>
             <td colspan="1"  class="sa"><strong>Salida:</strong>  {{$salida->hsalida}}</td>
             <td colspan="1"  class="sa"><strong>Legada:</strong>  {{$salida->hllegada}}</td>
+        </tr>
+    </table>
+    <strong>INFORME DEL RESPONSABLE</strong>
+    <table id="tab" style="border-width: 1px; border-style: double; border-color: black; " > 
+        <tr>
+            <td colspan="3"  class="sa"><strong>..........................................................................................<BR>..........................................................................................<BR>..........................................................................................</strong><BR / ><BR / ><BR / >
+            <CENTER>..................................................<br><STRONG>FIRMA</STRONG></CENTER><BR><strong>Fecha:</strong>
+            </td>
         </tr>
     </table>
 <main><br><br>

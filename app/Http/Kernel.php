@@ -37,7 +37,7 @@ class Kernel extends HttpKernel
         'calendario' => \Infraestructura\Http\Middleware\Calendario::class,
         'presupuesto' => \Infraestructura\Http\Middleware\Presupuesto::class,
         'mecanico' => \Infraestructura\Http\Middleware\Mecanico::class,
-
+        'mensajero' => \Infraestructura\Http\Middleware\Mensajero::class,
 
         
     ];

@@ -117,7 +117,7 @@ use Infraestructura\PresupuestoDia;  ?>
                                             {!!link_to_action('InformeController@getPresudia', $title = ' Informe/Caja', $parameters = $via->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block glyphicon glyphicon-list-alt'])!!}
                                         <?php } ?>
 
-                                        <?php if (empty($resul) AND empty($rel)) echo "<i>Realize el Presupuesto de Viaje para el Informe</i>"; ?>
+                                        <?php if (empty($resul) AND empty($rel)) echo "<i><font color='red'>Realize el Presupuesto de Viaje para el Informe</font></i>"; ?>
                                         
                                     <li role="separator" class="divider"></li>
                                 @endif    

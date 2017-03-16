@@ -3,7 +3,7 @@
 @section('css')
 {!! Html::style('css/select2.css') !!}
 @stop
-@section('subtitulo','Vehiculos')
+@section('subtitulo','Vehículos')
 @section('content')
 @include('alertas.success')
 <br>
@@ -19,7 +19,11 @@
             <?php $user = \Auth::user()->tipo; 
                 //dd($user);?>
             @if ($user == 'administrador' OR $user == 'supervisor' OR $user == 'mecanico') 
-                {!!link_to_action('VehiculosController@getImprimir', $title = ' Imprimir', $parameters = '', $attributes = ['class'=>'btn btn-warning glyphicon glyphicon-print','target'=>'_blank'])!!}
+
+                {!!link_to_action('VehiculosController@getImprimir', $title = ' Imprimir todos', $parameters = '', $attributes = ['class'=>'btn btn-info glyphicon glyphicon-print','target'=>'_blank'])!!}
+                
+                {!!link_to_action('VehiculosController@getImprimire', $title = ' Imprimir algunos', $parameters = '', $attributes = ['class'=>'btn btn-warning glyphicon glyphicon-print','target'=>'_blank'])!!}
+
             @endif
         </div>
     </form>

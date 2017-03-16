@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Infraestructura\Vehiculo;
 use Infraestructura\Accesorio;
 use Infraestructura\Mecanico;
+use Infraestructura\Peticion;
 
 class Solicitud extends Model
 {
@@ -43,5 +44,10 @@ class Solicitud extends Model
        {
             $query->where('vehiculo_id',$vehiculo_id);
        } 
+    }
+
+    public function peticion()
+    {
+        return $this->hasOne('Infraestructura\Peticion');
     }
 }

@@ -26,7 +26,7 @@ class VehiculoCreateRequest extends Request
         return [
             'codigo'     => 'required|unique:vehiculos,codigo|max:10|min:2|alpha_dash',
             'placa'      => 'required|unique:vehiculos,placa|max:20|min:3|alpha_dash',
-            'color' => 'required|alpha|max:20',
+            'color' => 'required|max:20',
             'pasajeros'  => 'required|numeric',
             'kilometraje'=> 'numeric',
             'tipog'  => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:30|min:4',

@@ -5,6 +5,7 @@ namespace Infraestructura;
 use Illuminate\Database\Eloquent\Model;
 use Infraestructura\Vehiculo;
 use Infraestructura\Solicitud;
+use Infraestructura\Devolucion;
 
 class Mecanico extends Model
 {
@@ -31,10 +32,19 @@ class Mecanico extends Model
     }
     public function scopeVehiculo_id($query, $vehiculo_id)
     {
-       // dd("scope: ".$chofer);
-       if($vehiculo_id !=  "")
-       {
-            $query->where('vehiculo_id',$vehiculo_id);
-       } 
+        if($vehiculo_id != "")
+        {
+            //dd("scope: ".$vehiculo_id);
+            $sol = Solicitud::where('vehiculo_id',$vehiculo_id)->get(['id'])->lists('id')->toArray();
+            //dd($sol);
+            $query->where('solicitud_id',$sol);  
+
+        }
+        
+      
+    }
+    public function devolucion()
+    {
+        return $this->hasOne('Infraestructura\Devolucion');
     }
 }

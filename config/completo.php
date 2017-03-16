@@ -9,6 +9,7 @@ return array(
         'chofer'            => 'chofer',
         'mecanico'          => 'mecánico',
         'encargado'         => 'encargado',
+        'mensajero'         => 'mensajero',
     ]
 )
 ?> 

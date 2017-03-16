@@ -6,6 +6,7 @@ return array(
         'supervisor'        => 'supervisor',
         'chofer'            => 'chofer',
         'mecanico'          => 'mecanico',
+        'mensajero'          => 'mensajero',
     ],
     'tipose' => [
         'gasolina'=> 'Gasolina',

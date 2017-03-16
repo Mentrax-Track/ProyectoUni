@@ -6,7 +6,7 @@ use Closure;
 
 use Session;
 
-class Mecanico
+class Mensajero
 {
     protected $auth;
 
@@ -24,7 +24,7 @@ class Mecanico
     public function handle($request, Closure $next)
     {
         $tipo = $this->auth->user()->tipo;
-        if ($tipo != 'administrador' AND $tipo != 'mecanico' AND $tipo != 'supervisor') 
+        if ($tipo != 'administrador' AND $tipo != 'supervisor' AND $tipo != 'mecanico' AND $tipo != 'mensajero') 
         {
             Session::flash('mensaje-rol','Sin privilegios');
             return redirect()->to('acceso');

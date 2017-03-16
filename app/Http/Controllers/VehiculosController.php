@@ -20,7 +20,7 @@ class VehiculosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin',['only'=>['getKilometrajemecanico','getKilometrajeinforme','getKilometraje','create','edit','getImprimir']]);
+        $this->middleware('admin',['only'=>['getKilometrajemecanico','getKilometrajeinforme','getKilometraje','create','edit']]);
         $this->beforeFilter('@find',['only' => ['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -46,7 +46,6 @@ class VehiculosController extends Controller
         $vehiculos = Vehiculo::placa($request->get('placa'))->estado($request->get('estado'))->orderBy('id','DESC')->paginate(10);
         //dd($vehiculos);
         //$uno = Vehiculo::get(['id']);
-
         //dd($uno);
         return view('automotores.vehiculo.index', compact('vehiculos'));
     }
@@ -291,6 +290,40 @@ class VehiculosController extends Controller
         return $pdf->stream('Vehiculos');
     }
 
+    public function getImprimire()
+    {
+
+        $tipog = Vehiculo::distinct()->get(['tipog'])->lists('tipog','tipog')->toArray();
+        //dd($tipog);
+        return view('automotores.vehiculo.imprimire',compact('tipog'));
+    }
+    public function getImprimirvehis(Request $request)
+    {
+        //dd($request);
+        $tipog = $request->tipog;
+        //dd($tipog);
+        foreach ($tipog as $key => $value) 
+        {
+            $resultado = Vehiculo::where('tipog',$value)->get();
+            $resul[] = $resultado;
+        }
+        //dd($resul);
+
+        $responsable = \Auth::user()->full_name;
+        //dd($responsable);
+        $arrayMeses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+           'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+        $arrayDias = array( 'Domingo', 'Lunes', 'Martes',
+               'Miercoles', 'Jueves', 'Viernes', 'Sabado');
+        $date = $arrayDias[date('w')].", ".date('d')." de ".$arrayMeses[date('m')-1]." de ".date('Y');
+        /*"Miercoles, 07 de Diciembre de 2016"*/
+        //dd($date);
+        $view =  \View::make('automotores.vehiculo.pdfalgunos', compact('date','responsable','resul'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta','portrait');
+        return $pdf->stream('Vehiculos');
+        
+    }
     public function getKilometraje($id)
     {
         //dd($id);

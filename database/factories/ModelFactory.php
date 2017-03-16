@@ -20,7 +20,7 @@ $factory->define(Infraestructura\User::class, function (Faker\Generator $faker) 
         'email'  => $faker->email,
         'password' => str_random(10),
         'remember_token' => str_random(10),
-        'tipo' => $faker->randomElement(['administrador','supervisor','chofer','mecanico','encargado']),
+        'tipo' => $faker->randomElement(['mensajero','administrador','supervisor','chofer','mecanico','encargado']),
         'active'=> $faker->boolean,
         'insertador'=> $faker->name
     ];

@@ -67,6 +67,17 @@ class UserTableSeeder extends Seeder
             'active'    => true
 
             ]);
+        factory(Infraestructura\User::class)->create([
+            'nombres'   => 'Hugo',
+            'apellidos' => 'Mensajero',
+            'cedula'    => '11223344',
+            'celular'   => '12345145',
+            'email'     => 'rge.uatf@gmail.com',
+            'tipo'      => 'mensajero',
+            'password'  => 'admin1',
+            'active'    => true
+
+            ]);
         factory(Infraestructura\User::class, 50)->create();
     }
 }

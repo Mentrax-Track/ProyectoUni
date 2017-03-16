@@ -42,9 +42,9 @@
                                 <td class="info text-center"><strong><font color="green">ACTUALIZADO</font></strong></td>
                             @else
                                 @if (Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'administrador')
-                                    <td class="info text-center">{!!link_to_action('VehiculosController@getKilometrajeinforme', $title = ' Actualizar Km.', $parameters = $infovi->id, $attributes = ['class'=>'btn-warning btn-xs fa fa-bus'])!!}</td>
+                                    <td class="info text-center">{!!link_to_action('VehiculosController@getKilometrajeinforme', $title = ' Actualizar Km.', $parameters = $infovi->id, $attributes = ['class'=>'btn-danger btn-xs fa fa-bus'])!!}</td>
                                 @else
-                                    <td class="info text-center"><strong><font color="green">No revisado</font></strong></td>
+                                    <td class="info text-center"><strong><font color="red">No revisado</font></strong></td>
                                 @endif
                             @endif
                             <td class="btns" style="vertical-align:middle;">

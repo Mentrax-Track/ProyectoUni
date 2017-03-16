@@ -9,6 +9,8 @@ use Infraestructura\Http\Requests\CreateMecanicoRequest;
 use Infraestructura\Http\Controllers\Controller;
 use Infraestructura\Solicitud;
 use Infraestructura\Vehiculo;
+use Infraestructura\Modelo;
+use Infraestructura\Marca;
 use Infraestructura\Accesorio;
 use Infraestructura\Mecanico;
 use Infraestructura\User;
@@ -21,7 +23,7 @@ class MecanicoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('mecanico',['only'=>['create','edit','show','destroy','getImprimir']]);
+        $this->middleware('mecanico',['only'=>['getImprimirkardex','getImprimirk','create','edit','show','destroy','getImprimir']]);
         $this->beforeFilter('@find',['only'=>['edit','update','destroy']]);
     }
     public function find(Route $route)
@@ -34,15 +36,18 @@ class MecanicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (\Auth::user()->tipo == 'encargado') 
+        //dd($request->get('vehiculo_id'));
+
+        if (\Auth::user()->tipo == 'encargado' || \Auth::user()->tipo == 'mensajero') 
         {
             Session::flash('mensaje-rol','Sin privilegios');
             return redirect()->to('acceso');
         }
-        $mecanico = Mecanico::orderBy('id','DESC')->paginate(10);
-        return view('mantenimiento.mecanico.index', compact('mecanico'));
+        $mecanico = Mecanico::vehiculo_id($request->get('vehiculo_id'))->orderBy('id','DESC')->paginate(10);
+        $vehiculo_id = Vehiculo::get(['tipog','placa','id'])->lists('full_vehiculo','id')->toArray();
+        return view('mantenimiento.mecanico.index', compact('mecanico','vehiculo_id'));
     }
 
     /**
@@ -154,5 +159,36 @@ class MecanicoController extends Controller
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
         return $pdf->stream('Solicitudes');  
+    }
+    public function getImprimirk()
+    {
+        $vehiculo_id = Vehiculo::get(['tipog','placa','id'])->lists('full_vehiculo','id')->toArray();
+   
+        return view('mantenimiento.mecanico.kardex',compact('vehiculo_id')); 
+    }
+    public function getImprimirkardex(Request $request)
+    {
+        //dd($request->kardex); 
+        $idve = $request->kardex;
+        $vehiculo = Vehiculo::where('id',$idve)->first();
+        //dd($vehiculo);
+        $modelo = Modelo::where('vehiculo_id',$vehiculo->id)->first();
+        //dd($modelo);
+        $marca = Marca::where('modelo_id',$modelo->id)->first();
+        //dd($marca);
+
+        $solicitudes = Solicitud::where('vehiculo_id',$idve)->get();
+        //dd($solicitudes);
+
+        $responsable = Auth::user()->full_name;
+        //dd($responsable);
+        $date = date('d-m-Y');
+        //dd($date);
+        $view =  \View::make('mantenimiento.mecanico.pdfkardex', compact('modelo','marca','vehiculo','solicitudes','date','responsable'))->render();
+        $pdf  = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
+        return $pdf->stream('Solicitudes');
+
+         
     }
 }

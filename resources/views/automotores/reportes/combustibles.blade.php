@@ -14,15 +14,15 @@
             text: 'Gráfica del uso del combustible'
         },
         xAxis: {
-            categories: ['1-6', '7-12', '13-18', '19-24', '24-31']
+            categories: ['Enero','Febrero','Marzo']
         },
         labels: {
             items: [{
                 html: 'Uso total del combustible',
                 style: {
                     left: '50px',
-                    top: '18px',
-                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
+                    top: '1px',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'blue'
                 }
             }]
         },
@@ -51,19 +51,19 @@
         },{
             type: 'column',
             name: 'Litros Diesel ',
-            data: [3, 2, 1, 3, 4]
+            data: [25,30,30]
         }, {
             type: 'column',
             name: 'Litros Gasolina  ',
-            data: [2, 3, 5, 7, 6]
+            data: [20,40,40]
         }, {
             type: 'column',
             name: 'G.N.V.',
-            data: [4, 3, 3, 9, 3]
+            data: [25,40,50]
         }, {
             type: 'spline',
             name: 'MES ANTERIOR',
-            data: [3, 2.67, 3, 6.33, 3.33],
+            data: [20,25,50],
             marker: {
                 lineWidth: 2,
                 lineColor: Highcharts.getOptions().colors[3],
