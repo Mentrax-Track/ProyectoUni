@@ -19,7 +19,8 @@
 <div class="panel panel-success">
     
     <div class="panel-heading text-center"><h4><p class="www"><strong>Nuevo Viaje</strong></p></h4></div>
-    <div class="panel-body jumbotron">      
+    <div class="panel-body jumbotron">     
+        <center><font color="red">■</font>Los campos de color <font color = "#31708f"><strong> CELESTE </strong></font> SON OBLIGATORIOS.<font color="red">■</font> Los campos de color <font color = "#3c763d"><strong> VERDER </strong></font> son opcionales</center> 
        {!! Form::open(['route'=>'viajes.store','method'=>'POST','data-toggle'=>'validator']) !!}
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('automotores.viajes.forms.viajes')

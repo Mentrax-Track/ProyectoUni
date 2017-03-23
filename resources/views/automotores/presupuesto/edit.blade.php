@@ -16,7 +16,7 @@
 @include('alertas.request')
 @include('alertas.errors')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-info">
     
     <div class="panel-heading text-center"><h4><p class="www">Editar el Presupuesto</p></h4></div>
     <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> verde </strong></font> son Obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#8a6d3b"><strong> dorado </strong></font> son autogenerados (no modifique).</center>

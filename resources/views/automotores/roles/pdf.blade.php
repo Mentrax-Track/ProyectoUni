@@ -1,4 +1,4 @@
-<?php use Infraestructura\User; ?>
+<?php use Infraestructura\User; use Infraestructura\Excepcion; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +48,8 @@
                                 <td class="kn">{{ $value->tipob }}</td>
                                 <td class="kn">{{ $value->tipoc }}</td>
                                 <td class="kn"><center>{{ $value->fecha }}</center></td>
-                                <td class="kn"><center>{{ $value->cantidad }}</center></td>
+                                <?php $ex = Excepcion::where('chofer_id',$i)->count();//dd($ex); ?>                                
+                                <td class="kn"><center>{{ $value->cantidad+$ex }}</center></td>
                             </tr>
                         </tbody>
                         @endforeach

@@ -47,33 +47,49 @@
                         <?php $i = $rol->chofer_id;
                             $num = Excepcion::where('chofer_id',$i)->count(); ?>
                         <td class="text-center">
-                        @if ($user == 'administrador' OR $user == 'supervisor') 
-                            {!!link_to_action('RolesController@getExcepcion', $title = ' Añadir', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block fa fa-magic'])!!} <br />
-                        @endif   
-                        @if($user == 'administrador' OR $user == 'supervisor' OR Auth::user()->id == $rol->chofer_id ) 
-                            {!!link_to_action('RolesController@getVer', $title = ' Ver', $parameters = $rol->id, $attributes = ['class'=>'btn btn-success btn-xs btn-block fa fa-bars'])!!} <br />
-                        @endif
                             <font color="red">{{ $num }}</font>
+                            
+                            @if ($user == 'administrador' OR $user == 'supervisor') 
+                            <div class="dropdown">
+                                <button class="btn btn-info btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Añadir
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
+                                    <li class="disabled"><a href="">Elija una Opción</a></li>
+                                    <li role="separator" class="divider"></li>       
+                                    <li>{!!link_to_action('RolesController@getExcepcion', $title = ' Añadir', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block fa fa-magic'])!!}</li>
+                            @endif   
+                            @if($user == 'administrador' OR $user == 'supervisor' OR Auth::user()->id == $rol->chofer_id ) 
+                                    <li>{!!link_to_action('RolesController@getVer', $title = ' Ver', $parameters = $rol->id, $attributes = ['class'=>'btn btn-success btn-xs btn-block fa fa-bars'])!!}</li>
+                            @endif
+                                </ul>
+                            </div>
                         </td>
                         <td class="text-center">{{ $rol->fecha }}</td>
                         <td class="text-center">
-                            <div class="btn-group btn-group-sm">
-                                <center>
-                                    {!!link_to_route('roles.show', $title = ' Mostrar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block fa fa-bars'])!!}
-                                    <br />
-                                @if ($user == 'administrador' OR $user == 'supervisor')    
-                                    {!!link_to_route('roles.edit', $title = ' Insertar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block  fa fa-tachometer'])!!}
-                                    <br />
+                            <div class="dropdown">
+                                <button class="btn btn-success btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
+                                    <li class="disabled"><a href="">Elija una Opción</a></li>
+                                    <li role="separator" class="divider"></li>
+                                
+                                    <ul>{!!link_to_route('roles.show', $title = ' Mostrar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-info btn-xs btn-block fa fa-bars'])!!}</ul>
                                     
-                                    {!!link_to_action('RolesController@getLimpiar', $title = ' Limpiar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-warning btn-xs glyphicon fa fa-paint-brush'])!!}
+                                @if ($user == 'administrador' OR $user == 'supervisor')    
+                                    <ul>{!!link_to_route('roles.edit', $title = ' Insertar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block  fa fa-tachometer'])!!}</ul>
+                                    
+                                    
+                                    <ul>{!!link_to_action('RolesController@getLimpiar', $title = ' Limpiar', $parameters = $rol->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block glyphicon fa fa-paint-brush'])!!}</ul>
 
-                                    {!! Form::open(['route'=>['roles.destroy',$rol->id],'method'=>'DELETE']) !!}
-                                        <button type="submit" class="btn btn-danger btn-xs glyphicon fa fa-trash-o"> 
+                                    <ul>{!! Form::open(['route'=>['roles.destroy',$rol->id],'method'=>'DELETE']) !!}
+                                        <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon fa fa-trash-o" onClick="javascript: return confirm('¿Estas seguro de eliminarlo del rol?');"> 
                                             Eliminar
                                         </button>   
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!}</ul>
                                 @endif
-                                </center>
+                                </ul>
                             </div>
                         </td>
                     </tr>

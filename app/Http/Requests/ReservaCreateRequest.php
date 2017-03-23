@@ -29,7 +29,7 @@ class ReservaCreateRequest extends Request
 
 
 
-            'objetivo'    => 'required|regex:/^[a-z ñáéíóú]+$/i|max:100',
+            'objetivo'    => 'required|regex:/^[a-z ñáéíóú 0-9]+$/i|max:100',
             'pasajeros'    => 'required|numeric',
             'fecha_inicial'=> 'required',
             'fecha_final'  => 'required',

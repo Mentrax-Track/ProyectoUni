@@ -59,7 +59,7 @@ use Infraestructura\Reserva; ?>
 
                                 if (empty($resul)) 
                                 { ?>
-                                @if(Auth::user()->id == $esta[0])
+                                @if(Auth::user()->id == $esta[0] || Auth::user()->tipo == "administrador")
                                     {!!link_to_route('reservas.edit', $title = 'Editar', $parameters = $reser->id, $attributes = ['class'=>'btn btn-primary  btn-xs btn-block glyphicon glyphicon-edit'])!!}
                                 @else
                                     <strong><font color="#337ab7">{{"Ninguna"}}</font></strong>

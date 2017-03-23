@@ -46,6 +46,7 @@
 {!! Html::script('js/moment.min.js') !!}
 {!! Html::script('js/validator.js')!!}
 {!! Html::script('js/select2.js') !!}
+{!! Html::script('js/es.js') !!}
 
  <script type="text/javascript">
 
@@ -54,7 +55,8 @@
         tags:false,
         placeholder:"Seleccione a los vehículos para imprimir",
         allowClear: true,
-        maximumSelectionLength: 20,
+        maximumSelectionLength: 1,
+            language: "es",
         tokenSeparators: [',']
     }); 
  });

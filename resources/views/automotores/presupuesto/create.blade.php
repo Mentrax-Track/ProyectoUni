@@ -16,7 +16,7 @@
 @include('alertas.request')
 @include('alertas.errors')
 <br>
-<div class="panel panel-default">
+<div class="panel panel-info">
     
     <div class="panel-heading text-center"><h4><p class="www"><strong><u>Presupuesto del viaje de {{ $viaje->entidad }} con km.:</u> <font color="red">{{ $ruta->total }}</font></strong></p></h4></div>
     <center><font color="red">■</font>Los campos de la letra color <font color = "green"><strong> VERDE </strong></font> son obligatorios.<font color="red">■</font> Los campos de la letra color <font color = "#3f3f3f"><strong> OSCURO </strong></font> son opcionales.</center>

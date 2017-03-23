@@ -2,7 +2,7 @@
 use Infraestructura\PresupuestoDia;  ?>
 @extends('automotores.admin')
 
-@section('subtitulo','Reservas')
+@section('subtitulo','Listado de Viajes')
 @section('css')
 {!! Html::style('css/select2.css') !!}
 @stop
@@ -11,7 +11,7 @@ use Infraestructura\PresupuestoDia;  ?>
 <br>
 <div class="panel panel-success">
     
-    <div class="panel-heading text-center"><h4><p class="www">Viajes</p></h4></div>
+    <div class="panel-heading text-center"><h4><p class="www">VIAJES</p></h4></div>
     <div class="panel-body jumbotron"> 
         <form class="form-inline">
             <div class="form-group">
@@ -48,12 +48,21 @@ use Infraestructura\PresupuestoDia;  ?>
                         <div class="btn-group btn-group-sm">
                         @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                             <div class="dropdown">
-                                 {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
-                                        <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
-                                            <span class="glyphicon glyphicon-trash"> Eliminar</span> 
-                                        </button>   
-                                 {!! Form::close() !!}
-                                 <a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a>
+                                <button class="btn btn-success btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Opciones
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
+                                    <li class="disabled"><a href="">Elija una Opción</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>{!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
+                                            <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon" onClick="javascript: return confirm('¿Estas seguro de eliminar el viaje?');">
+                                                <span class="glyphicon glyphicon-trash"> Eliminar</span> 
+                                            </button>   
+                                     {!! Form::close() !!}</li>
+                                     
+                                </u>
                             </div>
                         @endif
                         </div>
@@ -125,7 +134,7 @@ use Infraestructura\PresupuestoDia;  ?>
                                     <li class="disabled"><a href="">Eliminación del viaje</a></li>
                                                                         
                                     {!! Form::open(['route'=>['viajes.destroy',$via->id],'method'=>'DELETE']) !!}
-                                        <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon">
+                                        <button type="submit" class="btn btn-danger btn-xs btn-block glyphicon" onClick="javascript: return confirm('¿Estas seguro de eliminar el viaje?');">
                                             <span class="glyphicon glyphicon-trash"> Eliminar</span> 
                                         </button>   
                                     {!! Form::close() !!}
@@ -134,7 +143,7 @@ use Infraestructura\PresupuestoDia;  ?>
                             </div>  
                         @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor')
                             <div class="dropdown">
-                                 {!!link_to_action('ViajesController@getCancelar', $title = ' Cancelar', $parameters = $via->id, $attributes = ['class'=>'btn btn-warning btn-xs btn-block dropdown-toggle fa fa-ban'])!!}
+                                 {!!link_to_action('ViajesController@getCancelar', $title = ' Cancelar', $parameters = $via->id, $attributes = ['class'=>'btn btn-danger btn-xs btn-block dropdown-toggle fa fa-ban','onClick'=>"javascript: return confirm('¿Estas seguro de cancelar el viaje?');"])!!}
                             </div>
                         @endif
                         </div>
