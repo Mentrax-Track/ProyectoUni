@@ -32,7 +32,7 @@
 								<div class="col-md-6 col-md-offset-4">
 									<center>
 										<button type="submit" class="btn btn-primary ">
-											Enviar un enlace para restablecer mi contraseña 
+											Enviar un enlace para <br /> restablecer mi contraseña 
 										</button>
 									</center>
 								</div>

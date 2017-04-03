@@ -14,7 +14,11 @@
     <div class="panel-heading text-center"><h4><p class="www">Editar la petición de material</p></h4></div>
     <div class="panel-body jumbotron"> 
         {!! Form::model($peticion,['route'=>['peticion.update',$peticion->id],'method'=>'PUT']) !!}
-                    @include('mantenimiento.peticion.forms.peti')
+                    @if(empty($solicitud) || $solicitud == null)
+                        @include('mantenimiento.peticion.forms.petinuevo')
+                    @else
+                        @include('mantenimiento.peticion.forms.peti')
+                    @endif 
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
                     <center>

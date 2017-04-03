@@ -32,7 +32,7 @@ use Infraestructura\PresupuestoDia;  ?>
                 <th class="text-center">Final</th>
                 <th class="text-center">Operación</th>
             </tr>
-            @foreach($viaje as $via)
+            @foreach($viaje as $key => $via)
                 <?php $estado = $via->estado; ?>
                 @if($estado == 'cancelado')
                 <tbody BGCOLOR="#d9edf7">
@@ -53,6 +53,8 @@ use Infraestructura\PresupuestoDia;  ?>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu4">
                                     <li class="disabled"><a href="">Elija una Opción</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    {!!link_to_route('viajes.edit', $title = ' Editar', $parameters = $via->id, $attributes = ['class'=>'btn btn-primary btn-xs btn-block glyphicon glyphicon-pencil'])!!}
                                     <li role="separator" class="divider"></li>
                                     <li><a class="btn btn-info  btn-xs btn-block glyphicon glyphicon-th-list" href="{{ route('rutas.show',['id' => $via->id] )}}" > Detalle</a></li>
                                     <li role="separator" class="divider"></li>

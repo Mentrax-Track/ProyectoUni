@@ -16,6 +16,7 @@
     </center> 
     <div class="row">
         <div class="col-md-12">
+            <div class="table-responsive">
             <table class='table table-bordered table-hover table-condensed jumbotron'>
                 <tr class="info">
                     <th class="text-center">#</th>
@@ -40,6 +41,7 @@
                 </tbody>
                @endforeach
             </table> 
+            </div>
             <p class="text-center">Existen {{ $viajes->total() }} registros</p>
             <center>{!! $viajes->render() !!}</center>       
         </div>

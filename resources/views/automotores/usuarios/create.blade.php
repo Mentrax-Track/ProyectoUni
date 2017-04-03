@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Incertar Usuarios')
+@section('subtitulo','Insertar Usuarios')
 @section('css')
      {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
      {!! Html::style('css/easy-autocomplete.themes.min.css') !!}

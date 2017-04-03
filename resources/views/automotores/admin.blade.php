@@ -29,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button> 
-                <a class="navbar-brand" href="{{ route('auto') }}">Automotores | @yield('subtitulo')</a>
+                <a class="navbar-brand" href="{{ route('auto') }}">INFRAESTRUCTURA | @yield('subtitulo')</a>
             </div>
            
 
@@ -49,7 +49,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <br><p class="centered text-center"><img class="img-circle" width="85" src="{!! URL::to('/img/infrax.jpeg') !!}"><br><a>U.A.T.F.</a></p>
+                        <br><p class="centered text-center"><img class="img-circle" width="100" src="{!! URL::to('/img/uatf.jpg') !!}"><br><font color="#337ab7"><strong>U.A.T.F.<br />DEPTO. DE INFRAESTRUCTURA</strong></font></p><BR />
                     @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor') 
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
@@ -224,7 +224,7 @@
                      @endif
                      @if (Auth::user()->tipo == 'administrador' OR Auth::user()->tipo == 'supervisor' OR Auth::user()->tipo == 'mecanico' OR Auth::user()->tipo == 'mensajero')
                         <li>
-                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Compra de Material<span class="fa arrow"></span></a>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i> Pedido de Material<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{!! URL::to('/peticion') !!}"><i class='fa fa-cogs'></i> Mostrar</a>

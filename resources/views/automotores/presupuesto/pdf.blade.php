@@ -21,7 +21,7 @@ use Infraestructura\User;
         <td class="preti" colspan="1"><strong><center>KM</center></strong></td> 
     </tr>
     <tr>
-    <td rowspan="3" style="font-size:90%;"> <center><strong>N°</strong> {{$presupuesto->id}}</center> </td>
+    <td rowspan="3" style="font-size:90%;"> <center><strong>Viaje</strong><br /> N° {{$viaje->id}}</center> </td>
            
         <td rowspan="3" colspan="4" style="font-size:90%;"><strong>Vehículo: </strong>{{ $presupuesto->enviVehi->full_vehiculo }}<br/> 
                                     <strong>Chofer: </strong> {{ $presupuesto->enviCho->full_name }} <br/> 
