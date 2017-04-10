@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Incertar Vehiculo')
+@section('subtitulo','Insertar Vehiculo')
 @section('css')
      {!! Html::style('css/easy-autocomplete.themes.min.css') !!}
      {!! Html::style('css/easy-autocomplete.min.css') !!}

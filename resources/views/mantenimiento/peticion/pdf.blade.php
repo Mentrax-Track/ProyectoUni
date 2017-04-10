@@ -14,13 +14,22 @@
    <br>SOLICITUD DE COMPRA DE MATERIAL<br> Sección Mecánica Automotriz</h5>
     <table id="tab" style="border-width: 2px; border-style: double; border-color: black; " > 
         <tr>
-            <?php $ve = Vehiculo::where('id',$solicitud->vehiculo_id)->get(['tipog','placa','id'])->lists('tipog')->toArray(); 
+            @if(empty($solicitud))
+                <td colspan="1" class="sa"><strong> </td>   
+                <td colspan="1" class="sa"><strong> </td>
+            @else
+                <?php $ve = Vehiculo::where('id',$solicitud->vehiculo_id)->get(['tipog','placa','id'])->lists('tipog')->toArray(); 
                     $pla = Vehiculo::where('id',$solicitud->vehiculo_id)->get(['tipog','placa','id'])->lists('placa')->toArray();?>
-            <td colspan="1" class="sa"><strong>Mobilidad:</strong> {{$ve[0]}}</td>   
-            <td colspan="1" class="sa"><strong>Placa:</strong> {{$pla[0]}}</td>       
+                <td colspan="1" class="sa"><strong>Mobilidad:</strong> {{$ve[0]}}</td>   
+                <td colspan="1" class="sa"><strong>Placa:</strong> {{$pla[0]}}</td>       
+            @endif
         </tr>
         <tr>
-            <td colspan="2" class="sa"><strong>A solicitud de:</strong>  {{$solicitud->chofer}}</td>
+            <?php if(empty($solicitud)){ ?>
+                <td colspan="2" class="sa"><strong>A solicitud de:</strong>  {{$peticion->insertador}}</td>
+            <?php }else{ ?>
+                <td colspan="2" class="sa"><strong>A solicitud de:</strong>  {{$solicitud->chofer}}</td>
+            <?php } ?>           
         </tr>
         <tr>
             <td colspan="2" class="sa"><strong>Fecha de la solicitud:</strong>  {{$peticion->fecha}}</td>
@@ -39,7 +48,12 @@
     </table><br><br><br>
     <table id="tab" style="border-width: 0px; border-color: black; ">
         <tr>
-            <td colspan="1" class="sa"><center><strong>Sr. {{$solicitud->chofer}}</strong><br />Cargo:.................<br /> </center></td>
+            @if(empty($solicitud))
+                <td colspan="1" class="sa"><center><strong>Sr. {{$peticion->insertador}}</strong><br />Enc. Automotores<br /> </center></td>
+            @else 
+                <td colspan="1" class="sa"><center><strong>Sr. {{$solicitud->chofer}}</strong><br />Cargo:.................<br /> </center></td>
+            @endif
+            
             <td colspan="1"  class="sa"><center><strong>JEFATURA DINF.</strong><br />(Autorización)<br /> </center></td>
         </tr>
         

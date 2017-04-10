@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root'   => public_path('vehi'),
+            'root'   => storage_path('laravel-backups'),
         ],
 
         'ftp' => [

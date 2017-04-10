@@ -108,7 +108,7 @@
               <div class="col-lg-4">
                   <center><img class="img-circle img" src="img/tramitess.jpg" alt="Generic placeholder image" width="140" height="140"> </center>
                   <i><h2 class="text-center">Servicios Generales</h2></i>
-                  <p align="justify">Podrá realizar el control de los usuarios de los distintos sub departamentos del departamento de Infraestructura...&raquo;</p>
+                  <p align="justify">Podrá realizar o verificar las solicitudes de trabajo en las distintas secciones del departamento de Infraestructura.&raquo;</p>
                   <p class="text-center"><a class="btn btn-info glyphicon glyphicon-briefcase" href="{!! URL::to('/inicio-de-sesion') !!}" role="button"> Ingresar</a></p>
               </div>
               <div class="col-lg-4">
@@ -123,7 +123,7 @@
 
       <!-- FOOTER -->
       <footer class="text-center">
-        <p>&copy; UATF - 2016 </p>
+        <p>&copy; UATF - 2017 </p>
       </footer>
 
     </div><!-- /.container -->

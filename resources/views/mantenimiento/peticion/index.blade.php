@@ -22,6 +22,8 @@
                     <span class="fa fa-search"> Buscar</span>
                 </button>
             {!! Form::close() !!}
+
+            {!!link_to_action('PeticionController@getInsertar', $title = ' Crear Nuevo', $parameters = '', $attributes = ['class'=>'btn btn-primary glyphicon glyphicon-hand-up'])!!}
         </div>
     </form><br>
         <div class="table-responsive">
@@ -29,7 +31,7 @@
                  <tr class="info">
                     <th class="text-center">#</th>
                     <th class="text-center"># Orden</th>
-                    <th class="text-center">Chofer</th>
+                    <th class="text-center">Chofer/Insertado</th>
                     <th class="text-center">Fecha</th>
                     <th class="text-center">Nombre</th>
                     <th class="text-center">Cantidad</th>
@@ -42,15 +44,26 @@
                             <td  class="info text-center">{{ ++$key }}</td>
                             <td class="info"><center>{{ $pet->orden}}</center></td>
                             <?php 
-                                $id = (int)$pet->solicitud_id;
-                                //dd($id);
-                                $cho = Solicitud::where('id',$id)
+                                if(!empty($pet->solicitud_id))
+                                {
+                                    $id = (int)$pet->solicitud_id;
+                                    //dd($id);
+                                    $cho = Solicitud::where('id',$id)
                                             ->get(['chofer'])
                                             ->lists('chofer')
                                             ->toArray();
+                                }
+                                else{
+                                    $cho = null;
+                                }
                                 
                             ?>
-                            <td>{{ $cho[0]}} </td>
+                            @if (empty($cho) || $cho == null) 
+                            
+                                <td> <strong>Ins.:</strong> {{ $pet->insertador}} </td>
+                            @else
+                                <td>{{ $cho[0]}} </td>
+                            @endif
                             <td>{{ $pet->fecha }}</td>
                             <td>{{ $pet->nombre }}</td>
                             <td>{{ $pet->cantidad }}</td>

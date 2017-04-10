@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
             'active'    => true
 
             ]);
-        factory(Infraestructura\User::class)->create([
+        /*factory(Infraestructura\User::class)->create([
             'nombres'   => 'Denys',
             'apellidos' => 'Peralta',
             'cedula'    => '87654321',
@@ -78,6 +78,6 @@ class UserTableSeeder extends Seeder
             'active'    => true
 
             ]);
-        factory(Infraestructura\User::class, 50)->create();
+        factory(Infraestructura\User::class, 50)->create();*/
     }
 }

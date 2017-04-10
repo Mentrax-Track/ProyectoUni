@@ -10,7 +10,7 @@
 					<a href=""><p class="www"><h4>Iniciar Sesión</h4></p></a>
 				</div>
 				<div class="panel-body">
-					<p class="centered text-center"><img class="img-circle" width="120" src="/img/uatf.jpg"><br><br><strong><center><h4>DEPARTAMENTO DE INFRAESTRUCTURA</h4></center></strong></p><br>
+					<p class="centered text-center"><img class="img-circle" width="120" src="{!! URL::to('/img/uatf.jpg') !!} "><br><br><strong><center><h4>DEPARTAMENTO DE INFRAESTRUCTURA</h4></center></strong></p><br>
 					@include('alertas.request')
 					<div class="sombra">
 						<form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}" data-toggle="validator">

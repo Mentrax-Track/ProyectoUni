@@ -34,11 +34,11 @@ class TableroController extends Controller
     {
         $fecha = new \DateTime();
         $fecha->modify('first day of this month');
-        $diauno = $fecha->format('d/m/Y'); 
+        $diauno = $fecha->format('m/d/y'); 
 
         $fecha = new \DateTime();
         $fecha->modify('last day of this month');
-        $diaultimo  = $fecha->format('d/m/Y');
+        $diaultimo  = $fecha->format('m/d/y');
     
         $meses = Viaje::whereBetween('fecha_inicial', [$diauno, $diaultimo])
                     ->orderBy('id','DESC')->paginate(10);
@@ -55,11 +55,11 @@ class TableroController extends Controller
     {   
         $fecha = new \DateTime();
         $fecha->modify('first day of this month');
-        $diauno = $fecha->format('d/m/Y'); 
+        $diauno = $fecha->format('m/d/y'); 
 
         $fecha = new \DateTime();
         $fecha->modify('last day of this month');
-        $diaultimo  = $fecha->format('d/m/Y');
+        $diaultimo  = $fecha->format('m/d/y');
         $viajes = Viaje::whereBetween('fecha_inicial', [$diauno, $diaultimo])
                     ->orderBy('id','DESC')->get();
         //dd($viajes);

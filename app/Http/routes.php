@@ -306,6 +306,7 @@ Route::post('ImprimirKardex','MecanicoController@getImprimirkardex');
 
 
 Route::resource('peticion','PeticionController');
+Route::get('InsertarPeticion','PeticionController@getInsertar');
 
 Route::get('imprimir/{id}/Peticion','PeticionController@getImprimir');
 

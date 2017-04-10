@@ -138,7 +138,7 @@ class ViajesController extends Controller
             'pasajeros'     => $request['pasajeros'],
             'fecha_inicial' => $request['fecha_inicial'],
             'fecha_final'   => $request['fecha_final'],
-            'dias'          => $days,
+            'dias'          => $days+1,
             'estado'        => $activo,
             'reserva_id'    => $reseri
             ]);
@@ -304,26 +304,27 @@ class ViajesController extends Controller
      */
     public function edit($id)
     {
-        $encargado = User::where('tipo', 'encargado')
+        $encargados = User::where('tipo', 'encargado')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $chofer    = User::where('tipo', 'chofer')
+        $choferes    = User::where('tipo', 'chofer')
                     ->orderBy('nombres','ASC')
                     ->get(['id', 'nombres', 'apellidos'])
                     ->lists('full_name','id');
-        $vehiculo  = Vehiculo::where('estado', 'Optimo')
+        $vehiculos  = Vehiculo::where('estado', 'optimo')
                     ->orderBy('tipog','ASC')
                     ->get(['id', 'tipog', 'placa'])
                     ->lists('full_vehiculo','id')->toArray();
 
         $destino   = Destino::orderBy('id','ASC')
                     ->get(['id','origen', 'destino','dep_inicio','dep_final'])
-                    ->lists('full_destino');
+                    ->lists('full_destino','id')
+                    ->toArray();
         $viaje = Viaje::find($id);
         //dd($viaje);
 
-        return view('automotores.viajes.edit',['via'=>$this->viaje],compact('viaje','destino','chofer','encargado','vehiculo'));        
+        return view('automotores.viajes.edit',['via'=>$this->viaje],compact('viaje','destino','choferes','encargados','vehiculos'));        
     }
 
     /**si es recuando nos perman
@@ -335,7 +336,205 @@ class ViajesController extends Controller
      */
     public function update(ViajeUpdateRequest $request, $id)
     {
+        //dd($request);
+        $a = strtotime($request['fecha_inicial']);
+        $b = strtotime($request['fecha_final']);
+        if($a > $b)
+        {
+            Session::flash('message-error','La fecha Inicial no debe ser mayor a la fecha Final!!!');   
+            return Redirect::to('/viajes/edit');          
+        }
+        $tipo      = $request['tipo'];
+        $pasajeros = $request['pasajeros'];
+       // dd($tipo);
+        if($tipo == 'Viaje de Práctica' && $pasajeros < 20 )
+        {
+            Session::flash('mensaje-rol','La cantidad de pasageros para el viaje de práctica es incorrecto!!!');
+            return Redirect::to('/viajes/edit');          
+        }
+        $cantcho = count($request->chofer);
+        $cantvehi= count($request->vehiculo);
+        //dd($cantvehi);
+        if ($cantcho < $cantvehi) 
+        {
+            Session::flash('message-error','La cantidad de vehículos no tiene que ser mayor a la de los choferes!!!');   
+            return Redirect::to('/viajes/edit');
+        }
+        $diferencia = abs(strtotime($request['fecha_final']) - strtotime($request['fecha_inicial']));
 
+        $years  = floor($diferencia / (365*60*60*24));
+        $months = floor(($diferencia - $years * 365*60*60*24) / (30*60*60*24));
+        $days   = floor(($diferencia - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+        if($days == 0)
+        {
+             $days++;
+        }   
+        $activo = 'activo';
+        $reseri = null;
+        
+        \DB::table('viajes')
+            ->where('id', $id)
+            ->update([
+                'entidad' => $request->entidad,
+                'tipo'    => $request->tipo,
+                'objetivo'=> $request->objetivo,
+                'dias'    => $days+1,
+                'pasajeros'=> $request->pasajeros,
+                'fecha_inicial'=> $request->fecha_inicial,
+                'fecha_final'  => $request->fecha_final,
+                'estado'       => $activo,
+                'reserva_id'   => $reseri
+        ]);
+
+        \DB::table('user_viaje')->where('viaje_id', $id)->delete();
+        $chofer_id = $request['chofer'];
+        foreach ($chofer_id as $choid) 
+        {
+            User_Viaje::create([
+                'user_id' =>$choid,
+                'viaje_id'=>$id
+            ]);
+        }
+        $encargado_id = $request['encargado'];
+        foreach ($encargado_id as $encarid) 
+        {
+            User_Viaje::create([
+                'user_id' =>$encarid,
+                'viaje_id'=>$id
+            ]);
+        }
+        \DB::table('vehiculo_viaje')->where('viaje_id', $id)->delete();
+        $vehiculo_id = $request['vehiculo'];
+        foreach ($vehiculo_id as $vehid)
+        {
+            Vehiculo_Viaje::create([
+                'vehiculo_id'=> $vehid,
+                'viaje_id'   => $id
+                ]);
+        }
+        
+        //////////////////////   Rutas   //////////////////////////////////////////////////
+        \DB::table('destino_viaje')->where('viaje_id', $id)->delete();
+        if(!empty($request['destino_id']) && !empty($request['kilome']))
+        {
+            $destino_id = $request['destino_id'];
+            $kilome     = $request['kilome'];
+            Destino_Viaje::create([
+                'destino_id'=> $destino_id,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $destino_id = "";
+            $kilome     = "";
+        }
+        if(!empty($request['dest1']) && !empty($request['k1']))
+        {
+            $dest1  = $request['dest1'];
+            $k1     = $request['k1'];
+            Destino_Viaje::create([
+                'destino_id'=> $dest1,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $dest1 = "";
+            $k1    = "";
+        }
+        if(!empty($request['dest2']) && !empty($request['k2']))
+        {
+            $dest2 = $request['dest2'];
+            $k2    = $request['k2'];
+            Destino_Viaje::create([
+                'destino_id'=> $dest2,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $dest2 = "";
+            $k2    = "";
+        }
+        if(!empty($request['dest3']) && !empty($request['k3']))
+        {
+            $dest3  = $request['dest3'];
+            $k3     = $request['k3'];
+            Destino_Viaje::create([
+                'destino_id'=> $dest3,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $dest3 = "";
+            $k3    = "";
+        }
+        if(!empty($request['dest4']) && !empty($request['k4']))
+        {
+            $dest4 = $request['dest4'];
+            $k4    = $request['k4'];
+            Destino_Viaje::create([
+                'destino_id'=> $dest4,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $dest4 = "";
+            $k4    = "";
+        }
+        if(!empty($request['dest5']) && !empty($request['k5']))
+        {
+            $dest5 = $request['dest5'];
+            $k5    = $request['k5'];
+            Destino_Viaje::create([
+                'destino_id'=> $dest5,
+                'viaje_id'  => $id
+                ]);
+        }
+        else{
+            $dest5 = "";
+            $k5    = "";
+        }
+
+        $a = intval($destino_id);
+        $c = intval($dest1);
+        $d = intval($dest2);
+        $e = intval($dest3);
+        $f = intval($dest4);
+        $g = intval($dest5);
+        \DB::table('rutas')->where('viaje_id', $id)->delete();
+        if(!empty($request['adicional']))
+        {
+            Ruta::create([
+                'destino_id'=> $a,
+                'kilome'    => $kilome,
+                'dest1'     => $c,
+                'k1'        => $k1,
+                'dest2'     => $d,
+                'k2'        => $k2,
+                'dest3'     => $e,
+                'k3'        => $k3,
+                'dest4'     => $f,
+                'k4'        => $k4,
+                'dest5'     => $g,
+                'k5'        => $k5,
+                'adicional' => $request['adicional'],
+                'total'     => $request['total'],
+                'viaje_id'  => $id
+            ]);
+            //dd("LLENO TODO");
+        }
+        else{
+            dd("adicional vacio");    
+        }
+
+        \DB::table('presupuestos')->where('viaje_id', $id)->delete();
+
+        Session::flash('message','El viaje se EDITÓ correctamente...');
+        return Redirect::to('viajes');
+    }
+
+
+        /*
         $ruta = Ruta::find($id);
 
         $ruta->destino_id = $request->destino_id;
@@ -360,8 +559,8 @@ class ViajesController extends Controller
         $this->viaje->save();
 
         Session::flash('message','El registro de viaje fue editado correctamente...');
-        return Redirect::to('/viajes');
-    }
+        return Redirect::to('/viajes');*/
+   
 
     /**
      * Remove the specified resource from storage.

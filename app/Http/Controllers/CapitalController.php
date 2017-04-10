@@ -29,7 +29,13 @@ class CapitalController extends Controller
      */
     public function create()
     {
-        //
+        //echo "estas aqui";
+        $fecha=(date("d-m-Y"));
+        $comando = array("pg_dump", "-U","postgres", "-F", "c", "-b", "-w","kalilinux", "-f", "c:\\xampp\\htdocs\\infraestructura\\storage\\backup\\backup-".""."infra".$fecha.".backup", 'test10');
+       //dd($comando);pg_dump.exe -h localhost -p 5433 -U postgres -E LATIN1 -F c -b -v -f "<<path>>nombre_archivo_base.backup" base_a_exportar
+        exec(join(' ',$comando));
+        Session::flash('message','El backup fue creado correctamente');
+        return redirect('/users');
     }
 
     /**

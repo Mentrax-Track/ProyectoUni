@@ -45,7 +45,7 @@
 
       <!-- PIE DE PAGINA -->
       <footer class="text-center">
-        <p>&copy; UATF - 2016 </p>
+        <p>&copy; UATF - 2017 </p>
       </footer>
     
     {!! Html::script('js/validator.js') !!}

@@ -118,13 +118,22 @@ class PeticionController extends Controller
         //dd($peticion);     
         $t = $peticion->solicitud_id;
         //dd($t);
-        $solicitud = Solicitud::where('id',$t)->first();
-        //dd($solicitud);
-        $accesorios= Accesorio::where('solicitud_id',$solicitud->id)
+        if(empty($t)){
+            $solicitud = null;    
+            $accesorios= null;
+            $accesorio = null;
+        }else{
+            $solicitud = Solicitud::where('id',$t)->first();
+            //dd($solicitud);
+            $accesorios= Accesorio::where('solicitud_id',$solicitud->id)
                         ->get(['solicitud'])->lists('solicitud')->toArray();
-        //dd($accesorios);
-        $accesorio = implode($accesorios,' ');
-        //dd($mecanico);
+            //dd($accesorios);
+            $accesorio = implode($accesorios,' ');
+            //dd($mecanico);
+        }
+        
+        
+        
         return view('mantenimiento.peticion.edit',compact('peticion','ides','insertador','solicitud','accesorio'));
     }
 
@@ -172,5 +181,9 @@ class PeticionController extends Controller
         $pdf  = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view)->setPaper('carta','portrait')->stream();
         return $pdf->stream('Peticiones'); 
+    }
+    public function getInsertar()
+    {
+        return view('mantenimiento.peticion.nuevo');
     }
 }

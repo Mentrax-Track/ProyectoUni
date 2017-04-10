@@ -1,6 +1,6 @@
 @extends('automotores.admin')
 
-@section('subtitulo','Incertar Viaje')
+@section('subtitulo','Insertar Viaje')
 @section('css')
 
      {!! Html::style('css/datetimepicker/prettify-1.0.css') !!}

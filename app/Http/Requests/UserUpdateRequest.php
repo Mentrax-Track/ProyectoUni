@@ -28,7 +28,7 @@ class UserUpdateRequest extends Request
             'apellidos'=> 'required|regex:/^[a-z ñáéíóú]+$/i|max:30',
             'cedula'   => 'between:7,12',
             'celular'  => 'between:8,12',
-            'tipo'     => 'required|in:chofer,mecánico,encargado,mensajero',
+            'tipo'     => 'required|in:chofer,mecanico,encargado,mensajero',
             'email'    => 'max:50',
             'facultad' => 'regex:/^[a-z ñáéíóú]+$/i|min:10|max:30',
             'carrera'  => 'regex:/^[a-z ñáéíóú]+$/i|min:5|max:30',

@@ -146,39 +146,31 @@ class UsersController extends Controller
         $user->save();
 
 
-        $d = Entidad::where('user_id',$id)->get(['user_id'])->toArray();
+        $ed = $request->facultad;
         //dd($d);
-        if(!empty($d) || $d != NULL || $d != "")
+        if(empty($ed))
         {
-            $a = $request->facultad;
-            $b = $request->carrera;
-            $c = $request->materia;
-            $d = $request->sigla;
             Entidad::where('user_id',$id)
                         ->update([
-                            'facultad'=> $a,
-                            'carrera' => $b,
-                            'materia' => $c,
-                            'sigla'   => $d,
+                            'facultad'=> $request->facultad,
+                            'carrera' => $request->carrera,
+                            'materia' => $request->materia,
+                            'sigla'   => $request->sigla,
                             'user_id' => $id
                         ]);
+        }else{
+            $dat = date('Y-m-d h:m:s');
+            Entidad::create([
+                    'facultad'  => $request['facultad'],
+                    'carrera'   => $request['carrera'],
+                    'materia'   => $request['materia'],
+                    'sigla'     => $request['sigla'],
+                    'user_id'   => $id,
+                    'created_at'=>$dat,
+                    'updated_at'=>$dat
+            ]);
         }
-        $dat = date('Y-m-d h:m:s');
-        Entidad::create([
-                'facultad'  => $request['facultad'],
-                'carrera'   => $request['carrera'],
-                'materia'   => $request['materia'],
-                'sigla'     => $request['sigla'],
-                'user_id'   => $id,
-                'created_at'=>$dat,
-                'updated_at'=>$dat
-        ]);
-        
 
-        
-
-        /*$this->user->fill($request->all());
-        $this->user->save();*/
         Session::flash('message','Usuario editado correctamente...');
         return redirect('users');
         

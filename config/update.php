@@ -5,7 +5,7 @@ return array(
     'updates' => [
         ''    => 'Seleccione un tipo de usuario',
         'chofer'            => 'chofer',
-        'mecánico'          => 'mecánico',
+        'mecanico'          => 'mecánico',
         'encargado'         => 'encargado',
         'mensajero'         => 'mensajero',
     ]
